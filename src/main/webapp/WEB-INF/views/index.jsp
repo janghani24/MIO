@@ -7,6 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<table id="">
+		<tr>
+			<td align="center"><jsp:include page="${contentPage }"></jsp:include></td>
+		</tr>
+	</table>
+	<table id="">
+		<tr>
+			<td><jsp:include page="${loginPage }"></jsp:include></td>
+		</tr>
+	</table>
 </body>
 </html>
