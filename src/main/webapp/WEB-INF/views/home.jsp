@@ -7,6 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-광고 페이지
+<table>
+<tr>
+<td>광고1</td>
+</tr>
+
+<tr>
+<td>광고2</td>
+</tr>
+
+<tr>
+<td>광고3</td>
+</tr>
+
+</table>
 </body>
 </html>

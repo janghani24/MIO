@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+#wrapTable {
+	height: 1765px;
+	width: 100%;
+	text-align: center;
+}
+
+#leftside {
+	width: 30%;
+}

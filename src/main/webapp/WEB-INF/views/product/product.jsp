@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<table>
-<tr>
-<td>product 전체 보기 페이지</td>
-</tr>
-</table>
+	<table border="1">
+		<tr>
+			<td>product 전체 보기 페이지</td>
+		</tr>
+	</table>
 
 
 </body>
