@@ -8,7 +8,12 @@
 </head>
 <body>
 
-product 전체보기 페이지
+<table>
+<tr>
+<td>product 전체 보기 페이지</td>
+</tr>
+</table>
+
 
 </body>
 </html>

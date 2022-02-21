@@ -20,7 +20,7 @@
 						<td>login</td>
 					</tr>
 					<tr>
-						<td><a href="ProductController">Product</a></td>
+						<td><a href="product.all">Product</a></td>
 					</tr>
 					<tr>
 						<td>Funding</td>
