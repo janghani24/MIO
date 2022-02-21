@@ -50,13 +50,16 @@
 						<td id="topMenu">Product</td>
 					</tr>
 					<tr>
-						<td class="subMenu">Product1</td>
+						<td class="subMenu"><a href="product.food">Food</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu">Product2</td>
+						<td class="subMenu">Fashion</td>
 					</tr>
 					<tr>
-						<td class="subMenu">Product3</td>
+						<td class="subMenu">Beauty</td>
+					</tr>
+					<tr>
+						<td class="subMenu">Living</td>
 					</tr>
 
 

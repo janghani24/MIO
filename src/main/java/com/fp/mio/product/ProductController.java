@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ProductController {
 
-	@RequestMapping(value = "/product.all", method = RequestMethod.GET)
+	@RequestMapping(value = "/product.food", method = RequestMethod.GET)
 	public String productAll(HttpServletRequest request) {
-		request.setAttribute("contentPage", "product/product.jsp");
+		request.setAttribute("contentPage", "product/food.jsp");
 		return "index";
 	}
 
