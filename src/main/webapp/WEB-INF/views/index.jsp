@@ -8,15 +8,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table id="">
+<table border="1">
 		<tr>
-			<td align="center"><jsp:include page="${contentPage }"></jsp:include></td>
+			<!-- left side -->
+			<td id="leftside">
+				<table border="1">
+					<tr>
+						<td>MIO</td>
+					</tr>
+					<tr>
+						<td>login</td>
+					</tr>
+					<tr>
+						<td><a href="ProductController">Product</a></td>
+					</tr>
+					<tr>
+						<td>Funding</td>
+					</tr>
+					<tr>
+						<td>Community</td>
+					</tr>
+
+				</table>
+
+			</td>
+			<!-- left side -->
+
+
+			<!-- right side -->
+			<td><jsp:include page="${contentPage}"></jsp:include></td>
+			
+			<!-- right side -->
 		</tr>
-	</table>
-	<table id="">
-		<tr>
-			<td><jsp:include page="${loginPage }"></jsp:include></td>
-		</tr>
+
 	</table>
 </body>
 </html>
