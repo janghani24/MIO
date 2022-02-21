@@ -8,5 +8,8 @@
 </head>
 <body>
 
+
+<button onclick="">이동하기</button>
+	
 </body>
 </html>
