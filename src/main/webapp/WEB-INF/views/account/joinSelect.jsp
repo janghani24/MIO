@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-aaaaaaabbbbb
+<button onclick="goJoinGeneral()">일반 회원</button>
+<button onclick="goJoinSeller()">판매자</button>
 </body>
 </html>
