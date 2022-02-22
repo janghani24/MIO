@@ -7,25 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>
-<tr>
-<td>광고1</td>
-</tr>
+여긴테스트페이지4
 
-<<<<<<< HEAD
+목록들을띄우자
 
-<button onclick="">이동하기</button>
-	
-=======
-<tr>
-<td>광고2</td>
-</tr>
 
-<tr>
-<td>광고3</td>
-</tr>
-
-</table>
->>>>>>> origin/dev
 </body>
 </html>

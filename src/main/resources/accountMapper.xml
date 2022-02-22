@@ -1,3 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fp.mio.account.AccountMapper"></mapper>
+<mapper namespace="com.fp.mio.account.AccountMapper">
+<select id="getAccountByID" resultType="com.fp.mio.account.Account">
+		select * from account_mio
+		where a_id = #{a_id}
+	</select>
+	
+	<insert id="joinGeneral" parameterType="com.fp.mio.account.Account">
+		insert into account_mio
+		values(#{a_id}, #{a_pw},
+		#{a_name}, #{a_addr}, #{a_phone},
+		#{a_img},#{a_grade},#{a_question},#{a_answer}
+		)
+	</insert>
+	
+	<insert id="joinSeller" parameterType="com.fp.mio.account.Seller">
+		insert into account_sellerjoin
+		values(#{a_s_id}, #{s_pw},
+		#{s_name}, #{s_addr}, #{s_phone},
+		#{s_img},#{s_grade},#{s_question},#{s_answer},
+		#{s_intro},#{s_sellsort}
+		)
+	</insert>
+	
+	<delete id="deleteAccount"
+		parameterType="com.fp.mio.account.Account">
+		delete from account_mio
+		where a_id = #{a_id}	
+	</delete>
+	
+	<update id="updateAccount"
+		parameterType="com.fp.mio.account.Account">
+		update acount_mio
+		set a_pw=#{a_pw},
+		a_name=#{a_name}, a_addr=#{a_addr}, a_phone=#{a_phone},
+		a_img=#{a_img}, a_question=#{a_question}, a_answer=#{a_answer}
+		where
+		a_id=#{a_id}
+	</update>
+	
+	<update id="updateGrade" parameterType="com.fp.mio.account.Account">
+	update account_mio
+	set a_grade=#{a_grade}
+	where
+	a_id=#{a_id}
+	</update>
+	
+	<select id="getAccount"
+		resultType="com.fp.mio.account.Account">
+		select * from account_mio order by a_grade
+	</select>
+	
+</mapper>

@@ -7,25 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>
-<tr>
-<td>광고1</td>
-</tr>
-
-<<<<<<< HEAD
-
-<button onclick="">이동하기</button>
+------------------------
+	여긴로그인페이지
+------------------------
 	
-=======
-<tr>
-<td>광고2</td>
-</tr>
-
-<tr>
-<td>광고3</td>
-</tr>
-
-</table>
->>>>>>> origin/dev
 </body>
 </html>
