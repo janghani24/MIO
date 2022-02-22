@@ -19,12 +19,12 @@
 				$('.subMenu').stop();
 				
 			});
-			$('.subMenu').mouseleave(function() {
-				$('.subMenu').slideup();
-			});
 			
 		});
 		
+		$('.subMenu').mouseleave(function() {
+			$('.subMenu').slideUp();
+		});
 		
 		
 		
