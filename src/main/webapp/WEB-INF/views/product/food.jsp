@@ -7,19 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>
-<tr>
-<td>광고1</td>
-</tr>
 
-<tr>
-<td>광고2</td>
-</tr>
+food 페이지
 
-<tr>
-<td>광고3</td>
-</tr>
-
-</table>
 </body>
 </html>
