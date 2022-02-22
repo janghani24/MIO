@@ -9,3 +9,8 @@
 #leftside {
 	width: 25%;
 }
+
+ul {
+	list-style-type: none;
+	float: left;
+}
