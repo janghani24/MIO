@@ -156,6 +156,16 @@ public class AccountController {
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "account.delete.go", method = RequestMethod.GET)
+	public String AccountDeleteGo(HttpServletRequest req) {
+		// 탈퇴페이지로
+		aDAO.loginCheck(req);
+			
+		
+		req.setAttribute("contentPage", "deleteAccount.jsp");
+		return "index";
+	}
 
 
 
