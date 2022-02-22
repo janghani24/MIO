@@ -2,6 +2,11 @@ package com.fp.mio;
 
 import javax.servlet.http.HttpServletRequest;
 
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +17,11 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(HttpServletRequest request) {
-		request.setAttribute("contentPage", "home.jsp");
+
+	public String home(HttpServletRequest req) {
+		req.setAttribute("contentPage", "home.jsp");
+		req.setAttribute("loginPage", "login.jsp");
+
 		return "index";
 	}
 	
