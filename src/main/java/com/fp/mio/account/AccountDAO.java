@@ -296,7 +296,7 @@ public class AccountDAO {
 		}
 		
 	}
-
+//
 	public void getSellerById(Seller s,HttpServletRequest req) {
 		try {
 			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSellerById(s));
