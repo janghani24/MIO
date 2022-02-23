@@ -288,6 +288,7 @@ public class AccountDAO {
 		}
 	}
 
+	// 판매자 신청 정보 가져오기(전체)
 	public void getSeller(HttpServletRequest req) {
 		try {
 			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSeller());
@@ -297,6 +298,7 @@ public class AccountDAO {
 		
 	}
 
+	// 판매자 id로 가져오기
 	public void getSellerById(Seller s,HttpServletRequest req) {
 		try {
 			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSellerById(s));
@@ -305,6 +307,7 @@ public class AccountDAO {
 		}
 	}
 	
+	// 판매자를 회원에 등록하기
 	public void sellerToAccount(Seller s, HttpServletRequest req) {
 		Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
 		Account a = null;
