@@ -12,6 +12,8 @@ public interface ProductMapper {
 	public List<Product> getBeauty();
 
 	public List<Product> getLiving();
+	
+	public Product productDetail (int num);
 
 	
 

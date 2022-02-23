@@ -50,5 +50,14 @@
 		resultType="com.fp.mio.account.Account">
 		select * from account_mio order by a_grade
 	</select>
+	<select id="getSeller"
+		resultType="com.fp.mio.account.Seller">
+		select * from account_sellerjoin order by a_s_id
+	</select>
+	<select id="getSellerById"
+		resultType="com.fp.mio.account.Seller">
+		select * from account_sellerjoin 
+		where a_s_id = #{a_s_id}
+	</select>
 	
 </mapper>

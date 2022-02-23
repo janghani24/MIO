@@ -47,4 +47,13 @@ public class ProductDAO {
 		}
 	}
 
+	public void getProductDetail(HttpServletRequest request, int num) {
+		
+	}
+
+	
+
+	
+	
+	
 }
