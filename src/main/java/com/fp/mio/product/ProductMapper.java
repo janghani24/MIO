@@ -13,7 +13,7 @@ public interface ProductMapper {
 
 	public List<Product> getLiving();
 	
-	public Product productDetail (int num);
+	public Product getProductDetail();
 
 	
 

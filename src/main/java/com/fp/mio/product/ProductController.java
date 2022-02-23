@@ -56,9 +56,9 @@ public class ProductController {
 	
 	//상품 상세 페이지로 이동
 	@RequestMapping(value = "/product.detail", method = RequestMethod.GET)
-	public String productDetail(HttpServletRequest request,int num) {
+	public String productDetail(HttpServletRequest request) {
 		
-		pDAO.getProductDetail(request,num);
+		pDAO.getProductDetail(request);
 
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";

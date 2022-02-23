@@ -12,7 +12,7 @@
 
 	<c:forEach var="f" items="${food }">
 		<ul>
-			<li><img src="resources/img/food/${f.p_photo}"></li>
+			<li onclick="location.href='product.detail?no=${f.p_num}'"><img src="resources/img/food/${f.p_photo}"></li>
 			<li>${f.p_name}</li>
 			<li>${f.p_price}원</li>
 		</ul>

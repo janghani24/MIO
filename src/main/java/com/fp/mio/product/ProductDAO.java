@@ -47,7 +47,16 @@ public class ProductDAO {
 		}
 	}
 
-	public void getProductDetail(HttpServletRequest request, int num) {
+	public void getProductDetail(HttpServletRequest request) {
+		try {
+			
+			
+			
+			//???
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 
