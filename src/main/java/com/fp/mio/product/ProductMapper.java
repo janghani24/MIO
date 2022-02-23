@@ -9,6 +9,10 @@ public interface ProductMapper {
 
 	public List<Product> getFashion();
 
+	public List<Product> getBeauty();
+
+	public List<Product> getLiving();
+
 	
 
 }

@@ -17,8 +17,6 @@ public Product() {
 	// TODO Auto-generated constructor stub
 }
 
-
-
 public Product(int p_num, String p_name, int p_price, String p_photo, String p_content, String p_category1,
 		String p_category2, Date p_date) {
 	super();

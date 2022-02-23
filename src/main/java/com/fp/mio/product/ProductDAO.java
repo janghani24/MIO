@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class ProductDAO {
 
@@ -20,8 +19,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	public void getFashion(HttpServletRequest request) {
@@ -32,7 +30,21 @@ public class ProductDAO {
 		}
 	}
 
-	
-	
-	
+	public void getBeauty(HttpServletRequest request) {
+		try {
+			request.setAttribute("beauty", ss.getMapper(ProductMapper.class).getBeauty());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void getLiving(HttpServletRequest request) {
+		try {
+			request.setAttribute("living", ss.getMapper(ProductMapper.class).getLiving());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }
