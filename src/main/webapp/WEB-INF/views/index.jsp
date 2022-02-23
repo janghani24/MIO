@@ -17,17 +17,14 @@
 			$('.subMenu').slideDown();
 			$('.subMenu').mouseover(function() {
 				$('.subMenu').stop();
-				
+
 			});
-			
+
 		});
-		
+
 		$('.subMenu').mouseleave(function() {
 			$('.subMenu').slideUp();
 		});
-		
-		
-		
 
 	});
 </script>
@@ -56,10 +53,10 @@
 						<td class="subMenu"><a href="product.fashion.all">Fashion</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu">Beauty</td>
+						<td class="subMenu"><a href="product.beauty.all">Beauty</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu">Living</td>
+						<td class="subMenu"><a href="product.living.all">Living</a></td>
 					</tr>
 
 

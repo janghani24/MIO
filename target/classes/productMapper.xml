@@ -14,4 +14,22 @@ select * from product_master where p_category1 = 'fashion'
 
 </select>
 
+<select id="getBeauty" resultType="com.fp.mio.product.Product">
+
+select * from product_master where p_category1 = 'beauty'
+
+</select>
+
+<select id="getLiving" resultType="com.fp.mio.product.Product">
+
+select * from product_master where p_category1 = 'living'
+
+</select>
+
+<select id="getProductDetail" resultType="com.fp.mio.product.Product">
+
+select * from product_master where p_num=#{p_num}
+
+</select>
+
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<c:forEach var="l" items="${living}">
+		<ul>
+			<li><img src="resources/img/living/${l.p_photo}"></li>
+			<li>${l.p_name}</li>
+			<li>${l.p_price}원</li>
+		</ul>
+	</c:forEach>
 
 </body>
 </html>
