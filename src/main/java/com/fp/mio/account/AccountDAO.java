@@ -287,5 +287,42 @@ public class AccountDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public void getSeller(HttpServletRequest req) {
+		try {
+			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSeller());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void getSellerById(Seller s,HttpServletRequest req) {
+		try {
+			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSellerById(s));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void sellerToAccount(Seller s, HttpServletRequest req) {
+		Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
+		Account a = null;
+		a.setA_id(sss.getA_s_id());
+		a.setA_pw(sss.getS_pw());
+		a.setA_name(sss.getS_name());
+		a.setA_addr(sss.getS_addr());
+		a.setA_phone(sss.getS_phone());
+		a.setA_img(sss.getS_img());
+		a.setA_grade(sss.getS_grade());
+		a.setA_question(sss.getS_question());
+		a.setA_answer(sss.getS_answer());
+		
+		if (ss.getMapper(AccountMapper.class).joinGeneral(a) == 1) {
+			req.setAttribute("result", "가입성공");
+		} else {
+			req.setAttribute("result", "가입실패");
+		}
+	}
 	
 }
