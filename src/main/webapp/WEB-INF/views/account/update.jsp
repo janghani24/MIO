@@ -12,20 +12,20 @@
 		<table id="joinTable">
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center">
-					<input readonly="readonly" value="${sessionScope.loginMember.a_id}" name="jm_id" id="updateAccountIDInput">
+					<input readonly="readonly" value="${sessionScope.loginAccount.a_id}" name="jm_id" id="updateAccountIDInput">
 				</td>
 			</tr>
 			<tr>
 				<td class="td1">PW</td>
-				<td class="td2"><input value="${sessionScope.loginMember.a_pw}" name="jm_pw" placeholder="필수, 숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
+				<td class="td2"><input value="${sessionScope.loginAccount.a_pw}" name="jm_pw" placeholder="필수, 숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="td1">PW확인</td>
-				<td class="td2"><input value="${sessionScope.loginMember.a_pw}" name="jm_pwChk" placeholder="필수, 숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
+				<td class="td2"><input value="${sessionScope.loginAccount.a_pw}" name="jm_pwChk" placeholder="필수, 숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="td1">이름</td>
-				<td class="td2"><input value="${sessionScope.loginMember.a_name}" name="jm_name" placeholder="필수" maxlength="10" autocomplete="off"></td>
+				<td class="td2"><input value="${sessionScope.loginAccount.a_name}" name="jm_name" placeholder="필수" maxlength="10" autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="td1">주소</td>
@@ -40,7 +40,7 @@
 			<tr>
 				<td class="td1">사진</td>
 				<td class="td2">
-					<img src="resources/img_account/${sessionScope.loginMember.a_img}" id="updateMemberPhoto"><br>
+					<img src="resources/img_account/${sessionScope.loginAccount.a_img}" id="updateMemberPhoto"><br>
 					<input name="jm_photo" type="file">
 				</td>
 			</tr>

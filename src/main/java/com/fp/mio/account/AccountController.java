@@ -134,11 +134,44 @@ public class AccountController {
 		return "index";
 	}
 	@RequestMapping(value = "account.updategrade.go", method = RequestMethod.POST)
-	public String GradeUpdateGo(Account a, HttpServletRequest req) {
+	public String GradeUpdateGo(HttpServletRequest req) {
 		// 등급 조정 페이지로
 		if (aDAO.loginCheck(req)) {
 			aDAO.getAccount(req);
 			req.setAttribute("contentPage", "account/updateGrade.jsp");
+		} else {
+			req.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+	@RequestMapping(value = "account.join.confirm.go", method = RequestMethod.POST)
+	public String JoinConfirmGo(HttpServletRequest req) {
+		// 가입 승인 페이지로
+		if (aDAO.loginCheck(req)) {
+			aDAO.getSeller(req);
+			req.setAttribute("contentPage", "account/joinConfirm.jsp");
+		} else {
+			req.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+	@RequestMapping(value = "account.sellerDetail", method = RequestMethod.POST)
+	public String SellerDetail(Seller s, HttpServletRequest req) {
+		// 판매자 상세 페이지로
+		if (aDAO.loginCheck(req)) {
+			aDAO.getSellerById(s,req);
+			req.setAttribute("contentPage", "account/sellerDetail.jsp");
+		} else {
+			req.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+	@RequestMapping(value = "account.sellerJoin.do", method = RequestMethod.POST)
+	public String SellerJoin(Seller s, HttpServletRequest req) {
+		// 판매자 승인
+		if (aDAO.loginCheck(req)) {
+			aDAO.sellerToAccount(s, req);
+			req.setAttribute("contentPage", "account/joinConfirm.jsp");
 		} else {
 			req.setAttribute("contentPage", "home.jsp");
 		}
@@ -154,6 +187,16 @@ public class AccountController {
 			aDAO.deleteAccount(req);
 		}
 		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "account.delete.go", method = RequestMethod.GET)
+	public String AccountDeleteGo(HttpServletRequest req) {
+		// 탈퇴페이지로
+		aDAO.loginCheck(req);
+			
+		
+		req.setAttribute("contentPage", "deleteAccount.jsp");
 		return "index";
 	}
 

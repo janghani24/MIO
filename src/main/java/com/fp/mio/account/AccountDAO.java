@@ -20,6 +20,7 @@ public class AccountDAO {
 	@Autowired
 	private SqlSession ss;
 	
+	// 로그인
 	public void login(Account a, HttpServletRequest req) {
 
 		Account dbAccount = ss.getMapper(AccountMapper.class).getAccountByID(a);
@@ -36,6 +37,12 @@ public class AccountDAO {
 		}
 	}
 
+	//로그아웃
+	public void logout(HttpServletRequest req) {
+			req.getSession().setAttribute("loginAccount", null);
+		}
+	
+	//로그인 체크
 	public boolean loginCheck(HttpServletRequest req) {
 		Account a = (Account) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
@@ -48,6 +55,7 @@ public class AccountDAO {
 		}
 	}
 	
+	// 일반 회원 가입(판매자와 합칠 방법 생각해야함)
 	public void joinGeneral(Account a, HttpServletRequest req) {
 
 		String path = req.getSession().getServletContext().getRealPath("resources/img_account");
@@ -99,6 +107,8 @@ public class AccountDAO {
 			req.setAttribute("result", "가입실패");
 		}
 	}
+	
+	// 판매자 회원 가입
 	public void joinSeller(Seller s, HttpServletRequest req) {
 		
 		String path = req.getSession().getServletContext().getRealPath("resources/img_account");
@@ -154,11 +164,8 @@ public class AccountDAO {
 			req.setAttribute("result", "가입실패");
 		}
 	}
-	
-	public void logout(HttpServletRequest req) {
-		req.getSession().setAttribute("loginAccount", null);
-	}
 
+	// 주소관련
 	public void splitAddr(HttpServletRequest req) {
 		Account a = (Account) req.getSession().getAttribute("loginAccount");
 		String join_addr = a.getA_addr();
@@ -167,6 +174,7 @@ public class AccountDAO {
 
 	}
 
+	// 회원 탈퇴
 	public void deleteAccount(HttpServletRequest req) {
 		try {
 			Account a = (Account) req.getSession().getAttribute("loginAccount");
@@ -195,6 +203,7 @@ public class AccountDAO {
 		}
 	}
 	
+	// 회원 등급 조정
 	public void updateGrade(Account a, HttpServletRequest req) {
 		
 		if (ss.getMapper(AccountMapper.class).updateGrade(a) == 1) {
@@ -206,6 +215,7 @@ public class AccountDAO {
 		}
 	}
 	
+	// 회원 정보 수정
 	public void updateAccount(Account a, HttpServletRequest req) {
 		String path = req.getSession().getServletContext().getRealPath("resources/img_account");
 		MultipartRequest mr = null;
@@ -269,11 +279,49 @@ public class AccountDAO {
 		}
 	}
 	
+	// 회원 정보 가져오기(전체)
 	public void getAccount(HttpServletRequest req) {
 		try {
 			req.setAttribute("accounts", ss.getMapper(AccountMapper.class).getAccount());
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public void getSeller(HttpServletRequest req) {
+		try {
+			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSeller());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+//
+	public void getSellerById(Seller s,HttpServletRequest req) {
+		try {
+			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSellerById(s));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void sellerToAccount(Seller s, HttpServletRequest req) {
+		Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
+		Account a = null;
+		a.setA_id(sss.getA_s_id());
+		a.setA_pw(sss.getS_pw());
+		a.setA_name(sss.getS_name());
+		a.setA_addr(sss.getS_addr());
+		a.setA_phone(sss.getS_phone());
+		a.setA_img(sss.getS_img());
+		a.setA_grade(sss.getS_grade());
+		a.setA_question(sss.getS_question());
+		a.setA_answer(sss.getS_answer());
+		
+		if (ss.getMapper(AccountMapper.class).joinGeneral(a) == 1) {
+			req.setAttribute("result", "가입성공");
+		} else {
+			req.setAttribute("result", "가입실패");
 		}
 	}
 	

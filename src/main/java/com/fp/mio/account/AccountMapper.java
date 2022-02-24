@@ -18,4 +18,9 @@ public interface AccountMapper {
 
 	List<Account> getAccount();
 
+	List<Seller> getSeller();
+
+	Seller getSellerById(Seller s);
+
+
 }
