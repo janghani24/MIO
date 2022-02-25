@@ -57,7 +57,7 @@ public class ProductController {
 		return "index";
 	}
 
-	// 상품 하위 카테고리로 이동
+	// food 하위 카테고리로 이동
 	@RequestMapping(value = "/product.food.category", method = RequestMethod.GET)
 	public String foodCategory(HttpServletRequest request, String p_category) {
 
@@ -69,7 +69,8 @@ public class ProductController {
 		return "index";
 
 	}
-	
+
+	// fashion 하위 카테고리로 이동
 	@RequestMapping(value = "/product.fashion.category", method = RequestMethod.GET)
 	public String fashionCategory(HttpServletRequest request, String p_category) {
 
@@ -81,7 +82,8 @@ public class ProductController {
 		return "index";
 
 	}
-	
+
+	// beauty 하위 카테고리로 이동
 	@RequestMapping(value = "/product.beauty.category", method = RequestMethod.GET)
 	public String beautyCategory(HttpServletRequest request, String p_category) {
 
@@ -93,7 +95,8 @@ public class ProductController {
 		return "index";
 
 	}
-	
+
+	// living 하위 카테고리로 이동
 	@RequestMapping(value = "/product.living.category", method = RequestMethod.GET)
 	public String livingCategory(HttpServletRequest request, String p_category) {
 
