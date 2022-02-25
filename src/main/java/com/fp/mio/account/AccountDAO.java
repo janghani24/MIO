@@ -245,12 +245,14 @@ public class AccountDAO {
 			String join_addr3 = mr.getParameter("jm_addr3");
 			String join_addr = join_addr1 + "!" + join_addr2 + "!" + join_addr3;
 			String join_img = newFile;
+			String join_phone = mr.getParameter("jm_phone");
 
 			a.setA_id(join_id);
 			a.setA_pw(join_pw);
 			a.setA_name(join_name);
 			a.setA_addr(join_addr);
 			a.setA_img(join_img);
+			a.setA_phone(join_phone);
 
 			if (ss.getMapper(AccountMapper.class).updateAccount(a) == 1) {
 				req.setAttribute("result", "수정성공");
@@ -326,6 +328,18 @@ public class AccountDAO {
 		} else {
 			req.setAttribute("result", "가입실패");
 		}
+	}
+
+	public void idCheck(Account a,HttpServletRequest req) {
+		Account aaa = ss.getMapper(AccountMapper.class).getAccountByID(a);
+		if(aaa != null) {
+			req.setAttribute("result", "0"); // 아이디 사용 불가
+		}else {
+			req.setAttribute("result", "1");
+			req.setAttribute("a_id", a.getA_id());
+		}
+		
+		
 	}
 	
 }

@@ -1,6 +1,10 @@
 package com.fp.mio.account;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +18,14 @@ public class AccountController {
 	private AccountDAO aDAO;
 	
 	
+	@RequestMapping(value = "account.login.go", method = RequestMethod.GET)
+	public String goLogin(Account a, HttpServletRequest req) {
+		
+		// 로그인페이지로
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/login.jsp");
+		return "index";
+	}
 	@RequestMapping(value = "account.login", method = RequestMethod.POST)
 	public String home(Account a, HttpServletRequest req) {
 		
@@ -99,7 +111,7 @@ public class AccountController {
 		return "index";
 	}
 
-	@RequestMapping(value = "account.update.go", method = RequestMethod.POST)
+	@RequestMapping(value = "account.update.go", method = RequestMethod.GET)
 	public String AccountUpdateGo(Account a, HttpServletRequest req) {
 		// 내 정보 수정 페이지로
 		if (aDAO.loginCheck(req)) {
@@ -122,6 +134,7 @@ public class AccountController {
 		}
 		return "index";
 	}
+	
 	@RequestMapping(value = "account.updategrade", method = RequestMethod.GET)
 	public String GradeUpdate(Account a, HttpServletRequest req) {
 		if (aDAO.loginCheck(req)) {
@@ -133,7 +146,7 @@ public class AccountController {
 		}
 		return "index";
 	}
-	@RequestMapping(value = "account.updategrade.go", method = RequestMethod.POST)
+	@RequestMapping(value = "account.updategrade.go", method = RequestMethod.GET)
 	public String GradeUpdateGo(HttpServletRequest req) {
 		// 등급 조정 페이지로
 		if (aDAO.loginCheck(req)) {
@@ -144,7 +157,7 @@ public class AccountController {
 		}
 		return "index";
 	}
-	@RequestMapping(value = "account.join.confirm.go", method = RequestMethod.POST)
+	@RequestMapping(value = "account.join.confirm.go", method = RequestMethod.GET)
 	public String JoinConfirmGo(HttpServletRequest req) {
 		// 가입 승인 페이지로
 		if (aDAO.loginCheck(req)) {
@@ -155,7 +168,7 @@ public class AccountController {
 		}
 		return "index";
 	}
-	@RequestMapping(value = "account.sellerDetail", method = RequestMethod.POST)
+	@RequestMapping(value = "account.sellerDetail", method = RequestMethod.GET)
 	public String SellerDetail(Seller s, HttpServletRequest req) {
 		// 판매자 상세 페이지로
 		if (aDAO.loginCheck(req)) {
@@ -166,7 +179,7 @@ public class AccountController {
 		}
 		return "index";
 	}
-	@RequestMapping(value = "account.sellerJoin.do", method = RequestMethod.POST)
+	@RequestMapping(value = "account.sellerJoin.do", method = RequestMethod.GET)
 	public String SellerJoin(Seller s, HttpServletRequest req) {
 		// 판매자 승인
 		if (aDAO.loginCheck(req)) {
@@ -187,6 +200,15 @@ public class AccountController {
 			aDAO.deleteAccount(req);
 		}
 		req.setAttribute("contentPage", "home.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "account.idCheck", method = RequestMethod.GET)
+	public String IdCheck(Account a,HttpServletRequest req,HttpServletResponse response) throws ServletException, IOException {
+		// id 중복체크
+		aDAO.loginCheck(req);
+		aDAO.idCheck(a,req);
+		req.getRequestDispatcher("account/idCheckResult.jsp").forward(req,response);
 		return "index";
 	}
 	

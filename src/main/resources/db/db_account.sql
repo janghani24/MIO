@@ -10,6 +10,12 @@ a_question varchar2(100 char) not null,
 a_answer varchar2(30 char) not null
 );
 
+select * from account_mio;
+
+insert into ACCOUNT_MIO values ('hn','hn','hn','addr','phone','img','admin','q','a');
+
+select * from account_sellerjoin;
+
 create table account_sellerjoin(
 a_s_id varchar2(20 char) primary key,
 s_pw varchar2(30 char) not null, 

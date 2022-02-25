@@ -20,8 +20,9 @@
 			<tr>
 				<td class="td1">ID</td>
 				<td class="td2">
-				<input id="jm_idInput" name="a_id" placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="10" autocomplete="off" autofocus="autofocus">
-				<button onclick="IdCheck()"></button>
+				<input id="jm_idInput" name="a_id" placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="20" autocomplete="off" autofocus="autofocus" onkeydown="inputIdcheck()">
+				<button onclick="openIdCheck()">중복 확인</button>
+				<input type="hidden" name="idCheckOk" value="idUncheck">
 				</td>
 			</tr>
 			<tr>
