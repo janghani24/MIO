@@ -9,9 +9,23 @@
 </head>
 <body>
 
+	<table border="1">
+		<tr>
+			<td onclick="location.href='product.fashion.all'">전체 상품</td>
+			<td onclick="location.href='product.fashion.category?p_category=의류'">의류</td>
+			<td onclick="location.href='product.fashion.category?p_category=가방'">가방</td>
+			<td onclick="location.href='product.fashion.category?p_category=지갑'">지갑</td>
+			<td onclick="location.href='product.fashion.category?p_category=패션소품'">패션 소품</td>
+			<td onclick="location.href='product.fashion.category?p_category=케이스'">케이스</td>
+			<td onclick="location.href='product.fashion.category?p_category=신발'">신발</td>
+		</tr>
+	</table>
+
 	<c:forEach var="f" items="${fashion}">
 		<ul>
-			<li onclick="location.href='product.detail?no=${f.p_num}'"><img src="resources/img/fashion/${f.p_photo}"></li>
+			<li onclick="location.href='product.detail?p_num=${f.p_num}'"><img
+				src="resources/img/fashion/${f.p_photo}"></li>
+			<li>${f.p_brand}</li>
 			<li>${f.p_name}</li>
 			<li>${f.p_price}원</li>
 		</ul>
