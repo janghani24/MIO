@@ -41,3 +41,7 @@ function logout() {
 		location.href = 'account.logout';
 	}
 }
+
+function goBack(){
+	window.history.back();
+}

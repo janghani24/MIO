@@ -55,7 +55,7 @@
 				<!-- 정보 수정 시 비밀번호 확인 단계 추가 -->
 					<button onclick="goUpdate()">정보 수정</button>
 					<button onclick="goDelete()">탈퇴</button>
-					<c:if test="${sessionScope.loginMember eq 'admin'}">
+					<c:if test="${sessionScope.loginAccount.a_grade eq 'admin'}">
 					<!-- 만들어야함 -->
 					<button onclick="goGradeUpdate()">회원 등급 조정</button>
 					<button onclick="goJoinConfirm()">가입 신청 승인</button>

@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/index.css">
+<script type="text/javascript" src="resources/js/check_account.js"></script>
+<script type="text/javascript" src="resources/js/go_account.js"></script>
+<script type="text/javascript" src="resources/js/validCheck.js"></script>
+<script type="text/javascript" src="resources/js/jquery.js"></script>
+<script type="text/javascript" src="resources/js/site_jquery.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>Insert title here</title>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -40,9 +47,18 @@
 					<tr>
 						<td>MIO</td>
 					</tr>
-					<tr>
-						<td>login</td>
-					</tr>
+					<c:choose>
+						<c:when test="${sessionScope.loginAccount != null }">
+							<tr>
+								<td><a href="account.mypage">mypage</a></td>
+							</tr>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td><a href="account.login.go">login</a></td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
 					<tr>
 						<td id="topMenu">Product</td>
 					</tr>

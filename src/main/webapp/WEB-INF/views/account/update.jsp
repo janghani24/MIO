@@ -28,6 +28,10 @@
 				<td class="td2"><input value="${sessionScope.loginAccount.a_name}" name="jm_name" placeholder="필수" maxlength="10" autocomplete="off"></td>
 			</tr>
 			<tr>
+			<td>핸드폰 번호</td>
+			<td><input value="${sessionScope.loginAccount.a_phone}" name="jm_phone"></td>
+			</tr>
+			<tr>
 				<td class="td1">주소</td>
 				<td class="td2">
 					<input id="jm_addr3Input" readonly="readonly" value="${addr[2]}"  name="jm_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
