@@ -1,5 +1,7 @@
 package com.fp.mio.product;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -47,22 +49,21 @@ public class ProductDAO {
 		}
 	}
 
-	public void getProductDetail(HttpServletRequest request) {
+	public Product getProductDetail(HttpServletRequest request, Product product, int p_num) {
+
+		return ss.getMapper(ProductMapper.class).getProductDetail(p_num);
+
+	}
+
+	public void getProductCategory(HttpServletRequest request, String p_category2) {
 		try {
-			
-			
-			
-			//???
-			
+			request.setAttribute("food", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+			request.setAttribute("fashion", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+			request.setAttribute("beauty", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+			request.setAttribute("living", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
-	
-
-	
-	
-	
 }

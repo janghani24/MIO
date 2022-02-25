@@ -32,4 +32,10 @@ select * from product_master where p_num=#{p_num}
 
 </select>
 
+<select id="getProductCategory" resultType="com.fp.mio.product.Product">
+
+select * from product_master where p_category2=#{p_category2}
+
+</select>
+
 </mapper>
