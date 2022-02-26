@@ -31,10 +31,10 @@
 	
 	<update id="updateAccount"
 		parameterType="com.fp.mio.account.Account">
-		update acount_mio
+		update account_mio
 		set a_pw=#{a_pw},
 		a_name=#{a_name}, a_addr=#{a_addr}, a_phone=#{a_phone},
-		a_img=#{a_img}, a_question=#{a_question}, a_answer=#{a_answer}
+		a_img=#{a_img}
 		where
 		a_id=#{a_id}
 	</update>

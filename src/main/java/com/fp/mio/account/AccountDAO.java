@@ -245,12 +245,14 @@ public class AccountDAO {
 			String join_addr3 = mr.getParameter("jm_addr3");
 			String join_addr = join_addr1 + "!" + join_addr2 + "!" + join_addr3;
 			String join_img = newFile;
+			String join_phone = mr.getParameter("jm_phone");
 
 			a.setA_id(join_id);
 			a.setA_pw(join_pw);
 			a.setA_name(join_name);
 			a.setA_addr(join_addr);
 			a.setA_img(join_img);
+			a.setA_phone(join_phone);
 
 			if (ss.getMapper(AccountMapper.class).updateAccount(a) == 1) {
 				req.setAttribute("result", "수정성공");
@@ -288,6 +290,7 @@ public class AccountDAO {
 		}
 	}
 
+	// 판매자 신청 정보 가져오기(전체)
 	public void getSeller(HttpServletRequest req) {
 		try {
 			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSeller());
@@ -296,7 +299,9 @@ public class AccountDAO {
 		}
 		
 	}
-//
+
+
+	// 판매자 id로 가져오기
 	public void getSellerById(Seller s,HttpServletRequest req) {
 		try {
 			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSellerById(s));
@@ -305,6 +310,7 @@ public class AccountDAO {
 		}
 	}
 	
+	// 판매자를 회원에 등록하기
 	public void sellerToAccount(Seller s, HttpServletRequest req) {
 		Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
 		Account a = null;
@@ -323,6 +329,18 @@ public class AccountDAO {
 		} else {
 			req.setAttribute("result", "가입실패");
 		}
+	}
+
+	public void idCheck(Account a,HttpServletRequest req) {
+		Account aaa = ss.getMapper(AccountMapper.class).getAccountByID(a);
+		if(aaa != null) {
+			req.setAttribute("result", "0"); // 아이디 사용 불가
+		}else {
+			req.setAttribute("result", "1");
+			req.setAttribute("a_id", a.getA_id());
+		}
+		
+		
 	}
 	
 }

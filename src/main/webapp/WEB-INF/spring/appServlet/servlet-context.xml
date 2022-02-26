@@ -34,9 +34,14 @@
 		<beans:property name="password" value="jh" />
 =======
 
+<<<<<<< HEAD
 		<beans:property name="username" value="c##yj" />
 		<beans:property name="password" value="yj" />
 >>>>>>> origin/dev
+=======
+		<beans:property name="username" value="c##hn" />
+		<beans:property name="password" value="hn" />
+>>>>>>> 969059de40153f80eb0ec955053b33ff9290e068
 
 	</beans:bean>
 

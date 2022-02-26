@@ -13,7 +13,9 @@ public interface ProductMapper {
 
 	public List<Product> getLiving();
 	
-	public Product getProductDetail();
+	public Product getProductDetail(int p_num);
+
+	public List<Product> getProductCategory(String p_category2);
 
 	
 
