@@ -4,18 +4,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import jdk.internal.org.jline.utils.Log;
+import com.fp.mio.account.AccountDAO;
 
 @Controller
 public class ProductController {
 
 	@Autowired
 	private ProductDAO pDAO;
+	
+	@Autowired 
+	private AccountDAO aDAO;
+	
 
 	// food 카테고리로 이동
 	@RequestMapping(value = "/product.food.all", method = RequestMethod.GET)
@@ -119,6 +121,41 @@ public class ProductController {
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 
+	}
+	// 찜 페이지
+	@RequestMapping(value = "/product.zzim", method = RequestMethod.GET)
+	public String productzzim(HttpServletRequest request, Product product, int p_num, Zzim zzim) {
+		
+		if(aDAO.loginCheck(request)) {
+			
+			pDAO.getProductzzim(request, zzim);	//찜하는기능
+		}
+		pDAO.getProductDetail(request, product, p_num);
+		
+		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
+		request.setAttribute("contentPage", "product/productDetail.jsp");
+		return "index";
+		
+	}
+	// 찜 삭제
+	@RequestMapping(value = "product.deletezzim", method = RequestMethod.GET)
+	public String productdeletezzim(HttpServletRequest request, Product product, int p_num, Zzim zzim) {
+		
+		aDAO.getAccount(request);
+		
+		if (aDAO.loginCheck(request)) {
+			
+			pDAO.deletezzim(zzim, request);	//찜한거 삭제하는기능
+			
+		}
+		
+		
+		pDAO.getProductDetail(request, product, p_num);
+		
+		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
+		request.setAttribute("contentPage", "product/productDetail.jsp");
+		return "index";
+		
 	}
 
 }

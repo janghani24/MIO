@@ -15,7 +15,7 @@
 		</tr>
 		<tr>
 			<td>
-			<!-- 찜목록 구현 필요 -->
+			<!-- 찜목록 구현테스트중-->
 				<button onclick="goWishlist()">찜 목록 보기</button>
 			</td>
 		</tr>

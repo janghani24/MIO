@@ -28,7 +28,7 @@ public class AccountDAO {
 		if (dbAccount != null) {
 			if (a.getA_pw().equals(dbAccount.getA_pw())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
-				req.getSession().setMaxInactiveInterval(60 * 10);
+				req.getSession().setMaxInactiveInterval(60 * 1000);	//개인적으로수정
 			} else {
 				req.setAttribute("result", "로그인 실패(PW오류)");
 			}

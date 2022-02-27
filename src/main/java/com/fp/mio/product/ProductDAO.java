@@ -1,12 +1,13 @@
 package com.fp.mio.product;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.fp.mio.account.Account;
+import com.fp.mio.account.AccountMapper;
 
 @Service
 public class ProductDAO {
@@ -66,4 +67,55 @@ public class ProductDAO {
 		}
 	}
 
+	public void getProductzzim(HttpServletRequest request,Zzim zzim) {
+		try {
+			
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
+			zzim.setP_id(a.getA_id());
+	
+		
+			if (ss.getMapper(ProductMapper.class).getProductzzim(zzim) == 1) {
+				System.out.println("찜성공");
+			} else {
+				System.out.println("찜실패");
+			}
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void getAccount(HttpServletRequest req) {
+		try {
+			req.setAttribute("accounts", ss.getMapper(AccountMapper.class).getAccount());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void showzzim(HttpServletRequest req) {
+		try {
+			Account a = (Account) req.getSession().getAttribute("loginAccount");
+			req.setAttribute("showZzim", ss.getMapper(ProductMapper.class).showzzim(a));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void deletezzim(Zzim zzim, HttpServletRequest request) {
+		
+		try {
+		
+			if (ss.getMapper(ProductMapper.class).deletezzim(zzim) == 1) {
+				System.out.println("삭제성공");
+			} else {
+				System.out.println("삭제실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("삭제실패");
+		}
+		
+	}
 }

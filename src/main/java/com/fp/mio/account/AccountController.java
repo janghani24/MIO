@@ -11,11 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fp.mio.product.ProductDAO;
+import com.fp.mio.product.Zzim;
+
 @Controller
 public class AccountController {
 
 	@Autowired 
 	private AccountDAO aDAO;
+	@Autowired
+	private ProductDAO pDAO;
 	
 	
 	@RequestMapping(value = "account.login.go", method = RequestMethod.GET)
@@ -221,13 +226,48 @@ public class AccountController {
 		req.setAttribute("contentPage", "deleteAccount.jsp");
 		return "index";
 	}
+	
+	//찜사이트로 이동
+	@RequestMapping(value = "account.Wishlist", method = RequestMethod.GET)
+	public String AccountWishlist(HttpServletRequest req) {
+		
+		pDAO.getAccount(req);
+		if (aDAO.loginCheck(req)) {
+		//	pDAO.getProductzzim(req, zzim); 없어도됨?
+			pDAO.showzzim(req);	//찜한거 보여주는기능
+		}
+		
+		req.setAttribute("contentPage", "account/myZzim.jsp");
+		return "index";
+	}
+	
+	// 찜 삭제
+		@RequestMapping(value = "account.deletezzim", method = RequestMethod.GET)
+		public String Accountdeletezzim(HttpServletRequest req, Zzim zzim) {
+			
+			aDAO.getAccount(req);
+			
+			System.out.println(zzim.getP_id());
+			System.out.println(zzim.getP_num());
+			System.out.println(zzim.getP_no());
+			
+			if (aDAO.loginCheck(req)) {
+			pDAO.deletezzim(zzim, req);	//찜한거 삭제하는기능
+				pDAO.showzzim(req);		//찜한거 보여주는기능
+			}
+
+			req.setAttribute("contentPage", "account/myZzim.jsp");
+			return "index";
+
+		}
 
 
-
-
-	
-	
-	
-	
-	
+		
+		
+		
+		
+		
+		
+		
+		
 }

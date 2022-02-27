@@ -42,6 +42,19 @@ function logout() {
 	}
 }
 
+//찜 한거 불러오기
+function goWishlist() {
+	location.href = "account.Wishlist";
+}
+
+function deletezzim(no) {
+	var ok = confirm("찜해제할래요?");
+	if (ok) {
+		location.href = "account.deletezzim?p_no=" + no;
+		
+	}
+}
+
 function goBack(){
 	window.history.back();
 }

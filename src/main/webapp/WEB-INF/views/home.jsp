@@ -12,11 +12,10 @@
 <td>광고1</td>
 </tr>
 
-<<<<<<< HEAD
 
 <button onclick="">이동하기</button>
 	
-=======
+
 <tr>
 <td>광고2</td>
 </tr>

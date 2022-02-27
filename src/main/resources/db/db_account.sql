@@ -11,8 +11,9 @@ a_answer varchar2(30 char) not null
 );
 
 select * from account_mio;
-
+delete from account_mio;
 insert into ACCOUNT_MIO values ('hn','hn','hn','addr','phone','img','admin','q','a');
+insert into ACCOUNT_MIO values ('test','1','hn','addr','phone','img','admin','q','a');
 
 select * from account_sellerjoin;
 

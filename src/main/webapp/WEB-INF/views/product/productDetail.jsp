@@ -14,8 +14,8 @@
 		<tr>
 			<td><img
 				src="resources/img/${detail.p_category1}/${detail.p_photo}">
-			</li></td>
-			<td>
+			</td>
+			<td>	
 				<table border="1">
 					<tr>
 						<td>브랜드</td>
@@ -30,10 +30,11 @@
 						<td>${detail.p_price}원</td>
 					</tr>
 					<tr>
-						<td>옵션/수량 체크 부분</td>
+						<td>옵션/수량 체크 부분${param.p_num} / ${sessionScope.loginAccount.a_id}</td>
 					</tr>
 					<tr>
-						<td colspan="2"><button>찜하기</button></td>
+						<td colspan="1"><button onclick="zzim(${param.p_num}, '${sessionScope.loginAccount.a_id}');">찜하기</button></td>
+						<td colspan="1"><button onclick="deletezzim(${param.p_no});">찜삭제</button></td>
 					</tr>
 				</table>
 			</td>

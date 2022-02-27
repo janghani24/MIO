@@ -1,8 +1,5 @@
 package com.fp.mio.product;
 
-<<<<<<< HEAD
-public class Product {
-=======
 import java.util.Date;
 
 public class Product {
@@ -106,8 +103,5 @@ public Product(int p_num, String p_name, int p_price, String p_brand, String p_p
 	this.p_category2 = p_category2;
 	this.p_date = p_date;
 }
-
-
->>>>>>> origin/dev
 
 }

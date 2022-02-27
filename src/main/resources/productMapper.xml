@@ -38,4 +38,26 @@ select * from product_master where p_category2=#{p_category2}
 
 </select>
 
+
+<insert id="getProductzzim" parameterType="com.fp.mio.product.Zzim">
+		insert into product_zzim
+		values(product_zzim_seq.nextval,#{p_num}, #{p_id})
+</insert>
+
+<select id="getAccount" resultType="com.fp.mio.account.Account">
+		select * from account_mio order by a_id
+	</select>
+
+	<select id="showzzim"	parameterType="com.fp.mio.account.Account" resultType="com.fp.mio.product.Zzim">
+		select * from product_zzim
+		where p_id = #{a_id}
+		order by p_no
+	</select>
+
+<delete id="deletezzim" parameterType="com.fp.mio.product.Zzim">
+		delete from
+		product_zzim where p_no = #{p_no}
+	</delete>
+
+
 </mapper>
