@@ -34,7 +34,6 @@
 					</tr>
 					<tr>
 						<td colspan="1"><button onclick="zzim(${param.p_num}, '${sessionScope.loginAccount.a_id}');">찜하기</button></td>
-						<td colspan="1"><button onclick="deletezzim(${param.p_no});">찜삭제</button></td>
 					</tr>
 				</table>
 			</td>

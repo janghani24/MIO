@@ -48,11 +48,14 @@ function goWishlist() {
 }
 
 function deletezzim(no) {
+	
+	
 	var ok = confirm("찜해제할래요?");
 	if (ok) {
 		location.href = "account.deletezzim?p_no=" + no;
 		
 	}
+	
 }
 
 function goBack(){
