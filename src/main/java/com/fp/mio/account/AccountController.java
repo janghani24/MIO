@@ -233,7 +233,7 @@ public class AccountController {
 		
 		pDAO.getAccount(req);
 		if (aDAO.loginCheck(req)) {
-		//	pDAO.getProductzzim(req, zzim); 없어도됨?
+			
 			pDAO.showzzim(req);	//찜한거 보여주는기능
 		}
 		

@@ -15,6 +15,10 @@
 		<c:forEach var="z" items="${showZzim }">
 			<table border="1">
 				<tr>
+					<td >사진?<img
+				src="resources/img/${detail.p_category1}/${detail.p_photo}"></td>
+				</tr>
+				<tr>
 					<td >프라이머리 키${z.p_no }</td>
 				</tr>
 				<tr>
