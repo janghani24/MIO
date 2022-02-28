@@ -331,15 +331,13 @@ public class AccountDAO {
 		}
 	}
 
-	public void idCheck(Account a,HttpServletRequest req) {
-		Account aaa = ss.getMapper(AccountMapper.class).getAccountByID(a);
-		if(aaa != null) {
-			req.setAttribute("result", "0"); // 아이디 사용 불가
-		}else {
-			req.setAttribute("result", "1");
-			req.setAttribute("a_id", a.getA_id());
-		}
+	// id중복체크
+	public int idCheck(String a_id,HttpServletRequest req) {
 		
+		int result;
+		result = ss.getMapper(AccountMapper.class).IdCheck(a_id);
+		
+		return result;
 		
 	}
 	

@@ -60,4 +60,8 @@
 		where a_s_id = #{a_s_id}
 	</select>
 	
+	<select id="IdCheck" parameterType="String" resultType="int">
+	select count(*) from account_mio where a_id = #{a_id}
+	</select>
+	
 </mapper>

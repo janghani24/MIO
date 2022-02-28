@@ -22,5 +22,7 @@ public interface AccountMapper {
 
 	Seller getSellerById(Seller s);
 
+	int IdCheck(String a_id);
+
 
 }
