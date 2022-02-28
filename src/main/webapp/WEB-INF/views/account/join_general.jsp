@@ -5,6 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+$(function(){
+	
+$("#join_idInput").blur(function(){
+	var id_check = $('#join_idInput').val();
+	$.ajax({
+		url : '${pageContext.request.contextPath}/account.idCheck?a_id='+id_check,
+		type:'get',
+		success : function(data){
+				console.log(data);
+			if(data == 1){
+				// 1은 중복
+				$("#id_check").text("이미 사용중인 id입니다.");
+				$("#id_check").css("color","red");
+			}else{
+				if(id_check == ""){
+				$("#id_check").text("id를 입력해주세요.");
+
+				$("#id_check").css("color","red");
+				}
+			}
+		}
+	});
+});
+});
+</script>
 </head>
 <body>
 	<br>
@@ -17,11 +43,12 @@
 
 			<tr>
 				<td class="td1">ID</td>
-				<td class="td2"><input id="jm_idInput" name="a_id"
-					placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="10" autocomplete="off"
+				<td class="td2"><input id="join_idInput" name="a_id"
+					placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="20" autocomplete="off"
 					autofocus="autofocus"> 
-					 <input type="button" value="중복확인" onclick="openIdCheck()"> 
-					<input type="hidden" name="idCheckOk" value="idUncheck"></td>
+					<div id="id_check"></div>
+					<input type="hidden" id="idCheckOk" value="idUncheck">
+					 
 			</tr>
 			<tr>
 				<td class="td1">PW</td>
@@ -76,7 +103,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button name="a_grade" value="general">가입</button>
+					<button name="a_grade" value="general" id="join_submit">가입</button>
 				</td>
 			</tr>
 		</table>
