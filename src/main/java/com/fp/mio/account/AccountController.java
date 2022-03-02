@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fp.mio.product.Product;
 import com.fp.mio.product.ProductDAO;
 import com.fp.mio.product.Zzim;
 
@@ -238,6 +239,8 @@ public class AccountController {
 		if (aDAO.loginCheck(req)) {
 			
 			pDAO.showzzim(req);	//찜한거 보여주는기능
+			
+		
 		}
 		
 		req.setAttribute("contentPage", "account/myZzim.jsp");
@@ -250,9 +253,7 @@ public class AccountController {
 			
 			aDAO.getAccount(req);
 			
-			System.out.println(zzim.getP_id());
-			System.out.println(zzim.getP_num());
-			System.out.println(zzim.getP_no());
+		
 			
 			if (aDAO.loginCheck(req)) {
 			pDAO.deletezzim(zzim, req);	//찜한거 삭제하는기능
@@ -263,12 +264,34 @@ public class AccountController {
 			return "index";
 
 		}
+	
+		//찜삭제 2
+		@RequestMapping(value = "account.deletezzim2", method = RequestMethod.GET)
+		public String Accountdeletezzim2(HttpServletRequest req,Zzim zzim) {
+			
+			aDAO.getAccount(req);
+			
+			
+			
+			if (aDAO.loginCheck(req)) {
+				pDAO.deletezzim(zzim, req);	//찜한거 삭제하는기능
+				pDAO.showzzim(req);		//찜한거 보여주는기능
+			}
+		// 	productDetail.jsp에 정보넣어야함
+		//	req.setAttribute("detail", pDAO.getProductDetail(req, product, p_num));
+			req.setAttribute("contentPage", "product/productDetail.jsp");
+			return "index";
+		}
 
 
 		
 		
 		
 		
+
+
+		
+				
 		
 		
 		

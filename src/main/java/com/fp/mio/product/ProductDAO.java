@@ -97,6 +97,7 @@ public class ProductDAO {
 	public void showzzim(HttpServletRequest req) {
 		try {
 			Account a = (Account) req.getSession().getAttribute("loginAccount");
+			
 			req.setAttribute("showZzim", ss.getMapper(ProductMapper.class).showzzim(a));
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -116,7 +116,16 @@ public class ProductController {
 	public String productDetail(HttpServletRequest request, Product product, int p_num) {
 
 		pDAO.getProductDetail(request, product, p_num);
-
+		
+		pDAO.getAccount(request);
+		if (aDAO.loginCheck(request)) {
+			
+			pDAO.showzzim(request);	//찜한거 보여주는기능
+			
+		
+		}
+		
+		
 		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
@@ -130,32 +139,13 @@ public class ProductController {
 			
 			pDAO.getProductzzim(request, zzim);	//찜하는기능
 		}
-		pDAO.getProductDetail(request, product, p_num);
+		
+//		pDAO.getProductDetail(request, product, p_num);
 		
 		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 		
 	}
-	// 찜 삭제
-	@RequestMapping(value = "product.deletezzim", method = RequestMethod.GET)
-	public String productdeletezzim(HttpServletRequest request, Product product, int p_num, Zzim zzim) {
-		
-		aDAO.getAccount(request);
-		
-		if (aDAO.loginCheck(request)) {
-			
-			pDAO.deletezzim(zzim, request);	//찜한거 삭제하는기능
-			
-		}
-		
-		
-		pDAO.getProductDetail(request, product, p_num);
-		
-		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
-		request.setAttribute("contentPage", "product/productDetail.jsp");
-		return "index";
-		
-	}
-
+	
 }
