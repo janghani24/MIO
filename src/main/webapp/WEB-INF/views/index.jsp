@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/index.css">
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="resources/js/idCheck_account.js"></script>
 <script type="text/javascript" src="resources/js/go_account.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
@@ -39,6 +40,9 @@
 
 </head>
 <body>
+<c:if test="${sessionScope.loginAccount != null }">
+<div> <a href="account.logout">로그아웃</a> </div>
+</c:if>
 	<table border="1" id="wrapTable">
 		<tr>
 			<!-- left side -->

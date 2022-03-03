@@ -16,8 +16,8 @@
 <tr>
 <td><img src="resources/img_account/${s.s_img}" width="200px;"></td>
 <td>${s.a_s_id}</td>
-<td>${s.name}</td>
-<td><button onclick="sellerDetail(${s.a_s_id})">자세히 보기</button></td>
+<td>${s.s_name}</td>
+<td><button onclick="sellerDetail('${s.a_s_id}');">자세히 보기</button></td>
 <td></td>
 </tr>
 </c:forEach>

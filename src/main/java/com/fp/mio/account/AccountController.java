@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 @Controller
 public class AccountController {
 
@@ -76,18 +79,29 @@ public class AccountController {
 	}
 
 
-	@RequestMapping(value = "/account.join", method = RequestMethod.POST)
-	public String memberJoin(Account a, HttpServletRequest req, Seller s) {
-		// 회원 가입
+	@RequestMapping(value = "/account.join.general", method = RequestMethod.POST)
+	public String memberJoinGeneral(Account a, HttpServletRequest req) {
+		// 회원 가입(일반)
 		//가입,신청 완료 페이지 만들기
+		
 		aDAO.loginCheck(req);
-		if (req.getParameter("a_grade").equals("seller")) {
-			aDAO.joinSeller(s,req);
-			req.setAttribute("contentPage", "home.jsp");
-		}else {
+		
 			aDAO.joinGeneral(a,req);
 			req.setAttribute("contentPage", "home.jsp");
-		}
+		
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.join.seller", method = RequestMethod.POST)
+	public String memberJoinSeller(HttpServletRequest req, Seller s) {
+		// 회원 가입(일반)
+		//가입,신청 완료 페이지 만들기
+		
+		aDAO.loginCheck(req);
+		
+		aDAO.joinSeller(s, req);
+		req.setAttribute("contentPage", "home.jsp");
+		
 		return "index";
 	}
 
@@ -140,9 +154,9 @@ public class AccountController {
 	@RequestMapping(value = "/account.updategrade", method = RequestMethod.GET)
 	public String GradeUpdate(Account a, HttpServletRequest req) {
 		if (aDAO.loginCheck(req)) {
-			aDAO.updateGrade(a, req);
+			aDAO.updateGrade(a,req);
 			// jsp 수정 필요 - 관리자의 등급 조정 페이지 생성
-			req.setAttribute("contentPage", "account/updateGrade.jsp");
+			req.setAttribute("contentPage", "account/info.jsp");
 		} else {
 			req.setAttribute("contentPage", "home.jsp");
 		}
@@ -175,6 +189,7 @@ public class AccountController {
 		// 판매자 상세 페이지로
 		if (aDAO.loginCheck(req)) {
 			aDAO.getSellerById(s,req);
+			aDAO.splitAddr(req);
 			req.setAttribute("contentPage", "account/sellerDetail.jsp");
 		} else {
 			req.setAttribute("contentPage", "home.jsp");
@@ -182,10 +197,11 @@ public class AccountController {
 		return "index";
 	}
 	@RequestMapping(value = "/account.sellerJoin.do", method = RequestMethod.GET)
-	public String SellerJoin(Seller s, HttpServletRequest req) {
+	public String SellerJoin(Account a,Seller s, HttpServletRequest req) {
 		// 판매자 승인
 		if (aDAO.loginCheck(req)) {
-			aDAO.sellerToAccount(s, req);
+			aDAO.sellerToAccount(a,s, req);
+			aDAO.deleteSellerjoin(s, req);
 			req.setAttribute("contentPage", "account/joinConfirm.jsp");
 		} else {
 			req.setAttribute("contentPage", "home.jsp");
@@ -221,7 +237,7 @@ public class AccountController {
 		aDAO.loginCheck(req);
 			
 		
-		req.setAttribute("contentPage", "deleteAccount.jsp");
+		req.setAttribute("contentPage", "account/deleteAccount.jsp");
 		return "index";
 	}
 
