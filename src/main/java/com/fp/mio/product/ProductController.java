@@ -159,6 +159,7 @@ public class ProductController {
 		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
+		}
 		
 
 
