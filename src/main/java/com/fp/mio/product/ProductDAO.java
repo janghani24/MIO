@@ -15,6 +15,15 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession ss;
 
+	public void getProductAll(HttpServletRequest request) {
+
+		try {
+			request.setAttribute("product", ss.getMapper(ProductMapper.class).getProductAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public void getFood(HttpServletRequest request) {
 
 		try {
@@ -66,6 +75,7 @@ public class ProductDAO {
 			e.printStackTrace();
 		}
 	}
+
 
 	public void getProductzzim(HttpServletRequest request,Zzim zzim) {
 		try {
@@ -119,4 +129,16 @@ public class ProductDAO {
 		}
 		
 	}
+
+	public void productSearch(HttpServletRequest request, String p_name) {
+
+		try {
+			request.setAttribute("product", ss.getMapper(ProductMapper.class).getProductSearch(p_name));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+
 }

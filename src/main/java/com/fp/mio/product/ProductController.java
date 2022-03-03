@@ -9,14 +9,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fp.mio.account.AccountDAO;
 
+
 @Controller
 public class ProductController {
 
 	@Autowired
 	private ProductDAO pDAO;
 	
+
 	@Autowired 
 	private AccountDAO aDAO;
+
+	// 상품 전체 조회 
+		@RequestMapping(value = "/product.all", method = RequestMethod.GET)
+		public String productAll(HttpServletRequest request) {
+
+			pDAO.getProductAll(request);
+
+			request.setAttribute("contentPage", "product/productAll.jsp");
+			return "index";
+		}
+
 	
 
 	// food 카테고리로 이동
@@ -131,6 +144,7 @@ public class ProductController {
 		return "index";
 
 	}
+
 	// 찜 페이지
 	@RequestMapping(value = "/product.zzim", method = RequestMethod.GET)
 	public String productzzim(HttpServletRequest request, Product product, int p_num, Zzim zzim) {
@@ -146,6 +160,20 @@ public class ProductController {
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 		
+
+
+	//전체 상품 검색 페이지
+	
+	@RequestMapping(value = "/product.search", method = RequestMethod.GET)
+	public String productSearch(HttpServletRequest request, String search) {
+		
+		String p_name = request.getParameter("search");
+		pDAO.productSearch(request,p_name);
+		
+		request.setAttribute("contentPage", "product/productSearch.jsp");
+		return "index";
+
+
 	}
 	
 }

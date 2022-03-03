@@ -46,7 +46,7 @@
 			<td id="leftside">
 				<table border="1">
 					<tr>
-						<td>MIO</td>
+						<td><a href="/mio">MIO</a></td>
 					</tr>
 					<c:choose>
 						<c:when test="${sessionScope.loginAccount != null }">
@@ -61,7 +61,7 @@
 						</c:otherwise>
 					</c:choose>
 					<tr>
-						<td id="topMenu">Product</td>
+						<td id="topMenu"><a href="product.all">Product</a></td>
 					</tr>
 					<tr>
 						<td class="subMenu"><a href="product.food.all">Food</a></td>
@@ -78,10 +78,10 @@
 
 
 					<tr>
-						<td>Funding</td>
+						<td id="topMenu"><a href="funding.all">Funding</a></td>
 					</tr>
 					<tr>
-						<td>Community</td>
+						<td id="topMenu">Community</td>
 					</tr>
 
 				</table>
@@ -91,6 +91,9 @@
 
 
 			<!-- right side -->
+
+
+
 			<td><jsp:include page="${contentPage}"></jsp:include></td>
 
 			<!-- right side -->
