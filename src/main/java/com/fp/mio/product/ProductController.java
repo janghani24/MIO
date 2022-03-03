@@ -4,18 +4,25 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import jdk.internal.org.jline.utils.Log;
 
 @Controller
 public class ProductController {
 
 	@Autowired
 	private ProductDAO pDAO;
+	
+	// 상품 전체 조회 
+		@RequestMapping(value = "/product.all", method = RequestMethod.GET)
+		public String productAll(HttpServletRequest request) {
+
+			pDAO.getProductAll(request);
+
+			request.setAttribute("contentPage", "product/productAll.jsp");
+			return "index";
+		}
+	
 
 	// food 카테고리로 이동
 	@RequestMapping(value = "/product.food.all", method = RequestMethod.GET)
@@ -121,4 +128,17 @@ public class ProductController {
 
 	}
 
+	//전체 상품 검색 페이지
+	
+	@RequestMapping(value = "/product.search", method = RequestMethod.GET)
+	public String productSearch(HttpServletRequest request, String search) {
+		
+		String p_name = request.getParameter("search");
+		pDAO.productSearch(request,p_name);
+		
+		request.setAttribute("contentPage", "product/productSearch.jsp");
+		return "index";
+
+	}
+	
 }

@@ -90,6 +90,7 @@ public void setP_date(Date p_date) {
 	this.p_date = p_date;
 }
 
+
 public Product(int p_num, String p_name, int p_price, String p_brand, String p_photo, String p_content,
 		String p_category1, String p_category2, Date p_date) {
 	super();
@@ -102,7 +103,9 @@ public Product(int p_num, String p_name, int p_price, String p_brand, String p_p
 	this.p_category1 = p_category1;
 	this.p_category2 = p_category2;
 	this.p_date = p_date;
+	
 }
+
 
 
 

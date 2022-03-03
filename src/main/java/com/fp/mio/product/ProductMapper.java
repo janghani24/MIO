@@ -2,21 +2,22 @@ package com.fp.mio.product;
 
 import java.util.List;
 
-
 public interface ProductMapper {
 
-	public List<Product> getFood();
+	List<Product> getProductAll();
 
-	public List<Product> getFashion();
+	List<Product> getFood();
 
-	public List<Product> getBeauty();
+	List<Product> getFashion();
 
-	public List<Product> getLiving();
-	
-	public Product getProductDetail(int p_num);
+	List<Product> getBeauty();
 
-	public List<Product> getProductCategory(String p_category2);
+	List<Product> getLiving();
 
-	
+	List<Product> getProductCategory(String p_category2);
+
+	List<Product> getProductSearch(String p_name);
+
+	Product getProductDetail(int p_num);
 
 }

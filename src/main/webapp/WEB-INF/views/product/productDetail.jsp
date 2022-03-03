@@ -8,13 +8,12 @@
 </head>
 <body>
 
-
 	<table border="1">
 
 		<tr>
 			<td><img
 				src="resources/img/${detail.p_category1}/${detail.p_photo}">
-			</li></td>
+				</td>
 			<td>
 				<table border="1">
 					<tr>
@@ -46,6 +45,9 @@
 
 		<tr>
 			<td colspan="2">후기(상품평 작성하기 칸)</td>
+		</tr>
+		<tr>
+			<td><textarea></textarea></td>
 		</tr>
 
 

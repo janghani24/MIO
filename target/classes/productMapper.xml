@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.mio.product.ProductMapper">
 
+<select id="getProductAll" resultType="com.fp.mio.product.Product">
+
+select * from product_master
+
+</select>
+
 <select id="getFood" resultType="com.fp.mio.product.Product">
 
 select * from product_master where p_category1 = 'food'
@@ -35,6 +41,12 @@ select * from product_master where p_num=#{p_num}
 <select id="getProductCategory" resultType="com.fp.mio.product.Product">
 
 select * from product_master where p_category2=#{p_category2}
+
+</select>
+
+<select id="getProductSearch" resultType="com.fp.mio.product.Product">
+
+select*from product_master where p_name like '%'||#{p_name}||'%'
 
 </select>
 
