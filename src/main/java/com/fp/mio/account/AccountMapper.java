@@ -24,5 +24,9 @@ public interface AccountMapper {
 
 	int IdCheck(String a_id);
 
+	int IdCheckS(String a_id);
+
+	int deleteAccountS(Seller s);
+
 
 }

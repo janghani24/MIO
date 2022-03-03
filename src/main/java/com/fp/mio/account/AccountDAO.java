@@ -84,6 +84,11 @@ public class AccountDAO {
 			join_photo = URLEncoder.encode(join_photo, "utf-8");
 			join_photo = join_photo.replace("+", " ");
 			
+			System.out.println(join_id);
+			System.out.println(join_grade);
+			
+			
+			
 			a.setA_id(join_id);
 			a.setA_pw(join_pw);
 			a.setA_name(join_name);
@@ -179,13 +184,8 @@ public class AccountDAO {
 		try {
 			Account a = (Account) req.getSession().getAttribute("loginAccount");
 
-		//	int msgCount = ss.getMapper(SNSMapper.class).getMsgCountByOwner(m);
-		//	int allMsgCount = sDAO.getAllMsgCount();
-
 			if (ss.getMapper(AccountMapper.class).deleteAccount(a) == 1) {
 				req.setAttribute("result", "탈퇴성공");
-
-			//	sDAO.setAllMsgCount(allMsgCount - msgCount);
 
 				String path = req.getSession().getServletContext().getRealPath("resources/img_account");
 				String join_photo = a.getA_img();
@@ -204,7 +204,11 @@ public class AccountDAO {
 	}
 	
 	// 회원 등급 조정
-	public void updateGrade(Account a, HttpServletRequest req) {
+	public void updateGrade(Account a,HttpServletRequest req) {
+		
+		System.out.println(req.getParameter("a_id"));
+		System.out.println(req.getParameter("a_grade"));
+		
 		
 		if (ss.getMapper(AccountMapper.class).updateGrade(a) == 1) {
 			req.setAttribute("result", "수정성공");
@@ -311,9 +315,8 @@ public class AccountDAO {
 	}
 	
 	// 판매자를 회원에 등록하기
-	public void sellerToAccount(Seller s, HttpServletRequest req) {
+	public void sellerToAccount(Account a,Seller s, HttpServletRequest req) {
 		Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
-		Account a = null;
 		a.setA_id(sss.getA_s_id());
 		a.setA_pw(sss.getS_pw());
 		a.setA_name(sss.getS_name());
@@ -334,11 +337,39 @@ public class AccountDAO {
 	// id중복체크
 	public int idCheck(String a_id,HttpServletRequest req) {
 		
+		int result1;
+		int result2;
+		
+		result1 = ss.getMapper(AccountMapper.class).IdCheck(a_id);
+		result2 = ss.getMapper(AccountMapper.class).IdCheckS(a_id);
+		
 		int result;
-		result = ss.getMapper(AccountMapper.class).IdCheck(a_id);
+		if (result1 == 1 || result2 == 1) {
+			result = 1;
+		}else {
+			result = 0;
+		}
+		
 		
 		return result;
 		
 	}
-	
+
+	public void deleteSellerjoin(Seller s,HttpServletRequest req) {
+		try {
+		if (ss.getMapper(AccountMapper.class).deleteAccountS(s) == 1) {
+			req.setAttribute("result", "탈퇴성공");
+
+			String path = req.getSession().getServletContext().getRealPath("resources/img_account");
+			String join_photo = s.getS_img();
+			join_photo = URLDecoder.decode(join_photo, "utf-8");
+			new File(path + "/" + join_photo).delete();
+
+	}
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+}
 }

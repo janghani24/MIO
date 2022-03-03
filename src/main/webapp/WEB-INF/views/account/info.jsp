@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<td class="td1">주소</td>
-				<td class="td2">${sessionScope.loginAccount.a_addr}
+				<td class="td2"> ${addr[0]} ${addr[1]} ${addr[2]}
 				</td>
 			</tr>
 			<tr>

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<br>
-	<form action="account.join" method="post" enctype="multipart/form-data"
+	<form action="account.join.general" method="post" enctype="multipart/form-data"
 		name="joinForm" onsubmit="return joinCheck();">
 		<table id="joinTable">
 			<tr>

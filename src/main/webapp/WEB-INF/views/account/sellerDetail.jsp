@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<td>주소</td>
-			<td>${sellers.s_addr}</td>
+			<td>${addr[0]}${addr[1]}${addr[2]}</td>
 		</tr>
 		<tr>
 			<td>판매 종류</td>
@@ -33,7 +33,7 @@
 		</tr>
 
 		<tr>
-			<td colspan="2"><button onclick="sellerJoin(${sellers.a_s_id})">가입 승인</button></td>
+			<td colspan="2"><button onclick="sellerJoin('${sellers.a_s_id}');">가입 승인</button></td>
 		</tr>
 	</table>
 </body>

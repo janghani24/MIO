@@ -35,6 +35,7 @@ function sellerJoin(i) {
 	location.href = "account.sellerJoin.do?a_s_id=" + i;
 }
 
+
 function logout() {
 	let ok = confirm("로그아웃 하시겠습니까?")
 	if (ok) {

@@ -8,12 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="account.updategrade">
 		<table>
 			<tr>
 				<td>등급 조정</td>
 			</tr>
 			<c:forEach var="a" items="${accounts}">
+<form action="account.updategrade">
 				<tr>
 					<td>${a.a_id}</td>
 					<td>${a.a_name}</td>
@@ -25,8 +25,8 @@
 					</select>
 						<button name="a_id" value="${a.a_id}">변경</button></td>
 				</tr>
+	</form> 
 			</c:forEach>
 		</table>
-	</form>
 </body>
 </html>
