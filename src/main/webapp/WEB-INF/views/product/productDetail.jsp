@@ -24,15 +24,15 @@
 				<table border="1">
 					<tr>
 						<td>브랜드</td>
-						<td>${detail.p_brand}  / </td>
+						<td>${detail.p_brand} </td>
 					</tr>
 					<tr>
 						<td>상품명</td>
-						<td>${detail.p_name} / </td>
+						<td>${detail.p_name} </td>
 					</tr>
 					<tr>
 						<td>상품가</td>
-						<td>${detail.p_price}원 / </td>
+						<td>${detail.p_price}원 </td>
 					</tr>
 					<tr>
 						<td>옵션/수량 체크 부분${param.p_num} / ${sessionScope.loginAccount.a_id}</td>
