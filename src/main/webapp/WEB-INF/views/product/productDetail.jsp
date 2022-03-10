@@ -24,17 +24,6 @@
 				<table border="1">
 					<tr>
 						<td>브랜드</td>
-<<<<<<< HEAD
-						<td>${detail.p_brand} </td>
-					</tr>
-					<tr>
-						<td>상품명</td>
-						<td>${detail.p_name} </td>
-					</tr>
-					<tr>
-						<td>상품가</td>
-						<td>${detail.p_price}원 </td>
-=======
 						<td>${detail.p_brand}</td>
 					</tr>
 					<tr>
@@ -44,7 +33,6 @@
 					<tr>
 						<td>상품가</td>
 						<td>${detail.p_price}원</td>
->>>>>>> 008420bc0b1d98549a39af063a661f03bd87933e
 					</tr>
 					<tr>
 						<td>옵션/수량 체크 부분${param.p_num}</td>
