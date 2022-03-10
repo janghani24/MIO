@@ -25,7 +25,8 @@ public class FundingDAO {
 
 		try {
 			System.out.println(ss.getMapper(FundingMapper.class).getFundingAll());
-			request.setAttribute("funding", ss.getMapper(FundingMapper.class).getFundingAll());
+			request.setAttribute("funding2", ss.getMapper(FundingMapper.class).getFundingAll());
+		System.out.println("전체조회");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -78,6 +79,7 @@ public class FundingDAO {
 
 			if (ss.getMapper(FundingMapper.class).regFunding(funding) == 1) {
 				request.setAttribute("r", "등록성공!");
+				System.out.println("--등록 성공--");
 			} else {
 				request.setAttribute("r", "등록실패!");
 			}

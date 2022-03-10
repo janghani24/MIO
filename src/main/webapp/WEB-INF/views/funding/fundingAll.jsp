@@ -1,8 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="f"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -11,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${funding }
+${funding2 }
 
 	<table border=1 class="category_tbl">
 	
@@ -24,18 +23,17 @@ ${funding }
 	
 	</table>
 
-		<c:forEach var="f" items="${funding}">
+		<c:forEach var="f" items="${funding2}">
 			<ul>
 			
 				<li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg"></a></li>
 
 				<li><a href="${f.f_url}">${f.f_company}</a></li>
 				<li>${f.f_name}</li>
-
-				<li><f:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
-				</li>
+				<li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
+				</li>		
 				<li><button onclick="location.href='funding.delete?f_num=${f.f_num}'">삭제</button><li>
-			</ul>
+			</ul> 
 	</c:forEach>
 
 		
