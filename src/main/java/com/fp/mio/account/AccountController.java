@@ -31,6 +31,7 @@ public class AccountController {
 		req.setAttribute("contentPage", "account/login.jsp");
 		return "index";
 	}
+	
 	@RequestMapping(value = "/account.login", method = RequestMethod.POST)
 	public String home(Account a, HttpServletRequest req) {
 		
@@ -51,6 +52,43 @@ public class AccountController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/account.searchId.go", method = RequestMethod.GET)
+	public String goSearchId(HttpServletRequest req) {
+		
+		// id 찾기 페이지로
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/searchId.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.searchId", method = RequestMethod.GET)
+	public String searchId(Account a, HttpServletRequest req) {
+		
+		// id찾기 결과
+		aDAO.loginCheck(req);
+		aDAO.idSearch(a,req);
+		req.setAttribute("contentPage", "account/searchIdResult.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.searchPw.go", method = RequestMethod.GET)
+	public String goSearchPw(HttpServletRequest req) {
+		
+		// pw 찾기 페이지로
+		aDAO.loginCheck(req);
+		req.setAttribute("contentPage", "account/searchPw.jsp");
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.searchPw", method = RequestMethod.GET)
+	public String searchPw(Account a, HttpServletRequest req) {
+		
+		// pw찾기 결과
+		aDAO.loginCheck(req);
+		aDAO.pwSearch(a,req);
+		req.setAttribute("contentPage", "account/searchPwResult.jsp");
+		return "index";
+	}
 	
 	@RequestMapping(value = "/account.join.go", method = RequestMethod.GET)
 	public String JoinGo(HttpServletRequest req) {
@@ -202,7 +240,7 @@ public class AccountController {
 		if (aDAO.loginCheck(req)) {
 			aDAO.sellerToAccount(a,s, req);
 			aDAO.deleteSellerjoin(s, req);
-			req.setAttribute("contentPage", "account/joinConfirm.jsp");
+			req.setAttribute("contentPage", "account/info.jsp");
 		} else {
 			req.setAttribute("contentPage", "home.jsp");
 		}
