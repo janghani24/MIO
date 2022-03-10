@@ -44,7 +44,6 @@ select * from product_master where p_category2=#{p_category2}
 
 </select>
 
-
 <insert id="getProductzzim" parameterType="com.fp.mio.product.Zzim">
 		insert into product_zzim
 		values(product_zzim_seq.nextval,#{p_num}, #{p_id})
@@ -68,7 +67,7 @@ select * from product_master where p_category2=#{p_category2}
 
 <select id="getProductSearch" resultType="com.fp.mio.product.Product">
 
-select*from product_master where p_name like '%'||#{p_name}||'%'
+select*from product_master where p_name like '%'||#{p_name}||'%' or p_brand like '%'||#{p_brand}||'%'
 
 </select>
 

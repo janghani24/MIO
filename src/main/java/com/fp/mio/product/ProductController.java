@@ -159,7 +159,12 @@ public class ProductController {
 		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
+<<<<<<< HEAD
 	}
+=======
+		}
+		
+>>>>>>> 9b9e2f348921f7769490798cd2efb24b10d416d0
 
 
 	//전체 상품 검색 페이지

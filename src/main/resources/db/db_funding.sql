@@ -22,3 +22,7 @@ insert into fundingTbl values(fundingTbl_seq.nextval,'03.jpg','매일 간편하�
 --기부
 
 --유기동물후원
+
+
+
+select * from fundingTbl;
