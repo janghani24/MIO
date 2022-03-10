@@ -183,12 +183,12 @@ public class AccountDAO {
 	public void deleteAccount(HttpServletRequest req) {
 		try {
 			Account a = (Account) req.getSession().getAttribute("loginAccount");
+			String join_photo = a.getA_img();
 
 			if (ss.getMapper(AccountMapper.class).deleteAccount(a) == 1) {
 				req.setAttribute("result", "탈퇴성공");
 
 				String path = req.getSession().getServletContext().getRealPath("resources/img_account");
-				String join_photo = a.getA_img();
 				join_photo = URLDecoder.decode(join_photo, "utf-8");
 				new File(path + "/" + join_photo).delete();
 
@@ -355,13 +355,18 @@ public class AccountDAO {
 		
 	}
 
+	// 승인신청에서 삭제
 	public void deleteSellerjoin(Seller s,HttpServletRequest req) {
 		try {
+			Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
+			String join_photo = sss.getS_img();
 		if (ss.getMapper(AccountMapper.class).deleteAccountS(s) == 1) {
 			req.setAttribute("result", "탈퇴성공");
 
 			String path = req.getSession().getServletContext().getRealPath("resources/img_account");
-			String join_photo = s.getS_img();
+			// 확인용
+			System.out.println(join_photo);
+			
 			join_photo = URLDecoder.decode(join_photo, "utf-8");
 			new File(path + "/" + join_photo).delete();
 
@@ -372,4 +377,26 @@ public class AccountDAO {
 		}
 
 }
+
+	// id찾기(이름, 핸드폰 번호로)
+	public void idSearch(Account a, HttpServletRequest req) {
+		try {
+			req.setAttribute("id", ss.getMapper(AccountMapper.class).searchId(a).getA_id());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// pw찾기(ID,질문답으로)
+	public void pwSearch(Account a, HttpServletRequest req) {
+		try {
+			Account aa = ss.getMapper(AccountMapper.class).getAccountByID(a);
+			
+			if (a.getA_question().equals(aa.getA_question()) && a.getA_answer().equals(aa.getA_answer())) {
+				req.setAttribute("pw", ss.getMapper(AccountMapper.class).searchId(aa).getA_pw());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

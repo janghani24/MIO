@@ -19,7 +19,9 @@
 			</tr>
 			<tr>
 				<td align="center"><button>로그인</button> &nbsp;&nbsp;
-					<button type="button" onclick="goJoin()">회원가입</button></td>
+					<button type="button" onclick="goJoin()">회원가입</button>
+					<button type="button" onclick="goSearchId()">ID/PW찾기</button>
+					</td>
 			</tr>
 		</table>
 	</form>
