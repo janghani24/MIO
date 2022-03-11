@@ -44,7 +44,6 @@ select * from product_master where p_category2=#{p_category2}
 
 </select>
 
-
 <insert id="getProductzzim" parameterType="com.fp.mio.product.Zzim">
 		insert into product_zzim
 		values(product_zzim_seq.nextval,#{p_num}, #{p_id})
