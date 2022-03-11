@@ -8,12 +8,12 @@
 </head>
 <body>
 <table>
+<button onclick="">이동하기</button>
 <tr>
 <td>광고1</td>
 </tr>
 
 
-<button onclick="">이동하기</button>
 	
 
 <tr>
@@ -25,6 +25,6 @@
 </tr>
 
 </table>
->>>>>>> origin/dev
+
 </body>
 </html>
