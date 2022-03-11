@@ -28,5 +28,7 @@ public interface AccountMapper {
 
 	int deleteAccountS(Seller s);
 
+	Account searchId(Account a);
+
 
 }

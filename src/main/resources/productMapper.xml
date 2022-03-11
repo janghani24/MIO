@@ -67,9 +67,21 @@ select * from product_master where p_category2=#{p_category2}
 
 <select id="getProductSearch" resultType="com.fp.mio.product.Product">
 
-select*from product_master where p_name like '%'||#{p_name}||'%'
+select*from product_master where p_name like '%'||#{p_name}||'%' or p_brand like '%'||#{p_brand}||'%'
 
 </select>
 
-
+<insert id="writeReply"	parameterType="com.fp.mio.product.ProductReply">
+		insert into product_reply
+		values(product_reply_seq.nextval,
+		#{r_p_no}, #{r_owner},
+		#{r_txt}, #{r_rate}, sysdate)
+	</insert>
+	
+	<select id="getReply" parameterType="com.fp.mio.product.Product"
+		resultType="com.fp.mio.product.ProductReply">
+		select *
+		from product_reply
+		where r_p_no = #{p_num}
+	</select>
 </mapper>

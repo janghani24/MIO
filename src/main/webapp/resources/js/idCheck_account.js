@@ -2,7 +2,7 @@ function idCheck(){
 	$("#join_idInput").blur(function(){
 		var id_check = $('#join_idInput').val();
 		$.ajax({
-			url : '${pageContext.request.contextPath}/account.idCheck?a_id='+id_check,
+			url : '/mio/account.idCheck?a_id='+id_check,
 			type:'get',
 			success : function(data){
 					console.log(data);

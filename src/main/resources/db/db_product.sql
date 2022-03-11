@@ -18,6 +18,22 @@ create table product_detail(
     p_color varchar2 (20 char)
 ) 
 
+create table product_reply(
+r_no number(5) primary key,
+r_p_no number(5) not null,
+r_owner varchar2(20 char) not null,
+r_txt varchar2(500 char) not null,
+r_rate number(5) not  null,
+r_date date not null,
+constraint p_r 
+		foreign key(r_p_no)
+		references product_master(p_num)
+		on delete cascade
+);
+
+
+create sequence product_reply_seq;
+
 create sequence product_master_seq;
 create sequence product_detail_seq;
 
@@ -26,6 +42,7 @@ alter sequence product_master_seq increment by 1;
 
 delete from product_master;
 drop table product_master cascade constraint purge;
+drop table product_reply cascade constraint purge;
 
 --food
 insert into product_master values(product_master_seq.nextval,'유기농 사과즙으로 만든 오렌지잼 200g',4050,'마인탈','01.jpg','01-1.jpg','food','요리재료',sysdate);

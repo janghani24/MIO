@@ -21,6 +21,14 @@ function goJoinSeller() {
 	location.href = "account.join.go.seller";
 }
 
+function goSearchId() {
+	location.href = "account.searchId.go";
+}
+
+function goSearchPw() {
+	location.href = "account.searchPw.go";
+}
+
 function goDelete() {
 		location.href = "account.delete.go";
 }

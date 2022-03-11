@@ -5,6 +5,10 @@
 		select * from account_mio
 		where a_id = #{a_id}
 	</select>
+	<select id="searchId" resultType="com.fp.mio.account.Account">
+		select * from account_mio
+		where a_name=#{a_name} and a_phone=#{a_phone}
+	</select>
 	
 	<insert id="joinGeneral" parameterType="com.fp.mio.account.Account">
 		insert into account_mio
