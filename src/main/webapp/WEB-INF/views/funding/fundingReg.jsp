@@ -15,7 +15,7 @@
 <p>
 회사명 : <input name="f_company">
 <p>
-펀딩 카테고리 : 
+펀딩 카테고리 
 <select name="f_category">
 <option value="일자리창출">일자리 창출</option>
 <option value="친환경">친환경</option>

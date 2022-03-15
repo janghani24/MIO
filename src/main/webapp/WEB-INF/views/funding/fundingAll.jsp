@@ -30,14 +30,11 @@ ${funding2 }
 
 				<li><a href="${f.f_url}">${f.f_company}</a></li>
 				<li>${f.f_name}</li>
-<<<<<<< HEAD
 
 				<li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
 				</li>
-=======
 				<li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
 				</li>		
->>>>>>> ce569bde82b2cd22258c0743ee9c2dbfeb0111bc
 				<li><button onclick="location.href='funding.delete?f_num=${f.f_num}'">삭제</button><li>
 			</ul> 
 	</c:forEach>

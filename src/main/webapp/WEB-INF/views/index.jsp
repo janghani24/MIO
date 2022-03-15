@@ -15,7 +15,11 @@
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/site_jquery.js"></script>
 <script type="text/javascript" src="resources/js/product_count.js"></script>
+
+<script type="text/javascript" src="resources/js/option_add.js"></script>
+
 <script type="text/javascript" src="resources/js/replyStar.js"></script>
+
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>Insert title here</title>
 <script
