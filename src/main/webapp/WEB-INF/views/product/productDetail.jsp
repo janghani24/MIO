@@ -40,12 +40,11 @@
 						<td>
 
 							<form name="form" method="get" onload="init();">
-								<input name="sell_price" value="${detail.p_price}"> 수량 :
-								<input type="button" value=" + " onclick="add();"> <input
-									type="text" name="amount" value="1" size="3"
-									onchange="change();"> <input type="button" value=" - "
-									onclick="del();"><br> 금액 : <input type="text"
-									name="sum" size="11" readonly>원
+								<input name="sell_price" value="${detail.p_price}"> 
+								수량 :<input type="button" value=" + " onclick="add();"> 
+								<input type="text" name="amount" value="1" size="3" onchange="change();"> 
+								<input type="button" value=" - " onclick="del();"><br> 
+								금액 : <input type="text" name="sum" size="11" readonly>원
 							</form>
 						</td>
 					</tr>
