@@ -1,5 +1,7 @@
 package com.fp.mio.product;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,7 +16,7 @@ public class ProductDAO {
 
 	@Autowired
 	private SqlSession ss;
-
+	
 	public void getProductAll(HttpServletRequest request) {
 
 		try {
@@ -61,7 +63,9 @@ public class ProductDAO {
 
 	public Product getProductDetail(HttpServletRequest request, Product product, int p_num) {
 
+		
 		return ss.getMapper(ProductMapper.class).getProductDetail(p_num);
+		
 
 	}
 
@@ -140,5 +144,43 @@ public class ProductDAO {
 
 	}
 
+	public void writeReply(ProductReply pr,Product p, HttpServletRequest req) {
+
+		try {
+			String token = req.getParameter("token");
+			String successToken = (String) req.getSession().getAttribute("successToken");
+
+			if (successToken != null && token.equals(successToken)) {
+				return;
+			}
+
+			Account a = (Account) req.getSession().getAttribute("loginAccount");
+			pr.setR_owner(a.getA_id());
+			System.out.println(pr.getR_p_no());
+			System.out.println(pr.getR_owner());
+
+			if (ss.getMapper(ProductMapper.class).writeReply(pr) == 1) {
+				req.setAttribute("result", "댓글쓰기성공");
+				req.getSession().setAttribute("successToken", token);
+			} else {
+				req.setAttribute("result", "댓글쓰기실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			req.setAttribute("result", "댓글쓰기실패");
+		}
+	}
+
+	public void getReply(Product product, HttpServletRequest req) {
+		List<ProductReply> pr = ss.getMapper(ProductMapper.class).getReply(product);
+		req.setAttribute("replys", pr);
+	}
+	public Product getProductDetailRp(HttpServletRequest request, Product product) {
+
+		
+		return ss.getMapper(ProductMapper.class).getProductDetail(product.getP_num());
+		
+
+	}
 
 }

@@ -128,6 +128,7 @@ public class ProductController {
 	@RequestMapping(value = "/product.detail", method = RequestMethod.GET)
 	public String productDetail(HttpServletRequest request, Product product, int p_num) {
 
+		pDAO.getReply(product,request);
 		pDAO.getProductDetail(request, product, p_num);
 		
 		pDAO.getAccount(request);
@@ -159,8 +160,7 @@ public class ProductController {
 		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
-		}
-		
+	}
 
 
 	//전체 상품 검색 페이지로 이동
@@ -174,6 +174,21 @@ public class ProductController {
 		return "index";
 
 
+	}
+	
+	// 댓글
+	@RequestMapping(value = "/product.reply.write", method = RequestMethod.GET)
+	public String productReplyWrite(ProductReply pr, HttpServletRequest req,Product product) {
+		com.fp.mio.TokenMaker.make(req);
+	//	int p = Integer.parseInt(req.getParameter("p"));
+		if (aDAO.loginCheck(req)) {
+			pDAO.writeReply(pr,product, req);
+			pDAO.getReply(product,req);
+			req.setAttribute("detail", pDAO.getProductDetailRp(req, product));
+		}
+		
+		req.setAttribute("contentPage", "product/productDetail.jsp");
+		return "index";
 	}
 	
 }

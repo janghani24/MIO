@@ -19,3 +19,6 @@ function zzim(no, id) {
 	}
 }
 
+function deleteReply(n,p) {
+	location.href = "product.reply.delete?r_no="+n+"&p_num="+p;
+}

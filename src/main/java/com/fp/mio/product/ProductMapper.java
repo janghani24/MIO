@@ -2,7 +2,6 @@ package com.fp.mio.product;
 
 import java.util.List;
 
-
 import com.fp.mio.account.Account;
 
 
@@ -38,6 +37,10 @@ public interface ProductMapper {
 	List<Product> getProductSearch(String p_name);
 
 	Product getProductDetail(int p_num);
+
+	int writeReply(ProductReply pr);
+
+	List<ProductReply> getReply(Product p);
 
 
 }
