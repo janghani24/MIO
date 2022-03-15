@@ -6,6 +6,7 @@ function init () {
 	amount = document.form.amount.value;
 	document.form.sum.value = sell_price;
 	change();
+	console.log('document.form.sell_price.value',document.form.sell_price.value);
 }
 
 function add () {
@@ -13,7 +14,13 @@ function add () {
 	sum = document.form.sum;
 	hm.value ++ ;
 
+	
+	console.log('add');
+	console.log('hm',hm);
+	console.log('sum',sum);
+	console.log('sell_price',sell_price);
 	sum.value = parseInt(hm.value) * sell_price;
+
 }
 
 function del () {
@@ -23,6 +30,7 @@ function del () {
 			hm.value -- ;
 			sum.value = parseInt(hm.value) * sell_price;
 		}
+			console.log('delete');
 }
 
 function change () {

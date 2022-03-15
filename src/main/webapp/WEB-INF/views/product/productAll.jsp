@@ -34,6 +34,8 @@
 			<li>${p.p_price}원</li>
 		</ul>
 	</c:forEach>
+	
+	<button onclick="location.href='product.reg.select'">상품 등록</button>
 
 </body>
 </html>

@@ -12,11 +12,38 @@ p_date date not null
 
 create table product_detail(
     p_num number(4) primary key, 
-    p_master_num number(4) not null, 
+    p_master_num number(10) not null, 
     p_quantity number(3) not null,
-    p_size varchar2(20 char),
-    p_color varchar2 (20 char)
-) 
+    p_size varchar2(20 char) not null,
+    p_color varchar2 (20 char) not null
+    constraint p_details
+		foreign key(p_master_num)
+		references product_master(p_num)
+		on delete cascade
+
+)
+
+create table product_detail(
+    d_num number(4) primary key, 
+    d_master_num number(10) not null, 
+    d_category varchar2(20 char) not null,
+    d_quantity number(3) not null,
+    d_size varchar2(20 char) not null,
+    d_color varchar2 (20 char) not null,
+    constraint d_test
+        foreign key(d_master_num)
+        references product_master(p_num)
+        on delete cascade    --마스터 삭제하면 연관된 디테일도 삭제됨
+
+)
+
+
+insert into product_detail values(product_detail_seq.nextval,'요리재료',5,'L','빨강');
+insert into product_detail values(product_detail_seq.nextval,'요리재료',5,'L','파랑');
+insert into product_detail values(product_detail_seq.nextval,'요리',5,'L','빨강');
+insert into product_detail values(product_detail_seq.nextval,'요리',5,'L','파랑');
+
+
 
 create table product_reply(
 r_no number(5) primary key,
@@ -41,7 +68,9 @@ alter sequence product_master_seq nocache;
 alter sequence product_master_seq increment by 1; 
 
 delete from product_master;
+delete from product_detail;
 drop table product_master cascade constraint purge;
+drop table product_detail cascade constraint purge;
 drop table product_reply cascade constraint purge;
 
 --food

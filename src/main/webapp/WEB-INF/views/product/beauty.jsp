@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<button onclick="location.href='product.beautyReg'">상품 등록</button>
+
 <table border="1">
 		<tr>
 			<td onclick="location.href='product.beauty.all'">전체 상품</td>

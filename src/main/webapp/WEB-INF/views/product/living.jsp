@@ -9,6 +9,8 @@
 </head>
 <body>
 
+<button onclick="location.href='product.livingReg'">상품 등록</button>
+
 	<table border="1">
 		<tr>
 
