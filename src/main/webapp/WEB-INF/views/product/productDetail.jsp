@@ -39,16 +39,14 @@
 						<td>옵션/수량 체크 부분</td>
 
 						<td>
+								
 
 							<form name="form" method="get">
-							
 								<input name="sell_price" value="${detail.p_price}"> 
-								
-								수량 :
-								<input type="button" value=" + " onclick="add();"> 
-								<input type="number" name="amount" value="1" size="3" onchange="change();"> 
-								<input type="button" value=" - "onclick="del();"><br> 
-								
+								수량 :<input type="button" value=" + " onclick="add();"> 
+								<input type="text" name="amount" value="1" size="3" onchange="change();"> 
+								<input type="button" value=" - " onclick="del();"><br> 
+
 								금액 : <input type="text" name="sum" size="11" readonly>원
 							</form>
 						</td>
@@ -78,6 +76,7 @@
 						%>
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
 
+
 							<td colspan="2"><button
 									onclick="zzim(${param.p_num}, '${sessionScope.loginAccount.a_id}');">찜하기</button></td>
 						</c:if>
@@ -96,36 +95,37 @@
 		</tr>
 
 		<tr>
-			<td colspan="2">
-			<c:forEach var="pr" items="${replys}">
-						<span class="asmrOwner">${pr.r_owner}</span>
-						<span>${pr.r_rate}</span>
+			<td colspan="2"><c:forEach var="pr" items="${replys}">
+					<span class="asmrOwner">${pr.r_owner}</span>
+				<span class="starR1" value='${pr.r_rate}'></span>
 						-&nbsp;${pr.r_txt }&nbsp;
-						<span class="asmrWhen">(<fmt:formatDate value="${pr.r_date}" type="both" dateStyle="short" timeStyle="short"/>)</span>
-						<c:if test="${pr.r_owner == sessionScope.loginAccount.a_id }">
-							<button class="asmrBtn" 
-							onclick="deleteReply(${pr.r_no}, ${curPage });">삭제</button>
-						</c:if>
-						<br>
-					</c:forEach>
-					<br>
-			<c:if test="${sessionScope.loginAccount != null }">
-						<form action="product.reply.write">
-							<span>
-								${sessionScope.loginAccount.a_id }
-							</span> 
-							<input type="hidden" name="token" value="${token }">
-							<input type="hidden" name="r_p_no" value="${param.p_num}">
-						<%-- 	<input type="hidden" name="p" value="${curPage }"> --%>
-							<input name="r_txt" maxlength="300" autocomplete="off">
-							<select name="r_rate">
-							<option value="1">1</option>
-							</select>
-							<button name="p_num" value="${param.p_num}">쓰기</button>
-						</form>
+						<span class="asmrWhen">(<fmt:formatDate
+							value="${pr.r_date}" type="both" dateStyle="short"
+							timeStyle="short" />)
+					</span>
+					<c:if test="${pr.r_owner == sessionScope.loginAccount.a_id }">
+						<button class="asmrBtn"
+							onclick="deleteReply(${pr.r_no},${param.p_num});">삭제</button>
 					</c:if>
-			
-			</td>
+					<br>
+				</c:forEach> <br> <c:if test="${sessionScope.loginAccount != null }">
+					<form action="product.reply.write" name="productReply">
+						<span> ${sessionScope.loginAccount.a_id } </span> <input
+							type="hidden" name="token" value="${token }"> <input
+							type="hidden" name="r_p_no" value="${param.p_num}">
+						<%-- 	<input type="hidden" name="p" value="${curPage }"> --%>
+						<div id="star">
+						<a href="#;" class="starR on" value="1">★</a>						
+						<a href="#;" class="starR" value="2">★</a>						
+						<a href="#;" class="starR" value="3">★</a>						
+						<a href="#;" class="starR" value="4">★</a>						
+						<a href="#;" class="starR" value="5">★</a>						
+						</div>
+						<input name="r_txt" maxlength="300" autocomplete="off">
+						<input type="hidden" name="r_rate" value="1">
+						<button name="p_num" value="${param.p_num}">쓰기</button>
+					</form>
+				</c:if></td>
 		</tr>
 
 

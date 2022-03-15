@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+
+.starR22{
+	color: #424D97;
+	font-size: 20pt;
+}
+
+#star a{
+   text-decoration: none;
+   font-size: 20pt;
+   color: white;
+   text-shadow: -1px 0 #424D97, 0 1px #424D97, 1px 0 #424D97, 0 -1px #424D97;
+  }
+#star a.on{
+   color: #424D97;
+  font-size: 20pt;
+  } 
