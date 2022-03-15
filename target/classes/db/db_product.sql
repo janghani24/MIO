@@ -37,6 +37,18 @@ create table product_detail(
 
 )
 
+create table product_cart(
+c_no number(5) primary key,
+c_p_no number(10) not null,
+c_a_id varchar2(20 char) not null,
+c_quantity number(3) not null
+constraint c_a
+foreign key(c_a_id)
+references account_mio(a_id)
+on delete cascade
+)
+select * from product_cart;
+
 
 insert into product_detail values(product_detail_seq.nextval,'요리재료',5,'L','빨강');
 insert into product_detail values(product_detail_seq.nextval,'요리재료',5,'L','파랑');
