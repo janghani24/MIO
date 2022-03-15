@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/index.css">
+<link rel="stylesheet" href="resources/css/replyStar.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="resources/js/idCheck_account.js"></script>
 <script type="text/javascript" src="resources/js/go_account.js"></script>
@@ -13,6 +14,7 @@
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/site_jquery.js"></script>
+<script type="text/javascript" src="resources/js/replyStar.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>Insert title here</title>
 <script
