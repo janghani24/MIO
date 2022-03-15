@@ -163,8 +163,7 @@ public class ProductController {
 	}
 
 
-	//전체 상품 검색 페이지
-	
+	//전체 상품 검색 페이지로 이동
 	@RequestMapping(value = "/product.search", method = RequestMethod.GET)
 	public String productSearch(HttpServletRequest request, String search) {
 		
