@@ -63,6 +63,11 @@ select * from product_master where p_category2=#{p_category2}
 		delete from
 		product_zzim where p_no = #{p_no}
 	</delete>
+	
+<delete id="deleteReply" parameterType="com.fp.mio.product.ProductReply">
+		delete from
+		product_reply where r_no = #{r_no}
+	</delete>
 
 
 <select id="getProductSearch" resultType="com.fp.mio.product.Product">
