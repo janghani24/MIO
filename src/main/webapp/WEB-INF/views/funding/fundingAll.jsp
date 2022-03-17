@@ -26,7 +26,7 @@ ${funding2 }
 		<c:forEach var="f" items="${funding2}">
 			<ul>
 			
-				<li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg"></a></li>
+				<li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg" width="300px;"></a></li>
 
 				<li><a href="${f.f_url}">${f.f_company}</a></li>
 				<li>${f.f_name}</li>
