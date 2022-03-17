@@ -34,13 +34,25 @@ public interface ProductMapper {
 
 	List<Product> getProductCategory(String p_category2);
 
-	List<Product> getProductSearch(String p_name);
+	List<Product> getProductSearch(Product p);
 
 	Product getProductDetail(int p_num);
 
 	int writeReply(ProductReply pr);
 
 	List<ProductReply> getReply(Product p);
+
+	int insertCart(Cart c);
+
+	List<Cart> getCart(Account a);
+
+	int getCartByPNo(Cart c);
+
+	int updateCart(Cart c);
+
+	int deleteReply(ProductReply pr);
+
+	int deleteCart(Cart c);
 
 
 }

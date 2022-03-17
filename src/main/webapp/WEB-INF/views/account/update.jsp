@@ -17,19 +17,19 @@
 			</tr>
 			<tr>
 				<td class="td1">PW</td>
-				<td class="td2"><input value="${sessionScope.loginAccount.a_pw}" name="jm_pw" placeholder="필수, 숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
+				<td class="td2"><input value="${sessionScope.loginAccount.a_pw}" name="jm_pw" placeholder="필수, 영어/숫자  하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="td1">PW확인</td>
-				<td class="td2"><input value="${sessionScope.loginAccount.a_pw}" name="jm_pwChk" placeholder="필수, 숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
+				<td class="td2"><input value="${sessionScope.loginAccount.a_pw}" name="jm_pwChk" placeholder="필수, 영어/숫자  하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="td1">이름</td>
-				<td class="td2"><input value="${sessionScope.loginAccount.a_name}" name="jm_name" placeholder="필수" maxlength="10" autocomplete="off"></td>
+				<td class="td2"><input value="${sessionScope.loginAccount.a_name}" name="jm_name" placeholder="필수, 한글로 작성" maxlength="10" autocomplete="off"></td>
 			</tr>
 			<tr>
 			<td>핸드폰 번호</td>
-			<td><input value="${sessionScope.loginAccount.a_phone}" name="jm_phone"></td>
+			<td><input value="${sessionScope.loginAccount.a_phone}" name="jm_phone" placeholder="필수,-없이 숫자만 입력해주세요."></td>
 			</tr>
 			<tr>
 				<td class="td1">주소</td>

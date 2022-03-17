@@ -53,7 +53,7 @@
 					</tr>
 					<tr>
 						<td><button>구매하기</button></td>
-						<td><button onclick="gocart('${sessionScope.loginAccount.a_id}','${param.p_num}')">장바구니</button></td>
+						<td><button onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
 
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
 
