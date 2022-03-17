@@ -92,7 +92,7 @@ public class FundingDAO {
 
 	public void getProductCategory(HttpServletRequest request, String f_category2) {
 
-		request.setAttribute("funding", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
+		request.setAttribute("funding2", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
 
 	}
 

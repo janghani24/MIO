@@ -16,7 +16,7 @@
 		insert into fundingTbl values (fundingTbl_seq.nextval,#{f_photo},#{f_name},#{f_company},#{f_category},#{f_period},#{f_url})
 	</insert>
 
-	<select id="getFundingCategory" resultType="com.fp.mio.funding.Funding">
+	<select id="getFundingCategory" parameterType="String" resultType="com.fp.mio.funding.Funding">
 
 select * from fundingTbl where f_category=#{f_category}
 
