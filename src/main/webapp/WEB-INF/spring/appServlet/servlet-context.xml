@@ -30,15 +30,12 @@
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
 
-<<<<<<< HEAD
-		<beans:property name="username" value="c##hn" />
-		<beans:property name="password" value="hn" />
-=======
+
 
 		<beans:property name="username" value="jh" />
 		<beans:property name="password" value="jh" />
 
->>>>>>> 7a920c18a09e9ed40c3b133dc10a9ad2e3658827
+
 
 
 	</beans:bean>

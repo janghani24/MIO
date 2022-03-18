@@ -86,14 +86,7 @@ public class FundingDAO {
 	
 
 
-	public void deleteFunding(HttpServletRequest request, Funding funding) {
-        if (ss.getMapper(FundingMapper.class).deleteFunding(funding) == 1) {
-            request.setAttribute("r", "삭제 성공!");
-            System.out.println("--등록 성공--");
-        } else {
-            request.setAttribute("r", "삭제 실패!");
-        }
-    }
+	
 
 
 	public void getFundingCategory(HttpServletRequest request, String f_category2) {
