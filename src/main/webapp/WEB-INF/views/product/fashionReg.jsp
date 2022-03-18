@@ -35,7 +35,7 @@
 
 			</select>
 		<p>
-		<div>사이즈 컬러 수량</div>
+		<div>size color quantity</div>
 		<ul style="display: contents; position: relative;" id="list"></ul>
 		<button type="button" onclick="doAdd();">옵션 추가</button>
 		<button type="button" onclick="doDelete();">삭제</button>

@@ -17,16 +17,20 @@ select * from product_master;
 create table product_detail(
     d_num number(4) primary key, 
     d_master_num number(10) not null, 
-    d_category varchar2(20 char) not null,
-    d_quantity number(3) not null,
     d_size varchar2(20 char) not null,
     d_color varchar2 (20 char) not null,
+    d_quantity number(3) not null,
     constraint d_test
         foreign key(d_master_num)
         references product_master(p_num)
         on delete cascade    --마스터 삭제하면 연관된 디테일도 삭제됨
 
 )
+
+
+insert into product_detail values(product_detail_seq.nextval,'3','의류','5','s','ivory');
+insert into product_detail values(product_detail_seq.nextval,'3','의류','3','m','ivory');
+
 
 create table product_cart(
 c_no number(5) primary key,
@@ -82,7 +86,7 @@ alter sequence product_master_seq increment by 1;
 
 delete from product_master;
 delete from product_detail;
-drop sequence product_master_seq;
+drop sequence product_detail_seq;
 drop table product_master cascade constraint purge;
 drop table product_detail cascade constraint purge;
 drop table product_reply cascade constraint purge;
@@ -90,6 +94,7 @@ drop table product_reply cascade constraint purge;
 --food
 insert into product_master values(product_master_seq.nextval,'hn','유기농 사과즙으로 만든 오렌지잼 200g',4050,'마인탈','01.jpg','01-1.jpg',5,'food','요리재료',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','유기농 NFC 레몬주스 100% 250ml',6000,'파너','02.jpg','02-1.jpg',5,'food','간식거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','핑거팝 단백질과자',2300,'베노프','03.jpg','03-1.jpg',5,'food','간식거리',sysdate);
 
 --fashion
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
@@ -101,6 +106,7 @@ insert into product_master values(product_master_seq.nextval,'hn','비건 립밤
 insert into product_master values(product_master_seq.nextval,'hn','두유 크림 스킨 패드',24000,'캠퍼스블라썸(CAMPUS BLOSSOM)','02.jpg','02-1.jpg',5,'beauty','스킨케어',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','소프넛 자연 비누',8500,'내츄럴리빙','03.png','03-1.jpg',5,'beauty','스킨케어',sysdate);
 insert into product_master values(product_master_seq.nextval,'yj','복숭아 톤업 세트 (선크림+마카롱 컨실러)',25000,'퍼스블라썸(CAMPUS BLOSSOM)','04.png','04-1.png',5,'beauty','선케어',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','지구에 자상한 Less waste 트래블 키트 [샴푸바/린스바/바디솝]',15000,'자연상점','10.jpg','10-1.jpg',5,'beauty','스킨케어',sysdate);
 
 --living
 insert into product_master values(product_master_seq.nextval,'jh','[기부텀블러] 유리컵 340ml_안녕, 고래 시리즈 #01',10880,'88하다(88HADA)','01_1_1.jpg','01-1.jpg',5,'living','주방용품',sysdate);
@@ -117,4 +123,5 @@ drop sequence product_master_seq;
 delete from product_master where p_num=14;
 
 select * from product_master;
+select * from product_detail;
 

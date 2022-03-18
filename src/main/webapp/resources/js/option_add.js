@@ -8,7 +8,8 @@ size.setAttribute("type", "text");
 var color=document.createElement("input");
 color.setAttribute("type", "text");
 var quantity=document.createElement("input");
-quantity.setAttribute("type", "text");
+quantity.setAttribute("type", "number");
+quantity.setAttribute("min", "1");
 
 var li = document.createElement("li");
 
