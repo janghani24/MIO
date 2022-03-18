@@ -320,7 +320,7 @@ public class AccountController {
 				
 			if (aDAO.loginCheck(req)) {
 				pDAO.deletezzim(zzim, req);	//찜한거 삭제하는기능
-				//pDAO.showzzim(req);		//찜한거 보여주는기능
+				
 			}
 			System.out.println(p.getP_num());
 			req.setAttribute("detail", pDAO.getProductDetail(req, p));
