@@ -1,5 +1,6 @@
 create table fundingTbl(
 f_num number(6) primary key,
+f_owner varchar2(20 char) not null,
 f_photo varchar2 (200 char) not null,
 f_name varchar2 (100 char) not null,
 f_company varchar2 (100 char) not null,
@@ -7,6 +8,8 @@ f_category varchar2 (100 char) not null,
 f_period date not null,
 f_url varchar2 (200 char) not null
 )
+
+drop table fundingTbl cascade constraint purge;
 
 create sequence fundingTbl_seq;
 alter sequence fundingTbl_seq nocache;

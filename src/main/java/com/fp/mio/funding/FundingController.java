@@ -47,7 +47,19 @@ public class FundingController {
 
         return "index";
     }
-
+    
+    // 펀딩 삭제
+    @RequestMapping(value = "/funding.deleteFunding", method =RequestMethod.GET)
+    public String fundingDelete(HttpServletRequest request,Funding funding) {
+    	
+    	if(aDAO.loginCheck(request)) {
+    	fDAO.deleteFunding(request,funding);
+    	
+    }
+    	fDAO.getFundingAll(request);
+    	request.setAttribute("contentPage", "funding/fundingAll.jsp");
+    	return "index";
+    }
     //하위 카테고리로 이동
     @RequestMapping(value = "/funding.category", method = RequestMethod.GET)
     public String fundingCategory(HttpServletRequest request, String f_category) {

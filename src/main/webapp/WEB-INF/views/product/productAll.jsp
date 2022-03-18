@@ -24,7 +24,7 @@
 		</tr>
 	</table>
 
-	<c:forEach var="p" items="${product}">
+	<c:forEach var="p" items="${products}">
 		<ul>
 			<li onclick="location.href='product.detail?p_num=${p.p_num}'"><img
 				src="resources/img/${p.p_category1}/${p.p_photo}"></li>

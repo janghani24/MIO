@@ -8,74 +8,82 @@
 		select * from product_master
 
 	</select>
-	
+
 
 	<select id="getFood" resultType="com.fp.mio.product.Product">
 
-		select * from product_master where p_category1 = 'food'
+		select * from product_master
+		where p_category1 = 'food'
 
-</select>
+	</select>
 
-<select id="getFashion" resultType="com.fp.mio.product.Product">
+	<select id="getFashion" resultType="com.fp.mio.product.Product">
 
-select * from product_master where p_category1 = 'fashion'
+		select * from product_master where p_category1 = 'fashion'
 
-</select>
+	</select>
 
-<select id="getBeauty" resultType="com.fp.mio.product.Product">
+	<select id="getBeauty" resultType="com.fp.mio.product.Product">
 
-select * from product_master where p_category1 = 'beauty'
+		select * from product_master where p_category1 = 'beauty'
 
-</select>
+	</select>
 
-<select id="getLiving" resultType="com.fp.mio.product.Product">
+	<select id="getLiving" resultType="com.fp.mio.product.Product">
 
-select * from product_master where p_category1 = 'living'
+		select * from product_master where p_category1 = 'living'
 
-</select>
+	</select>
 
-<select id="getProductDetail" resultType="com.fp.mio.product.Product">
+	<select id="getProductDetail"
+		resultType="com.fp.mio.product.Product">
 
-select * from product_master where p_num=#{p_num}
+		select * from product_master where p_num=#{p_num}
 
-</select>
+	</select>
 
-<select id="getProductCategory" resultType="com.fp.mio.product.Product">
+	<select id="getProductCategory"
+		resultType="com.fp.mio.product.Product">
 
-select * from product_master where p_category2=#{p_category2}
+		select * from product_master where p_category2=#{p_category2}
 
-</select>
-<select id="getCart" parameterType="com.fp.mio.account.Account" resultType="com.fp.mio.product.Cart">
+	</select>
+	<select id="getCart" parameterType="com.fp.mio.account.Account"
+		resultType="com.fp.mio.product.Cart">
 
-select * from product_cart where c_a_id = #{a_id}
+		select * from product_cart where c_a_id = #{a_id}
 
-</select>
-<select id="getCartByPNo" resultType="int">
+	</select>
+	<select id="getCartByPNo" resultType="int">
 
-select count(*) from product_cart where c_p_no = #{c_p_no} and c_a_id = #{c_a_id}
+		select count(*) from product_cart where c_p_no = #{c_p_no} and c_a_id =
+		#{c_a_id}
 
-</select>
+	</select>
 
-<update id="updateCart"
-		parameterType="com.fp.mio.product.Cart">
+	<update id="updateCart" parameterType="com.fp.mio.product.Cart">
 		update product_cart
-		set c_quantity=#{c_quantity}
+		set
+		c_quantity=#{c_quantity}
 		where
 		c_a_id=#{c_a_id} and c_p_no = #{c_p_no}
 	</update>
 
-<insert id="getProductzzim" parameterType="com.fp.mio.product.Zzim">
+	<insert id="getProductzzim"
+		parameterType="com.fp.mio.product.Zzim">
 		insert into product_zzim
 		values(product_zzim_seq.nextval,#{p_num}, #{p_id})
-</insert>
+	</insert>
 
-<insert id="insertCart" parameterType="com.fp.mio.product.Cart">
+	<insert id="insertCart" parameterType="com.fp.mio.product.Cart">
 		insert into product_cart
-		values(product_cart_seq.nextval,#{c_p_no}, #{c_a_id}, #{c_quantity},#{c_name},#{c_price},#{c_category},#{c_p_photo})
-</insert>
+		values(product_cart_seq.nextval,#{c_p_no}, #{c_a_id},
+		#{c_quantity},#{c_name},#{c_price},#{c_category},#{c_p_photo})
+	</insert>
 
-<select id="getAccount" resultType="com.fp.mio.account.Account">
-		select * from account_mio order by a_id
+	<select id="getAccount" resultType="com.fp.mio.account.Account">
+		select * from account_mio
+		order by a_id
 
 	</select>
 
@@ -98,17 +106,25 @@ select count(*) from product_cart where c_p_no = #{c_p_no} and c_a_id = #{c_a_id
 		delete from
 		product_reply where r_no = #{r_no}
 	</delete>
-	
-<delete id="deleteCart" parameterType="com.fp.mio.product.Cart">
+
+	<delete id="deleteCart" parameterType="com.fp.mio.product.Cart">
 		delete from
-		product_cart where c_p_no=#{c_p_no} and c_a_id=#{c_a_id}
+		product_cart
+		where c_p_no=#{c_p_no} and c_a_id=#{c_a_id}
+	</delete>
+
+	<delete id="deleteProduct"
+		parameterType="com.fp.mio.product.Product">
+		delete from
+		product_master where p_num=#{p_num}
 	</delete>
 
 
 	<select id="getProductSearch"
 		resultType="com.fp.mio.product.Product">
 
-		select*from product_master where p_name like '%'||#{p_name}||'%' or p_brand like
+		select*from product_master where p_name like
+		'%'||#{p_name}||'%' or p_brand like
 		'%'||#{p_brand}||'%'
 
 	</select>
@@ -129,30 +145,33 @@ select count(*) from product_cart where c_p_no = #{c_p_no} and c_a_id = #{c_a_id
 		where r_p_no = #{p_num}
 	</select>
 
-<insert id="regFood"
-		parameterType="com.fp.mio.product.Product">
+	<insert id="regFood" parameterType="com.fp.mio.product.Product">
 		insert into product_master
-		values(product_master_seq.nextval,#{p_name}, #{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+		values(product_master_seq.nextval,#{p_owner},#{p_name},
+		#{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
 	</insert>
-	
+
 	<insert id="regFashion"
 		parameterType="com.fp.mio.product.Product">
 		insert into product_master
-		values(product_master_seq.nextval,#{p_name}, #{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+		values(product_master_seq.nextval,#{p_owner},#{p_name},
+		#{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
 	</insert>
-	
+
 	<insert id="regBeauty"
 		parameterType="com.fp.mio.product.Product">
 		insert into product_master
-		values(product_master_seq.nextval,#{p_name}, #{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+		values(product_master_seq.nextval,#{p_owner},#{p_name},
+		#{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
 	</insert>
-	
+
 	<insert id="regLiving"
 		parameterType="com.fp.mio.product.Product">
 		insert into product_master
-		values(product_master_seq.nextval,#{p_name}, #{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+		values(product_master_seq.nextval,#{p_owner},#{p_name},
+		#{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
 	</insert>
-	
+
 
 
 

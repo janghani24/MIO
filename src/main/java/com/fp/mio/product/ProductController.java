@@ -126,8 +126,6 @@ public class ProductController {
 	public String productDetail(HttpServletRequest request, Product product, int p_num) {
 
 		pDAO.getReply(product, request);
-		pDAO.getProductDetail(request, product, p_num);
-
 		pDAO.getAccount(request);
 		if (aDAO.loginCheck(request)) {
 
@@ -207,6 +205,17 @@ public class ProductController {
 		request.setAttribute("contentPage", "product/productRegSelect.jsp");
 		return "index";
 
+	}
+	// 상품 삭제
+	@RequestMapping(value = "/product.deleteProduct", method = RequestMethod.GET)
+	public String deleteProduct(HttpServletRequest request, Product p) {
+		if (aDAO.loginCheck(request)) {
+		pDAO.deleteProduct(request,p);
+		}
+		pDAO.getProductAll(request);
+		request.setAttribute("contentPage", "product/productAll.jsp");
+		return "index";
+		
 	}
 	
 	// 장바구니 넣기

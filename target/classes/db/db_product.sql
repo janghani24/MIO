@@ -1,5 +1,6 @@
 create table product_master(
 p_num number(10) primary key, 
+p_owner varchar2(20 char) not null,
 p_name varchar2 (100 char) not null,
 p_price number(10) not null,
 p_brand varchar2(200 char) not null,
@@ -87,25 +88,25 @@ drop table product_detail cascade constraint purge;
 drop table product_reply cascade constraint purge;
 
 --food
-insert into product_master values(product_master_seq.nextval,'유기농 사과즙으로 만든 오렌지잼 200g',4050,'마인탈','01.jpg','01-1.jpg',5,'food','요리재료',sysdate);
-insert into product_master values(product_master_seq.nextval,'유기농 NFC 레몬주스 100% 250ml',6000,'파너','02.jpg','02-1.jpg',5,'food','간식거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','유기농 사과즙으로 만든 오렌지잼 200g',4050,'마인탈','01.jpg','01-1.jpg',5,'food','요리재료',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','유기농 NFC 레몬주스 100% 250ml',6000,'파너','02.jpg','02-1.jpg',5,'food','간식거리',sysdate);
 
 --fashion
-insert into product_master values(product_master_seq.nextval,'지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
-insert into product_master values(product_master_seq.nextval,'VIENETTA 베네따 토트 쇼퍼백 (skyblue)',89000,'누깍(Nukak)','02.png','02-1.jpg',5,'fashion','가방',sysdate);
-insert into product_master values(product_master_seq.nextval,'CLUTCH 클러치',52000,'누깍(Nukak)','03.png','03-1.jpg',5,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','VIENETTA 베네따 토트 쇼퍼백 (skyblue)',89000,'누깍(Nukak)','02.png','02-1.jpg',5,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','CLUTCH 클러치',52000,'누깍(Nukak)','03.png','03-1.jpg',5,'fashion','가방',sysdate);
 
 --beauty
-insert into product_master values(product_master_seq.nextval,'비건 립밤',14000,'푸루','01.jpg','01-1.jpg',5,'beauty','스킨케어',sysdate);
-insert into product_master values(product_master_seq.nextval,'두유 크림 스킨 패드',24000,'캠퍼스블라썸(CAMPUS BLOSSOM)','02.jpg','02-1.jpg',5,'beauty','스킨케어',sysdate);
-insert into product_master values(product_master_seq.nextval,'소프넛 자연 비누',8500,'내츄럴리빙','03.png','03-1.jpg',5,'beauty','스킨케어',sysdate);
-insert into product_master values(product_master_seq.nextval,'복숭아 톤업 세트 (선크림+마카롱 컨실러)',25000,'퍼스블라썸(CAMPUS BLOSSOM)','04.png','04-1.png',5,'beauty','선케어',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','비건 립밤',14000,'푸루','01.jpg','01-1.jpg',5,'beauty','스킨케어',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','두유 크림 스킨 패드',24000,'캠퍼스블라썸(CAMPUS BLOSSOM)','02.jpg','02-1.jpg',5,'beauty','스킨케어',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','소프넛 자연 비누',8500,'내츄럴리빙','03.png','03-1.jpg',5,'beauty','스킨케어',sysdate);
+insert into product_master values(product_master_seq.nextval,'yj','복숭아 톤업 세트 (선크림+마카롱 컨실러)',25000,'퍼스블라썸(CAMPUS BLOSSOM)','04.png','04-1.png',5,'beauty','선케어',sysdate);
 
 --living
-insert into product_master values(product_master_seq.nextval,'[기부텀블러] 유리컵 340ml_안녕, 고래 시리즈 #01',10880,'88하다(88HADA)','01_1_1.jpg','01-1.jpg',5,'living','주방용품',sysdate);
-insert into product_master values(product_master_seq.nextval,'친환경 밥주걱',4000,'슈가랩','02.jpg','02-1.jpg',5,'living','주방용품',sysdate);
-insert into product_master values(product_master_seq.nextval,'친환경 위생 지퍼백',2800,'슈가랩','03.jpg','03-1.jpg',5,'living','주방용품',sysdate);
-insert into product_master values(product_master_seq.nextval,'연필꽂이 DIY 키트',10900,'기글(GIGL)','04.jpg','04-1.jpg',5,'living','문구',sysdate);
+insert into product_master values(product_master_seq.nextval,'jh','[기부텀블러] 유리컵 340ml_안녕, 고래 시리즈 #01',10880,'88하다(88HADA)','01_1_1.jpg','01-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','친환경 밥주걱',4000,'슈가랩','02.jpg','02-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','친환경 위생 지퍼백',2800,'슈가랩','03.jpg','03-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','연필꽂이 DIY 키트',10900,'기글(GIGL)','04.jpg','04-1.jpg',5,'living','문구',sysdate);
 
 
 update product_master set p_content= '04-1.png' where p_price = 25000;

@@ -58,6 +58,8 @@ public interface ProductMapper {
 
 	int deleteCart(Cart c);
 
+	int deleteProduct(Product p);
+
 
 
 }

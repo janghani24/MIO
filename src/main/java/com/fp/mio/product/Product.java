@@ -5,6 +5,7 @@ import java.util.Date;
 public class Product {
 	
 	private int p_num;
+	private String p_owner;
 	private String p_name;
 	private int p_price;
 	private String p_brand;
@@ -25,6 +26,14 @@ public int getP_num() {
 
 public void setP_num(int p_num) {
 	this.p_num = p_num;
+}
+
+public String getP_owner() {
+	return p_owner;
+}
+
+public void setP_owner(String p_owner) {
+	this.p_owner = p_owner;
 }
 
 public String getP_name() {
@@ -99,10 +108,11 @@ public void setP_date(Date p_date) {
 	this.p_date = p_date;
 }
 
-public Product(int p_num, String p_name, int p_price, String p_brand, String p_photo, String p_content, int p_quantity,
-		String p_category1, String p_category2, Date p_date) {
+public Product(int p_num, String p_owner, String p_name, int p_price, String p_brand, String p_photo, String p_content,
+		int p_quantity, String p_category1, String p_category2, Date p_date) {
 	super();
 	this.p_num = p_num;
+	this.p_owner = p_owner;
 	this.p_name = p_name;
 	this.p_price = p_price;
 	this.p_brand = p_brand;
@@ -113,6 +123,8 @@ public Product(int p_num, String p_name, int p_price, String p_brand, String p_p
 	this.p_category2 = p_category2;
 	this.p_date = p_date;
 }
+
+
 
 
 

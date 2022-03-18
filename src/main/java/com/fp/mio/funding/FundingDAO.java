@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fp.mio.account.Account;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -58,6 +59,8 @@ public class FundingDAO {
 
 			funding.setF_category(f_category);
 
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
+			funding.setF_owner(a.getA_id());
 			SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
 			Date period = fm.parse(mr.getParameter("f_period"));
 			funding.setF_period(period);
@@ -82,6 +85,16 @@ public class FundingDAO {
 
 		request.setAttribute("funding2", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
 
+	}
+
+	// 펀딩 삭제
+	public void deleteFunding(HttpServletRequest request, Funding funding) {
+		if (ss.getMapper(FundingMapper.class).deleteFunding(funding) == 1) {
+			request.setAttribute("r", "삭제 성공!");
+			System.out.println("--등록 성공--");
+		} else {
+			request.setAttribute("r", "삭제 실패!");
+		}
 	}
 
 }

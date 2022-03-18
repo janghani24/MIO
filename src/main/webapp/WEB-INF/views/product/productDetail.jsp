@@ -91,7 +91,12 @@
 		</tr>
 		<tr>
 			<td colspan="2"><img
-				src="resources/img/${detail.p_category1}/${detail.p_content}"></td>
+				src="resources/img/${detail.p_category1}/${detail.p_content}">
+				<br>
+				<c:if test="${detail.p_owner == sessionScope.loginAccount.a_id }">
+				<button onclick="deleteProduct(${param.p_num})">삭제</button>
+				</c:if>
+				</td>
 		</tr>
 
 		<tr>

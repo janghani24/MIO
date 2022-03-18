@@ -20,6 +20,12 @@ function zzim(no, id) {
 function deleteReply(n, p) {
 	location.href = "product.reply.delete?r_no=" + n + "&p_num=" + p;
 }
+function deleteProduct(n) {
+	let ok = confirm("등록된 상품을 삭제하시겠습니까?")
+	if (ok) {
+	location.href = "product.deleteProduct?p_num=" + n;
+	}
+}
 
 function goCart(i, p , price , c, photo) {
 	let amount = document.getElementById("amount").value;

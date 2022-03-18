@@ -24,7 +24,7 @@ public class ProductDAO {
 	public void getProductAll(HttpServletRequest request) {
 
 		try {
-			request.setAttribute("product", ss.getMapper(ProductMapper.class).getProductAll());
+			request.setAttribute("products", ss.getMapper(ProductMapper.class).getProductAll());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -223,6 +223,8 @@ public class ProductDAO {
 			Date today = new Date();
 			product.setP_date(today);
 
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
+			product.setP_owner(a.getA_id());
 			if (ss.getMapper(ProductMapper.class).regFood(product) == 1) {
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
@@ -277,6 +279,9 @@ public class ProductDAO {
 			Date today = new Date();
 			product.setP_date(today);
 
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
+			product.setP_owner(a.getA_id());
+			
 			if (ss.getMapper(ProductMapper.class).regFashion(product) == 1) {
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
@@ -327,6 +332,9 @@ public class ProductDAO {
 			Date today = new Date();
 			product.setP_date(today);
 
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
+			product.setP_owner(a.getA_id());
+			
 			if (ss.getMapper(ProductMapper.class).regBeauty(product) == 1) {
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
@@ -377,6 +385,9 @@ public class ProductDAO {
 			Date today = new Date();
 			product.setP_date(today);
 
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
+			product.setP_owner(a.getA_id());
+			
 			if (ss.getMapper(ProductMapper.class).regLiving(product) == 1) {
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
@@ -455,6 +466,14 @@ public class ProductDAO {
 			request.setAttribute("result", "장바구니 수정 실패");
 		}
 
+	}
+
+	public void deleteProduct(HttpServletRequest request, Product p) {
+		if (ss.getMapper(ProductMapper.class).deleteProduct(p) == 1) {
+			request.setAttribute("r", "삭제 성공!");
+		} else {
+			request.setAttribute("r", "삭제 실패!");
+		}		
 	}
 
 }
