@@ -85,7 +85,7 @@ public class ProductDAO {
 		try {
 			
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
-			zzim.setP_id(a.getA_id());
+			zzim.setZ_id(a.getA_id());
 	
 		
 			if (ss.getMapper(ProductMapper.class).getProductzzim(zzim) == 1) {

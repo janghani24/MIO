@@ -311,20 +311,18 @@ public class AccountController {
 
 		}
 	
-		//찜삭제 2
+		//찜삭제 2 해결해야함
 		@RequestMapping(value = "account.deletezzim2", method = RequestMethod.GET)
 		public String Accountdeletezzim2(HttpServletRequest req,Zzim zzim) {
 			
 			aDAO.getAccount(req);
-			
-			
-			
+				
 			if (aDAO.loginCheck(req)) {
 				pDAO.deletezzim(zzim, req);	//찜한거 삭제하는기능
 				pDAO.showzzim(req);		//찜한거 보여주는기능
 			}
-		// 	productDetail.jsp에 정보넣어야함
-		//	req.setAttribute("detail", pDAO.getProductDetail(req, product, p_num));
+			
+		
 			req.setAttribute("contentPage", "product/productDetail.jsp");
 			return "index";
 		}

@@ -46,7 +46,7 @@ select * from product_master where p_category2=#{p_category2}
 
 <insert id="getProductzzim" parameterType="com.fp.mio.product.Zzim">
 		insert into product_zzim
-		values(product_zzim_seq.nextval,#{p_num}, #{p_id})
+		values(product_zzim_seq.nextval,#{p_num}, #{z_id})
 </insert>
 
 <select id="getAccount" resultType="com.fp.mio.account.Account">
@@ -54,14 +54,16 @@ select * from product_master where p_category2=#{p_category2}
 	</select>
 
 	<select id="showzzim"	parameterType="com.fp.mio.account.Account" resultType="com.fp.mio.product.Zzim">
-		select * from product_zzim
-		where p_id = #{a_id}
-		order by p_no
+		SELECT *
+	FROM product_zzim , account_mio, product_master
+	WHERE product_zzim.z_id = account_mio.a_id
+	AND product_zzim.z_num = product_master.p_num
+	AND product_zzim.z_id = #{a_id}
 	</select>
 
 <delete id="deletezzim" parameterType="com.fp.mio.product.Zzim">
 		delete from
-		product_zzim where p_no = #{p_no}
+		product_zzim where z_no = #{z_no}
 	</delete>
 	
 <delete id="deleteReply" parameterType="com.fp.mio.product.ProductReply">

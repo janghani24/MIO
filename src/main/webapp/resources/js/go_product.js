@@ -13,9 +13,10 @@ function zzim(no, id) {
 		let ok = confirm("찜목록으로 이동할래요?")
 		if(ok){
 			location.href = "account.Wishlist"
-			
+				
 		}
 		
+		location.reload();
 	}
 }
 

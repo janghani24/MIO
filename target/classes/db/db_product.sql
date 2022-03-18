@@ -10,18 +10,7 @@ p_category2 varchar2(20 char) not null,
 p_date date not null
 )
 
-create table product_detail(
-    p_num number(4) primary key, 
-    p_master_num number(10) not null, 
-    p_quantity number(3) not null,
-    p_size varchar2(20 char) not null,
-    p_color varchar2 (20 char) not null
-    constraint p_details
-		foreign key(p_master_num)
-		references product_master(p_num)
-		on delete cascade
 
-)
 
 create table product_detail(
     d_num number(4) primary key, 
@@ -37,11 +26,6 @@ create table product_detail(
 
 )
 
-
-insert into product_detail values(product_detail_seq.nextval,'요리재료',5,'L','빨강');
-insert into product_detail values(product_detail_seq.nextval,'요리재료',5,'L','파랑');
-insert into product_detail values(product_detail_seq.nextval,'요리',5,'L','빨강');
-insert into product_detail values(product_detail_seq.nextval,'요리',5,'L','파랑');
 
 
 

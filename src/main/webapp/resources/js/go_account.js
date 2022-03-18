@@ -61,7 +61,7 @@ function deletezzim(no) {
 	
 	var ok = confirm("찜해제할래요?");
 	if (ok) {
-		location.href = "account.deletezzim?p_no=" + no;
+		location.href = "account.deletezzim?z_no=" + no;
 		
 	}
 	
@@ -71,7 +71,7 @@ function deletezzim2(no) {
 	
 	var ok = confirm("찜해제할래요?");
 	if (ok) {
-		location.href = "account.deletezzim2?p_no=" + no;
+		location.href = "account.deletezzim2?z_no=" + no;
 		
 	}
 	

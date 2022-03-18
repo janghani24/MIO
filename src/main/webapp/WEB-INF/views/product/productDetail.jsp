@@ -60,9 +60,9 @@
 							<c:forEach var="z" items="${showZzim }">
 
 								<c:if
-									test="${sessionScope.loginAccount.a_id == z.p_id && z.p_num == param.p_num}">
+									test="${sessionScope.loginAccount.a_id == z.z_id && z.z_num == param.p_num}">
 
-									<td colspan="2"><button onclick="deletezzim2(${z.p_no });">찜해제</button></td>
+									<td colspan="2"><button onclick="deletezzim2(${z.z_no });">찜해제</button></td>
 									<%
 										a = 1;
 									%>
