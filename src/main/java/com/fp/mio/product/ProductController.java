@@ -8,11 +8,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fp.mio.account.AccountDAO;
-import com.fp.mio.funding.Funding;
 
 @Controller
 public class ProductController {
 
+	private boolean firstReqP;
+	public ProductController() {
+		firstReqP = true;
+	}
+	
 	@Autowired
 	private ProductDAO pDAO;
 
@@ -22,13 +26,27 @@ public class ProductController {
 	// 상품 전체 조회
 	@RequestMapping(value = "/product.all", method = RequestMethod.GET)
 	public String productAll(HttpServletRequest request) {
-
-		pDAO.getProductAll(request);
-
+		if(firstReqP) {
+		pDAO.calcAllPCount();
+		firstReqP = false;
+		}
+		pDAO.getProduct(1, request);
 		request.setAttribute("contentPage", "product/productAll.jsp");
 		return "index";
 	}
 
+	
+	//페이징
+	@RequestMapping(value = "/product.paging", method = RequestMethod.GET)
+	public String snsPageChange(HttpServletRequest request) {
+		int p = Integer.parseInt(request.getParameter("p"));
+		aDAO.loginCheck(request);
+		pDAO.getProduct(p, request);
+		request.setAttribute("contentPage", "product/productAll.jsp");
+		return "index";
+	}
+	
+	
 	// food 카테고리로 이동
 	@RequestMapping(value = "/product.food.all", method = RequestMethod.GET)
 	public String food(HttpServletRequest request) {
@@ -160,9 +178,14 @@ public class ProductController {
 	//전체 상품 검색 페이지로 이동
 
 	@RequestMapping(value = "/product.search", method = RequestMethod.GET)
-	public String productSearch(HttpServletRequest request, Product p) {
+	public String productSearch(HttpServletRequest request, ProductSelector ps) {
 
-		pDAO.productSearch(request, p);
+		
+		com.fp.mio.TokenMaker.make(request);
+		aDAO.loginCheck(request);
+		pDAO.productSearch(ps, request);
+		pDAO.getProduct(1, request);
+		
 
 		request.setAttribute("contentPage", "product/productSearch.jsp");
 		return "index";

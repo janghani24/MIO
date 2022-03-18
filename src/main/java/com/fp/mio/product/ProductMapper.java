@@ -30,7 +30,7 @@ public interface ProductMapper {
 
 	List<Product> getProductCategory(String p_category2);
 
-	List<Product> getProductSearch(Product p);
+	List<Product> getProductSearch(ProductSelector ps);
 
 	Product getProductDetail(int p_num);
 
@@ -59,6 +59,8 @@ public interface ProductMapper {
 	int deleteCart(Cart c);
 
 	int deleteProduct(Product p);
+
+	int getProductCount(ProductSelector search);
 
 
 

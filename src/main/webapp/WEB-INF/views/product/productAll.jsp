@@ -11,7 +11,7 @@
 <body>
 
 	<form action="product.search">
-		<input name="p_name">
+		<input name="search">
 		<button>검색</button>
 	</form>
 
@@ -36,6 +36,16 @@
 	</c:forEach>
 	
 	<button onclick="location.href='product.reg.select'">상품 등록</button>
+
+<div align="center" >
+         	  <a href="product.paging?p=1"> [맨처음] </a>
+            <c:forEach var="p" begin="1" end="${pageCount}">
+               <a href="product.paging?p=${p}">[${p}]</a>
+            </c:forEach>
+               <a href="product.paging?p=${pageCount}"> [맨끝] </a>
+         </div>
+
+
 
 </body>
 </html>

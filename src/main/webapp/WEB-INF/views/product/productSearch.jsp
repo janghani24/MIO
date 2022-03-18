@@ -27,7 +27,7 @@
 <table>
 
 </table>
-	<c:forEach var="p" items="${productresult}">
+	<c:forEach var="p" items="${products}">
 		<ul>
 			<li onclick="location.href='product.detail?p_num=${p.p_num}'"><img
 				src="resources/img/${p.p_category1}/${p.p_photo}"></li>
@@ -37,6 +37,14 @@
 			<li>${p.p_price}원</li>
 		</ul>
 	</c:forEach>
+	<div align="center" >
+         	  <a href="product.paging?p=1"> [맨처음] </a>
+            <c:forEach var="p" begin="1" end="${pageCount}">
+               <!-- 페이지 카운터를 누르면 해당 페이지로 이동함 -->
+               <a href="product.paging?p=${p}">[${p}]</a>
+            </c:forEach>
+               <a href="product.paging?p=${pageCount}"> [맨끝] </a>
+         </div>
 
 </body>
 </html>

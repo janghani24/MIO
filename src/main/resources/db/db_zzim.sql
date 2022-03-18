@@ -3,10 +3,7 @@ p_no number(10) primary key,
 p_num number(10) not null,
 p_id varchar2 (100 char) not null
 )
-<<<<<<< HEAD
 
-=======
->>>>>>> ce569bde82b2cd22258c0743ee9c2dbfeb0111bc
 
 create sequence product_zzim_seq;
 select * from product_zzim;

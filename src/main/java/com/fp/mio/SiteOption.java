@@ -13,6 +13,9 @@ public class SiteOption {
 	public int getReplyCountPerpage() {
 		return replyCountPerpage;
 	}
+	public int getProductCountPerpage() {
+		return replyCountPerpage;
+	}
 
 	public void setReplyCountPerpage(int replyCountPerpage) {
 		this.replyCountPerpage = replyCountPerpage;

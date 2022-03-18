@@ -1,4 +1,3 @@
-// 회원가입 창으로
 
 function zzim(no, id) {
 
@@ -14,6 +13,7 @@ function zzim(no, id) {
 
 		}
 
+		  location.reload();
 	}
 }
 
@@ -35,6 +35,12 @@ function goCart(i, p , price , c, photo) {
 		+amount+"&c_price=" + price + "&p_num="+ p +"&c_category="+ c + "&c_p_photo=" + photo;
 		
 		alert("장바구니에 담겼습니다.")
+		
+		let ok = confirm("장바구니로 이동하시겠습니까?")
+		if (ok) {
+			location.href = "product.go.cart"
+
+		}
 	}
 }
 	
