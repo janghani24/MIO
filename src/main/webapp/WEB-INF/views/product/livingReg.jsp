@@ -10,29 +10,31 @@
 
 <h1>생활용품 제품 등록</h1>
 
-사진:<input type="file">
-<p>
-상품 이름:<input>
-<p>
-상품 가격:<input>
-<p>
-브랜드:<input>
-<p>
-상품 상세 정보:<input type="file">
-<p>
-상품 하위 카테고리
-<select name="">
-<option value="주방용품">주방용품</option>
-<option value="욕실용품">욕실용품</option>
-<option value="지갑">지갑</option>
-<option value="문구">문구</option>
+<form action="food.reg" method="post" enctype="multipart/form-data">
+		<h1>식품 등록</h1>
+		
+		사진:<input name="p_photo" type="file">
+		<p>
+			상품 이름:<input name="p_name">
+		<p>
+			상품 가격:<input name="p_price">
+		<p>
+			브랜드:<input name="p_brand">
+		<p>
+			수량:<input name="p_quantity">
+		<p>
+			상품 상세 정보:<input name="p_content" type="file">
+		<p>
+			상품 하위 카테고리 <select name="p_category2">
+				<option value="주방용품">주방용품</option>
+				<option value="욕실용품">욕실용품</option>
+				<option value="생활용품">생활용품</option>
+				<option value="문구">문구</option>
 
-
-</select>
-<p>
-등록일자: <input type="date" name="f_period">
-<p>
-<button>등록</button>
+			</select>
+		<p>
+			<button>등록</button>
+	</form>
 
 </body>
 </html>

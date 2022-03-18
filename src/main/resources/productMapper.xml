@@ -2,15 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.mio.product.ProductMapper">
 
-<select id="getProductAll" resultType="com.fp.mio.product.Product">
+	<select id="getProductAll"
+		resultType="com.fp.mio.product.Product">
 
-select * from product_master
+		select * from product_master
 
-</select>
+	</select>
+	
 
-<select id="getFood" resultType="com.fp.mio.product.Product">
+	<select id="getFood" resultType="com.fp.mio.product.Product">
 
-select * from product_master where p_category1 = 'food'
+		select * from product_master where p_category1 = 'food'
 
 </select>
 
@@ -51,44 +53,92 @@ select * from product_master where p_category2=#{p_category2}
 
 <select id="getAccount" resultType="com.fp.mio.account.Account">
 		select * from account_mio order by a_id
+
 	</select>
 
+<<<<<<< HEAD
 	<select id="showzzim"	parameterType="com.fp.mio.account.Account" resultType="com.fp.mio.product.Zzim">
 		SELECT *
 	FROM product_zzim , account_mio, product_master
 	WHERE product_zzim.z_id = account_mio.a_id
 	AND product_zzim.z_num = product_master.p_num
 	AND product_zzim.z_id = #{a_id}
+=======
+
+	<select id="showzzim" parameterType="com.fp.mio.account.Account"
+		resultType="com.fp.mio.product.Zzim">
+		select * from product_zzim
+		where p_id = #{a_id}
+		order by p_no
+>>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
 	</select>
 
-<delete id="deletezzim" parameterType="com.fp.mio.product.Zzim">
+	<delete id="deletezzim" parameterType="com.fp.mio.product.Zzim">
 		delete from
+<<<<<<< HEAD
 		product_zzim where z_no = #{z_no}
+=======
+		product_zzim
+		where p_no = #{p_no}
+>>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
 	</delete>
-	
-<delete id="deleteReply" parameterType="com.fp.mio.product.ProductReply">
+
+	<delete id="deleteReply"
+		parameterType="com.fp.mio.product.ProductReply">
 		delete from
 		product_reply where r_no = #{r_no}
 	</delete>
 
 
-<select id="getProductSearch" resultType="com.fp.mio.product.Product">
+	<select id="getProductSearch"
+		resultType="com.fp.mio.product.Product">
 
-select*from product_master where p_name like '%'||#{p_name}||'%' or p_brand like '%'||#{p_brand}||'%'
+		select*from product_master where p_name like '%'||#{p_name}||'%' or p_brand like
+		'%'||#{p_brand}||'%'
 
-</select>
+	</select>
 
-<insert id="writeReply"	parameterType="com.fp.mio.product.ProductReply">
+	<insert id="writeReply"
+		parameterType="com.fp.mio.product.ProductReply">
 		insert into product_reply
 		values(product_reply_seq.nextval,
 		#{r_p_no}, #{r_owner},
-		#{r_txt}, #{r_rate}, sysdate)
+		#{r_txt},
+		#{r_rate}, sysdate)
 	</insert>
-	
+
 	<select id="getReply" parameterType="com.fp.mio.product.Product"
 		resultType="com.fp.mio.product.ProductReply">
 		select *
 		from product_reply
 		where r_p_no = #{p_num}
 	</select>
+
+<insert id="regFood"
+		parameterType="com.fp.mio.product.Product">
+		insert into product_master
+		values(product_master_seq.nextval,#{p_name}, #{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+	</insert>
+	
+	<insert id="regFashion"
+		parameterType="com.fp.mio.product.Product">
+		insert into product_master
+		values(product_master_seq.nextval,#{p_name}, #{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+	</insert>
+	
+	<insert id="regBeauty"
+		parameterType="com.fp.mio.product.Product">
+		insert into product_master
+		values(product_master_seq.nextval,#{p_name}, #{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+	</insert>
+	
+	<insert id="regLiving"
+		parameterType="com.fp.mio.product.Product">
+		insert into product_master
+		values(product_master_seq.nextval,#{p_name}, #{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+	</insert>
+	
+
+
+
 </mapper>

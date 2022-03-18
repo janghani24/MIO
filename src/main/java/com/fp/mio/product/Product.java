@@ -10,6 +10,7 @@ public class Product {
 	private String p_brand;
 	private String p_photo;
 	private String p_content;
+	private int p_quantity;
 	private String p_category1;
 	private String p_category2;
 	private Date p_date;
@@ -66,6 +67,14 @@ public void setP_content(String p_content) {
 	this.p_content = p_content;
 }
 
+public int getP_quantity() {
+	return p_quantity;
+}
+
+public void setP_quantity(int p_quantity) {
+	this.p_quantity = p_quantity;
+}
+
 public String getP_category1() {
 	return p_category1;
 }
@@ -90,8 +99,7 @@ public void setP_date(Date p_date) {
 	this.p_date = p_date;
 }
 
-
-public Product(int p_num, String p_name, int p_price, String p_brand, String p_photo, String p_content,
+public Product(int p_num, String p_name, int p_price, String p_brand, String p_photo, String p_content, int p_quantity,
 		String p_category1, String p_category2, Date p_date) {
 	super();
 	this.p_num = p_num;
@@ -100,11 +108,12 @@ public Product(int p_num, String p_name, int p_price, String p_brand, String p_p
 	this.p_brand = p_brand;
 	this.p_photo = p_photo;
 	this.p_content = p_content;
+	this.p_quantity = p_quantity;
 	this.p_category1 = p_category1;
 	this.p_category2 = p_category2;
 	this.p_date = p_date;
-	
 }
+
 
 
 }

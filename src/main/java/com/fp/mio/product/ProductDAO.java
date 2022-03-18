@@ -1,5 +1,6 @@
 package com.fp.mio.product;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,13 +11,16 @@ import org.springframework.stereotype.Service;
 
 import com.fp.mio.account.Account;
 import com.fp.mio.account.AccountMapper;
+import com.fp.mio.funding.FundingMapper;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Service
 public class ProductDAO {
 
 	@Autowired
 	private SqlSession ss;
-	
+
 	public void getProductAll(HttpServletRequest request) {
 
 		try {
@@ -63,9 +67,7 @@ public class ProductDAO {
 
 	public Product getProductDetail(HttpServletRequest request, Product product, int p_num) {
 
-		
 		return ss.getMapper(ProductMapper.class).getProductDetail(p_num);
-		
 
 	}
 
@@ -80,26 +82,29 @@ public class ProductDAO {
 		}
 	}
 
-
-	public void getProductzzim(HttpServletRequest request,Zzim zzim) {
+	public void getProductzzim(HttpServletRequest request, Zzim zzim) {
 		try {
-			
+
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
+<<<<<<< HEAD
 			zzim.setZ_id(a.getA_id());
 	
 		
+=======
+			zzim.setP_id(a.getA_id());
+
+>>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
 			if (ss.getMapper(ProductMapper.class).getProductzzim(zzim) == 1) {
 				System.out.println("찜성공");
 			} else {
 				System.out.println("찜실패");
 			}
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void getAccount(HttpServletRequest req) {
 		try {
 			req.setAttribute("accounts", ss.getMapper(AccountMapper.class).getAccount());
@@ -107,11 +112,11 @@ public class ProductDAO {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void showzzim(HttpServletRequest req) {
 		try {
 			Account a = (Account) req.getSession().getAttribute("loginAccount");
-			
+
 			req.setAttribute("showZzim", ss.getMapper(ProductMapper.class).showzzim(a));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,9 +124,9 @@ public class ProductDAO {
 	}
 
 	public void deletezzim(Zzim zzim, HttpServletRequest request) {
-		
+
 		try {
-		
+
 			if (ss.getMapper(ProductMapper.class).deletezzim(zzim) == 1) {
 				System.out.println("삭제성공");
 			} else {
@@ -131,7 +136,7 @@ public class ProductDAO {
 			e.printStackTrace();
 			System.out.println("삭제실패");
 		}
-		
+
 	}
 
 	public void productSearch(HttpServletRequest request, String p_name) {
@@ -144,7 +149,7 @@ public class ProductDAO {
 
 	}
 
-	public void writeReply(ProductReply pr,Product p, HttpServletRequest req) {
+	public void writeReply(ProductReply pr, Product p, HttpServletRequest req) {
 
 		try {
 			String token = req.getParameter("token");
@@ -175,11 +180,218 @@ public class ProductDAO {
 		List<ProductReply> pr = ss.getMapper(ProductMapper.class).getReply(product);
 		req.setAttribute("replys", pr);
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
 	public Product getProductDetailRp(HttpServletRequest request, Product product) {
 
-		
 		return ss.getMapper(ProductMapper.class).getProductDetail(product.getP_num());
-		
+
+	}
+
+	public void regFood(HttpServletRequest request, Product product) {
+
+		try {
+			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+			String path = request.getSession().getServletContext().getRealPath("resources/img/food");
+			MultipartRequest mr = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", policy);
+
+			int p_price = Integer.parseInt(mr.getParameter("p_price"));
+			int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
+
+			product.setP_name(mr.getParameter("p_name"));
+			product.setP_price(p_price);
+			product.setP_brand(mr.getParameter("p_brand"));
+			String file = mr.getFilesystemName("p_photo");
+			product.setP_photo(file);
+			String file2 = mr.getFilesystemName("p_content");
+			product.setP_content(file2);
+			product.setP_quantity(p_quantity);
+
+			String p_category2 = "";
+			String c = mr.getParameter("p_category2");
+
+			if (c.equals("식사거리")) {
+				p_category2 = "식사거리";
+			} else if (c.equals("간식거리")) {
+				p_category2 = "간식거리";
+			} else if (c.equals("요리재료")) {
+				p_category2 = "요리재료";
+			} else {
+				p_category2 = "건강식품";
+			}
+
+			product.setP_category1("food");
+			product.setP_category2(p_category2);
+
+			Date today = new Date();
+			product.setP_date(today);
+
+			if (ss.getMapper(ProductMapper.class).regFood(product) == 1) {
+				request.setAttribute("r", "등록성공!");
+				System.out.println("--등록 성공--");
+			} else {
+				request.setAttribute("r", "등록실패!");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void regFashion(HttpServletRequest request, Product product) {
+
+		try {
+			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+			String path = request.getSession().getServletContext().getRealPath("resources/img/fashion");
+			MultipartRequest mr = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", policy);
+
+			int p_price = Integer.parseInt(mr.getParameter("p_price"));
+			int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
+
+			product.setP_name(mr.getParameter("p_name"));
+			product.setP_price(p_price);
+			product.setP_brand(mr.getParameter("p_brand"));
+			String file = mr.getFilesystemName("p_photo");
+			product.setP_photo(file);
+			String file2 = mr.getFilesystemName("p_content");
+			product.setP_content(file2);
+			product.setP_quantity(p_quantity);
+			String p_category2 = "";
+			String c = mr.getParameter("p_category2");
+
+			if (c.equals("의류")) {
+				p_category2 = "의류";
+			} else if (c.equals("가방")) {
+				p_category2 = "가방";
+			} else if (c.equals("지갑")) {
+				p_category2 = "지갑";
+			} else if (c.equals("패션소품")) {
+				p_category2 = "패션소품";
+			} else if (c.equals("케이스")) {
+				p_category2 = "케이스";
+			} else {
+				p_category2 = "신발";
+			}
+
+			product.setP_category1("fashion");
+			product.setP_category2(p_category2);
+
+			Date today = new Date();
+			product.setP_date(today);
+
+			if (ss.getMapper(ProductMapper.class).regFashion(product) == 1) {
+				request.setAttribute("r", "등록성공!");
+				System.out.println("--등록 성공--");
+			} else {
+				request.setAttribute("r", "등록실패!");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void regBeauty(HttpServletRequest request, Product product) {
+
+		try {
+			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+			String path = request.getSession().getServletContext().getRealPath("resources/img/beauty");
+			MultipartRequest mr = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", policy);
+
+			int p_price = Integer.parseInt(mr.getParameter("p_price"));
+			int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
+
+			product.setP_name(mr.getParameter("p_name"));
+			product.setP_price(p_price);
+			product.setP_brand(mr.getParameter("p_brand"));
+			String file = mr.getFilesystemName("p_photo");
+			product.setP_photo(file);
+			String file2 = mr.getFilesystemName("p_content");
+			product.setP_content(file2);
+			product.setP_quantity(p_quantity);
+			String p_category2 = "";
+			String c = mr.getParameter("p_category2");
+
+			if (c.equals("스킨케어")) {
+				p_category2 = "스킨케어";
+			} else if (c.equals("바디케어")) {
+				p_category2 = "바디케어";
+			} else if (c.equals("메이크업")) {
+				p_category2 = "메이크업";
+			} else {
+				p_category2 = "선케어";
+			}
+
+			product.setP_category1("beauty");
+			product.setP_category2(p_category2);
+
+			Date today = new Date();
+			product.setP_date(today);
+
+			if (ss.getMapper(ProductMapper.class).regBeauty(product) == 1) {
+				request.setAttribute("r", "등록성공!");
+				System.out.println("--등록 성공--");
+			} else {
+				request.setAttribute("r", "등록실패!");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void regLiving(HttpServletRequest request, Product product) {
+
+		try {
+			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+			String path = request.getSession().getServletContext().getRealPath("resources/img/living");
+			MultipartRequest mr = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", policy);
+
+			int p_price = Integer.parseInt(mr.getParameter("p_price"));
+			int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
+
+			product.setP_name(mr.getParameter("p_name"));
+			product.setP_price(p_price);
+			product.setP_brand(mr.getParameter("p_brand"));
+			String file = mr.getFilesystemName("p_photo");
+			product.setP_photo(file);
+			String file2 = mr.getFilesystemName("p_content");
+			product.setP_content(file2);
+			product.setP_quantity(p_quantity);
+			String p_category2 = "";
+			String c = mr.getParameter("p_category2");
+
+			if (c.equals("주방용품")) {
+				p_category2 = "주방용품";
+			} else if (c.equals("욕실용품")) {
+				p_category2 = "욕실용품";
+			} else if (c.equals("생활용품")) {
+				p_category2 = "생활용품";
+			} else {
+				p_category2 = "문구";
+			}
+
+			product.setP_category1("living");
+			product.setP_category2(p_category2);
+
+			Date today = new Date();
+			product.setP_date(today);
+
+			if (ss.getMapper(ProductMapper.class).regLiving(product) == 1) {
+				request.setAttribute("r", "등록성공!");
+				System.out.println("--등록 성공--");
+			} else {
+				request.setAttribute("r", "등록실패!");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 

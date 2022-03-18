@@ -3,24 +3,28 @@
 <mapper namespace="com.fp.mio.funding.FundingMapper">
 
 
-	<select id="getFundingAll" resultType="com.fp.mio.funding.Funding">
+	<select id="getFundingAll"
+		resultType="com.fp.mio.funding.Funding">
 		select * from fundingTbl
 	</select>
 
-	<delete id="deleteFunding" parameterType="com.fp.mio.funding.Funding">
+	<delete id="deleteFunding"
+		parameterType="com.fp.mio.funding.Funding">
 		delete fundingTbl where f_num = #{f_num}
 	</delete>
 
 
-	<insert id="regFunding" parameterType="com.fp.mio.funding.Funding">
-		insert into fundingTbl values (fundingTbl_seq.nextval,#{f_photo},#{f_name},#{f_company},#{f_category},#{f_period},#{f_url})
+	<insert id="regFunding"
+		parameterType="com.fp.mio.funding.Funding">
+		insert into fundingTbl values
+		(fundingTbl_seq.nextval,#{f_photo},#{f_name},#{f_company},#{f_category},#{f_period},#{f_url})
 	</insert>
 
 	<select id="getFundingCategory" resultType="com.fp.mio.funding.Funding">
 
-select * from fundingTbl where f_category=#{f_category}
+		select * from fundingTbl where f_category=#{f_category}
 
-</select>
+	</select>
 
 
 </mapper>

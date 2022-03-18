@@ -10,37 +10,45 @@
 <title>Insert title here</title>
 </head>
 <body>
-${funding2 }
+<table border=1 class="category_tbl">
 
-	<table border=1 class="category_tbl">
-	
-	<tr>	<td onclick="location.href='funding.all'">전체보기</td>
-			<td onclick="location.href='funding.category?f_category=일자리창출'">일자리 창출</td>
-			<td onclick="location.href='funding.category?f_category=친환경'">친환경</td>
-			<td onclick="location.href='funding.category?f_category=기부'">기부</td>
-			<td onclick="location.href='funding.category?f_category=유기동물후원'">유기동물 후원</td>
-		</tr>
-	
-	</table>
+    <tr>    <td onclick="location.href='funding.all'">전체보기</td>
+            <td onclick="location.href='funding.category?f_category=일자리창출'">일자리 창출</td>
+            <td onclick="location.href='funding.category?f_category=친환경'">친환경</td>
+            <td onclick="location.href='funding.category?f_category=기부'">기부</td>
+            <td onclick="location.href='funding.category?f_category=유기동물후원'">유기동물 후원</td>
+        </tr>
 
+<<<<<<< HEAD
 		<c:forEach var="f" items="${funding2}">
 			<ul>
 			
 				<li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg"></a></li>
+=======
+>>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
 
-				<li><a href="${f.f_url}">${f.f_company}</a></li>
-				<li>${f.f_name}</li>
-
-				<li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
-				</li>
-				<li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
-				</li>		
-				<li><button onclick="location.href='funding.delete?f_num=${f.f_num}'">삭제</button><li>
-			</ul> 
-	</c:forEach>
+    </table>
 
 		
-		<button onclick="location.href='funding.regPage'">펀딩 등록</button>
+
+        <c:forEach var="f" items="${funding2}">
+            <ul>
+
+                <li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg" width="300px;"></a></li>
+
+                <li><a href="${f.f_url}">${f.f_company}</a></li>
+                <li>${f.f_name}</li>
+
+                <li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
+                </li>
+                <li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
+                </li>
+                
+            </ul> 
+    </c:forEach>
+
+
+        <button onclick="location.href='funding.regPage'">펀딩 등록</button>
 		
 </body>
 </html>
