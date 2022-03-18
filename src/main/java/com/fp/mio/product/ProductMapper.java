@@ -38,8 +38,7 @@ public interface ProductMapper {
 
 	List<ProductReply> getReply(Product p);
 
-<<<<<<< HEAD
-=======
+
 	int regFood(Product product);
 
 	int regBeauty(Product product);
@@ -60,7 +59,7 @@ public interface ProductMapper {
 
 	int deleteCart(Cart c);
 
->>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
+
 
 
 }

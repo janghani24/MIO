@@ -123,10 +123,10 @@ public class ProductController {
 
 	// 상품 상세 페이지로 이동
 	@RequestMapping(value = "/product.detail", method = RequestMethod.GET)
-	public String productDetail(HttpServletRequest request, Product product, int p_num) {
+	public String productDetail(HttpServletRequest request, Product product) {
 
 		pDAO.getReply(product, request);
-		pDAO.getProductDetail(request, product, p_num);
+		pDAO.getProductDetail(request, product);
 
 		pDAO.getAccount(request);
 		if (aDAO.loginCheck(request)) {
@@ -135,7 +135,7 @@ public class ProductController {
 
 		}
 
-		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 
@@ -143,7 +143,7 @@ public class ProductController {
 
 	// 찜 페이지
 	@RequestMapping(value = "/product.zzim", method = RequestMethod.GET)
-	public String productzzim(HttpServletRequest request, Product product, int p_num, Zzim zzim) {
+	public String productzzim(HttpServletRequest request, Product product, Zzim zzim) {
 
 		if (aDAO.loginCheck(request)) {
 
@@ -152,7 +152,7 @@ public class ProductController {
 
 //		pDAO.getProductDetail(request, product, p_num);
 
-		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 	}

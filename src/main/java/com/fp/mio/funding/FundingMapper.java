@@ -10,4 +10,6 @@ public interface FundingMapper {
 
 	List<Funding> getFundingCategory(String f_category);
 
+	int deleteFunding(Funding funding);
+
 }

@@ -66,12 +66,12 @@ function deletezzim(no) {
 	}
 	
 }
-function deletezzim2(no) {
+function deletezzim2(no, no2) {
 	
 	
 	var ok = confirm("찜해제할래요?");
 	if (ok) {
-		location.href = "account.deletezzim2?z_no=" + no;
+		location.href = "account.deletezzim2?z_no=" + no + "&p_num=" + no2;
 		
 	}
 	

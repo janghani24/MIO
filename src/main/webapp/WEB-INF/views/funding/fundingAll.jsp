@@ -19,13 +19,12 @@
             <td onclick="location.href='funding.category?f_category=유기동물후원'">유기동물 후원</td>
         </tr>
 
-<<<<<<< HEAD
+
 		<c:forEach var="f" items="${funding2}">
 			<ul>
 			
 				<li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg"></a></li>
-=======
->>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
+</ul></c:forEach>
 
     </table>
 

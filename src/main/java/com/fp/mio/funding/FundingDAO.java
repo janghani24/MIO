@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fp.mio.product.ProductMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -78,10 +79,37 @@ public class FundingDAO {
 
 	}
 
+	
+
+
+	public void deleteFunding(HttpServletRequest request, Funding funding) {
+        if (ss.getMapper(FundingMapper.class).deleteFunding(funding) == 1) {
+            request.setAttribute("r", "삭제 성공!");
+            System.out.println("--등록 성공--");
+        } else {
+            request.setAttribute("r", "삭제 실패!");
+        }
+    }
+
+
 	public void getFundingCategory(HttpServletRequest request, String f_category2) {
 
-		request.setAttribute("funding", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
+        request.setAttribute("funding2", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
 
-	}
+    }
+
+
+	public void getProductCategory(HttpServletRequest request, String p_category2) {
+        try {
+            request.setAttribute("food", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+            request.setAttribute("fashion", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+            request.setAttribute("beauty", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+            request.setAttribute("living", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }

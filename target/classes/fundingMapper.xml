@@ -20,13 +20,7 @@
 		(fundingTbl_seq.nextval,#{f_photo},#{f_name},#{f_company},#{f_category},#{f_period},#{f_url})
 	</insert>
 
-<<<<<<< HEAD
 	<select id="getFundingCategory" resultType="com.fp.mio.funding.Funding">
-=======
-
-	<select id="getFundingCategory" parameterType="String" resultType="com.fp.mio.funding.Funding">
->>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
-
 
 		select * from fundingTbl where f_category=#{f_category}
 

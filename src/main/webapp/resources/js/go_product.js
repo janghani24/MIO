@@ -8,20 +8,17 @@ function zzim(no, id) {
 
 		alert("찜하기 완료")
 
-		let ok = confirm("찜목록으로 이동할래요?")
-		if (ok) {
-			location.href = "account.Wishlist"
-<<<<<<< HEAD
-				
+		let ok2 = confirm("찜목록으로 이동할래요?aa")
+		if (ok2) {
+			window.location.href='account.Wishlist';
+			return;
+		}else{
+			window.location.reload();
 		}
-		
-		location.reload();
-=======
 
 		}
 
->>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
-	}
+	
 }
 
 function deleteReply(n, p) {
