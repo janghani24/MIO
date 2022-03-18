@@ -141,9 +141,12 @@ public class ProductController {
 
 	// 상품 상세 페이지로 이동
 	@RequestMapping(value = "/product.detail", method = RequestMethod.GET)
-	public String productDetail(HttpServletRequest request, Product product, int p_num) {
+	public String productDetail(HttpServletRequest request, Product product) {
 
 		pDAO.getReply(product, request);
+
+		pDAO.getProductDetail(request, product);
+
 		pDAO.getAccount(request);
 		if (aDAO.loginCheck(request)) {
 
@@ -151,7 +154,7 @@ public class ProductController {
 
 		}
 
-		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 
@@ -159,7 +162,7 @@ public class ProductController {
 
 	// 찜 페이지
 	@RequestMapping(value = "/product.zzim", method = RequestMethod.GET)
-	public String productzzim(HttpServletRequest request, Product product, int p_num, Zzim zzim) {
+	public String productzzim(HttpServletRequest request, Product product, Zzim zzim) {
 
 		if (aDAO.loginCheck(request)) {
 
@@ -168,10 +171,12 @@ public class ProductController {
 
 //		pDAO.getProductDetail(request, product, p_num);
 
-		request.setAttribute("detail", pDAO.getProductDetail(request, product, p_num));
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 	}
+
+	// 전체 상품 검색 페이지
 
 
 
@@ -185,7 +190,6 @@ public class ProductController {
 		aDAO.loginCheck(request);
 		pDAO.productSearch(ps, request);
 		pDAO.getProduct(1, request);
-		
 
 		request.setAttribute("contentPage", "product/productSearch.jsp");
 		return "index";
@@ -206,19 +210,6 @@ public class ProductController {
 		req.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 	}
-	@RequestMapping(value = "/product.reply.delete", method = RequestMethod.GET)
-	public String productReplyDelete(ProductReply pr, HttpServletRequest req, Product product) {
-		com.fp.mio.TokenMaker.make(req);
-		// int p = Integer.parseInt(req.getParameter("p"));
-		if (aDAO.loginCheck(req)) {
-			pDAO.deleteReply(pr,req);
-			pDAO.getReply(product, req);
-			req.setAttribute("detail", pDAO.getProductDetailRp(req, product));
-		}
-		
-		req.setAttribute("contentPage", "product/productDetail.jsp");
-		return "index";
-	}
 
 	// 상품 등록 선택 페이지
 
@@ -229,6 +220,7 @@ public class ProductController {
 		return "index";
 
 	}
+
 	// 상품 삭제
 	@RequestMapping(value = "/product.deleteProduct", method = RequestMethod.GET)
 	public String deleteProduct(HttpServletRequest request, Product p) {

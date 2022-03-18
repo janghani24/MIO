@@ -24,6 +24,7 @@
 		select * from product_master
 		where p_category1 = 'food'
 
+
 	</select>
 
 	<select id="getFashion" resultType="com.fp.mio.product.Product">
@@ -60,6 +61,7 @@
 	<select id="getCart" parameterType="com.fp.mio.account.Account"
 		resultType="com.fp.mio.product.Cart">
 
+<<<<<<< HEAD
 		select * from product_cart where c_a_id = #{a_id}
 
 	</select>
@@ -77,10 +79,14 @@
 		where
 		c_a_id=#{c_a_id} and c_p_no = #{c_p_no}
 	</update>
+=======
+</select>
+>>>>>>> 7a920c18a09e9ed40c3b133dc10a9ad2e3658827
 
 	<insert id="getProductzzim"
 		parameterType="com.fp.mio.product.Zzim">
 		insert into product_zzim
+<<<<<<< HEAD
 		values(product_zzim_seq.nextval,#{p_num}, #{p_id})
 	</insert>
 
@@ -89,6 +95,10 @@
 		values(product_cart_seq.nextval,#{c_p_no}, #{c_a_id},
 		#{c_quantity},#{c_name},#{c_price},#{c_category},#{c_p_photo})
 	</insert>
+=======
+		values(product_zzim_seq.nextval,#{p_num}, #{z_id})
+</insert>
+>>>>>>> 7a920c18a09e9ed40c3b133dc10a9ad2e3658827
 
 	<select id="getAccount" resultType="com.fp.mio.account.Account">
 		select * from account_mio
@@ -97,17 +107,20 @@
 	</select>
 
 
-	<select id="showzzim" parameterType="com.fp.mio.account.Account"
-		resultType="com.fp.mio.product.Zzim">
-		select * from product_zzim
-		where p_id = #{a_id}
-		order by p_no
+	<select id="showzzim"	parameterType="com.fp.mio.account.Account" resultType="com.fp.mio.product.Zzim">
+		SELECT *
+	FROM product_zzim , account_mio, product_master
+	WHERE product_zzim.z_id = account_mio.a_id
+	AND product_zzim.z_num = product_master.p_num
+	AND product_zzim.z_id = #{a_id}
+
 	</select>
 
 	<delete id="deletezzim" parameterType="com.fp.mio.product.Zzim">
 		delete from
-		product_zzim
-		where p_no = #{p_no}
+
+		product_zzim where z_no = #{z_no}
+
 	</delete>
 
 	<delete id="deleteReply"
@@ -115,6 +128,7 @@
 		delete from
 		product_reply where r_no = #{r_no}
 	</delete>
+<<<<<<< HEAD
 
 	<delete id="deleteCart" parameterType="com.fp.mio.product.Cart">
 		delete from
@@ -127,6 +141,8 @@
 		delete from
 		product_master where p_num=#{p_num}
 	</delete>
+=======
+>>>>>>> 7a920c18a09e9ed40c3b133dc10a9ad2e3658827
 
 
 	<select id="getProductSearch"

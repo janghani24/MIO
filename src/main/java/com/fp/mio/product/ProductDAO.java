@@ -84,9 +84,9 @@ public class ProductDAO {
 		}
 	}
 
-	public Product getProductDetail(HttpServletRequest request, Product product, int p_num) {
-
-		return ss.getMapper(ProductMapper.class).getProductDetail(p_num);
+	public Product getProductDetail(HttpServletRequest request, Product product) {
+		System.out.println(product.getP_num() + " ~?~?~?~?~?~~?~?~~?~?~?");
+		return ss.getMapper(ProductMapper.class).getProductDetail(product.getP_num());
 
 	}
 
@@ -105,7 +105,10 @@ public class ProductDAO {
 		try {
 
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
-			zzim.setP_id(a.getA_id());
+
+			zzim.setZ_id(a.getA_id());
+	
+		
 
 			if (ss.getMapper(ProductMapper.class).getProductzzim(zzim) == 1) {
 				System.out.println("찜성공");
@@ -151,6 +154,7 @@ public class ProductDAO {
 		}
 
 	}
+
 
 	public void productSearch(ProductSelector ps,HttpServletRequest request) {
 			System.out.println(ps.getSearch());
@@ -524,5 +528,6 @@ public void getProduct(int pageNo, HttpServletRequest req) {
 
 	
 	
+
 
 }

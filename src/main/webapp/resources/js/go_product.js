@@ -7,19 +7,23 @@ function zzim(no, id) {
 
 		alert("찜하기 완료")
 
-		let ok = confirm("찜목록으로 이동할래요?")
-		if (ok) {
-			location.href = "account.Wishlist"
+		let ok2 = confirm("찜목록으로 이동할래요?aa")
+		if (ok2) {
+			window.location.href='account.Wishlist';
+			return;
+		}else{
+			window.location.reload();
+		}
 
 		}
 
-		  location.reload();
-	}
+
 }
 
 function deleteReply(n, p) {
 	location.href = "product.reply.delete?r_no=" + n + "&p_num=" + p;
 }
+
 function deleteProduct(n) {
 	let ok = confirm("등록된 상품을 삭제하시겠습니까?")
 	if (ok) {
@@ -63,3 +67,4 @@ function updateCart(p,t) {
 		alert('숫자만 입력해주세요!');
 	}
 }
+

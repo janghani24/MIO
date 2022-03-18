@@ -52,7 +52,7 @@
 			<tr>
 				<td class="td1">휴대전화 번호</td>
 				<td class="td2">
-				<input name="s_phone" placeholder="필수,-없이 숫자만 입력해주세요." maxlength="10" autocomplete="off" autofocus="autofocus"></td>
+				<input name="s_phone" placeholder="필수" maxlength="10" autocomplete="off" autofocus="autofocus"></td>
 			</tr>
 			<tr>
 				<td class="td1">사진</td>

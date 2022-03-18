@@ -38,6 +38,7 @@ public interface ProductMapper {
 
 	List<ProductReply> getReply(Product p);
 
+
 	int regFood(Product product);
 
 	int regBeauty(Product product);
@@ -61,6 +62,7 @@ public interface ProductMapper {
 	int deleteProduct(Product p);
 
 	int getProductCount(ProductSelector search);
+
 
 
 
