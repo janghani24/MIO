@@ -157,13 +157,14 @@ public class ProductController {
 		return "index";
 	}
 
-	// 전체 상품 검색 페이지
+
+
+	//전체 상품 검색 페이지로 이동
 
 	@RequestMapping(value = "/product.search", method = RequestMethod.GET)
-	public String productSearch(HttpServletRequest request, String search) {
+	public String productSearch(HttpServletRequest request, Product p) {
 
-		String p_name = request.getParameter("search");
-		pDAO.productSearch(request, p_name);
+		pDAO.productSearch(request, p);
 
 		request.setAttribute("contentPage", "product/productSearch.jsp");
 		return "index";
@@ -184,6 +185,19 @@ public class ProductController {
 		req.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 	}
+	@RequestMapping(value = "/product.reply.delete", method = RequestMethod.GET)
+	public String productReplyDelete(ProductReply pr, HttpServletRequest req, Product product) {
+		com.fp.mio.TokenMaker.make(req);
+		// int p = Integer.parseInt(req.getParameter("p"));
+		if (aDAO.loginCheck(req)) {
+			pDAO.deleteReply(pr,req);
+			pDAO.getReply(product, req);
+			req.setAttribute("detail", pDAO.getProductDetailRp(req, product));
+		}
+		
+		req.setAttribute("contentPage", "product/productDetail.jsp");
+		return "index";
+	}
 
 	// 상품 등록 선택 페이지
 
@@ -194,6 +208,45 @@ public class ProductController {
 		return "index";
 
 	}
+	
+	// 장바구니 넣기
+	@RequestMapping(value = "/product.insert.cart", method = RequestMethod.GET)
+	public String insertCart(HttpServletRequest request, Cart c, Product p) {
+		if (aDAO.loginCheck(request)) {
+			pDAO.insertCart(c,request,p);
+			pDAO.getReply(p, request);
+			request.setAttribute("detail", pDAO.getProductDetailRp(request, p));
+		}
+		request.setAttribute("contentPage", "product/productDetail.jsp");
+		return "index";
+		
+	}
+	
+	// 장바구니로 이동
+		@RequestMapping(value = "/product.go.cart", method = RequestMethod.GET)
+		public String goCart(HttpServletRequest request) {
+			pDAO.getCart(request);
+			request.setAttribute("contentPage", "product/cart.jsp");
+			return "index";
+		}
+		
+	// 장바구니에서 삭제
+		@RequestMapping(value = "/product.delete.cart", method = RequestMethod.GET)
+		public String deleteCart(HttpServletRequest request,Cart c) {
+			pDAO.deleteCart(request,c);
+			pDAO.getCart(request);
+			request.setAttribute("contentPage", "product/cart.jsp");
+			return "index";
+		}
+		
+	// 장바구니 수량 수정
+		@RequestMapping(value = "/product.update.cart", method = RequestMethod.GET)
+		public String updateCart(HttpServletRequest request,Cart c) {
+			pDAO.updateCart(request,c);
+			pDAO.getCart(request);
+			request.setAttribute("contentPage", "product/cart.jsp");
+			return "index";
+		}
 
 	// food 등록 페이지
 	@RequestMapping(value = "/product.foodReg", method = RequestMethod.GET)

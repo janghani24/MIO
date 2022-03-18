@@ -14,50 +14,72 @@
 
 		select * from product_master where p_category1 = 'food'
 
-	</select>
 
-	<select id="getFashion" resultType="com.fp.mio.product.Product">
+</select>
 
-		select * from product_master where p_category1 = 'fashion'
+<select id="getFashion" resultType="com.fp.mio.product.Product">
 
-	</select>
+select * from product_master where p_category1 = 'fashion'
 
-	<select id="getBeauty" resultType="com.fp.mio.product.Product">
+</select>
 
-		select * from product_master where p_category1 = 'beauty'
+<select id="getBeauty" resultType="com.fp.mio.product.Product">
 
-	</select>
+select * from product_master where p_category1 = 'beauty'
 
-	<select id="getLiving" resultType="com.fp.mio.product.Product">
+</select>
 
-		select * from product_master where p_category1 = 'living'
+<select id="getLiving" resultType="com.fp.mio.product.Product">
 
-	</select>
+select * from product_master where p_category1 = 'living'
 
-	<select id="getProductDetail"
-		resultType="com.fp.mio.product.Product">
+</select>
 
-		select * from product_master where p_num=#{p_num}
+<select id="getProductDetail" resultType="com.fp.mio.product.Product">
 
-	</select>
+select * from product_master where p_num=#{p_num}
 
-	<select id="getProductCategory"
-		resultType="com.fp.mio.product.Product">
+</select>
 
-		select * from product_master where p_category2=#{p_category2}
+<select id="getProductCategory" resultType="com.fp.mio.product.Product">
 
-	</select>
+select * from product_master where p_category2=#{p_category2}
 
-	<insert id="getProductzzim"
-		parameterType="com.fp.mio.product.Zzim">
+</select>
+<select id="getCart" parameterType="com.fp.mio.account.Account" resultType="com.fp.mio.product.Cart">
+
+select * from product_cart where c_a_id = #{a_id}
+
+</select>
+<select id="getCartByPNo" resultType="int">
+
+select count(*) from product_cart where c_p_no = #{c_p_no} and c_a_id = #{c_a_id}
+
+</select>
+
+<update id="updateCart"
+		parameterType="com.fp.mio.product.Cart">
+		update product_cart
+		set c_quantity=#{c_quantity}
+		where
+		c_a_id=#{c_a_id} and c_p_no = #{c_p_no}
+	</update>
+
+<insert id="getProductzzim" parameterType="com.fp.mio.product.Zzim">
 		insert into product_zzim
 		values(product_zzim_seq.nextval,#{p_num}, #{p_id})
-	</insert>
+</insert>
 
-	<select id="getAccount" resultType="com.fp.mio.account.Account">
-		select * from account_mio
-		order by a_id
+<insert id="insertCart" parameterType="com.fp.mio.product.Cart">
+		insert into product_cart
+		values(product_cart_seq.nextval,#{c_p_no}, #{c_a_id}, #{c_quantity},#{c_name},#{c_price},#{c_category},#{c_p_photo})
+</insert>
+
+<select id="getAccount" resultType="com.fp.mio.account.Account">
+		select * from account_mio order by a_id
+
 	</select>
+
 
 	<select id="showzzim" parameterType="com.fp.mio.account.Account"
 		resultType="com.fp.mio.product.Zzim">
@@ -76,6 +98,11 @@
 		parameterType="com.fp.mio.product.ProductReply">
 		delete from
 		product_reply where r_no = #{r_no}
+	</delete>
+	
+<delete id="deleteCart" parameterType="com.fp.mio.product.Cart">
+		delete from
+		product_cart where c_p_no=#{c_p_no} and c_a_id=#{c_a_id}
 	</delete>
 
 

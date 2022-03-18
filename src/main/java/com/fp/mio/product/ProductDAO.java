@@ -133,10 +133,14 @@ public class ProductDAO {
 
 	}
 
-	public void productSearch(HttpServletRequest request, String p_name) {
+	public void productSearch(HttpServletRequest request, Product p) {
 
+		System.out.println(p.getP_name());
+		
+		p.setP_brand(p.getP_name());
+		System.out.println(p.getP_brand());
 		try {
-			request.setAttribute("product", ss.getMapper(ProductMapper.class).getProductSearch(p_name));
+			request.setAttribute("productresult", ss.getMapper(ProductMapper.class).getProductSearch(p));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -382,6 +386,73 @@ public class ProductDAO {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	public void insertCart(Cart c, HttpServletRequest request, Product p) {
+
+		Product pp = ss.getMapper(ProductMapper.class).getProductDetail(p.getP_num());
+		c.setC_name(pp.getP_name());
+		System.out.println(c.getC_p_photo());
+		
+		if (ss.getMapper(ProductMapper.class).getCartByPNo(c) == 1) {
+			
+			if (ss.getMapper(ProductMapper.class).updateCart(c) == 1) {
+				request.setAttribute("result", "장바구니 넣기 성공");
+			} else {
+				request.setAttribute("result", "장바구니 넣기 실패");
+			}
+			
+		}else {
+		
+		
+		if (ss.getMapper(ProductMapper.class).insertCart(c) == 1) {
+			request.setAttribute("result", "장바구니 넣기 성공");
+		} else {
+			request.setAttribute("result", "장바구니 넣기 실패");
+		}
+		
+		}
+	}
+
+	public void getCart(HttpServletRequest request) {
+		try {
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
+			request.setAttribute("carts", ss.getMapper(ProductMapper.class).getCart(a));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+	public void deleteReply(ProductReply pr, HttpServletRequest req) {
+		if (ss.getMapper(ProductMapper.class).deleteReply(pr) == 1) {
+			req.setAttribute("result", "댓글 삭제 성공");
+		} else {
+			req.setAttribute("result", "댓글 삭제 실패");
+		}
+	}
+
+	public void deleteCart(HttpServletRequest request, Cart c) {
+		Account a = (Account) request.getSession().getAttribute("loginAccount");
+		c.setC_a_id(a.getA_id());
+		if (ss.getMapper(ProductMapper.class).deleteCart(c) == 1) {
+			request.setAttribute("result", "장바구니 삭제 성공");
+		} else {
+			request.setAttribute("result", "장바구니 삭제 실패");
+		}
+
+	}
+
+	public void updateCart(HttpServletRequest request, Cart c) {
+		Account a = (Account) request.getSession().getAttribute("loginAccount");
+		c.setC_a_id(a.getA_id());
+		if (ss.getMapper(ProductMapper.class).updateCart(c) == 1) {
+			request.setAttribute("result", "장바구니 수정 성공");
+		} else {
+			request.setAttribute("result", "장바구니 수정 실패");
 		}
 
 	}

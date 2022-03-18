@@ -19,7 +19,10 @@
             <td onclick="location.href='funding.category?f_category=유기동물후원'">유기동물 후원</td>
         </tr>
 
+
     </table>
+
+		
 
         <c:forEach var="f" items="${funding2}">
             <ul>

@@ -20,3 +20,34 @@ function zzim(no, id) {
 function deleteReply(n, p) {
 	location.href = "product.reply.delete?r_no=" + n + "&p_num=" + p;
 }
+
+function goCart(i, p , price , c, photo) {
+	let amount = document.getElementById("amount").value;
+	let ok = confirm("장바구니에 담으시겠습니까?")
+	if (ok) {
+		location.href = "product.insert.cart?c_p_no=" + p + "&c_a_id=" + i + "&c_quantity="
+		+amount+"&c_price=" + price + "&p_num="+ p +"&c_category="+ c + "&c_p_photo=" + photo;
+		
+		alert("장바구니에 담겼습니다.")
+	}
+}
+	
+function deleteCart(p) {
+	let ok = confirm("장바구니에서 삭제하시겠습니까?")
+	if (ok) {
+		location.href = "product.delete.cart?c_p_no=" + p;
+			
+		alert("삭제되었습니다.")
+		}
+}
+
+function updateCart(p,t) {
+	t = prompt("몇개로 바꿀까요?", t);
+		let check = /^[0-9]+$/;
+		
+	if (t != null && t.length > 0 && t.length < 250 && check.test(t)) {
+		location.href = "product.update.cart?c_p_no=" + p + "&c_quantity=" + t;
+	}else{
+		alert('숫자만 입력해주세요!');
+	}
+}

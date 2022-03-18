@@ -11,7 +11,7 @@
 <body>
 
 	<form action="product.search">
-		<input name="search">
+		<input name="p_name">
 		<button>검색</button>
 	</form>
 

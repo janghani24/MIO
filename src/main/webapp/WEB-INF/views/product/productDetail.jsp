@@ -44,7 +44,7 @@
 							<form name="form" method="get">
 								<input name="sell_price" value="${detail.p_price}"> 
 								수량 :<input type="button" value=" + " onclick="add();"> 
-								<input type="text" name="amount" value="1" size="3" onchange="change();"> 
+								<input type="text" id="amount" value="1" size="3" onchange="change();"> 
 								<input type="button" value=" - " onclick="del();"><br> 
 
 								금액 : <input type="text" name="sum" size="11" readonly>원
@@ -53,7 +53,7 @@
 					</tr>
 					<tr>
 						<td><button>구매하기</button></td>
-						<td><button>장바구니</button></td>
+						<td><button onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
 
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
 
