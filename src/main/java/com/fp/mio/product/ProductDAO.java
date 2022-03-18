@@ -1,5 +1,7 @@
 package com.fp.mio.product;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.fp.mio.account.Account;
 import com.fp.mio.account.AccountMapper;
-import com.fp.mio.funding.FundingMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -21,6 +22,24 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession ss;
 
+	@Autowired
+	private com.fp.mio.SiteOption so;
+	
+	private int allPCount;
+	
+	public int getAllPCount() {
+		return allPCount;
+	}
+	public void setAllPCount(int allPCount) {
+		this.allPCount = allPCount;
+	}
+
+	public void calcAllPCount() {
+		ProductSelector ps = new ProductSelector("", null, null);
+		allPCount = ss.getMapper(ProductMapper.class).getProductCount(ps);
+	}
+	
+	
 	public void getProductAll(HttpServletRequest request) {
 
 		try {
@@ -65,9 +84,9 @@ public class ProductDAO {
 		}
 	}
 
-	public Product getProductDetail(HttpServletRequest request, Product product, int p_num) {
-
-		return ss.getMapper(ProductMapper.class).getProductDetail(p_num);
+	public Product getProductDetail(HttpServletRequest request, Product product) {
+		System.out.println(product.getP_num() + " ~?~?~?~?~?~~?~?~~?~?~?");
+		return ss.getMapper(ProductMapper.class).getProductDetail(product.getP_num());
 
 	}
 
@@ -86,7 +105,10 @@ public class ProductDAO {
 		try {
 
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
-			zzim.setP_id(a.getA_id());
+
+			zzim.setZ_id(a.getA_id());
+	
+		
 
 			if (ss.getMapper(ProductMapper.class).getProductzzim(zzim) == 1) {
 				System.out.println("찜성공");
@@ -133,17 +155,12 @@ public class ProductDAO {
 
 	}
 
-	public void productSearch(HttpServletRequest request, Product p) {
 
-		System.out.println(p.getP_name());
 
-		p.setP_brand(p.getP_name());
-		System.out.println(p.getP_brand());
-		try {
-			request.setAttribute("productresult", ss.getMapper(ProductMapper.class).getProductSearch(p));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void productSearch(ProductSelector ps,HttpServletRequest request) {
+			System.out.println(ps.getSearch());
+			request.setAttribute("search", ps);
+		
 
 	}
 
@@ -473,5 +490,43 @@ public class ProductDAO {
 			request.setAttribute("r", "삭제 실패!");
 		}
 	}
+	
+
+public void getProduct(int pageNo, HttpServletRequest req) {
+
+	int count = so.getProductCountPerpage();
+	int start = (pageNo - 1) * count + 1;
+	int end = start + (count - 1);
+
+	ProductSelector search = (ProductSelector) req.getAttribute("search");
+	int pCount = 0;
+
+	if (search == null) {
+		search = new ProductSelector("",new BigDecimal(start),new BigDecimal(end));
+		pCount = allPCount; 
+	} else {
+		search.setStart(new BigDecimal(start));
+		search.setEnd(new BigDecimal(end));
+		pCount = ss.getMapper(ProductMapper.class).getProductCount(search);
+		
+	}
+	System.out.println(search.getSearch());
+	System.out.println(search.getStart());
+	
+	List<Product> products = ss.getMapper(ProductMapper.class).getProductSearch(search);
+	
+
+	int pageCount = (int) Math.ceil(pCount / (double) count);
+	
+	req.setAttribute("pageCount", pageCount);
+
+	req.setAttribute("products", products);
+	req.setAttribute("curPage", pageNo);
+
+}
+
+	
+	
+
 
 }

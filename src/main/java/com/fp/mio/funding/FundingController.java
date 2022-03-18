@@ -12,41 +12,23 @@ import com.fp.mio.account.AccountDAO;
 @Controller
 public class FundingController {
 
-    @Autowired
-    private FundingDAO fDAO;
-    @Autowired
-    private AccountDAO aDAO;
 
-    // 상품 전체 조회
-    @RequestMapping(value = "/funding.all", method = RequestMethod.GET)
-    public String fundingAll(HttpServletRequest request) {
+	@Autowired
+	private FundingDAO fDAO;
+	@Autowired
+	private AccountDAO aDAO;
 
-        aDAO.loginCheck(request);
-        fDAO.getFundingAll(request);
+	// 상품 전체 조회
+	@RequestMapping(value = "/funding.all", method = RequestMethod.GET)
+	public String fundingAll(HttpServletRequest request) {
 
-        request.setAttribute("contentPage", "funding/fundingAll.jsp");
-        return "index";
-    }
+		aDAO.loginCheck(request);
+		fDAO.getFundingAll(request);
 
-    //펀딩 등록 페이지
-    @RequestMapping(value = "/funding.regPage", method = RequestMethod.GET)
-    public String fundingRegPage(HttpServletRequest request,Funding funding) {
-        aDAO.loginCheck(request);
-        request.setAttribute("contentPage", "funding/fundingReg.jsp");
-        return "index";
-    }
+		request.setAttribute("contentPage", "funding/fundingAll.jsp");
+		return "index";
+	}
 
-    //펀딩등록하기
-    @RequestMapping(value = "/funding.reg", method =RequestMethod.POST)
-    public String fundingReg(HttpServletRequest request,Funding funding) {
-
-        aDAO.loginCheck(request);
-        fDAO.regFunding(request,funding);
-        fDAO.getFundingAll(request);
-        request.setAttribute("contentPage", "funding/fundingAll.jsp");
-
-        return "index";
-    }
     
     // 펀딩 삭제
     @RequestMapping(value = "/funding.deleteFunding", method =RequestMethod.GET)
@@ -60,18 +42,40 @@ public class FundingController {
     	request.setAttribute("contentPage", "funding/fundingAll.jsp");
     	return "index";
     }
-    //하위 카테고리로 이동
-    @RequestMapping(value = "/funding.category", method = RequestMethod.GET)
-    public String fundingCategory(HttpServletRequest request, String f_category) {
+    
+	
+	@RequestMapping(value = "/funding.regPage", method = RequestMethod.GET)
+	public String fundingRegPage(HttpServletRequest request,Funding funding) {
+		aDAO.loginCheck(request);
+		request.setAttribute("contentPage", "funding/fundingReg.jsp");
+		return "index";
+	}
+	
+	//펀딩등록하기
+	@RequestMapping(value = "/funding.reg", method =RequestMethod.POST)
+	public String fundingReg(HttpServletRequest request,Funding funding) {
+		
+		aDAO.loginCheck(request);
+		fDAO.regFunding(request,funding);
+		fDAO.getFundingAll(request);
+		request.setAttribute("contentPage", "funding/fundingAll.jsp");
+		
+		return "index";
+	}
+	
+	//하위 카테고리로 이동
+	@RequestMapping(value = "/funding.category", method = RequestMethod.GET)
+	public String fundingCategory(HttpServletRequest request, String f_category) {
 
-        aDAO.loginCheck(request);
-        String f_category2 = request.getParameter("f_category");
-        fDAO.getFundingCategory(request, f_category2);
+		aDAO.loginCheck(request);
+		String f_category2 = request.getParameter("f_category");
+		fDAO.getProductCategory(request, f_category2);
 
-        request.setAttribute("contentPage", "funding/fundingAll.jsp");
+		request.setAttribute("contentPage", "funding/fundingAll.jsp");
 
-        return "index";
+		return "index";
 
-    }
+	}
 
 }
+

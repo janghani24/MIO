@@ -44,7 +44,7 @@
 							<form name="form" method="get">
 								<input name="sell_price" value="${detail.p_price}"> 
 								수량 :<input type="button" value=" + " onclick="add();"> 
-								<input type="text" id="amount" value="1" size="3" onchange="change();"> 
+								<input type="text" name="amount" value="1" size="3" onchange="change();"> 
 								<input type="button" value=" - " onclick="del();"><br> 
 
 								금액 : <input type="text" name="sum" size="11" readonly>원
@@ -53,16 +53,16 @@
 					</tr>
 					<tr>
 						<td><button>구매하기</button></td>
-						<td><button onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
+						<td><button>장바구니</button></td>
 
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
 
 							<c:forEach var="z" items="${showZzim }">
 
 								<c:if
-									test="${sessionScope.loginAccount.a_id == z.p_id && z.p_num == param.p_num}">
+									test="${sessionScope.loginAccount.a_id == z.z_id && z.z_num == param.p_num}">
 
-									<td colspan="2"><button onclick="deletezzim2(${z.p_no });">찜해제</button></td>
+									<td colspan="2"><button onclick="deletezzim2(${z.z_no },${param.p_num });">찜해제</button></td>
 									<%
 										a = 1;
 									%>
@@ -137,7 +137,21 @@
 
 	</table>
 
-					
+					<!-- 주문 form -->
+			<form action="/order/${member.memberId}" method="get" class="order_form">
+				<input type="hidden" name="orders[0].bookId" value="${goodsInfo.bookId}">
+				<input type="hidden" name="orders[0].bookCount" value="">
+			</form>
+			
+			<script type="text/javascript">
+			/* 바로구매 버튼 */
+			$(".btn_buy").on("click", function(){
+				let bookCount = $(".quantity_input").val();
+				$(".order_form").find("input[name='orders[0].bookCount']").val(bookCount);
+				$(".order_form").submit();
+			});
+			
+			</script>
 
 </body>
 </html>

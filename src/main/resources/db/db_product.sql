@@ -11,7 +11,6 @@ p_category1 varchar2(20 char) not null,
 p_category2 varchar2(20 char) not null,
 p_date date not null
 )
-select * from product_master;
 
 
 create table product_detail(
@@ -26,6 +25,7 @@ create table product_detail(
         on delete cascade    --마스터 삭제하면 연관된 디테일도 삭제됨
 
 )
+
 
 
 insert into product_detail values(product_detail_seq.nextval,'3','의류','5','s','ivory');
@@ -59,6 +59,8 @@ insert into product_detail values(product_detail_seq.nextval,'요리재료',5,'L
 insert into product_detail values(product_detail_seq.nextval,'요리재료',5,'L','파랑');
 insert into product_detail values(product_detail_seq.nextval,'요리',5,'L','빨강');
 insert into product_detail values(product_detail_seq.nextval,'요리',5,'L','파랑');
+=======
+>>>>>>> 472d538ff87a1ae15eca2dc25b130c96d6d02104
 
 
 
