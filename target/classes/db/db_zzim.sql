@@ -16,7 +16,6 @@ AND product_zzim.z_id = #{a_id}
 delete from
 		product_zzim where z_no = #{p_no}
 
-
 drop table product_zzim
 create sequence product_zzim_seq;
 select * from product_zzim;
