@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fp.mio.account.AccountDAO;
+import com.fp.mio.funding.Funding;
 
 @Controller
 public class ProductController {
@@ -158,9 +159,6 @@ public class ProductController {
 
 	// 전체 상품 검색 페이지
 
-
-	//전체 상품 검색 페이지로 이동
-
 	@RequestMapping(value = "/product.search", method = RequestMethod.GET)
 	public String productSearch(HttpServletRequest request, String search) {
 
@@ -205,6 +203,17 @@ public class ProductController {
 		return "index";
 	}
 
+	// food 등록하기
+	@RequestMapping(value = "/food.reg", method = RequestMethod.POST)
+	public String foodRegPage(HttpServletRequest request, Product product) {
+
+		pDAO.regFood(request, product);
+		pDAO.getFood(request);
+		request.setAttribute("contentPage", "product/food.jsp");
+
+		return "index";
+	}
+
 	// fashion 등록 페이지
 	@RequestMapping(value = "/product.fashionReg", method = RequestMethod.GET)
 	public String fashionReg(HttpServletRequest request) {
@@ -213,11 +222,34 @@ public class ProductController {
 		return "index";
 	}
 
-	// 뷰티 등록 페이지
+	// fashion 등록하기
+		@RequestMapping(value = "/fashion.reg", method = RequestMethod.POST)
+		public String fahionRegPage(HttpServletRequest request, Product product) {
+
+			pDAO.regFashion(request, product);
+			pDAO.getFashion(request);
+			request.setAttribute("contentPage", "product/fashion.jsp");
+
+			return "index";
+		}
+	
+	
+	// beauty 등록 페이지
 	@RequestMapping(value = "/product.beautyReg", method = RequestMethod.GET)
 	public String beautyReg(HttpServletRequest request) {
 
 		request.setAttribute("contentPage", "product/beautyReg.jsp");
+		return "index";
+	}
+
+	// beauty 등록하기
+	@RequestMapping(value = "/beauty.reg", method = RequestMethod.POST)
+	public String beautyRegPage(HttpServletRequest request, Product product) {
+
+		pDAO.regBeauty(request, product);
+		pDAO.getBeauty(request);
+		request.setAttribute("contentPage", "product/beauty.jsp");
+
 		return "index";
 	}
 
@@ -226,6 +258,17 @@ public class ProductController {
 	public String livingReg(HttpServletRequest request) {
 
 		request.setAttribute("contentPage", "product/livingReg.jsp");
+		return "index";
+	}
+
+	// living 등록하기
+	@RequestMapping(value = "/living.reg", method = RequestMethod.POST)
+	public String livingRegPage(HttpServletRequest request, Product product) {
+
+		pDAO.regLiving(request, product);
+		pDAO.getLiving(request);
+		request.setAttribute("contentPage", "product/living.jsp");
+
 		return "index";
 	}
 

@@ -1,7 +1,6 @@
 package com.fp.mio.funding;
 
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fp.mio.product.ProductMapper;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -26,24 +24,14 @@ public class FundingDAO {
 		try {
 			System.out.println(ss.getMapper(FundingMapper.class).getFundingAll());
 			request.setAttribute("funding2", ss.getMapper(FundingMapper.class).getFundingAll());
-		System.out.println("전체조회");
+			System.out.println("전체조회");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	// 펀딩 삭제
-	public void deleteFunding(HttpServletRequest request, int f_num) {
 
-		try {
-			request.setAttribute("funding", ss.getMapper(FundingMapper.class).deleteFunding(f_num));
-		} catch (Exception e) {
-			e.printStackTrace();
-
-		}
-	}
-
-	// 펀딩 등록
+// 펀딩 등록
 	public void regFunding(HttpServletRequest request, Funding funding) {
 
 		try {
@@ -90,9 +78,9 @@ public class FundingDAO {
 
 	}
 
-	public void getProductCategory(HttpServletRequest request, String f_category2) {
+	public void getFundingCategory(HttpServletRequest request, String f_category2) {
 
-		request.setAttribute("funding", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
+		request.setAttribute("funding2", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
 
 	}
 

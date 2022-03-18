@@ -14,8 +14,8 @@
 <table border="1">
 		<tr>
 			<td onclick="location.href='product.beauty.all'">전체 상품</td>
-			<td onclick="location.href='product.beauty.category?p_category=스킨케어'">스킨 케어</td>
-			<td onclick="location.href='product.beauty.category?p_category=바디케어'">바디 케어</td>
+			<td onclick="location.href='product.beauty.category?p_category=스킨케어'">스킨케어</td>
+			<td onclick="location.href='product.beauty.category?p_category=바디케어'">바디케어</td>
 			<td onclick="location.href='product.beauty.category?p_category=메이크업'">메이크업</td>
 			<td onclick="location.href='product.beauty.category?p_category=선케어'">선케어</td>
 		</tr>
