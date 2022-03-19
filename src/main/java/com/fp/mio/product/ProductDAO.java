@@ -241,7 +241,9 @@ public class ProductDAO {
 
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 			product.setP_owner(a.getA_id());
+			
 			if (ss.getMapper(ProductMapper.class).regFood(product) == 1) {
+				allPCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {
@@ -299,6 +301,7 @@ public class ProductDAO {
 			product.setP_owner(a.getA_id());
 			
 			if (ss.getMapper(ProductMapper.class).regFashion(product) == 1) {
+				allPCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {
@@ -352,6 +355,7 @@ public class ProductDAO {
 			product.setP_owner(a.getA_id());
 			
 			if (ss.getMapper(ProductMapper.class).regBeauty(product) == 1) {
+				allPCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {
@@ -405,6 +409,7 @@ public class ProductDAO {
 			product.setP_owner(a.getA_id());
 			
 			if (ss.getMapper(ProductMapper.class).regLiving(product) == 1) {
+				allPCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {

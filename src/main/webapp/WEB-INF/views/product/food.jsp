@@ -24,7 +24,7 @@
 	<c:forEach var="f" items="${food}">
 		<ul>
 			<li onclick="location.href='product.detail?p_num=${f.p_num}'"><img
-				src="resources/img/food/${f.p_photo}"></li>
+				src="resources/img/food/${f.p_photo}" width="500px;"></li>
 			<li>${f.p_brand}</li>
 			<li>${f.p_name}</li>
 			<li>${f.p_price}원</li>

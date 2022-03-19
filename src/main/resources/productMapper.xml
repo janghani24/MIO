@@ -22,25 +22,25 @@
 	<select id="getFood" resultType="com.fp.mio.product.Product">
 
 		select * from product_master
-		where p_category1 = 'food'
+		where p_category1 = 'food' order by p_date desc
 
 	</select>
 
 	<select id="getFashion" resultType="com.fp.mio.product.Product">
 
-		select * from product_master where p_category1 = 'fashion'
+		select * from product_master where p_category1 = 'fashion' order by p_date desc
 
 	</select>
 
 	<select id="getBeauty" resultType="com.fp.mio.product.Product">
 
-		select * from product_master where p_category1 = 'beauty'
+		select * from product_master where p_category1 = 'beauty' order by p_date desc
 
 	</select>
 
 	<select id="getLiving" resultType="com.fp.mio.product.Product">
 
-		select * from product_master where p_category1 = 'living'
+		select * from product_master where p_category1 = 'living' order by p_date desc
 
 	</select>
 
