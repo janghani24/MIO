@@ -20,11 +20,7 @@
         </tr>
 
 
-		<c:forEach var="f" items="${funding2}">
-			<ul>
-			
-				<li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg"></a></li>
-</ul></c:forEach>
+	
 
     </table>
 
