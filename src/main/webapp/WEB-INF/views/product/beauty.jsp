@@ -24,7 +24,7 @@
 	<c:forEach var="b" items="${beauty}">
 		<ul>
 			<li onclick="location.href='product.detail?p_num=${b.p_num}'"><img
-				src="resources/img/beauty/${b.p_photo}"></li>
+				src="resources/img/beauty/${b.p_photo}" width="500px;"></li>
 				
 			<li>${b.p_brand}</li>
 			<li>${b.p_name}</li>
