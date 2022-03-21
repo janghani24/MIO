@@ -17,17 +17,13 @@ select count(*)
 		where p_category1 = 'food';
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
 create table product_detail(
     d_num number(4) primary key, 
     d_master_num number(10) not null, 
-    d_category varchar2(20 char) not null,
-    d_quantity number(3) not null,
     d_size varchar2(20 char) not null,
     d_color varchar2 (20 char) not null,
+    d_quantity number(3) not null,
     constraint d_test
         foreign key(d_master_num)
         references product_master(p_num)
@@ -97,4 +93,5 @@ drop sequence product_master_seq;
 delete from product_master where p_num=14;
 
 select * from product_master;
+select * from product_detail;
 

@@ -66,6 +66,13 @@
 		select * from product_master where p_num=#{p_num}
 
 	</select>
+	<select id="getProductPnum"
+		resultType="java.lang.Integer">
+
+		select p_num from product_master where p_name=#{p_name}
+
+	</select>
+	
 
 	<select id="getProductCategory"
 		resultType="com.fp.mio.product.Product">
@@ -80,7 +87,7 @@
 		select * from product_cart where c_a_id = #{a_id}
 
 	</select>
-	<select id="getCartByPNo" resultType="int">
+	<select id="getCartByPNo" resultType="java.lang.Integer">
 
 		select count(*) from product_cart where c_p_no = #{c_p_no} and c_a_id =
 		#{c_a_id}
@@ -101,6 +108,11 @@
 		insert into product_zzim
 
 		values(product_zzim_seq.nextval,#{p_num}, #{z_id})
+	</insert>
+	<insert id="regFashionDetail"
+		parameterType="com.fp.mio.product.ProductDetail">
+		insert into product_detail
+		values(product_detail_seq.nextval,#{d_master_num}, #{d_size},#{d_color},#{d_quantity})
 	</insert>
 
 	<insert id="insertCart" parameterType="com.fp.mio.product.Cart">

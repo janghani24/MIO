@@ -120,7 +120,6 @@
 						<span> ${sessionScope.loginAccount.a_id } </span> <input
 							type="hidden" name="token" value="${token }"> <input
 							type="hidden" name="r_p_no" value="${param.p_num}">
-						<%-- 	<input type="hidden" name="p" value="${curPage }"> --%>
 						<div id="star">
 						<a href="#;" class="starR on" value="1">★</a>						
 						<a href="#;" class="starR" value="2">★</a>						

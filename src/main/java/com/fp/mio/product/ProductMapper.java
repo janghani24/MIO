@@ -52,6 +52,8 @@ public interface ProductMapper {
 	List<Cart> getCart(Account a);
 
 	int getCartByPNo(Cart c);
+	
+	int getProductPnum(Product p);
 
 	int updateCart(Cart c);
 
@@ -70,6 +72,8 @@ public interface ProductMapper {
 	int getC2ProductCount(ProductCSelector search);
 
 	List<Product> getC2ProductSearch(ProductCSelector search);
+
+	int regFashionDetail(ProductDetail pd);
 
 
 
