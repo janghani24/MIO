@@ -26,6 +26,7 @@ public class ProductController {
 	// 상품 전체 조회
 	@RequestMapping(value = "/product.all", method = RequestMethod.GET)
 	public String productAll(HttpServletRequest request) {
+		aDAO.loginCheck(request);
 		if(firstReqP) {
 		pDAO.calcAllPCount();
 		firstReqP = false;
@@ -47,97 +48,75 @@ public class ProductController {
 	}
 	
 	
-	// food 카테고리로 이동
-	@RequestMapping(value = "/product.food.all", method = RequestMethod.GET)
-	public String food(HttpServletRequest request) {
-
-		pDAO.getFood(request);
-
-		request.setAttribute("contentPage", "product/food.jsp");
+	
+	// 해당 카테고리로
+	@RequestMapping(value = "/product.category", method = RequestMethod.GET)
+	public String categoryGo(HttpServletRequest request,ProductCSelector pcs) {
+		String p_category1=request.getParameter("p_category1");
+		pDAO.calcAllCPCount(request);
+		pDAO.getCategoryProduct(1, request);
+		if (p_category1.equals("food")) {
+			request.setAttribute("contentPage", "product/food.jsp");
+		}else if(p_category1.equals("fashion")) {
+			request.setAttribute("contentPage", "product/fashion.jsp");
+		}else if(p_category1.equals("beauty")) {
+			request.setAttribute("contentPage", "product/beauty.jsp");
+		}else if(p_category1.equals("living")) {
+			request.setAttribute("contentPage", "product/living.jsp");
+		}
+		return "index";
+	}
+	// 카테고리 안에서 페이징
+	@RequestMapping(value = "/product.category.paging", method = RequestMethod.GET)
+	public String categoryPageChange(HttpServletRequest request) {
+		String p_category1=request.getParameter("p_category1");
+		String p_category2=request.getParameter("p_category2");
+		request.setAttribute("p_category2", p_category2);
+		int p = Integer.parseInt(request.getParameter("p"));
+		aDAO.loginCheck(request);
+		if (p_category2 == ""||p_category2==null) {
+			pDAO.calcAllCPCount(request);
+			pDAO.getCategoryProduct(p, request);
+		}else {
+			pDAO.calcAllC2PCount(request);
+			pDAO.getCategory2Product(p, request);
+		}
+		if (p_category1.equals("food")) {
+			request.setAttribute("contentPage", "product/food.jsp");
+		}else if(p_category1.equals("fashion")) {
+			request.setAttribute("contentPage", "product/fashion.jsp");
+		}else if(p_category1.equals("beauty")) {
+			request.setAttribute("contentPage", "product/beauty.jsp");
+		}else if(p_category1.equals("living")) {
+			request.setAttribute("contentPage", "product/living.jsp");
+		}
 		return "index";
 	}
 
-	// fashion 카테고리로 이동
-	@RequestMapping(value = "/product.fashion.all", method = RequestMethod.GET)
-	public String fashion(HttpServletRequest request) {
-
-		pDAO.getFashion(request);
-
-		request.setAttribute("contentPage", "product/fashion.jsp");
-		return "index";
-	}
-
-	// beauty 카테고리로 이동
-	@RequestMapping(value = "/product.beauty.all", method = RequestMethod.GET)
-	public String beauty(HttpServletRequest request) {
-
-		pDAO.getBeauty(request);
-
-		request.setAttribute("contentPage", "product/beauty.jsp");
-		return "index";
-	}
-
-	// living 카테고리로 이동
-	@RequestMapping(value = "/product.living.all", method = RequestMethod.GET)
-	public String living(HttpServletRequest request) {
-
-		pDAO.getLiving(request);
-
-		request.setAttribute("contentPage", "product/living.jsp");
-		return "index";
-	}
-
-	// food 하위 카테고리로 이동
-	@RequestMapping(value = "/product.food.category", method = RequestMethod.GET)
-	public String foodCategory(HttpServletRequest request, String p_category) {
-
-		String p_category2 = request.getParameter("p_category");
-		pDAO.getProductCategory(request, p_category2);
-
-		request.setAttribute("contentPage", "product/food.jsp");
-
-		return "index";
-
-	}
-
-	// fashion 하위 카테고리로 이동
-	@RequestMapping(value = "/product.fashion.category", method = RequestMethod.GET)
-	public String fashionCategory(HttpServletRequest request, String p_category) {
-
-		String p_category2 = request.getParameter("p_category");
-		pDAO.getProductCategory(request, p_category2);
-
-		request.setAttribute("contentPage", "product/fashion.jsp");
-
-		return "index";
-
-	}
-
-	// beauty 하위 카테고리로 이동
-	@RequestMapping(value = "/product.beauty.category", method = RequestMethod.GET)
-	public String beautyCategory(HttpServletRequest request, String p_category) {
-
-		String p_category2 = request.getParameter("p_category");
-		pDAO.getProductCategory(request, p_category2);
-
-		request.setAttribute("contentPage", "product/beauty.jsp");
-
-		return "index";
-
-	}
-
-	// living 하위 카테고리로 이동
-	@RequestMapping(value = "/product.living.category", method = RequestMethod.GET)
+	
+	// 카테고리 하위로 이동
+	@RequestMapping(value = "/product.category.category2", method = RequestMethod.GET)
 	public String livingCategory(HttpServletRequest request, String p_category) {
-
-		String p_category2 = request.getParameter("p_category");
-		pDAO.getProductCategory(request, p_category2);
-
-		request.setAttribute("contentPage", "product/living.jsp");
+		pDAO.calcAllC2PCount(request);
+		String p_category1 = request.getParameter("p_category1");
+		String p_category2 = request.getParameter("p_category2");
+		pDAO.getCategory2Product(1, request);
+		request.setAttribute("p_category2", p_category2);
+		if (p_category1.equals("food")) {
+			request.setAttribute("contentPage", "product/food.jsp");
+		}else if(p_category1.equals("fashion")) {
+			request.setAttribute("contentPage", "product/fashion.jsp");
+		}else if(p_category1.equals("beauty")) {
+			request.setAttribute("contentPage", "product/beauty.jsp");
+		}else if(p_category1.equals("living")) {
+			request.setAttribute("contentPage", "product/living.jsp");
+		}
 
 		return "index";
 
 	}
+	
+	
 
 	// 상품 상세 페이지로 이동
 	@RequestMapping(value = "/product.detail", method = RequestMethod.GET)
@@ -206,6 +185,8 @@ public class ProductController {
 		req.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 	}
+	
+	//댓글 삭제
 	@RequestMapping(value = "/product.reply.delete", method = RequestMethod.GET)
 	public String productReplyDelete(ProductReply pr, HttpServletRequest req, Product product) {
 		com.fp.mio.TokenMaker.make(req);

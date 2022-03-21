@@ -13,6 +13,10 @@ p_date date not null
 )
 select * from product_master;
 
+select count(*)
+		from product_master
+		where p_category1 = 'food';
+
 
 create table product_detail(
     d_num number(4) primary key, 

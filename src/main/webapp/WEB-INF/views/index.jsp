@@ -77,16 +77,16 @@
 						<td id="topMenu"><a href="product.all">Product</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a href="product.food.all">Food</a></td>
+						<td class="subMenu"><a href="product.category?p_category1=food">Food</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a href="product.fashion.all">Fashion</a></td>
+						<td class="subMenu"><a href="product.category?p_category1=fashion">Fashion</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a href="product.beauty.all">Beauty</a></td>
+						<td class="subMenu"><a href="product.category?p_category1=beauty">Beauty</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a href="product.living.all">Living</a></td>
+						<td class="subMenu"><a href="product.category?p_category1=living">Living</a></td>
 					</tr>
 
 

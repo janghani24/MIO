@@ -2,7 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fp.mio.funding.FundingMapper">
 
+<select id="getFundingCount"
+		parameterType="com.fp.mio.funding.FundingSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from fundingTbl
+		where f_name like '%'||#{search}||'%' or f_company like '%'||#{search}||'%'
 
+	</select>
+	<select id="getFundingSearch"
+	parameterType="com.fp.mio.funding.FundingSelector"
+		resultType="com.fp.mio.funding.Funding">
+		select *
+		from (
+		select rownum as rn,f_num,f_owner,f_name,f_photo,f_company,
+		f_category,f_period,f_url
+		from (
+		select * from fundingTbl
+		where f_name like
+		'%'||#{search}||'%' or f_company like'%'||#{search}||'%'
+		order by f_period desc
+		)
+		)
+		where rn &gt;= #{start} and
+		rn &lt;= #{end}
+	</select>
+	
 	<select id="getFundingAll"
 		resultType="com.fp.mio.funding.Funding">
 		select * from fundingTbl

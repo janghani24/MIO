@@ -20,7 +20,7 @@
 
 		<tr>
 			<td><img
-				src="resources/img/${detail.p_category1}/${detail.p_photo}"></td>
+				src="resources/img/${detail.p_category1}/${detail.p_photo}" width="800px;"></td>
 
 			<td>
 				<table border="1">
@@ -91,7 +91,7 @@
 		</tr>
 		<tr>
 			<td colspan="2"><img
-				src="resources/img/${detail.p_category1}/${detail.p_content}">
+				src="resources/img/${detail.p_category1}/${detail.p_content}" width="800px;">
 				<br>
 				<c:if test="${detail.p_owner == sessionScope.loginAccount.a_id }">
 				<button onclick="deleteProduct(${param.p_num})">삭제</button>

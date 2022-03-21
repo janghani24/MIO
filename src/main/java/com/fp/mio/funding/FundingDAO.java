@@ -1,7 +1,9 @@
 package com.fp.mio.funding;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fp.mio.account.Account;
+import com.fp.mio.product.Product;
+import com.fp.mio.product.ProductMapper;
+import com.fp.mio.product.ProductSelector;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -18,7 +23,21 @@ public class FundingDAO {
 
 	@Autowired
 	private SqlSession ss;
-
+	
+	@Autowired
+	private com.fp.mio.SiteOption so;
+	private int allFCount;
+	public int getAllFCount() {
+		return allFCount;
+	}
+	public void setAllFCount(int allFCount) {
+		this.allFCount = allFCount;
+	}
+	public void calcAllFCount() {
+		FundingSelector fs = new FundingSelector("", null, null);
+		allFCount = ss.getMapper(FundingMapper.class).getFundingCount(fs);
+	}
+	
 	// 펀딩 전체
 	public void getFundingAll(HttpServletRequest request) {
 
@@ -31,7 +50,45 @@ public class FundingDAO {
 		}
 	}
 
+	public void getFunding(int pageNo, HttpServletRequest req) {
 
+		int count = so.getProductCountPerpage();
+		int start = (pageNo - 1) * count + 1;
+		int end = start + (count - 1);
+
+		FundingSelector search = (FundingSelector) req.getAttribute("search");
+		int fCount = 0;
+
+		if (search == null) {
+			search = new FundingSelector("",new BigDecimal(start),new BigDecimal(end));
+			fCount = allFCount; 
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			fCount = ss.getMapper(FundingMapper.class).getFundingCount(search);
+			
+		}
+		System.out.println(search.getSearch());
+		System.out.println(search.getStart());
+		
+		List<Funding> fundings = ss.getMapper(FundingMapper.class).getFundingSearch(search);
+		
+
+		int pageCount = (int) Math.ceil(fCount / (double) count);
+		
+		req.setAttribute("pageCount", pageCount);
+
+		req.setAttribute("funding2", fundings);
+		req.setAttribute("curPage", pageNo);
+
+	}
+	
+	public void fundingSearch(FundingSelector fs,HttpServletRequest request) {
+		System.out.println(fs.getSearch());
+		request.setAttribute("search", fs);
+	
+
+}
 // 펀딩 등록
 	public void regFunding(HttpServletRequest request, Funding funding) {
 
@@ -69,6 +126,7 @@ public class FundingDAO {
 			System.out.println(funding.getF_name());
 
 			if (ss.getMapper(FundingMapper.class).regFunding(funding) == 1) {
+				allFCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {
@@ -90,6 +148,7 @@ public class FundingDAO {
 	// 펀딩 삭제
 	public void deleteFunding(HttpServletRequest request, Funding funding) {
 		if (ss.getMapper(FundingMapper.class).deleteFunding(funding) == 1) {
+			allFCount--;
 			request.setAttribute("r", "삭제 성공!");
 			System.out.println("--등록 성공--");
 		} else {

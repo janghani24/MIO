@@ -12,4 +12,8 @@ public interface FundingMapper {
 
 	int deleteFunding(Funding funding);
 
+	int getFundingCount(FundingSelector fs);
+
+	List<Funding> getFundingSearch(FundingSelector search);
+
 }
