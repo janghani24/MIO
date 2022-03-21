@@ -63,6 +63,14 @@ public interface ProductMapper {
 
 	int getProductCount(ProductSelector search);
 
+	int getCProductCount(ProductCSelector search);
+
+	List<Product> getCProductSearch(ProductCSelector search);
+
+	int getC2ProductCount(ProductCSelector search);
+
+	List<Product> getC2ProductSearch(ProductCSelector search);
+
 
 
 
