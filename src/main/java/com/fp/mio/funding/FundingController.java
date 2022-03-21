@@ -70,12 +70,6 @@ public class FundingController {
     }
     
 	
-	@RequestMapping(value = "/funding.regPage", method = RequestMethod.GET)
-	public String fundingRegPage(HttpServletRequest request,Funding funding) {
-		aDAO.loginCheck(request);
-		request.setAttribute("contentPage", "funding/fundingReg.jsp");
-		return "index";
-	}
 	
 	//펀딩등록하기
 	@RequestMapping(value = "/funding.reg", method =RequestMethod.POST)
