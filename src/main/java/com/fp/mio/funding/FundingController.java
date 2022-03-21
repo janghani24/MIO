@@ -84,7 +84,9 @@ public class FundingController {
 	}
 	
 	//하위 카테고리로 이동
+
 	@RequestMapping(value = "/funding.category", method = RequestMethod.GET)
+
     public String fundingCategory(HttpServletRequest request, String f_category) {
 
         aDAO.loginCheck(request);

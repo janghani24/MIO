@@ -179,7 +179,6 @@ public class ProductController {
 	@RequestMapping(value = "/product.reply.write", method = RequestMethod.GET)
 	public String productReplyWrite(ProductReply pr, HttpServletRequest req, Product product) {
 		com.fp.mio.TokenMaker.make(req);
-		// int p = Integer.parseInt(req.getParameter("p"));
 		if (aDAO.loginCheck(req)) {
 			pDAO.writeReply(pr, product, req);
 			pDAO.getReply(product, req);
@@ -223,7 +222,7 @@ public class ProductController {
 		if (aDAO.loginCheck(request)) {
 		pDAO.deleteProduct(request,p);
 		}
-		pDAO.getProductAll(request);
+		pDAO.getProduct(1, request);
 		request.setAttribute("contentPage", "product/productAll.jsp");
 		return "index";
 		
@@ -281,7 +280,7 @@ public class ProductController {
 	public String foodRegPage(HttpServletRequest request, Product product) {
 
 		pDAO.regFood(request, product);
-		pDAO.getFood(request);
+		pDAO.getCategoryProduct(1, request);
 		request.setAttribute("contentPage", "product/food.jsp");
 
 		return "index";
@@ -297,10 +296,10 @@ public class ProductController {
 
 	// fashion 등록하기
 		@RequestMapping(value = "/fashion.reg", method = RequestMethod.POST)
-		public String fahionRegPage(HttpServletRequest request, Product product) {
+		public String fahionRegPage(HttpServletRequest request, Product product,ProductDetail pd) {
 
-			pDAO.regFashion(request, product);
-			pDAO.getFashion(request);
+			pDAO.regFashion(request, product,pd);
+			pDAO.getCategoryProduct(1, request);
 			request.setAttribute("contentPage", "product/fashion.jsp");
 
 			return "index";
@@ -320,7 +319,7 @@ public class ProductController {
 	public String beautyRegPage(HttpServletRequest request, Product product) {
 
 		pDAO.regBeauty(request, product);
-		pDAO.getBeauty(request);
+		pDAO.getCategoryProduct(1, request);
 		request.setAttribute("contentPage", "product/beauty.jsp");
 
 		return "index";
@@ -339,7 +338,7 @@ public class ProductController {
 	public String livingRegPage(HttpServletRequest request, Product product) {
 
 		pDAO.regLiving(request, product);
-		pDAO.getLiving(request);
+		pDAO.getCategoryProduct(1, request);
 		request.setAttribute("contentPage", "product/living.jsp");
 
 		return "index";

@@ -31,7 +31,7 @@
 
 			</select>
 		<p>
-			<button>등록</button>
+			<button name="p_category1" value="beauty">등록</button>
 	</form>
 
 </body>

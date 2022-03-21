@@ -146,9 +146,13 @@ public class FundingDAO {
 
 	public void getFundingCategory(HttpServletRequest request, String f_category2) {
 
-        request.setAttribute("funding2", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
+		request.setAttribute("funding2", ss.getMapper(FundingMapper.class).getFundingCategory(f_category2));
 
-    }
+
+	}
+
+	
+
 
 
 	// 펀딩 삭제

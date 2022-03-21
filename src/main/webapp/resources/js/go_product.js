@@ -31,18 +31,20 @@ function deleteProduct(n) {
 	}
 }
 
-function goCart(i, p , price , c, photo) {
+function goCart(i,p,price,c,photo) {
 	let amount = document.getElementById("amount").value;
 	let ok = confirm("장바구니에 담으시겠습니까?")
 	if (ok) {
-		location.href = "product.insert.cart?c_p_no=" + p + "&c_a_id=" + i + "&c_quantity="
-		+amount+"&c_price=" + price + "&p_num="+ p +"&c_category="+ c + "&c_p_photo=" + photo;
+		$.ajax({
+			url :'/mio/product.insert.cart?c_p_no=' + p + "&c_a_id=" + i + "&c_quantity="
+				+amount+"&c_price=" + price + "&p_num="+ p +"&c_category="+ c + "&c_p_photo=" + photo,
+			type:'get',
+			success :alert("장바구니에 담겼습니다.")
+		});
 		
-		alert("장바구니에 담겼습니다.")
-		
-		let ok = confirm("장바구니로 이동하시겠습니까?")
-		if (ok) {
-			location.href = "product.go.cart"
+		let ok2 = confirm("장바구니로 이동하시겠습니까?")
+		if (ok2) {
+			window.location.href = "product.go.cart"
 
 		}
 	}

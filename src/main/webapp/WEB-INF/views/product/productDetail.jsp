@@ -42,7 +42,9 @@
 								
 
 							<form name="form" method="get">
-								<input name="sell_price" value="${detail.p_price}" type="hidden"> 
+
+								<input type="hidden" name="sell_price" value="${detail.p_price}"> 
+
 								수량 :<input type="button" value=" + " onclick="add();"> 
 								<input type="text" id="amount" value="1" size="3" onchange="change();"> 
 								<input type="button" value=" - " onclick="del();"><br> 
@@ -62,9 +64,9 @@
 								<c:if
 									test="${sessionScope.loginAccount.a_id == z.z_id && z.z_num == param.p_num}">
 
-<<<<<
+
 									<td colspan="2"><button onclick="deletezzim2(${z.z_no },${param.p_num});">찜해제</button></td>
->>>>>
+
 									<%
 										a = 1;
 									%>
@@ -120,7 +122,6 @@
 						<span> ${sessionScope.loginAccount.a_id } </span> <input
 							type="hidden" name="token" value="${token }"> <input
 							type="hidden" name="r_p_no" value="${param.p_num}">
-						<%-- 	<input type="hidden" name="p" value="${curPage }"> --%>
 						<div id="star">
 						<a href="#;" class="starR on" value="1">★</a>						
 						<a href="#;" class="starR" value="2">★</a>						

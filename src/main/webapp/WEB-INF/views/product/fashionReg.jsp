@@ -31,16 +31,22 @@
 				<option value="지갑">지갑</option>
 				<option value="패션소품">패션소품</option>
 				<option value="케이스">케이스</option>
-				<option value="신발">신발</option>
+				
 
 			</select>
 		<p>
-		<div>size color quantity</div>
-		<ul style="display: contents; position: relative;" id="list"></ul>
-		<button type="button" onclick="doAdd();">옵션 추가</button>
-		<button type="button" onclick="doDelete();">삭제</button>
+
+		<div>사이즈 컬러 수량</div>
+		<div><select name="d_size">
+		<option value="S">S</option>
+		<option value="M">M</option>
+		<option value="L">L</option>
+		</select>
+		<input name="d_color">
+		</div>
 
 		<p>
+		<input type="hidden" name="p_category1" value="fashion">
 			<button>등록</button>
 	</form>
 

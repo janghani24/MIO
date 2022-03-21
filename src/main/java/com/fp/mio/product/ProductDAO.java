@@ -135,9 +135,11 @@ public class ProductDAO {
 
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 
+
 			zzim.setZ_id(a.getA_id());
 	
 		
+
 
 			if (ss.getMapper(ProductMapper.class).getProductzzim(zzim) == 1) {
 				System.out.println("찜성공");
@@ -292,8 +294,9 @@ public class ProductDAO {
 
 	}
 
-	public void regFashion(HttpServletRequest request, Product product) {
+	public void regFashion(HttpServletRequest request, Product product,ProductDetail pd) {
 
+		
 		try {
 			DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
 			String path = request.getSession().getServletContext().getRealPath("resources/img/fashion");
@@ -302,6 +305,10 @@ public class ProductDAO {
 			int p_price = Integer.parseInt(mr.getParameter("p_price"));
 			int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
 
+			pd.setD_size(mr.getParameter("d_size"));
+			pd.setD_color(mr.getParameter("d_color"));
+			pd.setD_quantity(Integer.parseInt(mr.getParameter("p_quantity")));
+			
 			product.setP_name(mr.getParameter("p_name"));
 			product.setP_price(p_price);
 			product.setP_brand(mr.getParameter("p_brand"));
@@ -326,8 +333,7 @@ public class ProductDAO {
 			} else {
 				p_category2 = "신발";
 			}
-
-			product.setP_category1("fashion");
+			product.setP_category1(mr.getParameter("p_category1"));
 			product.setP_category2(p_category2);
 
 			Date today = new Date();
@@ -336,10 +342,17 @@ public class ProductDAO {
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 			product.setP_owner(a.getA_id());
 
+
 			if (ss.getMapper(ProductMapper.class).regFashion(product) == 1) {
 				allPCount++;
-				request.setAttribute("r", "등록성공!");
-				System.out.println("--등록 성공--");
+				pd.setD_master_num(ss.getMapper(ProductMapper.class).getProductPnum(product));
+				System.out.println(pd.getD_master_num());
+				System.out.println(pd.getD_size());
+				if (ss.getMapper(ProductMapper.class).regFashionDetail(pd) == 1) {
+					request.setAttribute("r", "등록성공!");
+					System.out.println("--등록 성공--");
+					request.setAttribute("p_category1", "fashion");
+				}
 			} else {
 				request.setAttribute("r", "등록실패!");
 			}
@@ -571,8 +584,12 @@ public void getCategoryProduct(int pageNo, HttpServletRequest req) {
 	int start = (pageNo - 1) * count + 1;
 	int end = start + (count - 1);
 	
-	String p_category1 = req.getParameter("p_category1");
-	
+	String p_category1 = null;
+	if (req.getParameter("p_category1")==null) {
+		p_category1=(String)req.getAttribute("p_category1");
+	}else {
+		p_category1=req.getParameter("p_category1");
+	}
 	
 	
 	

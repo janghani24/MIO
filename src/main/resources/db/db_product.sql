@@ -17,6 +17,7 @@ select count(*)
 		where p_category1 = 'food';
 
 
+
 create table product_detail(
     d_num number(4) primary key, 
     d_master_num number(10) not null, 

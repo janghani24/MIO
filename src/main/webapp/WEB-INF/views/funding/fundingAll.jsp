@@ -46,8 +46,6 @@
 
     
 
-	
-
 	<c:if test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
 		<button onclick="location.href='funding.regPage'">펀딩 등록</button>
 	</c:if>

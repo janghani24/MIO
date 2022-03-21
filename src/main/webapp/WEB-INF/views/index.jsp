@@ -30,11 +30,12 @@
 
 
 <body>
-	<c:if test="${sessionScope.loginAccount != null }">
-		<div>
-			<a href="account.logout">로그아웃</a>
-		</div>
-	</c:if>
+
+<c:if test="${sessionScope.loginAccount != null }">
+<div> <a href="account.logout">로그아웃</a> </div>
+<div> <a href="product.go.cart">장바구니</a> </div>
+</c:if>
+
 	<table border="1" id="wrapTable">
 		<tr>
 			<!-- left side -->

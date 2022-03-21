@@ -33,7 +33,7 @@
 
 			</select>
 		<p>
-			<button>등록</button>
+			<button name="p_category1" value="living">등록</button>
 	</form>
 
 </body>
