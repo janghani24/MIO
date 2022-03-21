@@ -20,7 +20,7 @@
 
 		<tr>
 			<td><img
-				src="resources/img/${detail.p_category1}/${detail.p_photo}"></td>
+				src="resources/img/${detail.p_category1}/${detail.p_photo}" width="800px;"></td>
 
 			<td>
 				<table border="1">
@@ -53,7 +53,7 @@
 					</tr>
 					<tr>
 						<td><button>구매하기</button></td>
-						<td><button>장바구니</button></td>
+						<td><button onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
 
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
 
@@ -62,7 +62,9 @@
 								<c:if
 									test="${sessionScope.loginAccount.a_id == z.z_id && z.z_num == param.p_num}">
 
-									<td colspan="2"><button onclick="deletezzim2(${z.z_no },${param.p_num });">찜해제</button></td>
+<<<<<
+									<td colspan="2"><button onclick="deletezzim2(${z.z_no },${param.p_num});">찜해제</button></td>
+>>>>>
 									<%
 										a = 1;
 									%>
@@ -91,7 +93,7 @@
 		</tr>
 		<tr>
 			<td colspan="2"><img
-				src="resources/img/${detail.p_category1}/${detail.p_content}">
+				src="resources/img/${detail.p_category1}/${detail.p_content}" width="800px;">
 				<br>
 				<c:if test="${detail.p_owner == sessionScope.loginAccount.a_id }">
 				<button onclick="deleteProduct(${param.p_num})">삭제</button>

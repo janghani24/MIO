@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +27,47 @@ public class ProductDAO {
 	private com.fp.mio.SiteOption so;
 	
 	private int allPCount;
-	
+	private int allCPCount;
+	private int allC2PCount;
 	public int getAllPCount() {
 		return allPCount;
 	}
+	public int getAllCPCount() {
+		return allCPCount;
+	}
+	public int getAllC2PCount() {
+		return allC2PCount;
+	}
+	
 	public void setAllPCount(int allPCount) {
 		this.allPCount = allPCount;
+	}
+	public void setAllCPCount(int allCPCount) {
+		this.allCPCount = allCPCount;
+	}
+	public void setAllC2PCount(int allC2PCount) {
+		this.allC2PCount = allC2PCount;
 	}
 
 	public void calcAllPCount() {
 		ProductSelector ps = new ProductSelector("", null, null);
 		allPCount = ss.getMapper(ProductMapper.class).getProductCount(ps);
+	}
+	public void calcAllCPCount(HttpServletRequest req) {
+		String p_category1=req.getParameter("p_category1");
+		
+		System.out.println(p_category1);
+		ProductCSelector pcs = new ProductCSelector("", null, null,p_category1);
+		allCPCount = ss.getMapper(ProductMapper.class).getCProductCount(pcs);
+		System.out.println(allCPCount);
+	}
+	public void calcAllC2PCount(HttpServletRequest req) {
+		String p_category2=req.getParameter("p_category2");
+		
+		System.out.println(p_category2);
+		ProductCSelector pcs = new ProductCSelector("", null, null,p_category2);
+		allCPCount = ss.getMapper(ProductMapper.class).getC2ProductCount(pcs);
+		System.out.println(allCPCount);
 	}
 	
 	
@@ -92,10 +123,8 @@ public class ProductDAO {
 
 	public void getProductCategory(HttpServletRequest request, String p_category2) {
 		try {
-			request.setAttribute("food", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
-			request.setAttribute("fashion", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
-			request.setAttribute("beauty", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
-			request.setAttribute("living", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+			request.setAttribute("productc", ss.getMapper(ProductMapper.class).getProductCategory(p_category2));
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -162,6 +191,12 @@ public class ProductDAO {
 			request.setAttribute("search", ps);
 		
 
+	}
+	public void categoryProductSearch(ProductCSelector pcs,HttpServletRequest request) {
+		System.out.println(pcs.getSearch());
+		request.setAttribute("search", pcs);
+		
+		
 	}
 
 	public void writeReply(ProductReply pr, Product p, HttpServletRequest req) {
@@ -242,7 +277,9 @@ public class ProductDAO {
 
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 			product.setP_owner(a.getA_id());
+			
 			if (ss.getMapper(ProductMapper.class).regFood(product) == 1) {
+				allPCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {
@@ -300,6 +337,7 @@ public class ProductDAO {
 			product.setP_owner(a.getA_id());
 
 			if (ss.getMapper(ProductMapper.class).regFashion(product) == 1) {
+				allPCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {
@@ -353,6 +391,7 @@ public class ProductDAO {
 			product.setP_owner(a.getA_id());
 
 			if (ss.getMapper(ProductMapper.class).regBeauty(product) == 1) {
+				allPCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {
@@ -406,6 +445,7 @@ public class ProductDAO {
 			product.setP_owner(a.getA_id());
 
 			if (ss.getMapper(ProductMapper.class).regLiving(product) == 1) {
+				allPCount++;
 				request.setAttribute("r", "등록성공!");
 				System.out.println("--등록 성공--");
 			} else {
@@ -485,6 +525,7 @@ public class ProductDAO {
 
 	public void deleteProduct(HttpServletRequest request, Product p) {
 		if (ss.getMapper(ProductMapper.class).deleteProduct(p) == 1) {
+			allPCount--;
 			request.setAttribute("r", "삭제 성공!");
 		} else {
 			request.setAttribute("r", "삭제 실패!");
@@ -523,6 +564,74 @@ public void getProduct(int pageNo, HttpServletRequest req) {
 	req.setAttribute("products", products);
 	req.setAttribute("curPage", pageNo);
 
+}
+public void getCategoryProduct(int pageNo, HttpServletRequest req) {
+	
+	int count = so.getProductCountPerpage();
+	int start = (pageNo - 1) * count + 1;
+	int end = start + (count - 1);
+	
+	String p_category1 = req.getParameter("p_category1");
+	
+	
+	
+	
+	ProductCSelector search = (ProductCSelector) req.getAttribute("search");
+	int pCount = 0;
+	
+	if (search == null) {
+		search = new ProductCSelector("", new BigDecimal(start), new BigDecimal(end), p_category1);
+		pCount = allCPCount; 
+	} else {
+		search.setStart(new BigDecimal(start));
+		search.setEnd(new BigDecimal(end));
+		pCount = ss.getMapper(ProductMapper.class).getCProductCount(search);
+		
+	}
+	
+	List<Product> products = ss.getMapper(ProductMapper.class).getCProductSearch(search);
+	
+	int pageCount = (int) Math.ceil(pCount / (double) count);
+	req.setAttribute("pageCount", pageCount);
+	
+	req.setAttribute("productc", products);
+	req.setAttribute("curPage", pageNo);
+	req.setAttribute("category", p_category1);
+}
+public void getCategory2Product(int pageNo, HttpServletRequest req) {
+	
+	int count = so.getProductCountPerpage();
+	int start = (pageNo - 1) * count + 1;
+	int end = start + (count - 1);
+	
+	String p_category2 = req.getParameter("p_category2");
+	String p_category1 = req.getParameter("p_category1");
+	
+	
+	
+	
+	ProductCSelector search = (ProductCSelector) req.getAttribute("search");
+	int pCount = 0;
+	
+	if (search == null) {
+		search = new ProductCSelector("", new BigDecimal(start), new BigDecimal(end), p_category2);
+		pCount = allCPCount; 
+	} else {
+		search.setStart(new BigDecimal(start));
+		search.setEnd(new BigDecimal(end));
+		pCount = ss.getMapper(ProductMapper.class).getC2ProductCount(search);
+		
+	}
+	
+	List<Product> products = ss.getMapper(ProductMapper.class).getC2ProductSearch(search);
+	
+	int pageCount = (int) Math.ceil(pCount / (double) count);
+	req.setAttribute("pageCount", pageCount);
+	
+	req.setAttribute("productc", products);
+	req.setAttribute("curPage", pageNo);
+	req.setAttribute("category", p_category1);
+	req.setAttribute("p_category2", p_category2);
 }
 
 	

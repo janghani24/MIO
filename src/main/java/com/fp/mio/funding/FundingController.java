@@ -13,21 +13,47 @@ import com.fp.mio.account.AccountDAO;
 public class FundingController {
 
 
-	@Autowired
-	private FundingDAO fDAO;
-	@Autowired
-	private AccountDAO aDAO;
+	private boolean firstReqP;
+	public FundingController() {
+		firstReqP = true;
+	}
+    @Autowired
+    private FundingDAO fDAO;
+    @Autowired
+    private AccountDAO aDAO;
 
 	// 상품 전체 조회
 	@RequestMapping(value = "/funding.all", method = RequestMethod.GET)
 	public String fundingAll(HttpServletRequest request) {
 
-		aDAO.loginCheck(request);
-		fDAO.getFundingAll(request);
 
-		request.setAttribute("contentPage", "funding/fundingAll.jsp");
-		return "index";
-	}
+        aDAO.loginCheck(request);
+        if(firstReqP) {
+    		fDAO.calcAllFCount();
+    		firstReqP = false;
+    		}
+        fDAO.getFunding(1, request);
+        request.setAttribute("contentPage", "funding/fundingAll.jsp");
+        return "index";
+    }
+
+  //페이징
+  	@RequestMapping(value = "/funding.paging", method = RequestMethod.GET)
+  	public String snsPageChange(HttpServletRequest request) {
+  		int p = Integer.parseInt(request.getParameter("p"));
+  		aDAO.loginCheck(request);
+  		fDAO.getFunding(p, request);
+  		request.setAttribute("contentPage", "product/fundingAll.jsp");
+  		return "index";
+  	}
+    //펀딩 등록 페이지
+    @RequestMapping(value = "/funding.regPage", method = RequestMethod.GET)
+    public String fundingRegPage(HttpServletRequest request,Funding funding) {
+        aDAO.loginCheck(request);
+        request.setAttribute("contentPage", "funding/fundingReg.jsp");
+        return "index";
+    }
+
 
     
     // 펀딩 삭제
@@ -44,12 +70,6 @@ public class FundingController {
     }
     
 	
-	@RequestMapping(value = "/funding.regPage", method = RequestMethod.GET)
-	public String fundingRegPage(HttpServletRequest request,Funding funding) {
-		aDAO.loginCheck(request);
-		request.setAttribute("contentPage", "funding/fundingReg.jsp");
-		return "index";
-	}
 	
 	//펀딩등록하기
 	@RequestMapping(value = "/funding.reg", method =RequestMethod.POST)

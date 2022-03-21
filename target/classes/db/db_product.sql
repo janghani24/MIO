@@ -12,6 +12,10 @@ p_category2 varchar2(20 char) not null,
 p_date date not null
 )
 
+select count(*)
+		from product_master
+		where p_category1 = 'food';
+
 
 create table product_detail(
     d_num number(4) primary key, 

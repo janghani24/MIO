@@ -10,46 +10,55 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table border=1 class="category_tbl">
+	<table border=1 class="category_tbl">
 
-    <tr>    <td onclick="location.href='funding.all'">전체보기</td>
-            <td onclick="location.href='funding.category?f_category=일자리창출'">일자리 창출</td>
-            <td onclick="location.href='funding.category?f_category=친환경'">친환경</td>
-            <td onclick="location.href='funding.category?f_category=기부'">기부</td>
-            <td onclick="location.href='funding.category?f_category=유기동물후원'">유기동물 후원</td>
-        </tr>
+		<tr>
+			<td onclick="location.href='funding.all'">전체보기</td>
+			<td onclick="location.href='funding.category?f_category=일자리창출'">일자리
+				창출</td>
+			<td onclick="location.href='funding.category?f_category=친환경'">친환경</td>
+			<td onclick="location.href='funding.category?f_category=기부'">기부</td>
+			<td onclick="location.href='funding.category?f_category=유기동물후원'">유기동물
+				후원</td>
+		</tr>
 
 
-		<c:forEach var="f" items="${funding2}">
-			<ul>
-			
-				<li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg"></a></li>
-</ul></c:forEach>
+
+	
 
     </table>
 
-		
+		<c:forEach var="f" items="${funding2}">
+		<ul>
 
-        <c:forEach var="f" items="${funding2}">
-            <ul>
+			<li><a href="${f.f_url}"><img
+					src="resources/img/funding/${f.f_photo}" id="fundingImg"
+					width="300px;"></a></li>
+			<li><a href="${f.f_url}">${f.f_company}</a></li>
+			<li>${f.f_name}</li>
+			<li><fmt:formatDate value="${f.f_period}"
+					pattern="yyyy년 MM월 dd일" />&nbsp;종료</li>
+			<c:if test="${f.f_owner == sessionScope.loginAccount.a_id }">
+				<li><button onclick="deleteFunding(${f.f_num})">삭제</button></li>
+			</c:if>
+		</ul>
+	</c:forEach>
 
-                <li><a href="${f.f_url}"><img src="resources/img/funding/${f.f_photo}" id="fundingImg" width="300px;"></a></li>
+    
+	</table>
 
-                <li><a href="${f.f_url}">${f.f_company}</a></li>
-                <li>${f.f_name}</li>
+	
 
-                <li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
-                </li>
-                <li><fmt:formatDate value="${f.f_period}" pattern="yyyy년 MM월 dd일" />&nbsp;종료
-                </li>
-                <c:if test="${f.f_owner == sessionScope.loginAccount.a_id }">
-                <li><button onclick="deleteFunding(${f.f_num})">삭제</button></li>
-                </c:if>
-            </ul> 
-    </c:forEach>
+	<c:if test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
+		<button onclick="location.href='funding.regPage'">펀딩 등록</button>
+	</c:if>
+	<div align="center">
+		<a href="funding.paging?p=1"> [맨처음] </a>
+		<c:forEach var="p" begin="1" end="${pageCount}">
+			<a href="funding.paging?p=${p}">[${p}]</a>
+		</c:forEach>
+		<a href="funding.paging?p=${pageCount}"> [맨끝] </a>
+	</div>
 
-
-        <button onclick="location.href='funding.regPage'">펀딩 등록</button>
-		
 </body>
 </html>
