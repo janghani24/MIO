@@ -85,17 +85,16 @@ public class FundingController {
 	
 	//하위 카테고리로 이동
 	@RequestMapping(value = "/funding.category", method = RequestMethod.GET)
-	public String fundingCategory(HttpServletRequest request, String f_category) {
+    public String fundingCategory(HttpServletRequest request, String f_category) {
 
-		aDAO.loginCheck(request);
-		String f_category2 = request.getParameter("f_category");
-		fDAO.getProductCategory(request, f_category2);
+        aDAO.loginCheck(request);
+        String f_category2 = request.getParameter("f_category");
+        fDAO.getFundingCategory(request, f_category2);
 
-		request.setAttribute("contentPage", "funding/fundingAll.jsp");
+        request.setAttribute("contentPage", "funding/fundingAll.jsp");
 
-		return "index";
+        return "index";
 
-	}
-
+    }
 }
 

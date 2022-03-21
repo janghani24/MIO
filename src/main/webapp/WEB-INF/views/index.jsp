@@ -16,42 +16,25 @@
 <script type="text/javascript" src="resources/js/jquery.js"></script>
 <script type="text/javascript" src="resources/js/site_jquery.js"></script>
 <script type="text/javascript" src="resources/js/product_count.js"></script>
+<script type="text/javascript" src="resources/js/index.js"></script>
 
 <script type="text/javascript" src="resources/js/option_add.js"></script>
 
 <script type="text/javascript" src="resources/js/replyStar.js"></script>
 
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<title>Insert title here</title>
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-
-		$('.subMenu').hide();
-
-		$('#topMenu').mouseover(function() {
-			$('.subMenu').slideDown();
-			$('.subMenu').mouseover(function() {
-				$('.subMenu').stop();
-
-			});
-
-		});
-
-		$('.subMenu').mouseleave(function() {
-			$('.subMenu').slideUp();
-		});
-
-	});
-</script>
-
-
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
+
+
 <body>
-<c:if test="${sessionScope.loginAccount != null }">
-<div> <a href="account.logout">로그아웃</a> </div>
-</c:if>
+	<c:if test="${sessionScope.loginAccount != null }">
+		<div>
+			<a href="account.logout">로그아웃</a>
+		</div>
+	</c:if>
 	<table border="1" id="wrapTable">
 		<tr>
 			<!-- left side -->
@@ -63,7 +46,7 @@
 					<c:choose>
 						<c:when test="${sessionScope.loginAccount != null }">
 							<tr>
-								<td><a href="account.mypage">mypage</a></td>
+								<td><a href="account.mypage">my page</a></td>
 							</tr>
 						</c:when>
 						<c:otherwise>
@@ -76,16 +59,20 @@
 						<td id="topMenu"><a href="product.all">Product</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a href="product.category?p_category1=food">Food</a></td>
+						<td class="subMenu"><a
+							href="product.category?p_category1=food">Food</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a href="product.category?p_category1=fashion">Fashion</a></td>
+						<td class="subMenu"><a
+							href="product.category?p_category1=fashion">Fashion</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a href="product.category?p_category1=beauty">Beauty</a></td>
+						<td class="subMenu"><a
+							href="product.category?p_category1=beauty">Beauty</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a href="product.category?p_category1=living">Living</a></td>
+						<td class="subMenu"><a
+							href="product.category?p_category1=living">Living</a></td>
 					</tr>
 
 

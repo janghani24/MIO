@@ -45,7 +45,6 @@
 	</c:forEach>
 
     
-	</table>
 
 	
 
