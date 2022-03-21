@@ -42,9 +42,9 @@
 								
 
 							<form name="form" method="get">
-								<input name="sell_price" value="${detail.p_price}"> 
+								<input type="hidden" name="sell_price" value="${detail.p_price}"> 
 								수량 :<input type="button" value=" + " onclick="add();"> 
-								<input type="text" name="amount" value="1" size="3" onchange="change();"> 
+								<input type="text" id="amount" value="1" size="3" onchange="change();"> 
 								<input type="button" value=" - " onclick="del();"><br> 
 
 								금액 : <input type="text" name="sum" size="11" readonly>원
@@ -62,9 +62,9 @@
 								<c:if
 									test="${sessionScope.loginAccount.a_id == z.z_id && z.z_num == param.p_num}">
 
-<<<<<
+
 									<td colspan="2"><button onclick="deletezzim2(${z.z_no },${param.p_num});">찜해제</button></td>
->>>>>
+
 									<%
 										a = 1;
 									%>

@@ -31,7 +31,7 @@ function deleteProduct(n) {
 	}
 }
 
-function goCart(i, p , price , c, photo) {
+function goCart(i,p,price,c,photo) {
 	let amount = document.getElementById("amount").value;
 	let ok = confirm("장바구니에 담으시겠습니까?")
 	if (ok) {
