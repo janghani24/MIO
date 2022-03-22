@@ -37,7 +37,8 @@
 			</select>
 		<p>
 
-		<div>사이즈 컬러 수량</div>
+		<div>사이즈 컬러</div>
+
 		<div><select name="d_size">
 		<option value="S">S</option>
 		<option value="M">M</option>

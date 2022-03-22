@@ -46,6 +46,7 @@
 					pattern="yyyy년 MM월 dd일" />&nbsp;종료</li>
 			<c:if test="${f.f_owner == sessionScope.loginAccount.a_id }">
 				<li><button onclick="deleteFunding(${f.f_num})">삭제</button></li>
+				<li><button onclick="updateFunding(${f.f_num})">수정</button></li>
 			</c:if>
 		</ul>
 	</c:forEach>

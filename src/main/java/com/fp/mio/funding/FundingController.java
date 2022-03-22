@@ -81,6 +81,15 @@ public class FundingController {
        }
         return "index";
     }
+    
+    //수정 페이지로 이동
+    @RequestMapping(value = "/funding.go.updateFunding", method = RequestMethod.GET)
+    public String fundingGoUpdate(HttpServletRequest request,Funding funding) {
+    	aDAO.loginCheck(request);
+    	request.setAttribute("fundingDetail",fDAO.getFundingDetail(request, funding));
+    	request.setAttribute("contentPage", "funding/fundingUpdate.jsp");
+    	return "index";
+    }
 
 
     
@@ -105,11 +114,23 @@ public class FundingController {
 		
 		aDAO.loginCheck(request);
 		fDAO.regFunding(request,funding);
-		fDAO.getFundingAll(request);
+		fDAO.getFunding(1, request);
 		request.setAttribute("contentPage", "funding/fundingAll.jsp");
 		
 		return "index";
 	}
+	// 펀딩 수정
+	@RequestMapping(value = "/funding.updateFunding", method =RequestMethod.POST)
+	public String fundingUpdate(HttpServletRequest request,Funding funding) {
+		
+		aDAO.loginCheck(request);
+		fDAO.updateFunding(request, funding);
+		fDAO.getFunding(1, request);
+		request.setAttribute("contentPage", "funding/fundingAll.jsp");
+		
+		return "index";
+	}
+	
 	
 	//하위 카테고리로 이동
 

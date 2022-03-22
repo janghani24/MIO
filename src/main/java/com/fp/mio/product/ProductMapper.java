@@ -75,6 +75,12 @@ public interface ProductMapper {
 
 	int regFashionDetail(ProductDetail pd);
 
+	int updateProduct(Product product);
+
+	ProductDetail getFashionDetail(Product p);
+
+	int updateProductDetail(ProductDetail pd);
+
 
 
 
