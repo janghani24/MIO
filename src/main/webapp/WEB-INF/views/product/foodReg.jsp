@@ -20,7 +20,7 @@
 		<p>
 			브랜드:<input name="p_brand">
 		<p>
-			수량:<input name="p_quantity">
+			수량:<input name="p_quantity" type="number" min="1">
 		<p>
 			상품 상세 정보:<input name="p_content" type="file">
 		<p>

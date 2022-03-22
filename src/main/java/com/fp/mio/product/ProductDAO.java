@@ -188,6 +188,7 @@ public class ProductDAO {
 	}
 
 
+
 	public void productSearch(ProductSelector ps,HttpServletRequest request) {
 			System.out.println(ps.getSearch());
 			request.setAttribute("search", ps);
@@ -341,8 +342,8 @@ public class ProductDAO {
 
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 			product.setP_owner(a.getA_id());
-			System.out.println(product.getP_category1());
-			
+
+
 			if (ss.getMapper(ProductMapper.class).regFashion(product) == 1) {
 				allPCount++;
 				pd.setD_master_num(ss.getMapper(ProductMapper.class).getProductPnum(product));
@@ -402,7 +403,7 @@ public class ProductDAO {
 
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 			product.setP_owner(a.getA_id());
-			
+
 			if (ss.getMapper(ProductMapper.class).regBeauty(product) == 1) {
 				allPCount++;
 				request.setAttribute("r", "등록성공!");
@@ -456,7 +457,7 @@ public class ProductDAO {
 
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 			product.setP_owner(a.getA_id());
-			
+
 			if (ss.getMapper(ProductMapper.class).regLiving(product) == 1) {
 				allPCount++;
 				request.setAttribute("r", "등록성공!");
@@ -476,24 +477,23 @@ public class ProductDAO {
 		Product pp = ss.getMapper(ProductMapper.class).getProductDetail(p.getP_num());
 		c.setC_name(pp.getP_name());
 		System.out.println(c.getC_p_photo());
-		
+
 		if (ss.getMapper(ProductMapper.class).getCartByPNo(c) == 1) {
-			
+
 			if (ss.getMapper(ProductMapper.class).updateCart(c) == 1) {
 				request.setAttribute("result", "장바구니 넣기 성공");
 			} else {
 				request.setAttribute("result", "장바구니 넣기 실패");
 			}
-			
-		}else {
-		
-		
-		if (ss.getMapper(ProductMapper.class).insertCart(c) == 1) {
-			request.setAttribute("result", "장바구니 넣기 성공");
+
 		} else {
-			request.setAttribute("result", "장바구니 넣기 실패");
-		}
-		
+
+			if (ss.getMapper(ProductMapper.class).insertCart(c) == 1) {
+				request.setAttribute("result", "장바구니 넣기 성공");
+			} else {
+				request.setAttribute("result", "장바구니 넣기 실패");
+			}
+
 		}
 	}
 
@@ -504,8 +504,7 @@ public class ProductDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	public void deleteReply(ProductReply pr, HttpServletRequest req) {
@@ -544,7 +543,7 @@ public class ProductDAO {
 			request.setAttribute("r", "삭제 성공!");
 		} else {
 			request.setAttribute("r", "삭제 실패!");
-		}		
+		}
 	}
 	
 

@@ -36,6 +36,7 @@
 
 			</select>
 		<p>
+
 		<div>사이즈 컬러 수량</div>
 		<div><select name="d_size">
 		<option value="S">S</option>
@@ -44,6 +45,7 @@
 		</select>
 		<input name="d_color">
 		</div>
+
 		<p>
 		<input type="hidden" name="p_category1" value="fashion">
 			<button>등록</button>

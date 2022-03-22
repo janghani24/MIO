@@ -42,7 +42,9 @@
 								
 
 							<form name="form" method="get">
+
 								<input type="hidden" name="sell_price" value="${detail.p_price}"> 
+
 								수량 :<input type="button" value=" + " onclick="add();"> 
 								<input type="text" id="amount" value="1" size="3" onchange="change();"> 
 								<input type="button" value=" - " onclick="del();"><br> 

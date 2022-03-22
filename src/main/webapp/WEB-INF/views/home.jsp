@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>
-<button onclick="">이동하기</button>
+<table border="1">
+
 <tr>
 <td>광고1</td>
 </tr>
