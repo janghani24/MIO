@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="account.searchPw">
+<form action="account.searchPw" name="pwSearchForm" onsubmit="return searchPwCheck();">
 	<table border="1">
 		<tr>
 			<td colspan="2">PW찾기</td>

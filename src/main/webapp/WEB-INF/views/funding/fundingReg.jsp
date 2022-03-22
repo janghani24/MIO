@@ -8,7 +8,8 @@
 </head>
 <body>
 
-	<form action="funding.reg" method="post" enctype="multipart/form-data">
+	<form action="funding.reg" method="post" enctype="multipart/form-data"
+	name="fundingRegForm" onsubmit="return fundingRegCheck();">
 		대표 이미지 : <input name="f_photo" type="file">
 		<p>
 			펀딩명 : <input name="f_name">
@@ -23,7 +24,7 @@
 
 			</select>
 		<p>
-			펀딩기간: <input type="date" name="f_period">
+			펀딩 마감 기간: <input type="date" name="f_period">
 		<p>
 			펀딩 주소: <input name="f_url">
 		<p>

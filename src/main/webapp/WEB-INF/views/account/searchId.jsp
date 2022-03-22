@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="account.searchId">
+	<form action="account.searchId" name="idSearchForm" onsubmit="return searchIdCheck();">
 		<table>
 			<tr>
 				<td>ID찾기</td>
@@ -16,7 +16,7 @@
 				<td>이름 <input name="a_name"></td>
 			</tr>
 			<tr>
-				<td>핸드폰 번호 <input name="a_phone"></td>
+				<td>핸드폰 번호 <input name="a_phone" placeholder="숫자만 입력해주세요."></td>
 			</tr>
 			<tr>
 				<td><button>ID찾기</button>

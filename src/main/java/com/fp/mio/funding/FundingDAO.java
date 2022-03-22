@@ -65,7 +65,7 @@ public class FundingDAO {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
 			fCount = ss.getMapper(FundingMapper.class).getFundingCount(search);
-			
+			req.setAttribute("search", search.getSearch());
 		}
 		System.out.println(search.getSearch());
 		System.out.println(search.getStart());
@@ -79,7 +79,6 @@ public class FundingDAO {
 
 		req.setAttribute("funding2", fundings);
 		req.setAttribute("curPage", pageNo);
-
 	}
 	
 	public void fundingSearch(FundingSelector fs,HttpServletRequest request) {

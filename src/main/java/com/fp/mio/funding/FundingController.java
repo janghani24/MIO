@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fp.mio.account.AccountDAO;
+import com.fp.mio.product.ProductSelector;
 
 @Controller
 public class FundingController {
@@ -39,13 +40,39 @@ public class FundingController {
 
   //페이징
   	@RequestMapping(value = "/funding.paging", method = RequestMethod.GET)
-  	public String snsPageChange(HttpServletRequest request) {
+  	public String PageChange(HttpServletRequest request) {
   		int p = Integer.parseInt(request.getParameter("p"));
   		aDAO.loginCheck(request);
   		fDAO.getFunding(p, request);
-  		request.setAttribute("contentPage", "product/fundingAll.jsp");
+  		request.setAttribute("contentPage", "funding/fundingAll.jsp");
   		return "index";
   	}
+  	//검색결과에서 페이징
+  	@RequestMapping(value = "/funding.search.paging", method = RequestMethod.GET)
+  	public String searchPageChange(HttpServletRequest request,FundingSelector fs) {
+  		int p = Integer.parseInt(request.getParameter("p"));
+  		aDAO.loginCheck(request);
+  		fDAO.fundingSearch(fs, request);
+  		fDAO.getFunding(p, request);
+  		request.setAttribute("contentPage", "funding/fundingSearch.jsp");
+  		return "index";
+  	}
+  	// 펀딩 검색
+  	@RequestMapping(value = "/funding.search", method = RequestMethod.GET)
+	public String productSearch(HttpServletRequest request, FundingSelector fs) {
+
+		
+		aDAO.loginCheck(request);
+		fDAO.fundingSearch(fs, request);
+		fDAO.getFunding(1, request);
+
+		request.setAttribute("contentPage", "funding/fundingSearch.jsp");
+		return "index";
+
+	}
+  	
+  	
+  	
     //펀딩 등록 페이지
     @RequestMapping(value = "/funding.regPage", method = RequestMethod.GET)
     public String fundingRegPage(HttpServletRequest request,Funding funding) {

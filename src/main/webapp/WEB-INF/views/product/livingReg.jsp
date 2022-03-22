@@ -10,7 +10,8 @@
 
 <h1>생활용품 제품 등록</h1>
 
-<form action="food.reg" method="post" enctype="multipart/form-data">
+<form action="food.reg" method="post" enctype="multipart/form-data"
+name="productRegForm" onsubmit="return productRegCheck();">
 		<h1>식품 등록</h1>
 		
 		사진:<input name="p_photo" type="file">

@@ -37,13 +37,34 @@ public class ProductController {
 	}
 
 	
-	//페이징
+	//페이지 이동
 	@RequestMapping(value = "/product.paging", method = RequestMethod.GET)
-	public String snsPageChange(HttpServletRequest request) {
+	public String PageChange(HttpServletRequest request) {
 		int p = Integer.parseInt(request.getParameter("p"));
 		aDAO.loginCheck(request);
 		pDAO.getProduct(p, request);
 		request.setAttribute("contentPage", "product/productAll.jsp");
+		return "index";
+	}
+	
+	//검색 결과에서 페이지 이동
+	@RequestMapping(value = "/product.search.paging", method = RequestMethod.GET)
+	public String searchPageChange(ProductSelector ps,HttpServletRequest request) {
+		int p = Integer.parseInt(request.getParameter("p"));
+		aDAO.loginCheck(request);
+		pDAO.productSearch(ps, request);
+		pDAO.getProduct(p, request);
+		request.setAttribute("contentPage", "product/productSearch.jsp");
+		return "index";
+	}
+	//검색 결과에서 페이지 이동(카테고리)
+	@RequestMapping(value = "/product.search.category.paging", method = RequestMethod.GET)
+	public String searchCategoryChange(ProductCSelector pcs,HttpServletRequest request) {
+		int p = Integer.parseInt(request.getParameter("p"));
+		aDAO.loginCheck(request);
+		pDAO.categoryProductSearch(pcs, request);
+		pDAO.getCategoryProduct(p, request);
+		request.setAttribute("contentPage", "product/productSearchC.jsp");
 		return "index";
 	}
 	
@@ -155,17 +176,14 @@ public class ProductController {
 		return "index";
 	}
 
-	// 전체 상품 검색 페이지
 
 
-
-	//전체 상품 검색 페이지로 이동
+	//전체 상품 검색 
 
 	@RequestMapping(value = "/product.search", method = RequestMethod.GET)
 	public String productSearch(HttpServletRequest request, ProductSelector ps) {
 
 		
-		com.fp.mio.TokenMaker.make(request);
 		aDAO.loginCheck(request);
 		pDAO.productSearch(ps, request);
 		pDAO.getProduct(1, request);
@@ -173,6 +191,19 @@ public class ProductController {
 		request.setAttribute("contentPage", "product/productSearch.jsp");
 		return "index";
 
+	}
+	//카테고리에서 검색
+	@RequestMapping(value = "/product.category.search", method = RequestMethod.GET)
+	public String productCategorySearch(HttpServletRequest request, ProductCSelector pcs) {
+		
+		
+		aDAO.loginCheck(request);
+		pDAO.categoryProductSearch(pcs, request);
+		pDAO.getCategoryProduct(1, request);
+		
+		request.setAttribute("contentPage", "product/productSearchC.jsp");
+		return "index";
+		
 	}
 
 	// 댓글

@@ -116,7 +116,7 @@
 					</c:if>
 					<br>
 				</c:forEach> <br> <c:if test="${sessionScope.loginAccount != null }">
-					<form action="product.reply.write" name="productReply">
+					<form action="product.reply.write" name="productReply" onsubmit="return replyCheck();">
 						<span> ${sessionScope.loginAccount.a_id } </span> <input
 							type="hidden" name="token" value="${token }"> <input
 							type="hidden" name="r_p_no" value="${param.p_num}">
@@ -127,7 +127,7 @@
 						<a href="#;" class="starR" value="4">★</a>						
 						<a href="#;" class="starR" value="5">★</a>						
 						</div>
-						<input name="r_txt" maxlength="300" autocomplete="off">
+						<input name="r_txt" maxlength="300" autocomplete="off" placeholder="300자 이내로 작성해주세요.">
 						<input type="hidden" name="r_rate" value="1">
 						<button name="p_num" value="${param.p_num}">쓰기</button>
 					</form>

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +9,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="funding.search">
+
+
+<form action="product.search">
 		<input name="search">
 		<button>검색</button>
 	</form>
 
-
-	<table border=1 class="category_tbl">
-
+	<table border=1 id="tbl">
 		<tr>
 			<td onclick="location.href='funding.all'">전체보기</td>
 			<td onclick="location.href='funding.category?f_category=일자리창출'">일자리
@@ -27,14 +26,13 @@
 			<td onclick="location.href='funding.category?f_category=유기동물후원'">유기동물
 				후원</td>
 		</tr>
+	</table>
 
+<table>
 
+</table>
 
-	
-
-    </table>
-
-		<c:forEach var="f" items="${funding2}">
+	<c:forEach var="f" items="${funding2}">
 		<ul>
 
 			<li><a href="${f.f_url}"><img
@@ -55,12 +53,11 @@
 		<button onclick="location.href='funding.regPage'">펀딩 등록</button>
 	</c:if>
 	<div align="center">
-		<a href="funding.paging?p=1"> [맨처음] </a>
+		<a href="funding.search.paging?p=1&search=${search}"> [맨처음] </a>
 		<c:forEach var="p" begin="1" end="${pageCount}">
-			<a href="funding.paging?p=${p}">[${p}]</a>
+			<a href="funding.search.paging?p=${p}&search=${search}">[${p}]</a>
 		</c:forEach>
-		<a href="funding.paging?p=${pageCount}"> [맨끝] </a>
+		<a href="funding.search.paging?p=${pageCount}&search=${search}"> [맨끝] </a>
 	</div>
-
 </body>
 </html>

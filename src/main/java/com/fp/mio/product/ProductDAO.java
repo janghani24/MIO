@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.fp.mio.account.Account;
 import com.fp.mio.account.AccountMapper;
+import com.fp.mio.funding.FundingSelector;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -563,14 +564,11 @@ public void getProduct(int pageNo, HttpServletRequest req) {
 		search.setStart(new BigDecimal(start));
 		search.setEnd(new BigDecimal(end));
 		pCount = ss.getMapper(ProductMapper.class).getProductCount(search);
-		
+		req.setAttribute("search", search.getSearch());
 	}
-	System.out.println(search.getSearch());
-	System.out.println(search.getStart());
 	
 	List<Product> products = ss.getMapper(ProductMapper.class).getProductSearch(search);
 	
-
 	int pageCount = (int) Math.ceil(pCount / (double) count);
 	
 	req.setAttribute("pageCount", pageCount);
@@ -604,7 +602,7 @@ public void getCategoryProduct(int pageNo, HttpServletRequest req) {
 		search.setStart(new BigDecimal(start));
 		search.setEnd(new BigDecimal(end));
 		pCount = ss.getMapper(ProductMapper.class).getCProductCount(search);
-		
+		req.setAttribute("search", search.getSearch());
 	}
 	
 	List<Product> products = ss.getMapper(ProductMapper.class).getCProductSearch(search);
@@ -612,7 +610,7 @@ public void getCategoryProduct(int pageNo, HttpServletRequest req) {
 	int pageCount = (int) Math.ceil(pCount / (double) count);
 	req.setAttribute("pageCount", pageCount);
 	
-	req.setAttribute("productc", products);
+	req.setAttribute("products", products);
 	req.setAttribute("curPage", pageNo);
 	req.setAttribute("category", p_category1);
 }
@@ -651,6 +649,7 @@ public void getCategory2Product(int pageNo, HttpServletRequest req) {
 	req.setAttribute("category", p_category1);
 	req.setAttribute("p_category2", p_category2);
 }
+
 
 	
 	

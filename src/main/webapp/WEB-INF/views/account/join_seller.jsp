@@ -10,7 +10,7 @@
 	<br>
 	<form action="account.join.seller"
 		method="post" enctype="multipart/form-data"
-		name="joinForm" onsubmit="return joinCheck();">
+		name="joinForm" onsubmit="return joinChecks();">
 		<table id="joinTable">
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center">
@@ -52,7 +52,7 @@
 			<tr>
 				<td class="td1">휴대전화 번호</td>
 				<td class="td2">
-				<input name="s_phone" placeholder="필수" maxlength="10" autocomplete="off" autofocus="autofocus"></td>
+				<input name="s_phone" placeholder="필수,-없이 숫자만 입력해주세요." maxlength="11" autocomplete="off" autofocus="autofocus"></td>
 			</tr>
 			<tr>
 				<td class="td1">사진</td>
@@ -76,7 +76,7 @@
 			</tr>
 			<tr>
 				<td>소개글</td>
-				<td><textarea name="s_intro" placeholder="500자 이내로 작성해주세요."></textarea></td>
+				<td><textarea name="s_intro" maxlength="500"placeholder="500자 이내로 작성해주세요."></textarea></td>
 			</tr>
 			<tr>
 				<td>판매 종류</td>

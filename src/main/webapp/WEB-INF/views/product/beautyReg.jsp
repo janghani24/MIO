@@ -8,7 +8,8 @@
 </head>
 <body>
 
-<form action="beauty.reg" method="post" enctype="multipart/form-data">
+<form action="beauty.reg" method="post" enctype="multipart/form-data"
+name="productRegForm" onsubmit="return productRegCheck();">
 		<h1>뷰티 등록</h1>
 		
 		사진:<input name="p_photo" type="file">

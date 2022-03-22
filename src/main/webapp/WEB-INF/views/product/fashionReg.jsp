@@ -11,7 +11,8 @@
 	<h1>의류 제품 등록</h1>
 
 
-	<form action="fashion.reg" method="post" enctype="multipart/form-data">
+	<form action="fashion.reg" method="post" enctype="multipart/form-data"
+	name="productRegForm" onsubmit="return productFashionRegCheck();">
 
 		사진:<input name="p_photo" type="file">
 		<p>

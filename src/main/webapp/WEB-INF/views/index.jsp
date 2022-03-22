@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="resources/css/replyStar.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="resources/js/idCheck_account.js"></script>
+<script type="text/javascript" src="resources/js/check_account.js"></script>
+<script type="text/javascript" src="resources/js/check_product.js"></script>
 <script type="text/javascript" src="resources/js/go_account.js"></script>
 <script type="text/javascript" src="resources/js/go_product.js"></script>
 <script type="text/javascript" src="resources/js/go_funding.js"></script>

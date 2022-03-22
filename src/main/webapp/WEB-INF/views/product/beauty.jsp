@@ -8,6 +8,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<form action="product.category.search">
+		<input name="search">
+		<input type="hidden" name="p_category1" value="beauty">
+		<button>검색</button>
+	</form>
+
 <c:if test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
 <button onclick="location.href='product.beautyReg'">상품 등록</button>
 </c:if>
@@ -21,7 +28,7 @@
 		</tr>
 	</table>
 
-	<c:forEach var="b" items="${productc}">
+	<c:forEach var="b" items="${products}">
 		<ul>
 			<li onclick="location.href='product.detail?p_num=${b.p_num}'"><img
 				src="resources/img/beauty/${b.p_photo}" width="500px;"></li>

@@ -38,7 +38,7 @@
 			</tr>
 			<tr>
 				<td class="td1">이름</td>
-				<td class="td2"><input name="a_name" placeholder="필수, 한글로 작성"
+				<td class="td2"><input name="a_name" placeholder="필수"
 					maxlength="10" autocomplete="off"></td>
 			</tr>
 			<tr>
@@ -53,8 +53,8 @@
 			</tr>
 			<tr>
 				<td class="td1">휴대전화 번호</td>
-				<td class="td2"><input name="a_phone" placeholder="필수"
-					maxlength="10" autocomplete="off" autofocus="autofocus"></td>
+				<td class="td2"><input name="a_phone" placeholder="필수,-없이 숫자만 입력해주세요."
+					maxlength="11" autocomplete="off" autofocus="autofocus"></td>
 			</tr>
 			<tr>
 				<td class="td1">사진</td>

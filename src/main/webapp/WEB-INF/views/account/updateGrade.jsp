@@ -21,7 +21,6 @@
 					<td><select name="a_grade">
 							<option value="general">일반 회원</option>
 							<option value="seller">판매자</option>
-							<option value="blacklist">블랙리스트</option>
 					</select>
 						<button name="a_id" value="${a.a_id}">변경</button></td>
 				</tr>
