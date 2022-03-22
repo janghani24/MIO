@@ -40,7 +40,7 @@
 		<tr>
 			<!-- left side -->
 			<td id="leftside">
-				<table border="1">
+				<table id="indexcategory" border="1">
 					<tr>
 						<td><a href="/mio">MIO</a></td>
 					</tr>
@@ -52,7 +52,7 @@
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td><a href="account.login.go">login</a></td>
+								<td id="topMenu"><a href="account.Login.go">Login</a></td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -60,19 +60,19 @@
 						<td id="topMenu"><a href="product.all">Product</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a
+						<td id="subMenu"><a
 							href="product.category?p_category1=food">Food</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a
+						<td id="subMenu"><a
 							href="product.category?p_category1=fashion">Fashion</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a
+						<td id="subMenu"><a
 							href="product.category?p_category1=beauty">Beauty</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu"><a
+						<td id="subMenu"><a
 							href="product.category?p_category1=living">Living</a></td>
 					</tr>
 

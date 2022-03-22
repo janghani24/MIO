@@ -13,7 +13,7 @@
 </c:if>
 <table border="1">
 		<tr>
-			<td onclick="location.href='product.food.all'">전체 상품</td>
+			<td onclick="location.href='product.category?p_category1=food'">전체 상품</td>
 			<td onclick="location.href='product.category.category2?p_category1=food&p_category2=식사거리'">식사거리</td>
 			<td onclick="location.href='product.category.category2?p_category1=food&p_category2=간식거리'">간식거리</td>
 			<td onclick="location.href='product.category.category2?p_category1=food&p_category2=요리재료'">요리재료</td>

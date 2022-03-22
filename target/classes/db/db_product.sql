@@ -98,12 +98,11 @@ drop table product_reply cascade constraint purge;
 --식사거리
 insert into product_master values(product_master_seq.nextval,'hn','비건 사천 짜장 떡볶이 (비건밀키트)',13800,'계절의기억','12.jpeg','12-1.jpg',5,'food','식사거리',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','[냉동] 베지프랑크 200g',5000,'베지푸드','20.jpg','20-1.jpg',5,'food','식사거리',sysdate);
-
-insert into product_master values(product_master_seq.nextval,'hn','비건 사천 짜장 떡볶이 (비건밀키트)',13800,'계절의기억','12.jpeg','12-1.jpg',5,'food','식사거리',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','비건 사천 짜장 떡볶이 (비건밀키트)',13800,'계절의기억','12.jpeg','12-1.jpg',5,'food','식사거리',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','비건 사천 짜장 떡볶이 (비건밀키트)',13800,'계절의기억','12.jpeg','12-1.jpg',5,'food','식사거리',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','비건 사천 짜장 떡볶이 (비건밀키트)',13800,'계절의기억','12.jpeg','12-1.jpg',5,'food','식사거리',sysdate);
-
+insert into product_master values(product_master_seq.nextval,'hn','[냉동] 베지스테이크 2kg',36200,'베지푸드','21.jpg','21-1.jpg',5,'food','식사거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','[냉동] 비건크리스피너겟 1kg',18700,'베지푸드','22.jpg','22-1.jpg',5,'food','식사거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','비건라면 자연은 맛있다 정면 (4개 묶음)',3980,'풀무원','23.jpg','23-1.jpg',5,'food','식사거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','비건햄 (Vegan Ham) 500g - 무오신채',8400,'러빙헛','24.jpg','24-1.jpg',5,'food','식사거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','식물성버거패티 800g',8400,'풀무원','25.jpg','25-1.jpg',5,'food','식사거리',sysdate);
 
 --간식거리
 insert into product_master values(product_master_seq.nextval,'hn','유기농 NFC 레몬주스 100% 250ml',6000,'파너','02.jpg','02-1.jpg',5,'food','간식거리',sysdate);
@@ -135,13 +134,28 @@ insert into product_master values(product_master_seq.nextval,'hn','밥생각나�
 --의류
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
 
+
+
+
 --가방
 insert into product_master values(product_master_seq.nextval,'hn','VIENETTA 베네따 토트 쇼퍼백 (skyblue)',89000,'누깍(Nukak)','02.png','02-1.jpg',5,'fashion','가방',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','CLUTCH 클러치',52000,'누깍(Nukak)','03.png','03-1.jpg',5,'fashion','가방',sysdate);
 
 
 
+--지갑
 
+
+
+
+--패션소품
+insert into product_master values(product_master_seq.nextval,'hn','세인트바인 길 고양이후원 체인 팔찌',15000,'세인트바인(saintvine)','04.jpeg','04-1.jpg',5,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','독도후원 플로히스 팔찌',13000,'플로히스','05.jpg','05-1.jpg',5,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','[119레오 당근 팔찌] 소방관 기부 후원',22000,'119레오','06.jpg','06-1.jpg',5,'fashion','패션소품',sysdate);
+
+
+
+--케이스
 
 
 
@@ -174,10 +188,9 @@ insert into product_master values(product_master_seq.nextval,'yj','재사용 화
 
 --선케어
 insert into product_master values(product_master_seq.nextval,'yj','복숭아 톤업 세트 (선크림+마카롱 컨실러)',25000,'퍼스블라썸(CAMPUS BLOSSOM)','04.png','04-1.png',5,'beauty','선케어',sysdate);
-
-
-
-
+insert into product_master values(product_master_seq.nextval,'hn','아워 비건 시카 선크림 SPF50+ PA++++',19500,'마녀공장','23.png','23-1.jpg',5,'beauty','선케어',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','비건 선크림 SPF50+ PA++++',17000,'휘게','24.png','24-1.jpg',5,'beauty','선케어',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','비니페라 바이옴 비건 선크림',44000,'닥토브','25.jpg','25-1.jpg',5,'beauty','선케어',sysdate);
 
 
 
@@ -187,17 +200,37 @@ insert into product_master values(product_master_seq.nextval,'yj','복숭아 톤
 insert into product_master values(product_master_seq.nextval,'jh','[기부텀블러] 유리컵 340ml_안녕, 고래 시리즈 #01',10880,'88하다(88HADA)','01_1_1.jpg','01-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','친환경 밥주걱',4000,'슈가랩','02.jpg','02-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','친환경 위생 지퍼백',2800,'슈가랩','03.jpg','03-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','제로웨이스트 키친키트 - 설거지비누 삼베수세미 병세척솔 소창행주 건조집게',34500,'어반에코','11.jpg','11-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','푸드 커버 랩 대용 천연 삼베 덮개',6200,'예고은삼배','10.jpg','10-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','푸드 커버 랩 대용 천연 삼베 덮개',6200,'예고은삼배','10.jpg','10-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','친환경 일회용 비닐장갑',2200,'슈가랩','12.jpg','12-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','색깔, 먼지 흡착티슈',5300,'해피얼쓰','15.jpg','15-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','본플라 트레이',3000,'본플라','13.jpg','13-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','업사이클링 포레스트 우드 냅킨링',6000,'어반에코','14.jpg','14-1.jpg',5,'living','주방용품',sysdate);
 
 --욕실용품
 insert into product_master values(product_master_seq.nextval,'hn','험블 치실',5900,'더험블(THE HUMBLE CO.)','06.jpg','06-1.jpg',5,'living','욕실용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','슈가랩 친환경 칫솔',1800,'슈가랩','07.jpg','07-1.jpg',5,'living','욕실용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','샴푸 린스 SET (샴푸바1+컨디셔닝바1+비누망2)',24000,'퐁(fxng)','08.jpg','08-1.jpg',5,'living','욕실용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','식물성 섬유 잘삼 스크럽 비누망(천연 샤워타올)',4900,'에리제론(erigeron)','16.png','16-1.jpg',5,'living','욕실용품',sysdate);
 
 --생활용품
+insert into product_master values(product_master_seq.nextval,'hn','팔로산토 센트스틱',11500,'어반에코','05.jpg','05-1.jpg',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','오가닉 코튼 쿠션커버 S 쌈잎',39000,'어스맨','17.jpg','17-1.jpg',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','감귤 천연 살균소독제 휴대용 50ml',4500,'코코리 제주','18.jpg','18-1.jpg',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','어반 드링크백 /텀블러백 -핸디보틀형 스타일 ,제로웨이스트',11000,'어반에코','19.jpg','19-1.jpg',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','해피얼쓰(Happy Earth) 스테인레스 빨대',5300,'해피얼쓰','20.jpg','20-1.png',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','맘스오가닉 기저귀커버',20000,'로한','21.jpg','21-1.jpg',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','쏙, 홀더 거치대',2400,'수딩플레이스','22.jpg','22-1.jpg',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','험블 대나무 빨대 (4개입+전용클리너)',8900,'더험블(THE HUMBLE CO.)','24.jpg','24-1.jpg',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','종이수납함 딥dip',9500,'페이퍼팝(PAPER POP)','09.jpg','09-1.jpg',5,'living','생활용품',sysdate);
 
 --문구
-insert into product_master values(product_master_seq.nextval,'hn','팔로산토 센트스틱',11500,'어반에코','05.jpg','05-1.jpg',5,'living','생황용품',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','종이수납함 딥dip',9500,'페이퍼팝(PAPER POP)','09.jpg','09-1.jpg',5,'living','생황용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','업사이클링 포레스트 우드 핸드폰거치대',8000,'어반에코','25.jpg','25-1.jpg',5,'living','문구',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','연필꽂이 DIY 키트',10900,'기글(GIGL)','04.jpg','04-1.jpg',5,'living','문구',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','금잔화 플라워 엽서 4종',6000,'메리골드','23.jpg','23-1.png',5,'living','문구',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','난나무였어 친환경문구세트',7900,'THE SARANG','26.jpg','26-1.jpg',5,'living','문구',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','더 크라프트테이프 5종',4000,'ZIO TAPE','27.jpg','27-1.jpg',5,'living','문구',sysdate);
 
 
 
@@ -205,12 +238,12 @@ insert into product_master values(product_master_seq.nextval,'hn','종이수납�
 
 
 
-update product_master set p_content= '20-1.jpg' where p_photo = '20.png';
+update product_master set p_category2= '패션소품' where p_name = '세인트바인 길 고양이후원 체인 팔찌';
 
 drop sequence p_num;
 drop sequence product_master_seq;
 
-delete from product_master where p_price=3420;
+delete from product_master where p_name='세인트바인 길 고양이후원 체인 팔찌';
 
 select * from product_master;
 select * from product_detail;

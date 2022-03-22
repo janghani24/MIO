@@ -14,7 +14,7 @@
 	<table border="1">
 		<tr>
 
-			<td onclick="location.href='product.living.all'">전체 상품</td>
+			<td onclick="location.href='product.category?p_category1=living'">전체 상품</td>
 			<td onclick="location.href='product.category.category2?p_category1=living&p_category2=주방용품'">주방
 				용품</td>
 			<td onclick="location.href='product.category.category2?p_category1=living&p_category2=욕실용품'">욕실
