@@ -54,7 +54,7 @@
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td id="topMenu"><a href="account.Login.go">Login</a></td>
+								<td id="topMenu"><a href="account.login.go">Login</a></td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
