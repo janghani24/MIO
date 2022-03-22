@@ -41,6 +41,12 @@
 		where p_category1 = 'food' order by p_date desc
 
 	</select>
+	<select id="getFashionDetail" resultType="com.fp.mio.product.ProductDetail" parameterType="com.fp.mio.product.Product">
+
+		select * from product_detail
+		where d_master_num=#{p_num}
+
+	</select>
 
 	<select id="getFashion" resultType="com.fp.mio.product.Product">
 
@@ -101,6 +107,21 @@
 		where
 		c_a_id=#{c_a_id} and c_p_no = #{c_p_no}
 	</update>
+	<update id="updateProduct" parameterType="com.fp.mio.product.Product">
+		update product_master
+		set
+		p_name=#{p_name},p_price=#{p_price},p_brand=#{p_brand},
+		p_photo=#{p_photo},p_quantity=#{p_quantity},p_content=#{p_content}
+		where
+		p_num=#{p_num}
+	</update>
+	<update id="updateProductDetail" parameterType="com.fp.mio.product.ProductDetail">
+		update product_detail
+		set
+		d_size=#{d_size},d_color=#{d_color}
+		where
+		d_master_num=#{d_master_num}
+	</update>
 
 
 	<insert id="getProductzzim"
@@ -112,7 +133,7 @@
 	<insert id="regFashionDetail"
 		parameterType="com.fp.mio.product.ProductDetail">
 		insert into product_detail
-		values(product_detail_seq.nextval,#{d_master_num}, #{d_size},#{d_color},#{d_quantity})
+		values(product_detail_seq.nextval,#{d_master_num}, #{d_size},#{d_color})
 	</insert>
 
 	<insert id="insertCart" parameterType="com.fp.mio.product.Cart">

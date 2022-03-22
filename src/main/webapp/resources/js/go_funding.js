@@ -4,3 +4,7 @@ function deleteFunding(n) {
 	location.href = "funding.deleteFunding?f_num=" + n;
 	}
 }
+function updateFunding(n) {
+		location.href = "funding.go.updateFunding?f_num=" + n;
+	
+}

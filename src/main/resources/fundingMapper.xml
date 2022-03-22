@@ -50,6 +50,18 @@
 		select * from fundingTbl where f_category=#{f_category}
 
 	</select>
+	<select id="getFundingtDetail" resultType="com.fp.mio.funding.Funding">
 
+		select * from fundingTbl where f_num=#{f_num}
 
+	</select>
+
+<update id="updateFunding" parameterType="com.fp.mio.funding.Funding">
+		update fundingTbl
+		set
+		f_photo=#{f_photo},f_name=#{f_name},f_company=#{f_company},
+		f_period=#{f_period},f_url=#{f_url}
+		where
+		f_num=#{f_num}
+	</update>
 </mapper>

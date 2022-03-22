@@ -9,7 +9,7 @@
 <body>
 
 	<form action="funding.reg" method="post" enctype="multipart/form-data"
-	name="fundingRegForm" onsubmit="return fundingRegCheck();">
+		name="fundingRegForm" onsubmit="return fundingRegCheck();">
 		대표 이미지 : <input name="f_photo" type="file">
 		<p>
 			펀딩명 : <input name="f_name">
@@ -22,8 +22,8 @@
 				<option value="기부">기부</option>
 				<option value="유기동물보호">유기동물 보호</option>
 
-			</select>
-		<p>
+			</select> 
+		<p>	
 			펀딩 마감 기간: <input type="date" name="f_period">
 		<p>
 			펀딩 주소: <input name="f_url">
