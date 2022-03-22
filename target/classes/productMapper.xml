@@ -200,6 +200,18 @@
 	</insert>
 
 
+	<select id="getOrder" resultType="com.fp.mio.product.OrderDAO">
 
+		SELECT * FROM product_order , product_orderItem, account_mio, product_master
+WHERE product_order.memberId = account_mio.a_id
+AND product_orderItem.productId = product_master.p_num
+AND product_orderItem.orderId = product_order.orderId
+
+	</select>
+<insert id="getOrder" parameterType="com.fp.mio.product.OrderDAO">
+
+	insert into product_order
+
+</insert>
 
 </mapper>

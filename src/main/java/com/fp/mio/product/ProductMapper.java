@@ -63,7 +63,11 @@ public interface ProductMapper {
 
 	int getProductCount(ProductSelector search);
 
+	public List<OrderDAO> getOrder();
 
+	public int setOrder(Product product);
+	
+	public int getOrder(OrderDAO od);
 
 
 }

@@ -312,7 +312,7 @@ public class AccountController {
 
 		}
 	
-		//찜삭제 2 해결해야함
+		//찜삭제 2 해결함
 		@RequestMapping(value = "account.deletezzim2", method = RequestMethod.GET)
 		public String Accountdeletezzim2(HttpServletRequest req,Zzim zzim,Product p) {
 			

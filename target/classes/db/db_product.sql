@@ -13,10 +13,6 @@ p_date date not null
 )
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 326a519dc408fed1b61451e33e754faaf82b310e
 create table product_detail(
     d_num number(4) primary key, 
     d_master_num number(10) not null, 
@@ -31,7 +27,29 @@ create table product_detail(
 
 )
 
+create table product_cart(
+c_no number(5) primary key,
+c_p_no number(10) not null,
+c_a_id varchar2(20 char) not null,
+c_quantity number(3) not null,
+c_name varchar2(100 char) not null,
+c_price number(20) not null,
+c_category varchar2(20) not null,
+c_p_photo varchar2(100) not null,
+constraint c_a
+foreign key(c_a_id)
+references account_mio(a_id)
+on delete cascade,
+constraint c_p
+foreign key(c_p_no)
+references PRODUCT_MASTER(p_num)
+on delete cascade
+);
+select * from product_cart
+create sequence product_cart_seq;
 
+select * from product_cart;
+drop table product_cart cascade constraint purge;
 
 
 create table product_reply(

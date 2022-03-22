@@ -10,6 +10,13 @@
 <title>Insert title here</title>
 
 </head>
+<script type="text/javascript">
+$(".btn_buy").on("click", function(){
+	let productCountCount = $(".amount").val();
+	$(".order_form").find("input[name='orders[0].productCount']").val(productCount);
+	$(".order_form").submit();
+});
+</script>
 <body onload="init();">
 	<%
 		int a = 0;
@@ -42,18 +49,29 @@
 								
 
 							<form name="form" method="get">
-								<input name="sell_price" value="${detail.p_price}"> 
+								<input name="sell_price" value="${detail.p_price}" type="hidden"> 
 								수량 :<input type="button" value=" + " onclick="add();"> 
-								<input type="text" name="amount" value="1" size="3" onchange="change();"> 
-								<input type="button" value=" - " onclick="del();"><br> 
+                                <input type="text" id="amount" value="1" size="3" onchange="change();"> 
+                                <input type="button" value=" - " onclick="del();"><br>
 
 								금액 : <input type="text" name="sum" size="11" readonly>원
 							</form>
 						</td>
 					</tr>
+					
 					<tr>
-						<td><button>구매하기</button></td>
-						<td><button>장바구니</button></td>
+			
+					<!-- 주문 form -->
+					<td>
+					<form action="/order/${sessionScope.loginAccount.a_id}" method="get" >
+				<input type="hidden" name="orders[0].productId" value="${param.p_num}">
+				<input type="hidden" name="orders[0].productCount" value="">
+				</form>
+					</td>
+			
+						<td><button onclick="location.href='product.order'">구매하기</button></td>
+						<td><button onclick="productorder(${param.p_num}, '${sessionScope.loginAccount.a_id}');">구매하기</button></td>
+						<td><button onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
 
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
 
@@ -137,21 +155,7 @@
 
 	</table>
 
-					<!-- 주문 form -->
-			<form action="/order/${member.memberId}" method="get" class="order_form">
-				<input type="hidden" name="orders[0].bookId" value="${goodsInfo.bookId}">
-				<input type="hidden" name="orders[0].bookCount" value="">
-			</form>
-			
-			<script type="text/javascript">
-			/* 바로구매 버튼 */
-			$(".btn_buy").on("click", function(){
-				let bookCount = $(".quantity_input").val();
-				$(".order_form").find("input[name='orders[0].bookCount']").val(bookCount);
-				$(".order_form").submit();
-			});
-			
-			</script>
+		
 
 </body>
 </html>

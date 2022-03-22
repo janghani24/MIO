@@ -42,9 +42,8 @@
 			<td>총 금액 =</td>
 			<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${total}" />원 
 				<input type="hidden" name="totalPrice" value="${total}"></td>
-			<td colspan="2"><button>결제</button></td>
+				<td colspan="2"><button id="check_module" type="button">테스트 결제</button></td>
 		</tr>
-
 
 	</table>
 

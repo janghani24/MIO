@@ -348,5 +348,7 @@ public class ProductController {
 
 		return "index";
 	}
+	
+	
 
 }

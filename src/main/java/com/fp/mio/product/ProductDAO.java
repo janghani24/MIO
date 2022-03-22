@@ -1,7 +1,6 @@
 package com.fp.mio.product;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -85,7 +84,7 @@ public class ProductDAO {
 	}
 
 	public Product getProductDetail(HttpServletRequest request, Product product) {
-		System.out.println(product.getP_num() + " ~?~?~?~?~?~~?~?~~?~?~?");
+		
 		return ss.getMapper(ProductMapper.class).getProductDetail(product.getP_num());
 
 	}
@@ -525,9 +524,31 @@ public void getProduct(int pageNo, HttpServletRequest req) {
 	req.setAttribute("curPage", pageNo);
 
 }
+	
+	public void order(HttpServletRequest request) {
+		try {
+			request.setAttribute("order", ss.getMapper(ProductMapper.class).getOrder());
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+}
+	public void setorder(HttpServletRequest request, Product product) {
+		Account a = (Account) request.getSession().getAttribute("loginAccount");
+		
+		product.getP_num();
+	//	Zzim.setZ_id(a.getA_id());
 
 	
-	
+
+		if (ss.getMapper(ProductMapper.class).setOrder(product) == 1) {
+			System.out.println("구매등록성공");
+		} else {
+			System.out.println("구매등록실패");
+		}
+		
+	}
 
 
 }
