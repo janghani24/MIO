@@ -1,23 +1,46 @@
-a{ text-decoration: none; color: black; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
-a:focus { text-decoration: none; }
-a:hover, a:active { text-decoration: none; }
+a {
+	text-decoration: none;
+	color: black;
+}
 
-@font-face{
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:focus {
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	text-decoration: none;
+}
+
+@font-face {
 	src: url('../font/BMDOHYEON_OTF.OTF');
-    font-family: 'BMDOHYEON'; 
+	font-family: 'BMDOHYEON';
 }
 
 #wrapTable {
-	height: 2000px;
-	width: 100%;
+	height: 1000px;
+	width: 98%;
 	text-align: center;
 }
 
-#indexcategory{
-margin-left: 20px;
-margin-bottom: 1000px;
+#logo {
+	padding-bottom: 20px;
+	width: 200px;
+}
+
+#indexcategory {
+	margin-left: 60px;
+	margin-bottom: 1200px;
+	position: fixed;
+	top: 70px;
+	height: 200px;
 }
 
 #leftside {
@@ -29,15 +52,28 @@ ul {
 	float: left;
 }
 
-#topMenu{
-	font-family:'BMDOHYEON';
+#topMenu {
+	font-family: 'BMDOHYEON';
 	font-weight: bold;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
 
-#subMenu{
 
-	
+.subMenu{
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
+.contentPage{
+	width:1200px;
+}
+
+#footer{
+	height:50px;
+}
+
+.leftLogin{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}

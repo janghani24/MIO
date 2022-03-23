@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<a href="product.foodReg">음식</a>
-<a href="product.fashionReg">패션</a>
-<a href="product.beautyReg">뷰티</a>
-<a href="product.livingReg">생활용품</a>
+<a href="product.foodReg"><img src="resources/img/image/food.jpg" id="regImg"></a>
+<a href="product.fashionReg"><img src="resources/img/image/fashion.jpg" id="regImg"></a>
+<a href="product.beautyReg"><img src="resources/img/image/beauty.jpg" id="regImg"></a>
+<a href="product.livingReg"><img src="resources/img/image/living.jpg" id="regImg"></a>
 
 </body>
 </html>

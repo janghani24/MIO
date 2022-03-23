@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="resources/css/index.css">
+<link rel="stylesheet" href="resources/css/home.css">
+<link rel="stylesheet" href="resources/css/product.css">
 <link rel="stylesheet" href="resources/css/replyStar.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="resources/js/idCheck_account.js"></script>
@@ -19,6 +21,7 @@
 <script type="text/javascript" src="resources/js/site_jquery.js"></script>
 <script type="text/javascript" src="resources/js/product_count.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
+<script type="text/javascript" src="resources/js/slider.js"></script>
 
 <script type="text/javascript" src="resources/js/option_add.js"></script>
 
@@ -27,63 +30,78 @@
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>Insert title here</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
 </head>
 
 
 <body>
 
-<c:if test="${sessionScope.loginAccount != null }">
-<div> <a href="account.logout">로그아웃</a> </div>
-<div> <a href="product.go.cart">장바구니</a> </div>
-</c:if>
+
 
 	<table border="1" id="wrapTable">
 		<tr>
 			<!-- left side -->
 			<td id="leftside">
-				<table id="indexcategory" border="1">
+				<table id="indexcategory">
 					<tr>
-						<td><a href="/mio">MIO</a></td>
+						<td colspan="2"><a href="/mio"><img id="logo"
+								src="resources/img/image/logo1.png"></a></td>
+					</tr>
+					<tr>
+						<c:if test="${sessionScope.loginAccount != null }">
+							<td class="leftLogin"><a href="account.logout">로그아웃</a></td>
+
+							<td class="leftLogin"><a href="product.go.cart">장바구니</a></td>
+
+						</c:if>
 					</tr>
 					<c:choose>
 						<c:when test="${sessionScope.loginAccount != null }">
 							<tr>
-								<td><a href="account.mypage">my page</a></td>
+								<td id="topMenu" colspan="2"><a href="account.mypage">My
+										Page</a></td>
 							</tr>
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td id="topMenu"><a href="account.Login.go">Login</a></td>
+								<td id="topMenu" colspan="2"><a href="account.login.go">Login</a></td>
 							</tr>
 						</c:otherwise>
 					</c:choose>
 					<tr>
-						<td id="topMenu"><a href="product.all">Product</a></td>
+						<td id="topMenu" colspan="2"><a href="product.all">Product</a></td>
 					</tr>
 					<tr>
-						<td id="subMenu"><a
+						<td class="subMenu" colspan="2"><a
 							href="product.category?p_category1=food">Food</a></td>
 					</tr>
 					<tr>
-						<td id="subMenu"><a
+						<td class="subMenu" colspan="2"><a
 							href="product.category?p_category1=fashion">Fashion</a></td>
 					</tr>
 					<tr>
-						<td id="subMenu"><a
+						<td class="subMenu" colspan="2"><a
 							href="product.category?p_category1=beauty">Beauty</a></td>
 					</tr>
 					<tr>
-						<td id="subMenu"><a
+						<td class="subMenu" colspan="2"><a
 							href="product.category?p_category1=living">Living</a></td>
 					</tr>
 
 
 					<tr>
-						<td id="topMenu"><a href="funding.all">Funding</a></td>
+						<td id="topMenu" colspan="2"><a href="funding.all">Funding</a></td>
 					</tr>
 					<tr>
-						<td id="topMenu">Community</td>
+						<td id="topMenu" colspan="2">Community</td>
 					</tr>
 
 				</table>
@@ -96,10 +114,16 @@
 
 
 
-			<td><jsp:include page="${contentPage}"></jsp:include></td>
+			<td class="contentPage"><jsp:include page="${contentPage}"></jsp:include></td>
 
 			<!-- right side -->
+
 		</tr>
+
+		<tr>
+			<td colspan="2" id="footer">푸터</td>
+		</tr>
+
 
 	</table>
 </body>
