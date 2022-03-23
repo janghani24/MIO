@@ -55,6 +55,7 @@
 		<option value="S">S</option>
 		<option value="M">M</option>
 		<option value="L">L</option>
+		<option value="L">Free</option>
 		</select>
 		</td>
 		</tr>

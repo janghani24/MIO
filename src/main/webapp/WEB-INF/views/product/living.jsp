@@ -37,7 +37,7 @@
 			<td colspan="6"><c:forEach var="l" items="${products}">
 					<ul>
 						<li onclick="location.href='product.detail?p_num=${l.p_num}'"><img
-							src="resources/img/living/${l.p_photo}" width="500px;"></li>
+							src="resources/img/living/${l.p_photo}" width="350px;"></li>
 						<li>${l.p_brand}</li>
 						<li>${l.p_name}</li>
 						<li>${l.p_price}원</li>

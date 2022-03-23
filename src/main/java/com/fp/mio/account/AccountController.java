@@ -37,7 +37,12 @@ public class AccountController {
 		// 로그인
 		aDAO.login(a, req);
 		aDAO.loginCheck(req);
+		String result = (String)req.getAttribute("result");
+		if(result.equals("1")||result.equals("2")) {
+			req.setAttribute("contentPage", "account/loginFail.jsp");
+		}else {
 		req.setAttribute("contentPage", "home.jsp");
+		}
 		return "index";
 	}
 	
@@ -119,7 +124,6 @@ public class AccountController {
 	@RequestMapping(value = "/account.join.general", method = RequestMethod.POST)
 	public String memberJoinGeneral(Account a, HttpServletRequest req) {
 		// 회원 가입(일반)
-		//가입,신청 완료 페이지 만들기
 		
 		aDAO.loginCheck(req);
 		
@@ -131,13 +135,13 @@ public class AccountController {
 	
 	@RequestMapping(value = "/account.join.seller", method = RequestMethod.POST)
 	public String memberJoinSeller(HttpServletRequest req, Seller s) {
-		// 회원 가입(일반)
+		// 회원 가입(판매자)
 		//가입,신청 완료 페이지 만들기
 		
 		aDAO.loginCheck(req);
 		
 		aDAO.joinSeller(s, req);
-		req.setAttribute("contentPage", "home.jsp");
+		req.setAttribute("contentPage", "account/sellerComplete.jsp");
 		
 		return "index";
 	}
@@ -193,7 +197,8 @@ public class AccountController {
 		if (aDAO.loginCheck(req)) {
 			aDAO.updateGrade(a,req);
 			// jsp 수정 필요 - 관리자의 등급 조정 페이지 생성
-			req.setAttribute("contentPage", "account/info.jsp");
+			aDAO.getAccount(req);
+			req.setAttribute("contentPage", "account/updateGrade.jsp");
 		} else {
 			req.setAttribute("contentPage", "home.jsp");
 		}
@@ -239,7 +244,21 @@ public class AccountController {
 		if (aDAO.loginCheck(req)) {
 			aDAO.sellerToAccount(a,s, req);
 			aDAO.deleteSellerjoin(s, req);
-			req.setAttribute("contentPage", "account/info.jsp");
+			aDAO.getSeller(req);
+			req.setAttribute("contentPage", "account/joinConfirm.jsp");
+		} else {
+			req.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+	
+	@RequestMapping(value = "/account.sellerReject.do", method = RequestMethod.GET)
+	public String SellerReject(Account a,Seller s, HttpServletRequest req) {
+		// 판매자 거절
+		if (aDAO.loginCheck(req)) {
+			aDAO.deleteSellerjoin(s, req);
+			aDAO.getSeller(req);
+			req.setAttribute("contentPage", "account/joinConfirm.jsp");
 		} else {
 			req.setAttribute("contentPage", "home.jsp");
 		}

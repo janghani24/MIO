@@ -107,15 +107,15 @@
 
 		<tr>
 			<td colspan="2"><c:forEach var="pr" items="${replys}">
-					<span class="asmrOwner">${pr.r_owner}</span>
+					<span>${pr.r_owner}</span>
 				<span class="starR1" value='${pr.r_rate}'></span>
 						-&nbsp;${pr.r_txt }&nbsp;
-						<span class="asmrWhen">(<fmt:formatDate
+						<span>(<fmt:formatDate
 							value="${pr.r_date}" type="both" dateStyle="short"
 							timeStyle="short" />)
 					</span>
 					<c:if test="${pr.r_owner == sessionScope.loginAccount.a_id }">
-						<button class="asmrBtn"
+						<button 
 							onclick="deleteReply(${pr.r_no},${detail.p_num});">삭제</button>
 					</c:if>
 					<br>

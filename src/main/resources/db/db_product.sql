@@ -12,6 +12,17 @@ p_category2 varchar2(20 char) not null,
 p_date date not null
 )
 
+select *from (
+select rownum as rn,p_num,p_owner,p_name,p_price,p_brand,
+p_photo,p_content,p_quantity,p_category1,p_category2,p_date
+from (
+select * from product_master
+order by dbms_random.random
+)
+)
+where rn <= 9
+
+
 select count(*)
 		from product_master
 		where p_category1 = 'food';

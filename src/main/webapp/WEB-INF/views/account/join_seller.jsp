@@ -38,7 +38,7 @@
 			<tr>
 				<td class="td1">이름</td>
 				<td class="td2">
-				<input name="s_name" placeholder="필수, 한글로 작성" maxlength="10" autocomplete="off"></td>
+				<input name="s_name" placeholder="필수" maxlength="10" autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="td1">주소</td>

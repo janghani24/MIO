@@ -8,3 +8,6 @@ function updateFunding(n) {
 		location.href = "funding.go.updateFunding?f_num=" + n;
 	
 }
+function fundingGo(n) {
+		var newWindow=open(n);
+}

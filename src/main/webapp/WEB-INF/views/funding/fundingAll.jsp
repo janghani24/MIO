@@ -33,11 +33,11 @@
 			<td colspan="6"><c:forEach var="f" items="${funding2}">
 					<ul>
 
-						<li><a href="${f.f_url}"><img
+						<li><img
 								src="resources/img/funding/${f.f_photo}" id="fundingImg"
-								width="300px;"></a></li>
-						<li><a href="${f.f_url}">${f.f_company}</a></li>
-						<li>${f.f_name}</li>
+								width="300px;" onclick="fundingGo('${f.f_url}')"></a></li>
+						<li><span onclick="fundingGo('${f.f_url}')">${f.f_company}</span></li>
+						<li><span onclick="fundingGo('${f.f_url}')">${f.f_name}</span></li>
 						<li><fmt:formatDate value="${f.f_period}"
 								pattern="yyyy년 MM월 dd일" />&nbsp;종료</li>
 						<c:if test="${f.f_owner == sessionScope.loginAccount.a_id }">

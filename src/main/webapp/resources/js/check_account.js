@@ -230,8 +230,8 @@ function searchPwCheck(){
 	
 	if (isEmpty(idInput)) {
 		alert("ID를 입력해주세요.");
-		nameInput.value = "";
-		nameInput.focus();
+		idInput.value = "";
+		idInput.focus();
 		return false;
 	}else if(isEmpty(answerInput||!lessThan(answerInput,30))){
 		alert("비밀번호 찾기 답을 확인해주세요.");

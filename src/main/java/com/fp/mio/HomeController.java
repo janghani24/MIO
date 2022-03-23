@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fp.mio.community.CommunityDAO;
+import com.fp.mio.product.ProductDAO;
 
 
 @Controller
@@ -27,6 +28,9 @@ private boolean firstreq;
 	@Autowired
 	private CommunityDAO cDAO;
 	
+	@Autowired
+	private ProductDAO pDAO;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 
 	public String home(HttpServletRequest req) {
@@ -35,7 +39,7 @@ private boolean firstreq;
 			cDAO.getAllMsgCount();
 			firstreq =false;
 		}
-		
+		pDAO.getProductrandom(req);
 		req.setAttribute("contentPage", "home.jsp");
 		req.setAttribute("loginPage", "login.jsp");
 

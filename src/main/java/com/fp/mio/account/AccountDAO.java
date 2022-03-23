@@ -29,11 +29,12 @@ public class AccountDAO {
 			if (a.getA_pw().equals(dbAccount.getA_pw())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
 				req.getSession().setMaxInactiveInterval(60 * 1000);	//개인적으로수정
+				req.setAttribute("result", "0");
 			} else {
-				req.setAttribute("result", "로그인 실패(PW오류)");
+				req.setAttribute("result", "1");//pw오류
 			}
 		} else {
-			req.setAttribute("result", "로그인 실패(미가입ID)");
+			req.setAttribute("result", "2");// 없는 id
 		}
 	}
 

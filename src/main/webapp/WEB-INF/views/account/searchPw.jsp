@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="account.searchPw" name="pwSearchForm" onsubmit="return searchPwCheck();">
-	<table border="1" id="accountSearch">
+	<table border="1" id="accountSearchTbl">
 		<tr>
 			<td colspan="2">PW찾기</td>
 		</tr>
@@ -28,7 +28,7 @@
 			<td colspan="2">PW찾기 답 <input name="a_answer"></td>
 		</tr>
 		<tr>
-			<td colspan="2"><button >PW찾기</button>
+			<td colspan="2"><button>PW찾기</button>
 				</td>
 		</tr>
 	</table>

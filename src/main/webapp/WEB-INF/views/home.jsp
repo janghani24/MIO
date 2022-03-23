@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,19 +39,21 @@
 		</tr>
 
 		<tr>
-			<td>사진</td>
-			<td>사진</td>
-			<td>사진</td>
-		</tr>
-		<tr>
-			<td>상품명</td>
-			<td>상품명</td>
-			<td>상품명</td>
-		</tr>
-		<tr>
-			<td>가격</td>
-			<td>가격</td>
-			<td>가격</td>
+			<td>
+			<c:forEach var="p" items="${productr}">
+					<ul>
+						<li onclick="location.href='product.detail?p_num=${p.p_num}'"><img
+							src="resources/img/${p.p_category1}/${p.p_photo}" width="350px;"></li>
+
+						<li>${p.p_brand}</li>
+						<li><a href="product.detail?p_num=${p.p_num}">${p.p_name}</a></li>
+						<li><fmt:formatNumber type="number" maxFractionDigits="3"
+						value="${p.p_price}" />원</li>
+					</ul>
+				</c:forEach>
+			
+			
+			</td>
 		</tr>
 
 	</table>

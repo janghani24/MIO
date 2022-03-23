@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table id="sellerDetailTbl" id="1">
+	<table id="sellerDetailTbl" border="1">
 		<tr>
 			<td colspan="2">판매자 상세 페이지</td>
 		</tr>
@@ -33,7 +33,11 @@
 		</tr>
 
 		<tr>
-			<td colspan="2"><button onclick="sellerJoin('${sellers.a_s_id}');">가입 승인</button></td>
+			<td colspan="2">
+			<button onclick="sellerJoin('${sellers.a_s_id}');">가입 승인</button>
+			<button onclick="sellerReject('${sellers.a_s_id}');">가입 거절</button>
+			</td>
+			
 		</tr>
 	</table>
 </body>

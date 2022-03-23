@@ -18,7 +18,6 @@
 <td>${s.a_s_id}</td>
 <td>${s.s_name}</td>
 <td><button onclick="sellerDetail('${s.a_s_id}');">자세히 보기</button></td>
-<td></td>
 </tr>
 </c:forEach>
 </table>

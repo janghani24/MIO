@@ -81,6 +81,8 @@ public interface ProductMapper {
 
 	int updateProductDetail(ProductDetail pd);
 
+	List<Product> getProductRandom();
+
 
 
 

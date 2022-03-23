@@ -42,6 +42,9 @@ function sellerDetail(i) {
 function sellerJoin(i) {
 	location.href = "account.sellerJoin.do?a_s_id=" + i;
 }
+function sellerReject(i) {
+	location.href = "account.sellerReject.do?a_s_id=" + i;
+}
 
 
 function logout() {

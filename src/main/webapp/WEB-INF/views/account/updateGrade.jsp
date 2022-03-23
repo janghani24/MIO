@@ -10,7 +10,7 @@
 <body>
 		<table id="gradeUpdateTbl" border="1">
 			<tr>
-				<td>등급 조정</td>
+				<td colspan="5">등급 조정</td>
 			</tr>
 			<c:forEach var="a" items="${accounts}">
 <form action="account.updategrade">

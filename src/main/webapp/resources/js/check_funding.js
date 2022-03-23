@@ -5,7 +5,7 @@ function fundingRegCheck(){
 	var dateInput = document.fundingRegForm.f_period;
 	var urlInput = document.fundingRegForm.f_url;
 	
-	let regex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+	let regex = /^(http(s)?:\/\/)([^\/]*)(\.)(com|net|kr|my|shop)(\/)/gi;
 	
 	if(isEmpty(nameInput)){
 		alert("펀딩명을 입력해주세요.");
@@ -26,7 +26,7 @@ function fundingRegCheck(){
 	}else if(isEmpty(dateInput)){
 		alert("펀딩 마감 기간을 설정해주세요.");
 		return false;
-	}else if(!regex.test(urlInput)||isEmpty(urlInput)){
+	}else if(!regex.test(urlInput.value)||isEmpty(urlInput)){
 		alert("펀딩 주소를 확인해주세요.");
 		urlInput.value="";
 		urlInput.focus();

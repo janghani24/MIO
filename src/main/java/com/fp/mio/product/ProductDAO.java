@@ -782,7 +782,14 @@ public void getFashionDetail(Product p,HttpServletRequest req) {
 	req.setAttribute("fashionDetail", ss.getMapper(ProductMapper.class).getFashionDetail(p));
 }
 	
-	
+public void getProductrandom(HttpServletRequest request) {
+
+	try {
+		request.setAttribute("productr", ss.getMapper(ProductMapper.class).getProductRandom());
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
 
 
 }
