@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table id="aSearchResultTbl" border="1">
 		<tr>
 			<td>ID찾기 결과</td>
 		</tr>

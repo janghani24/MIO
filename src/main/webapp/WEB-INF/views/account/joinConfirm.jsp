@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table>
+<table id="joinConfirmTbl" border="1">
 <tr>
 <td colspan="4">가입 신청 승인</td>
 </tr>

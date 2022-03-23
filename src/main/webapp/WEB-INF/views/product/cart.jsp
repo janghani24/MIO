@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1">
+	<table border="1" id="cartTalble">
 		<tr>
 			<td colspan="4">장바구니</td>
 		</tr>

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table id="mypageTable" border="1">
 		<tr>
 			<td>
 				<button onclick="goInfo()">내 정보 보기</button>

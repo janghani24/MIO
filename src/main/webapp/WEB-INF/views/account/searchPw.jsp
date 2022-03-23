@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="account.searchPw" name="pwSearchForm" onsubmit="return searchPwCheck();">
-	<table border="1">
+	<table border="1" id="accountSearch">
 		<tr>
 			<td colspan="2">PW찾기</td>
 		</tr>

@@ -15,7 +15,7 @@
 		int a = 0;
 	%>
 
-	<table border="1">
+	<table border="1" class="productDetailTbl">
 
 
 		<tr>
@@ -23,9 +23,9 @@
 				src="resources/img/${detail.p_category1}/${detail.p_photo}" width="800px;"></td>
 
 			<td>
-				<table border="1">
+				<table border="1" id="productOptionTbl">
 					<tr>
-						<td colspan="2">${detail.p_brand}</td>
+						<td colspan="3">${detail.p_brand}</td>
 					</tr>
 					<tr>
 						<td>상품명</td>
@@ -38,7 +38,7 @@
 					<tr>
 						<td>옵션/수량 체크 부분</td>
 
-						<td>
+						<td colspan="2">
 								
 							${fashionDetail.d_size}<br>
 							${fashionDetail.d_color}

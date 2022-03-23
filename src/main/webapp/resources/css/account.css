@@ -1,74 +1,82 @@
-
 @charset "UTF-8";
 
-.itemListTbl{
+#loginTable{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
 	
 }
-.categoryTbl{
+#joinTable{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
 	
 }
-.pUpdateTbl{
+#joinConfirmTbl{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	
 }
-.productRegTbl{
+#joinSelectTbl{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	
 }
-.productFashionRegTbl{
+#accountInfoTbl{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	
 }
-#productOptionTbl{
+#accountDeleteTbl{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	
 }
-#cartTalble{
+#mypageTable{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	
 }
-#regSelectTbl{
+#myzzimTable{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	
 }
-.pSearchResultTbl{
+#accountSearchTbl{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	
 }
-.productDetailTbl{
+#aSearchResultTbl{
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	
 }
-
+#sellerDetailTbl{
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+#accountUpdateTbl{
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+#gradeUpdateTbl{
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}

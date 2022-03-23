@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="account.searchId" name="idSearchForm" onsubmit="return searchIdCheck();">
-		<table>
+		<table id="accountSearchTbl" border="1">
 			<tr>
 				<td>ID찾기</td>
 			</tr>
