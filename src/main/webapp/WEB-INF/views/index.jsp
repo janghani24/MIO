@@ -75,11 +75,10 @@
 						</c:when>
 						<c:otherwise>
 							<tr>
-<<<<<<< HEAD
+
 								<td id="topMenu" colspan="2"><a href="account.login.go">Login</a></td>
-=======
-								<td id="topMenu"><a href="account.login.go">Login</a></td>
->>>>>>> 97815f76596bcf2855a6de4d4756c3df1cb2c3a6
+
+		
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -108,11 +107,9 @@
 						<td id="topMenu" colspan="2"><a href="funding.all">Funding</a></td>
 					</tr>
 					<tr>
-<<<<<<< HEAD
-						<td id="topMenu" colspan="2">Community</td>
-=======
-						<td id="topMenu"><a href="community.go">Community</a></td>
->>>>>>> 97815f76596bcf2855a6de4d4756c3df1cb2c3a6
+
+						<td id="topMenu"  colspan="2"><a href="community.go">Community</a></td>
+
 					</tr>
 
 				</table>
