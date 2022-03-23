@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +8,15 @@
 </head>
 <body>
 
-<a href="product.foodReg"><img src="resources/img/image/food.jpg" id="regImg"></a>
+	<table id="regSelectTbl" border="1">
+		<tr>
+			<td><a href="product.foodReg"><img src="resources/img/image/food.jpg" id="regImg"></a>
 <a href="product.fashionReg"><img src="resources/img/image/fashion.jpg" id="regImg"></a>
 <a href="product.beautyReg"><img src="resources/img/image/beauty.jpg" id="regImg"></a>
 <a href="product.livingReg"><img src="resources/img/image/living.jpg" id="regImg"></a>
+</td>
+		</tr>
+	</table>
 
 </body>
 </html>

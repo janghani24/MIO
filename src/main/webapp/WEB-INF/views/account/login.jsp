@@ -8,17 +8,17 @@
 </head>
 <body>
 <form action="account.login" method="post" name="loginForm" onsubmit="return loginCheck();">
-		<table id="loginTable">
+		<table id="loginTable" border="1">
 			<tr>
-				<td align="center"><input name="a_id" placeholder="ID"
+				<td align="center">ID<input name="a_id" 
 					maxlength="15" autocomplete="off"></td>
 			</tr>
 			<tr>
-				<td align="center"><input name="a_pw" placeholder="PW"
+				<td align="center">PW<input name="a_pw"
 					maxlength="15" autocomplete="off" type="password"></td>
 			</tr>
 			<tr>
-				<td align="center"><button>로그인</button> &nbsp;&nbsp;
+				<td align="center"><button>로그인</button><br><br>
 					<button type="button" onclick="goJoin()">회원가입</button>
 					<button type="button" onclick="goSearchId()">ID/PW찾기</button>
 					</td>

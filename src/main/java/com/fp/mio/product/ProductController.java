@@ -1,5 +1,7 @@
 package com.fp.mio.product;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.fp.mio.account.AccountDAO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @Controller
 public class ProductController {
@@ -73,6 +77,7 @@ public class ProductController {
 	// 해당 카테고리로
 	@RequestMapping(value = "/product.category", method = RequestMethod.GET)
 	public String categoryGo(HttpServletRequest request,ProductCSelector pcs) {
+		aDAO.loginCheck(request);
 		String p_category1=request.getParameter("p_category1");
 		pDAO.calcAllCPCount(request);
 		pDAO.getCategoryProduct(1, request);
@@ -118,6 +123,7 @@ public class ProductController {
 	// 카테고리 하위로 이동
 	@RequestMapping(value = "/product.category.category2", method = RequestMethod.GET)
 	public String livingCategory(HttpServletRequest request, String p_category) {
+		aDAO.loginCheck(request);
 		pDAO.calcAllC2PCount(request);
 		String p_category1 = request.getParameter("p_category1");
 		String p_category2 = request.getParameter("p_category2");
@@ -145,8 +151,10 @@ public class ProductController {
 
 		pDAO.getReply(product, request);
 
-		pDAO.getProductDetail(request, product);
-
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
+		if(pDAO.getProductDetail(request, product).getP_category1().equals("fashion")) {
+		pDAO.getFashionDetail(product, request);
+		}
 		pDAO.getAccount(request);
 		if (aDAO.loginCheck(request)) {
 
@@ -154,7 +162,6 @@ public class ProductController {
 
 		}
 
-		request.setAttribute("detail", pDAO.getProductDetail(request, product));
 		request.setAttribute("contentPage", "product/productDetail.jsp");
 		return "index";
 
@@ -242,6 +249,7 @@ public class ProductController {
 	@RequestMapping(value = "/product.reg.select", method = RequestMethod.GET)
 	public String regSelect(HttpServletRequest request, String search) {
 
+		aDAO.loginCheck(request);
 		request.setAttribute("contentPage", "product/productRegSelect.jsp");
 		return "index";
 
@@ -275,14 +283,68 @@ public class ProductController {
 	// 장바구니로 이동
 		@RequestMapping(value = "/product.go.cart", method = RequestMethod.GET)
 		public String goCart(HttpServletRequest request) {
+			aDAO.loginCheck(request);
 			pDAO.getCart(request);
 			request.setAttribute("contentPage", "product/cart.jsp");
+			return "index";
+		}
+		
+		//수정 페이지로 이동
+		@RequestMapping(value = "/product.go.updateProduct", method = RequestMethod.GET)
+		public String goUpdate(HttpServletRequest request,Product p) {
+			aDAO.loginCheck(request);
+			request.setAttribute("detail", pDAO.getProductDetail(request, p));
+			String category = request.getParameter("p_category1");
+			if (category.equals("fashion")) {
+				pDAO.getFashionDetail(p, request);
+				request.setAttribute("contentPage", "product/updateProductFashion.jsp");
+			}else{
+			request.setAttribute("contentPage", "product/updateProduct.jsp");
+			}
+			return "index";
+		}
+		// 상품 수정(fashion)
+		@RequestMapping(value = "/product.updateProduct.fashion", method = RequestMethod.POST)
+		public String UpdateProductFashion(HttpServletRequest request,Product p,ProductDetail pd) {
+			aDAO.loginCheck(request);
+				pDAO.updateProductFashion(request, p, pd);
+				pDAO.getFashionDetail(p, request);
+				request.setAttribute("detail", pDAO.getProductDetail(request, p));
+				request.setAttribute("contentPage", "product/productDetail.jsp");
+			return "index";
+		}
+		// 상품 수정(food)
+		@RequestMapping(value = "/product.updateProduct.food", method = RequestMethod.POST)
+		public String UpdateProductFood(HttpServletRequest request,Product p,ProductDetail pd) {
+			aDAO.loginCheck(request);
+			pDAO.updateProductFood(request, p);
+			request.setAttribute("detail", pDAO.getProductDetail(request, p));
+			request.setAttribute("contentPage", "product/productDetail.jsp");
+			return "index";
+		}
+		// 상품 수정(beeauty)
+		@RequestMapping(value = "/product.updateProduct.beauty", method = RequestMethod.POST)
+		public String UpdateProductBeauty(HttpServletRequest request,Product p,ProductDetail pd) {
+			aDAO.loginCheck(request);
+			pDAO.updateProductBeauty(request, p);
+			request.setAttribute("detail", pDAO.getProductDetail(request, p));
+			request.setAttribute("contentPage", "product/productDetail.jsp");
+			return "index";
+		}
+		// 상품 수정(living)
+		@RequestMapping(value = "/product.updateProduct.living", method = RequestMethod.POST)
+		public String UpdateProductLiving(HttpServletRequest request,Product p,ProductDetail pd) {
+			aDAO.loginCheck(request);
+			pDAO.updateProductLiving(request, p);
+			request.setAttribute("detail", pDAO.getProductDetail(request, p));
+			request.setAttribute("contentPage", "product/productDetail.jsp");
 			return "index";
 		}
 		
 	// 장바구니에서 삭제
 		@RequestMapping(value = "/product.delete.cart", method = RequestMethod.GET)
 		public String deleteCart(HttpServletRequest request,Cart c) {
+			aDAO.loginCheck(request);
 			pDAO.deleteCart(request,c);
 			pDAO.getCart(request);
 			request.setAttribute("contentPage", "product/cart.jsp");
@@ -292,6 +354,7 @@ public class ProductController {
 	// 장바구니 수량 수정
 		@RequestMapping(value = "/product.update.cart", method = RequestMethod.GET)
 		public String updateCart(HttpServletRequest request,Cart c) {
+			aDAO.loginCheck(request);
 			pDAO.updateCart(request,c);
 			pDAO.getCart(request);
 			request.setAttribute("contentPage", "product/cart.jsp");
@@ -301,7 +364,7 @@ public class ProductController {
 	// food 등록 페이지
 	@RequestMapping(value = "/product.foodReg", method = RequestMethod.GET)
 	public String foodReg(HttpServletRequest request) {
-
+		aDAO.loginCheck(request);
 		request.setAttribute("contentPage", "product/foodReg.jsp");
 		return "index";
 	}
@@ -309,7 +372,7 @@ public class ProductController {
 	// food 등록하기
 	@RequestMapping(value = "/food.reg", method = RequestMethod.POST)
 	public String foodRegPage(HttpServletRequest request, Product product) {
-
+		aDAO.loginCheck(request);
 		pDAO.regFood(request, product);
 		pDAO.getCategoryProduct(1, request);
 		request.setAttribute("contentPage", "product/food.jsp");
@@ -320,7 +383,7 @@ public class ProductController {
 	// fashion 등록 페이지
 	@RequestMapping(value = "/product.fashionReg", method = RequestMethod.GET)
 	public String fashionReg(HttpServletRequest request) {
-
+		aDAO.loginCheck(request);
 		request.setAttribute("contentPage", "product/fashionReg.jsp");
 		return "index";
 	}
@@ -328,7 +391,7 @@ public class ProductController {
 	// fashion 등록하기
 		@RequestMapping(value = "/fashion.reg", method = RequestMethod.POST)
 		public String fahionRegPage(HttpServletRequest request, Product product,ProductDetail pd) {
-
+			aDAO.loginCheck(request);
 			pDAO.regFashion(request, product,pd);
 			pDAO.getCategoryProduct(1, request);
 			request.setAttribute("contentPage", "product/fashion.jsp");
@@ -340,7 +403,7 @@ public class ProductController {
 	// beauty 등록 페이지
 	@RequestMapping(value = "/product.beautyReg", method = RequestMethod.GET)
 	public String beautyReg(HttpServletRequest request) {
-
+		aDAO.loginCheck(request);
 		request.setAttribute("contentPage", "product/beautyReg.jsp");
 		return "index";
 	}
@@ -348,7 +411,7 @@ public class ProductController {
 	// beauty 등록하기
 	@RequestMapping(value = "/beauty.reg", method = RequestMethod.POST)
 	public String beautyRegPage(HttpServletRequest request, Product product) {
-
+		aDAO.loginCheck(request);
 		pDAO.regBeauty(request, product);
 		pDAO.getCategoryProduct(1, request);
 		request.setAttribute("contentPage", "product/beauty.jsp");
@@ -359,7 +422,7 @@ public class ProductController {
 	// living 등록 페이지
 	@RequestMapping(value = "/product.livingReg", method = RequestMethod.GET)
 	public String livingReg(HttpServletRequest request) {
-
+		aDAO.loginCheck(request);
 		request.setAttribute("contentPage", "product/livingReg.jsp");
 		return "index";
 	}
@@ -367,7 +430,7 @@ public class ProductController {
 	// living 등록하기
 	@RequestMapping(value = "/living.reg", method = RequestMethod.POST)
 	public String livingRegPage(HttpServletRequest request, Product product) {
-
+		aDAO.loginCheck(request);
 		pDAO.regLiving(request, product);
 		pDAO.getCategoryProduct(1, request);
 		request.setAttribute("contentPage", "product/living.jsp");

@@ -22,7 +22,6 @@ create table product_detail(
     d_master_num number(10) not null, 
     d_size varchar2(20 char) not null,
     d_color varchar2 (20 char) not null,
-    d_quantity number(3) not null,
     constraint d_test
         foreign key(d_master_num)
         references product_master(p_num)

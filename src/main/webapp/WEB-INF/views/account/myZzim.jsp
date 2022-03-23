@@ -13,7 +13,7 @@
 		여기 찜한거 불러올거임   
 		
 		<c:forEach var="z" items="${showZzim }">
-            <table border="1">
+            <table id="myzzimTable" border="1">
                 <tr>
                     <td><img
                 src="resources/img/${z.p_category1}/${z.p_photo }" width="150" height="150"></td>

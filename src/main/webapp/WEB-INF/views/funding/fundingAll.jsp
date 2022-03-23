@@ -10,13 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="funding.search">
-		<input name="search">
-		<button>검색</button>
-	</form>
 
 
-	<table border=1 class="category_tbl">
+
+	<table border=1 class="itemListTbl">
 
 		<tr>
 			<td onclick="location.href='funding.all'">전체보기</td>
@@ -26,42 +23,50 @@
 			<td onclick="location.href='funding.category?f_category=기부'">기부</td>
 			<td onclick="location.href='funding.category?f_category=유기동물후원'">유기동물
 				후원</td>
+			<td><c:if
+					test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
+					<button onclick="location.href='funding.regPage'">펀딩 등록</button>
+				</c:if></td>
 		</tr>
 
+		<tr>
+			<td colspan="6"><c:forEach var="f" items="${funding2}">
+					<ul>
 
-
-	
-
-    </table>
-
-		<c:forEach var="f" items="${funding2}">
-		<ul>
-
-			<li><a href="${f.f_url}"><img
-					src="resources/img/funding/${f.f_photo}" id="fundingImg"
-					width="300px;"></a></li>
-			<li><a href="${f.f_url}">${f.f_company}</a></li>
-			<li>${f.f_name}</li>
-			<li><fmt:formatDate value="${f.f_period}"
-					pattern="yyyy년 MM월 dd일" />&nbsp;종료</li>
-			<c:if test="${f.f_owner == sessionScope.loginAccount.a_id }">
-				<li><button onclick="deleteFunding(${f.f_num})">삭제</button></li>
-			</c:if>
-		</ul>
-	</c:forEach>
-
-    
-
-	<c:if test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
-		<button onclick="location.href='funding.regPage'">펀딩 등록</button>
-	</c:if>
-	<div align="center">
-		<a href="funding.paging?p=1"> [맨처음] </a>
-		<c:forEach var="p" begin="1" end="${pageCount}">
-			<a href="funding.paging?p=${p}">[${p}]</a>
-		</c:forEach>
-		<a href="funding.paging?p=${pageCount}"> [맨끝] </a>
-	</div>
+						<li><a href="${f.f_url}"><img
+								src="resources/img/funding/${f.f_photo}" id="fundingImg"
+								width="300px;"></a></li>
+						<li><a href="${f.f_url}">${f.f_company}</a></li>
+						<li>${f.f_name}</li>
+						<li><fmt:formatDate value="${f.f_period}"
+								pattern="yyyy년 MM월 dd일" />&nbsp;종료</li>
+						<c:if test="${f.f_owner == sessionScope.loginAccount.a_id }">
+							<li><button onclick="deleteFunding(${f.f_num})">삭제</button></li>
+							<li><button onclick="updateFunding(${f.f_num})">수정</button></li>
+						</c:if>
+					</ul>
+				</c:forEach></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<div align="center">
+					<a href="funding.paging?p=1"> [맨처음] </a>
+					<c:forEach var="p" begin="1" end="${pageCount}">
+						<a href="funding.paging?p=${p}">[${p}]</a>
+					</c:forEach>
+					<a href="funding.paging?p=${pageCount}"> [맨끝] </a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<form action="funding.search">
+					<input name="search">
+					<button>검색</button>
+				</form>
+			</td>
+		</tr>
+	</table>
 
 </body>
 </html>

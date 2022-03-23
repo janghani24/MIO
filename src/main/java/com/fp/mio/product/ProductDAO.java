@@ -308,7 +308,6 @@ public class ProductDAO {
 
 			pd.setD_size(mr.getParameter("d_size"));
 			pd.setD_color(mr.getParameter("d_color"));
-			pd.setD_quantity(Integer.parseInt(mr.getParameter("p_quantity")));
 			
 			product.setP_name(mr.getParameter("p_name"));
 			product.setP_price(p_price);
@@ -648,8 +647,140 @@ public void getCategory2Product(int pageNo, HttpServletRequest req) {
 	req.setAttribute("category", p_category1);
 	req.setAttribute("p_category2", p_category2);
 }
+public void updateProductFood(HttpServletRequest request, Product product) {
+	try {
+		DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+		String path = request.getSession().getServletContext().getRealPath("resources/img/food");
+		MultipartRequest mr = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", policy);
 
+		int p_price = Integer.parseInt(mr.getParameter("p_price"));
+		int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
 
+		product.setP_name(mr.getParameter("p_name"));
+		product.setP_price(p_price);
+		product.setP_brand(mr.getParameter("p_brand"));
+		String file = mr.getFilesystemName("p_photo");
+		product.setP_photo(file);
+		String file2 = mr.getFilesystemName("p_content");
+		product.setP_content(file2);
+		product.setP_quantity(p_quantity);
+		product.setP_num(Integer.parseInt(mr.getParameter("p_num")));
+		
+		
+		if (ss.getMapper(ProductMapper.class).updateProduct(product) == 1) {
+			request.setAttribute("r", "수정 성공!");
+			System.out.println("--수정 성공--");
+		} else {
+			request.setAttribute("r", "수정 실패!");
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+public void updateProductLiving(HttpServletRequest request, Product product) {
+	try {
+		DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+		String path = request.getSession().getServletContext().getRealPath("resources/img/living");
+		MultipartRequest mr = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", policy);
+		
+		int p_price = Integer.parseInt(mr.getParameter("p_price"));
+		int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
+		
+		product.setP_name(mr.getParameter("p_name"));
+		product.setP_price(p_price);
+		product.setP_brand(mr.getParameter("p_brand"));
+		String file = mr.getFilesystemName("p_photo");
+		product.setP_photo(file);
+		String file2 = mr.getFilesystemName("p_content");
+		product.setP_content(file2);
+		product.setP_quantity(p_quantity);
+		product.setP_num(Integer.parseInt(mr.getParameter("p_num")));
+		
+		
+		if (ss.getMapper(ProductMapper.class).updateProduct(product) == 1) {
+			request.setAttribute("r", "수정 성공!");
+			System.out.println("--수정 성공--");
+		} else {
+			request.setAttribute("r", "수정 실패!");
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+public void updateProductBeauty(HttpServletRequest request, Product product) {
+	try {
+		DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+		String path = request.getSession().getServletContext().getRealPath("resources/img/beauty");
+		MultipartRequest mr = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", policy);
+		
+		int p_price = Integer.parseInt(mr.getParameter("p_price"));
+		int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
+		
+		product.setP_name(mr.getParameter("p_name"));
+		product.setP_price(p_price);
+		product.setP_brand(mr.getParameter("p_brand"));
+		String file = mr.getFilesystemName("p_photo");
+		product.setP_photo(file);
+		String file2 = mr.getFilesystemName("p_content");
+		product.setP_content(file2);
+		product.setP_quantity(p_quantity);
+		product.setP_num(Integer.parseInt(mr.getParameter("p_num")));
+		
+		
+		if (ss.getMapper(ProductMapper.class).updateProduct(product) == 1) {
+			request.setAttribute("r", "수정 성공!");
+			System.out.println("--수정 성공--");
+		} else {
+			request.setAttribute("r", "수정 실패!");
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+public void updateProductFashion(HttpServletRequest request, Product product,ProductDetail pd) {
+	try {
+		DefaultFileRenamePolicy policy = new DefaultFileRenamePolicy();
+		String path = request.getSession().getServletContext().getRealPath("resources/img/fashion");
+		MultipartRequest mr = new MultipartRequest(request, path, 5 * 1024 * 1024, "utf-8", policy);
+		
+		int p_price = Integer.parseInt(mr.getParameter("p_price"));
+		int p_quantity = Integer.parseInt(mr.getParameter("p_quantity"));
+		
+		product.setP_name(mr.getParameter("p_name"));
+		product.setP_price(p_price);
+		product.setP_brand(mr.getParameter("p_brand"));
+		String file = mr.getFilesystemName("p_photo");
+		product.setP_photo(file);
+		String file2 = mr.getFilesystemName("p_content");
+		product.setP_content(file2);
+		product.setP_quantity(p_quantity);
+		product.setP_num(Integer.parseInt(mr.getParameter("p_num")));
+		pd.setD_color(mr.getParameter("d_color"));
+		pd.setD_size(mr.getParameter("d_size"));
+		pd.setD_master_num(Integer.parseInt(mr.getParameter("p_num")));
+		System.out.println(mr.getParameter("d_color"));
+		System.out.println(mr.getParameter("d_size"));
+		System.out.println(pd.getD_master_num());
+		if (ss.getMapper(ProductMapper.class).updateProduct(product) == 1) {
+			if (ss.getMapper(ProductMapper.class).updateProductDetail(pd) == 1) {
+				request.setAttribute("r", "수정 성공!");
+				System.out.println("--수정 성공--");
+			}
+		} else {
+			request.setAttribute("r", "수정 실패!");
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+public void getFashionDetail(Product p,HttpServletRequest req) {
+	req.setAttribute("fashionDetail", ss.getMapper(ProductMapper.class).getFashionDetail(p));
+}
 	
 	
 

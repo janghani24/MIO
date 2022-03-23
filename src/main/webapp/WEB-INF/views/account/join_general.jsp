@@ -10,7 +10,7 @@
 	<br>
 	<form action="account.join.general" method="post" enctype="multipart/form-data"
 		name="joinForm" onsubmit="return joinCheck();">
-		<table id="joinTable">
+		<table id="joinTable" border="1">
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center">회원가입</td>
 			</tr>

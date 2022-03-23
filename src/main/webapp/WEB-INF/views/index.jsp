@@ -8,12 +8,18 @@
 <link rel="stylesheet" href="resources/css/index.css">
 <link rel="stylesheet" href="resources/css/home.css">
 <link rel="stylesheet" href="resources/css/product.css">
+<link rel="stylesheet" href="resources/css/community_css.css">
 <link rel="stylesheet" href="resources/css/replyStar.css">
+<link rel="stylesheet" href="resources/css/account.css">
+<link rel="stylesheet" href="resources/css/product.css">
+<link rel="stylesheet" href="resources/css/funding.css">
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script type="text/javascript" src="resources/js/idCheck_account.js"></script>
 <script type="text/javascript" src="resources/js/check_account.js"></script>
 <script type="text/javascript" src="resources/js/check_product.js"></script>
+<script type="text/javascript" src="resources/js/check_funding.js"></script>
 <script type="text/javascript" src="resources/js/go_account.js"></script>
+<script type="text/javascript" src="resources/js/go_community.js"></script>
 <script type="text/javascript" src="resources/js/go_product.js"></script>
 <script type="text/javascript" src="resources/js/go_funding.js"></script>
 <script type="text/javascript" src="resources/js/validCheck.js"></script>
@@ -22,11 +28,8 @@
 <script type="text/javascript" src="resources/js/product_count.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
 <script type="text/javascript" src="resources/js/slider.js"></script>
-
 <script type="text/javascript" src="resources/js/option_add.js"></script>
-
 <script type="text/javascript" src="resources/js/replyStar.js"></script>
-
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <title>Insert title here</title>
@@ -72,7 +75,11 @@
 						</c:when>
 						<c:otherwise>
 							<tr>
+<<<<<<< HEAD
 								<td id="topMenu" colspan="2"><a href="account.login.go">Login</a></td>
+=======
+								<td id="topMenu"><a href="account.login.go">Login</a></td>
+>>>>>>> 97815f76596bcf2855a6de4d4756c3df1cb2c3a6
 							</tr>
 						</c:otherwise>
 					</c:choose>
@@ -101,7 +108,11 @@
 						<td id="topMenu" colspan="2"><a href="funding.all">Funding</a></td>
 					</tr>
 					<tr>
+<<<<<<< HEAD
 						<td id="topMenu" colspan="2">Community</td>
+=======
+						<td id="topMenu"><a href="community.go">Community</a></td>
+>>>>>>> 97815f76596bcf2855a6de4d4756c3df1cb2c3a6
 					</tr>
 
 				</table>

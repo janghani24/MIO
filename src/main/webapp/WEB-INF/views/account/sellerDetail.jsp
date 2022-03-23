@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
+	<table id="sellerDetailTbl" id="1">
 		<tr>
 			<td colspan="2">판매자 상세 페이지</td>
 		</tr>

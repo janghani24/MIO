@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<table>
+		<table id="gradeUpdateTbl" border="1">
 			<tr>
 				<td>등급 조정</td>
 			</tr>

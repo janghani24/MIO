@@ -30,6 +30,11 @@ function deleteProduct(n) {
 	location.href = "product.deleteProduct?p_num=" + n;
 	}
 }
+function updateProduct(n,c) {
+	
+		location.href = "product.go.updateProduct?p_num=" + n + "&p_category1=" + c;
+	
+}
 
 function goCart(i,p,price,c,photo) {
 	let amount = document.getElementById("amount").value;
