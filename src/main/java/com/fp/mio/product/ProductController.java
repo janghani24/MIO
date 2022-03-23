@@ -348,6 +348,16 @@ public class ProductController {
 
 		return "index";
 	}
+	@RequestMapping(value = "/product.order", method = RequestMethod.GET)
+	public String getOrder(HttpServletRequest request, Product product) {
+		
+		
+		pDAO.order(request);
+		pDAO.setorder(request, product);
+		request.setAttribute("contentPage", "product/living.jsp");
+		
+		return "index";
+	}
 	
 	
 

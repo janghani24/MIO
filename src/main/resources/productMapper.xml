@@ -208,10 +208,5 @@ AND product_orderItem.productId = product_master.p_num
 AND product_orderItem.orderId = product_order.orderId
 
 	</select>
-<insert id="getOrder" parameterType="com.fp.mio.product.OrderDAO">
-
-	insert into product_order
-
-</insert>
 
 </mapper>
