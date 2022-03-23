@@ -9,7 +9,7 @@
 <body>
 <!-- id,pw같은지 확인, 탈퇴alert js구현필요 -->
 <form action="account.delete" name="accountDeleteForm" onsubmit="return deleteAccountCheck();">
-	<table>
+	<table id="accountDeleteTbl" border="1">
 		<tr>
 			<td>회원 탈퇴</td>
 		</tr>

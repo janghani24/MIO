@@ -9,7 +9,7 @@
 <body>
 	<br>
 	<form action="account.update" method="post" enctype="multipart/form-data" name="updateAccountForm" onsubmit="return updateAccountCheck();">
-		<table id="joinTable">
+		<table id="accountUpdateTbl" border="1">
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center">
 					<input readonly="readonly" value="${sessionScope.loginAccount.a_id}" name="jm_id" id="updateAccountIDInput">

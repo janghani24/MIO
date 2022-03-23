@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<table id="joinTable">
+		<table id="accountInfoTbl" border="1">
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center">
 					회원 정보
