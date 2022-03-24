@@ -108,7 +108,7 @@ public class ProductController {
 		pDAO.getProductCategory(request, p_category2);
 
 		request.setAttribute("contentPage", "product/fashion.jsp");
-
+		System.out.println("완료");
 		return "index";
 
 	}
@@ -350,12 +350,35 @@ public class ProductController {
 	}
 	@RequestMapping(value = "/product.order", method = RequestMethod.GET)
 	public String getOrder(HttpServletRequest request, Product product) {
+		//결제창
+	
+
+		pDAO.getProductDetail(request, product);
 		
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
+		request.setAttribute("contentPage", "orderproduct/order.jsp");
 		
-		pDAO.order(request);
-		pDAO.setorder(request, product);
-		request.setAttribute("contentPage", "product/living.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/product.orderbuy", method = RequestMethod.GET)
+	public String orderbuy(HttpServletRequest request,Product product, OrderDAO oda) {
+		pDAO.getProductDetail(request, product);
 		
+	
+		pDAO.getProductorderbuy(request, oda); //구매하기
+		
+		pDAO.order(request); 	//오더 불러오기
+
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
+		request.setAttribute("contentPage", "orderproduct/orderbuy.jsp");
+		
+		return "index";
+	}
+	@RequestMapping(value = "/product.cartorderbuy", method = RequestMethod.GET)
+	public String cartorderbuy(HttpServletRequest request) {
+		
+		pDAO.getCart(request);
+		request.setAttribute("contentPage", "product/cart.jsp");
 		return "index";
 	}
 	

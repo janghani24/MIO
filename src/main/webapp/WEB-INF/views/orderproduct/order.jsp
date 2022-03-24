@@ -11,40 +11,48 @@
 
 </head>
 <body>
-		
-	
 	
 	
 	<br>
 	<button id="check_module" type="button">테스트 결제</button>
-		<c:forEach var="o" items="${order }">
+	
 			<table border="1">			
 				<tr>
-					<td >넘버		${o.p_num }</td>
+					<td><input id="id" value="${param.id }" type="hidden">아이디${param.id }</td>
 				</tr>
 
 				<tr>
-					<td>이름		${o.p_name }</td>
+					<td><input id="productname" value="${detail.p_name}" type="hidden">${detail.p_name}</td>
 				</tr>
 				<tr>
-					<td>가격		${o.p_price }</td>
+					<td><input id="price" value="${detail.p_price}" type="hidden">${detail.p_price}</td>
 					
 				</tr>
 				<tr>
-					<td>프덕id	${o.productId }</td>
+					<td><input id="p_num" value="${detail.p_num }" type="hidden">프덕id${detail.p_num }</ </td>
 					
 				</tr>
 				<tr>
-					<td>갯수		${o.productCount }</td>
-					
+					<td><input id="amount" value="${param.cnt }" type="hidden">${param.cnt }개</td>
+			
 				</tr>
 				<tr>
 					<td><img
-				src="resources/img/${o.p_category1}/${o.p_photo }" width="150" height="150"></td>
+				src="resources/img/${detail.p_category1}/${detail.p_photo }" width="150" height="150"></td>
+					
+				</tr>
+				<tr>
+				<td class="td1">주소</td>
+				<td class="td2"><input id="jm_addr3Input" readonly="readonly"
+					name="a_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
+					<span id="addrSearchBtn">[검색]</span><br> 
+					<input
+					id="jm_addr1Input" readonly="readonly" name="a_addr1"
+					maxlength="30" autocomplete="off" placeholder="주소"><br>
 					
 				</tr>
 			</table>
-		</c:forEach>
+	
 		
 	
 </body>

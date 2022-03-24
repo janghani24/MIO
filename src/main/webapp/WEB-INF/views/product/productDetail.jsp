@@ -61,15 +61,7 @@ $(".btn_buy").on("click", function(){
 					
 					<tr>
 			
-					<!-- 주문 form -->
-					<td>
-					<form action="/order/${sessionScope.loginAccount.a_id}" method="get" >
-				<input type="hidden" name="orders[0].productId" value="${param.p_num}">
-				<input type="hidden" name="orders[0].productCount" value="">
-				</form>
-					</td>
-			
-						<td><button onclick="location.href='product.order'">구매하기</button></td>
+
 						<td><button onclick="productorder(${param.p_num}, '${sessionScope.loginAccount.a_id}');">구매하기</button></td>
 						<td><button onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
 

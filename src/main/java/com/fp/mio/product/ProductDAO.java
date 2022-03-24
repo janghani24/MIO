@@ -85,6 +85,7 @@ public class ProductDAO {
 
 	public Product getProductDetail(HttpServletRequest request, Product product) {
 		
+		
 		return ss.getMapper(ProductMapper.class).getProductDetail(product.getP_num());
 
 	}
@@ -527,28 +528,69 @@ public void getProduct(int pageNo, HttpServletRequest req) {
 	
 	public void order(HttpServletRequest request) {
 		try {
-			request.setAttribute("order", ss.getMapper(ProductMapper.class).getOrder());
-	
+			
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
+
+			
+			request.setAttribute("order", ss.getMapper(ProductMapper.class).getOrder(a));
+			
+
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	
 }
-	public void setorder(HttpServletRequest request, Product product) {
-		Account a = (Account) request.getSession().getAttribute("loginAccount");
+
+	public void getProductorderbuy(HttpServletRequest request, OrderDAO oda) {
+		try {
+			Account a = (Account) request.getSession().getAttribute("loginAccount");
 		
-		product.getP_num();
-	//	Zzim.setZ_id(a.getA_id());
 
-	
+			
+			
+			
+			
+			String orderid =  request.getParameter("orderid");
+			String memberId =  request.getParameter("id");
+			int productId = Integer.parseInt((request.getParameter("p_num")));
+			int productCount =  Integer.parseInt((request.getParameter("amount")));
+			int productPrice = Integer.parseInt((request.getParameter("price")));
+			String memberAddr1 =  request.getParameter("addr1");
+			String memberAddr2 =  request.getParameter("addr2");
+			String orderState =  "주문 확인중";
+			
+			oda.setMemberId(a.getA_id());
+			oda.setOrderId(orderid);
+			oda.setMemberAddr1(memberAddr1);
+			oda.setMemberAddr2(memberAddr2);
+			oda.setOrderState(orderState);
+			oda.setProductCount(productCount);
+			oda.setProductId(productId);
+			oda.setProductPrice(productPrice);
+			
+			
+			System.out.println(orderid);
+			System.out.println(memberId);
+			System.out.println(productId);
+			System.out.println(productCount);
+			System.out.println(productPrice);
+			System.out.println(memberAddr1);
+			System.out.println(memberAddr2);
+			System.out.println(orderState);
+		
 
-		if (ss.getMapper(ProductMapper.class).setOrder(product) == 1) {
-			System.out.println("구매등록성공");
-		} else {
-			System.out.println("구매등록실패");
+			if (ss.getMapper(ProductMapper.class).getProductorderbuy(oda) == 1) {
+				System.out.println("결제넣기성공");
+			} else {
+				System.out.println("결제넣기실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 	}
-
+	
 
 }
