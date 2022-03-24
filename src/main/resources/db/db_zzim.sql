@@ -92,5 +92,3 @@ insert into product_order
      values(#{orderId},#{memberId},#{productId},#{productCount},#{productPrice},
      #{memberAddr1},#{memberAddr2},#{orderState},sysdate)
 
-이거를 3번반복한다치자 대신에 시퀀스로 프라이머리가 올라감 그럼 같은데이터가 3번이야
-갯 프로덕트 바이를 3번굴려야함 단) 굴릴때마다 +1이되게
