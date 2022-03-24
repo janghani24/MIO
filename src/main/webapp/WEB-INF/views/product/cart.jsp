@@ -9,15 +9,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<table id="cartTalble">
 		<tr>
 			<td colspan="4">
 <input type="hidden" value="장바구니상품" id="productname">
-<input id="id" value="${param.id }" type="hidden">
-<input id="p_num" value="${detail.p_num }" type="hidden">
-<input id="amount" value="${param.cnt }" type="hidden">
+<input id="id" value="${sessionScope.loginAccount.a_id}" type="hidden">
+<input id="amount" value="1" type="hidden">
 			<img src="resources/img/image/장바구니.jpg">
 			</td>
+
+
 		</tr>
 		<c:set var="total" value="0" />
 		<c:set var="totalprice" value="0" />

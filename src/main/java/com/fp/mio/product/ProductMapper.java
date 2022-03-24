@@ -84,9 +84,13 @@ public interface ProductMapper {
 
 	List<Product> getProductRandom();
 
+	int getProductorderbuy(OrderDAO oda);
+
+	int getProductorderbuy2(OrderDAOmain odamain);
+
 	public List<OrderDAO> getOrder(Account a);
 
-	int getProductorderbuy(OrderDAO oda);
+
 
 	List<Account> getAccountSearch(AccountSelector search);
 

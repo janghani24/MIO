@@ -500,6 +500,10 @@ public class ProductDAO {
 		try {
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 			request.setAttribute("carts", ss.getMapper(ProductMapper.class).getCart(a));
+			
+		
+			
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -792,13 +796,13 @@ public void getProductrandom(HttpServletRequest request) {
 	
 	public void order(HttpServletRequest request) {
 		try {
-			
+		
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 
-			
 			request.setAttribute("order", ss.getMapper(ProductMapper.class).getOrder(a));
 			
-
+	
+			
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -810,35 +814,32 @@ public void getProductrandom(HttpServletRequest request) {
 		try {
 			Account a = (Account) request.getSession().getAttribute("loginAccount");
 		
-
-			
-			
-			
 			
 			String orderid =  request.getParameter("orderid");
 			String memberId =  request.getParameter("id");
-			int productId = Integer.parseInt((request.getParameter("p_num")));
-			int productCount =  Integer.parseInt((request.getParameter("amount")));
-			int productPrice = Integer.parseInt((request.getParameter("price")));
+		//	int productId = Integer.parseInt((request.getParameter("p_num")));
+		//	int productCount =  Integer.parseInt((request.getParameter("amount")));
+		//	int productPrice = Integer.parseInt((request.getParameter("price")));
 			String memberAddr1 =  request.getParameter("addr1");
 			String memberAddr2 =  request.getParameter("addr2");
 			String orderState =  "주문 확인중";
+			
 			
 			oda.setMemberId(a.getA_id());
 			oda.setOrderId(orderid);
 			oda.setMemberAddr1(memberAddr1);
 			oda.setMemberAddr2(memberAddr2);
 			oda.setOrderState(orderState);
-			oda.setProductCount(productCount);
-			oda.setProductId(productId);
-			oda.setProductPrice(productPrice);
+		//	oda.setProductCount(productCount);
+		//	oda.setProductId(productId);
+		//	oda.setProductPrice(productPrice);
 			
 			
 			System.out.println(orderid);
 			System.out.println(memberId);
-			System.out.println(productId);
-			System.out.println(productCount);
-			System.out.println(productPrice);
+		//	System.out.println(productId);
+		//	System.out.println(productCount);
+		//	System.out.println(productPrice);
 			System.out.println(memberAddr1);
 			System.out.println(memberAddr2);
 			System.out.println(orderState);
@@ -850,6 +851,93 @@ public void getProductrandom(HttpServletRequest request) {
 				System.out.println("결제넣기실패");
 			}
 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void getProductorderbuy2(HttpServletRequest request, OrderDAOmain odamain) {
+		try {
+		//	Account a = (Account) request.getSession().getAttribute("loginAccount");
+		
+		
+
+
+			String orderid =  request.getParameter("orderid");
+		//	String memberId =  request.getParameter("id");
+			int productId = Integer.parseInt((request.getParameter("p_num")));
+			int productCount =  Integer.parseInt((request.getParameter("amount")));
+			int productPrice = Integer.parseInt((request.getParameter("price")));
+	
+			odamain.setOrderId(orderid);//주문 고유넘버
+			odamain.setProductId(productId); //제품번호
+			odamain.setProductPrice(productPrice);
+			odamain.setProductCount(productCount);
+	System.out.println("여긴 buy2데이터");
+
+			System.out.println(orderid);
+			System.out.println(productId);
+			System.out.println(productCount);
+			System.out.println(productPrice);
+		
+
+			if (ss.getMapper(ProductMapper.class).getProductorderbuy2(odamain) == 1) {
+				System.out.println("결제넣기성공2");
+			} else {
+				System.out.println("결제넣기실패");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	public void getProductorderbuy3(HttpServletRequest request, OrderDAOmain odamain) {
+		try {
+				Account a = (Account) request.getSession().getAttribute("loginAccount");
+				
+			List<Cart> name= ss.getMapper(ProductMapper.class).getCart(a);
+			
+			
+			for( Cart Nm : name )
+				
+			{
+					String orderid =  request.getParameter("orderid");
+					int productId = Nm.getC_p_no();
+					int productCount = Nm.getC_quantity();
+					int productPrice = Nm.getC_price();
+			
+			//	System.out.println("시퀀스로1씩증가할거임");
+			//	System.out.println("주문고유번호"+ orderid);
+		//		System.out.println("상품고유번호"+Nm.getC_p_no() );
+			//	System.out.println("가격"+Nm.getC_price() );
+			//	System.out.println("갯수"+Nm.getC_quantity());
+				
+				//	String memberId =  request.getParameter("id");
+				
+				odamain.setOrderId(orderid);//주문 고유넘버
+				odamain.setProductId(productId); //제품번호
+				odamain.setProductPrice(productPrice);
+				odamain.setProductCount(productCount);
+				
+			//	System.out.println("여긴 buy2데이터찍기");
+
+			//	System.out.println(orderid);
+			//	System.out.println(productId);
+			//	System.out.println(productCount);
+			//	System.out.println(productPrice);
+		
+				
+				if (ss.getMapper(ProductMapper.class).getProductorderbuy2(odamain) == 1) {
+					System.out.println("결제넣기성공2");
+				} else {
+					System.out.println("결제넣기실패2");
+				}
+			}
+			
+			
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

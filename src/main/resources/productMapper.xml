@@ -295,15 +295,21 @@
 
 	<select id="getOrder" parameterType="com.fp.mio.account.Account" 
 	resultType="com.fp.mio.product.OrderDAO">
-		SELECT * FROM product_order , account_mio, product_master
-WHERE product_order.memberId = account_mio.a_id
-AND product_order.productId = product_master.p_num
-AND  product_order.memberId = #{a_id}
+	SELECT * FROM product_order , account_mio, product_master, product_orderItem
+	WHERE product_order.memberId = account_mio.a_id
+	AND product_orderItem.productId = product_master.p_num
+	AND	product_order.orderId = product_orderItem.orderId
+	AND	product_order.memberId = #{a_id}
+	order by orderDate desc
 	</select>
 
 <insert id="getProductorderbuy" parameterType="com.fp.mio.product.OrderDAO">
  insert into product_order
-     values(#{orderId},#{memberId},#{productId},#{productCount},#{productPrice},#{memberAddr1},#{memberAddr2},#{orderState},sysdate)
+     values(#{orderId},#{memberId},#{memberAddr1},#{memberAddr2},#{orderState},sysdate)
+</insert>
+<insert id="getProductorderbuy2" parameterType="com.fp.mio.product.OrderDAOmain">
+ insert into product_orderItem
+     values(product_orderItem_seq.nextval,#{orderId},#{productId},#{productCount},#{productPrice})
 </insert>
 
 

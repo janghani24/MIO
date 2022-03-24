@@ -9,9 +9,11 @@ function zzim(no, id) {
 
         let ok2 = confirm("찜목록으로 이동할래요?")
         if (ok2) {
-            alert("이동")
 
+        	alert("이동")
+        	
         window.location.href = "account.Wishlist"
+    	  
 
         }
 
