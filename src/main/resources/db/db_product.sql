@@ -11,6 +11,12 @@ p_category1 varchar2(20 char) not null,
 p_category2 varchar2(20 char) not null,
 p_date date not null
 )
+drop table  product_master
+drop table  product_order
+drop table  product_cart
+drop table  product_detail
+drop table   product_zzim
+drop table   product_reply
 
 select *from (
 select rownum as rn,p_num,p_owner,p_name,p_price,p_brand,

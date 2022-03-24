@@ -9,59 +9,52 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="hidden" value="장바구니상품" id="productname">
-<input id="id" value="${param.id }" type="hidden">
-<input id="p_num" value="${detail.p_num }" type="hidden">
-<input id="amount" value="${param.cnt }" type="hidden">
-	<table border="1">
-		<tr>
-			<td colspan="4">장바구니</td>
-		</tr>
-		<c:set var="total" value="0" />
-		<c:set var="totalprice" value="0" />
-		<c:forEach var="c" items="${carts}">
-			<tr>
-				<td rowspan="2"><img
-					src="resources/img/${c.c_category}/${c.c_p_photo}" width="200px;"
-					onclick="location.href='product.detail?p_num=${c.c_p_no}'"></td>
-				<td colspan="3"
-					onclick="location.href='product.detail?p_num=${c.c_p_no}'">${c.c_name}</td>
-			</tr>
-			<tr>
-				<td>${c.c_quantity}</td>
-				<c:set var="totalprice" value="${c.c_price * c.c_quantity}" />
-				<td><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${totalprice}" /> 원 
-						<c:set var="total" value="${total + totalprice}" /></td>
-				<td>
-					<button onclick="updateCart(${c.c_p_no})">수량 수정</button>
-				<br>
-				<br>
-					<button onclick="deleteCart(${c.c_p_no})">삭제</button>
-				</td>
-			</tr>
-			<c:set var="totalprice" value="0" />
-		</c:forEach>
-		<tr>
-			<td>총 금액 =</td>
-			<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${total}" />원 
-				<input type="hidden" name="totalPrice" value="${total}" id="price"></td>
-				<td colspan="2"><button id="check_module2" type="button">테스트 결제</button></td>
-		</tr>
-		</table>
-		<br>주소입력창
-		<table border="1" >
-			<tr>
-				<td class="td1">주소</td>
-				<td class="td2"><input id="jm_addr3Input" readonly="readonly"
-					name="a_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
-					<span id="addrSearchBtn">[검색]</span><br> 
-					<input
-					id="jm_addr1Input" readonly="readonly" name="a_addr1"
-					maxlength="30" autocomplete="off" placeholder="주소"><br>
+	카트 구매내역
+
+	<c:forEach var="o" items="${order }">
+			<table border="1">			
+				<tr>
+					<td >주문넘버:&nbsp;${o.orderId }</td>
+				</tr>
+
+				<tr>
+					<td>아이디:&nbsp;${o.memberId }</td>
+				</tr>
+				<tr>
+					<td>상품넘버:&nbsp;${o.productId }</td>
 					
 				</tr>
-	</table>
+				<tr>
+					<td>개수:&nbsp;${o.productCount }</td>
+					
+				</tr>
+				<tr>
+					<td>가격:	&nbsp;${o.productPrice }</td>
+					
+				</tr>
+				<tr>
+					<td>주소:&nbsp;${o.memberAddr1 }</td>
+					
+				</tr>
+				<tr>
+					<td>주소:&nbsp;${o.memberAddr2 }</td>
+					
+				</tr>
+				<tr>
+					<td>구매상태:&nbsp;${o.orderState }</td>
+					
+				</tr>
+				<tr>
+					<td>구매날짜 :&nbsp;<fmt:formatDate value="${o.orderDate }" pattern="yyyy년 MM월 dd일 HH:mm:ss" />	</td>
+				
+				</tr>
+				<tr>
+					<td><img
+				src="resources/img/${o.p_category1}/${o.p_photo }" width="50" height="50"></td>
+				
+				</tr>
+			</table>
+		</c:forEach>
 
 </body>
 </html>

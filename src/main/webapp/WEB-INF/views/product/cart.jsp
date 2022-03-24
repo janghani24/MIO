@@ -9,11 +9,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1" id="cartTalble">
+	
 <input type="hidden" value="장바구니상품" id="productname">
-<input id="id" value="${param.id }" type="hidden">
-<input id="p_num" value="${detail.p_num }" type="hidden">
-<input id="amount" value="${param.cnt }" type="hidden">
+<input id="id" value="${sessionScope.loginAccount.a_id}" type="hidden">
+<input id="amount" value="1" type="hidden">
+
 	<table border="1">
 		<tr>
 			<td colspan="4">장바구니</td>

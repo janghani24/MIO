@@ -33,20 +33,25 @@ create sequence product_order_seq;
 create table product_order(
     orderId varchar2(50) primary key, --주문1 주문2 주문3 구분
     memberId varchar2(50),		--주문자 id
-   	productId number(10) not null,	--제품번호
-    productCount number(10) not null,	--제품갯수
-    productPrice number(10) not null,	--제품가격
     memberAddr1 varchar2(100) not null,	--주문자 주소1
     memberAddr2 varchar2(100) not null,	--주문자 주소2
     orderState varchar2(30) not null,	--주문 정보 대기 완료이런거
     orderDate date default sysdate,	--주문날짜 
-    FOREIGN KEY (memberId) REFERENCES account_mio(a_id),
-     FOREIGN KEY (productId) REFERENCES product_master(p_num)
+    FOREIGN KEY (memberId) REFERENCES account_mio(a_id)
 )
 
-delete from product_order where 
-select * from product_order where memberId ='test'
-insert into product_order values('주문고유넘버','test',1,5,3500,'주소1','주소2','주문대기',sysdate)
+delete from product_orderItem where productid = 43
+select * from product_orderItem 
+select * from product_order
+
+insert into product_order values('주문고유넘버','test','주소1','주소2','주문대기',sysdate)
+insert into product_order values('주문고유넘버2','test','주소1','주소2','주문대기',sysdate)
+insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버',101,5,3500)
+insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버',44,2,3500)
+insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버2',101,5,3500)
+insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버2',44,2,3500)
+
+select * from product_order
 
 create table product_orderItem(
     orderItemId number(10) primary key,	--시퀀스로늘림
@@ -62,11 +67,23 @@ create table product_orderItem(
 
 select * from product_orderItem
 select * from product_order
-
-SELECT * FROM product_order , account_mio, product_master
+--이거는 구매내역 product_order.orderId = product_orderItem.orderId 가 일치 (주문번호가 일치할때 보이게하기)
+SELECT * FROM product_order , account_mio, product_master, product_orderItem
 WHERE product_order.memberId = account_mio.a_id
-AND product_order.productId = product_master.p_num
-AND  product_order.memberId = 'test'
+AND	product_order.orderId = product_orderItem.orderId
+AND product_orderItem.productId = product_master.p_num
+AND	product_order.memberId = 'test'
+order by orderDate desc
+-- 주문을 보여주고 더보기로 주문 상세내역을 보여주자
+SELECT product_order.memberId,product_orderItem.productId, product_order.orderId
+FROM product_order , account_mio, product_master, product_orderItem
+WHERE product_order.memberId = account_mio.a_id
+AND product_orderItem.productId = product_master.p_num
+AND	product_order.memberId = 'test'
+order by orderDate desc
+
+
+AND product_order.orderId = 'merchant_1648106042242'//고유번호로 get할떄 쓸거
 
 drop table product_orderItem
 drop table product_order
