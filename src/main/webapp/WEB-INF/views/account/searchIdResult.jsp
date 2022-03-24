@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table id="aSearchResultTbl" border="1">
+	<table id="aSearchResultTbl">
 		<tr>
-			<td>ID찾기 결과</td>
+			<td><img src="resources/img/image/idresult.jpg"></td>
 		</tr>
 		<tr>
-			<td>회원님의 ID는 ${id}입니다.</td>
+			<td class="padding">회원님의 ID는 ${id}입니다.</td>
 		</tr>
 	</table>
 </body>
