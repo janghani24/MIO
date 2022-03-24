@@ -622,9 +622,6 @@ public void getCategory2Product(int pageNo, HttpServletRequest req) {
 	String p_category2 = req.getParameter("p_category2");
 	String p_category1 = req.getParameter("p_category1");
 	
-	
-	
-	
 	ProductCSelector search = (ProductCSelector) req.getAttribute("search");
 	int pCount = 0;
 	
@@ -643,7 +640,7 @@ public void getCategory2Product(int pageNo, HttpServletRequest req) {
 	int pageCount = (int) Math.ceil(pCount / (double) count);
 	req.setAttribute("pageCount", pageCount);
 	
-	req.setAttribute("productc", products);
+	req.setAttribute("products", products);
 	req.setAttribute("curPage", pageNo);
 	req.setAttribute("category", p_category1);
 	req.setAttribute("p_category2", p_category2);

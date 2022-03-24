@@ -9,19 +9,19 @@
 <body>
 	<form action="account.login" method="post" name="loginForm"
 		onsubmit="return loginCheck();">
-		<table id="loginTable" >
+		<table id="loginTable">
 		<tr>
 		<td colspan="3"><img src="resources/img/image/login.jpg"></td>
 		</tr>
 			<tr>
 				<td align="center" id="id">ID<input name="a_id" maxlength="15"
 					autocomplete="off" id="idBox"></td>
+				<td align="center" rowspan="2"><button id="loginButton">로그인</button>
 			</tr>
 			<tr>
 				<td align="center" id="pw" >PW<input name="a_pw" maxlength="15"
 					autocomplete="off" type="password" id="passBox">
 				</td>
-				<td align="center"><button id="loginButton">로그인</button>
 			</tr>
 			<tr>
 				<td id="joinSearch" colspan="3">

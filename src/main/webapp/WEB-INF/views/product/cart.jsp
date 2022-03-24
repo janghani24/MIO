@@ -9,14 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1" id="cartTalble">
+	<table id="cartTalble">
+		<tr>
+			<td colspan="4">
 <input type="hidden" value="장바구니상품" id="productname">
 <input id="id" value="${param.id }" type="hidden">
 <input id="p_num" value="${detail.p_num }" type="hidden">
 <input id="amount" value="${param.cnt }" type="hidden">
-	<table border="1">
-		<tr>
-			<td colspan="4">장바구니</td>
+			<img src="resources/img/image/장바구니.jpg">
+			</td>
 		</tr>
 		<c:set var="total" value="0" />
 		<c:set var="totalprice" value="0" />
@@ -35,17 +36,17 @@
 						value="${totalprice}" /> 원 
 						<c:set var="total" value="${total + totalprice}" /></td>
 				<td>
-					<button onclick="updateCart(${c.c_p_no})">수량 수정</button>
+					<button onclick="updateCart(${c.c_p_no})" id="cartbutton">수량 수정</button>
 				<br>
 				<br>
-					<button onclick="deleteCart(${c.c_p_no})">삭제</button>
+					<button onclick="deleteCart(${c.c_p_no})" id="cartbutton">삭제</button>
 				</td>
 			</tr>
 			<c:set var="totalprice" value="0" />
 		</c:forEach>
 		<tr>
-			<td>총 금액 =</td>
-			<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${total}" />원 
+			<td id="cartTd">총 금액 =</td>
+			<td id="cartTd"><fmt:formatNumber type="number" maxFractionDigits="3" value="${total}" />원 
 				<input type="hidden" name="totalPrice" value="${total}" id="price"></td>
 				<td colspan="2"><button id="check_module2" type="button">테스트 결제</button></td>
 		</tr>

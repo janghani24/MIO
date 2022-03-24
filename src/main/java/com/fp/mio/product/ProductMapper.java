@@ -3,6 +3,7 @@ package com.fp.mio.product;
 import java.util.List;
 
 import com.fp.mio.account.Account;
+import com.fp.mio.account.AccountSelector;
 
 
 
@@ -86,6 +87,8 @@ public interface ProductMapper {
 	public List<OrderDAO> getOrder(Account a);
 
 	int getProductorderbuy(OrderDAO oda);
+
+	List<Account> getAccountSearch(AccountSelector search);
 
 
 }

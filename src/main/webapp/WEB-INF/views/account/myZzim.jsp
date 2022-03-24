@@ -10,34 +10,32 @@
 </head>
 <body>
 		
-		여기 찜한거 불러올거임   
 		
+            <table id="myzzimTable">
+            <tr><td><img src="resources/img/image/찜목록.jpg"></td></tr>
 		<c:forEach var="z" items="${showZzim }">
-            <table id="myzzimTable" border="1">
                 <tr>
                     <td><img
-                src="resources/img/${z.p_category1}/${z.p_photo }" width="150" height="150"></td>
+                src="resources/img/${z.p_category1}/${z.p_photo }" width="150" height="150"
+                 onclick="location.href='product.detail?p_num=${z.z_num }'"></td>
                 </tr>
 
                 <tr>
-                    <td >${z.p_name }</td>
+                    <td ><a href='product.detail?p_num=${z.z_num }'>${z.p_name}</a></td>
                 </tr>
 
 
                 <tr>
-                    <td >카테고리 : ${z.p_category1}</td>
+                    <td ><fmt:formatNumber type="number" maxFractionDigits="3" value="${z.p_price}" />원</td>
                 </tr>
+                
                 <tr>
-                    <td ><button onclick="location.href='product.detail?p_num=${z.z_num }'">찜한사이트로이동</button></td>
-
-                </tr>
-                <tr>
-                    <td ><button onclick="deletezzim(${z.z_no });">찜해제</button></td>
+                    <td ><button onclick="deletezzim(${z.z_no });" id="gradebutton">찜해제</button></td>
 
                 
 					
 				</tr>
-			</table>
 		</c:forEach>
+			</table>
 </body>
 </html>

@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table id="loginFailTbl" border="1">
+	<table id="loginFailTbl">
 		<tr>
-			<td><h1>Login Fail</h1></td>
+			<td><img src="resources/img/image/로그인실패.jpg"></td>
 		<tr>
 			<td><c:choose>
 					<c:when test="${result eq '1'}">
@@ -23,9 +23,9 @@
 		</tr>
 		<tr>
 			<td>
-				<button onclick="location.href='account.login.go'">로그인 화면으로</button>
-				<button onclick="goSearchId()">ID/PW찾기</button>
-				<button onclick="goJoin()">회원가입</button>
+				<button onclick="location.href='account.login.go'" class="button">로그인 화면으로</button>
+				<button onclick="goSearchId()"class="button">ID/PW찾기</button>
+				<button onclick="goJoin()"class="button">회원가입</button>
 			</td>
 		</tr>
 	</table>

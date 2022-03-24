@@ -259,12 +259,12 @@ function deleteAccountCheck(){
 		pwInput.value="";
 		pwInput.focus();
 		return false;
-	}else if(idInput != idInput2){
+	}else if(idInput.value != idInput2.value){
 		alert("id를 확인해주세요.");
 		idInput.value="";
 		idInput.focus();
 		return false;
-	}else if(pwInput != pwInput2){
+	}else if(pwInput.value != pwInput2.value){
 		alert("pw를 확인해주세요.");
 		pwInput.value="";
 		pwInput.focus();

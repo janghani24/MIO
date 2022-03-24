@@ -30,5 +30,9 @@ public interface AccountMapper {
 
 	Account searchId(Account a);
 
+	int getAccountCount(AccountSelector ps);
+
+	List<Account> getAccountSearch(AccountSelector search);
+
 
 }

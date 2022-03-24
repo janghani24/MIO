@@ -2,8 +2,10 @@ package com.fp.mio.account;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +13,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fp.mio.product.Product;
+import com.fp.mio.product.ProductMapper;
+import com.fp.mio.product.ProductSelector;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -19,6 +24,22 @@ public class AccountDAO {
 
 	@Autowired
 	private SqlSession ss;
+	
+	@Autowired
+	private com.fp.mio.SiteOption so;
+	
+	private int allACount;
+	public int getAllACount() {
+		return allACount;
+	}
+	public void setAllACount(int allACount) {
+		this.allACount = allACount;
+	}
+	public void calcAllACount() {
+		AccountSelector as = new AccountSelector("", null, null);
+		allACount = ss.getMapper(AccountMapper.class).getAccountCount(as);
+	}
+	
 	
 	// 로그인
 	public void login(Account a, HttpServletRequest req) {
@@ -47,14 +68,15 @@ public class AccountDAO {
 	public boolean loginCheck(HttpServletRequest req) {
 		Account a = (Account) req.getSession().getAttribute("loginAccount");
 		if (a != null) {
-			req.setAttribute("loginPage", "account/loginSuccess.jsp");
 			return true;
 		} else {
 			
-			req.setAttribute("loginPage", "account/login.jsp");
 			return false;
 		}
 	}
+	
+	
+	
 	
 	// 일반 회원 가입(판매자와 합칠 방법 생각해야함)
 	public void joinGeneral(Account a, HttpServletRequest req) {
@@ -187,7 +209,6 @@ public class AccountDAO {
 			String join_photo = a.getA_img();
 
 			if (ss.getMapper(AccountMapper.class).deleteAccount(a) == 1) {
-				req.setAttribute("result", "탈퇴성공");
 
 				String path = req.getSession().getServletContext().getRealPath("resources/img_account");
 				join_photo = URLDecoder.decode(join_photo, "utf-8");
@@ -195,12 +216,9 @@ public class AccountDAO {
 
 				logout(req);
 				loginCheck(req);
-			} else {
-				req.setAttribute("result", "탈퇴실패");
-			}
+			} 
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("result", "탈퇴실패");
 		}
 	}
 	
@@ -261,6 +279,7 @@ public class AccountDAO {
 
 			if (ss.getMapper(AccountMapper.class).updateAccount(a) == 1) {
 				req.setAttribute("result", "수정성공");
+				a = ss.getMapper(AccountMapper.class).getAccountByID(a);
 				req.getSession().setAttribute("loginAccount", a);
 				if (!oldFile.equals(newFile)) {
 					oldFile = URLDecoder.decode(oldFile, "utf-8");
@@ -287,12 +306,46 @@ public class AccountDAO {
 	}
 	
 	// 회원 정보 가져오기(전체)
-	public void getAccount(HttpServletRequest req) {
-		try {
-			req.setAttribute("accounts", ss.getMapper(AccountMapper.class).getAccount());
-		} catch (Exception e) {
-			e.printStackTrace();
+	public void getAllAccount(int pageNo,HttpServletRequest req) {
+		
+		int count = so.getProductCountPerpage();
+		int start = (pageNo - 1) * count + 1;
+		int end = start + (count - 1);
+
+		AccountSelector search = (AccountSelector) req.getAttribute("search");
+		int aCount = 0;
+
+		if (search == null) {
+			search = new AccountSelector("",new BigDecimal(start),new BigDecimal(end));
+			aCount = allACount; 
+		} else {
+			search.setStart(new BigDecimal(start));
+			search.setEnd(new BigDecimal(end));
+			aCount = ss.getMapper(AccountMapper.class).getAccountCount(search);
+			req.setAttribute("search", search.getSearch());
 		}
+		
+		List<Account> accounts = ss.getMapper(AccountMapper.class).getAccountSearch(search);
+		
+		int pageCount = (int) Math.ceil(aCount / (double) count);
+		
+		System.out.println(aCount);
+		
+		req.setAttribute("pageCount", pageCount);
+
+		req.setAttribute("accounts", accounts);
+		req.setAttribute("curPage", pageNo);
+		
+		
+		
+		
+	}
+	public void getAccount(HttpServletRequest req) {
+	try {
+		req.setAttribute("accounts", ss.getMapper(AccountMapper.class).getAccount());
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
 	}
 
 	// 판매자 신청 정보 가져오기(전체)
@@ -382,7 +435,12 @@ public class AccountDAO {
 	// id찾기(이름, 핸드폰 번호로)
 	public void idSearch(Account a, HttpServletRequest req) {
 		try {
+			if (ss.getMapper(AccountMapper.class).searchId(a)==null) {
+				req.setAttribute("result", "1");//1이면 없는 id
+			}else {
 			req.setAttribute("id", ss.getMapper(AccountMapper.class).searchId(a).getA_id());
+			req.setAttribute("result", "2");//2면 id있음
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -395,9 +453,15 @@ public class AccountDAO {
 			
 			if (a.getA_question().equals(aa.getA_question()) && a.getA_answer().equals(aa.getA_answer())) {
 				req.setAttribute("pw", ss.getMapper(AccountMapper.class).searchId(aa).getA_pw());
+				req.setAttribute("result", "2");
+			}else {
+				req.setAttribute("result", "1");//1이면 pw x
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public void AccountSearch(AccountSelector as, HttpServletRequest request) {
+		request.setAttribute("search", as);
 	}
 }
