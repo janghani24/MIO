@@ -40,7 +40,6 @@
 		select * from product_master
 		where p_category1 = 'food' order by p_date desc
 
-
 	</select>
 	<select id="getFashionDetail" resultType="com.fp.mio.product.ProductDetail" parameterType="com.fp.mio.product.Product">
 
@@ -108,7 +107,6 @@
 		where
 		c_a_id=#{c_a_id} and c_p_no = #{c_p_no}
 	</update>
-
 	<update id="updateProduct" parameterType="com.fp.mio.product.Product">
 		update product_master
 		set
@@ -126,13 +124,11 @@
 	</update>
 
 
-
 	<insert id="getProductzzim"
 		parameterType="com.fp.mio.product.Zzim">
 		insert into product_zzim
 
 		values(product_zzim_seq.nextval,#{p_num}, #{z_id})
-
 	</insert>
 	<insert id="regFashionDetail"
 		parameterType="com.fp.mio.product.ProductDetail">

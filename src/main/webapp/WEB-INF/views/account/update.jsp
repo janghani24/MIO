@@ -12,7 +12,9 @@
 		<table id="accountUpdateTbl" border="1">
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center">
-					<input readonly="readonly" value="${sessionScope.loginAccount.a_id}" name="jm_id" id="updateAccountIDInput">
+				${sessionScope.loginAccount.a_id}
+					<input type="hidden" value="${sessionScope.loginAccount.a_id}" name="jm_id" id="updateAccountIDInput">
+					
 				</td>
 			</tr>
 			<tr>
