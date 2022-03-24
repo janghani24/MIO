@@ -25,73 +25,55 @@ insert into product_zzim values(product_zzim_seq.nextval,'1','test');
 
 delete from product_zzim where z_no = 61
 
-create table product_detail(
-    d_num number(4) primary key, 
-    d_master_num number(10) not null, 
-    d_category varchar2(20 char) not null,
-    d_quantity number(3) not null,
-    d_size varchar2(20 char) not null,
-    d_color varchar2 (20 char) not null,
-    constraint d_test
-        foreign key(d_master_num) references product_master(p_num)
-        on delete cascade    --마스터 삭제하면 연관된 디테일도 삭제됨
+-------- 여기는 order db ---------
 
+create sequence product_orderItem_seq;
+create sequence product_order_seq;
+
+create table product_order(
+    orderId varchar2(50) primary key, --주문1 주문2 주문3 구분
+    memberId varchar2(50),		--주문자 id
+   	productId number(10) not null,	--제품번호
+    productCount number(10) not null,	--제품갯수
+    productPrice number(10) not null,	--제품가격
+    memberAddr1 varchar2(100) not null,	--주문자 주소1
+    memberAddr2 varchar2(100) not null,	--주문자 주소2
+    orderState varchar2(30) not null,	--주문 정보 대기 완료이런거
+    orderDate date default sysdate,	--주문날짜 
+    FOREIGN KEY (memberId) REFERENCES account_mio(a_id),
+     FOREIGN KEY (productId) REFERENCES product_master(p_num)
 )
 
-select * from product_master
-select * from product_detail where d_num = 2
+delete from product_order where 
+select * from product_order where memberId ='test'
+insert into product_order values('주문고유넘버','test',1,5,3500,'주소1','주소2','주문대기',sysdate)
+
+create table product_orderItem(
+    orderItemId number(10) primary key,	--시퀀스로늘림
+    orderId varchar2(50) not null,		-- 주문1 주문2 주문3 구분 부모받기	
+    productId number(10) not null,	--제품번호
+    productCount number(10) not null,	--제품갯수
+    productPrice number(10) not null,	--제품가격
+    FOREIGN KEY (orderId) REFERENCES product_order(orderId),
+    FOREIGN KEY (productId) REFERENCES product_master(p_num)
+);
 
 
 
-  FOREIGN KEY (orderId) REFERENCES vam_order(orderId),
-    FOREIGN KEY (bookId) REFERENCES vam_book(bookId)
+select * from product_orderItem
+select * from product_order
 
-    --테스트 시작--
+SELECT * FROM product_order , account_mio, product_master
+WHERE product_order.memberId = account_mio.a_id
+AND product_order.productId = product_master.p_num
+AND  product_order.memberId = 'test'
 
-create table testid(
-a_id varchar2(20 char) primary key,
-a_name varchar2(20 char) not null
-)
+drop table product_orderItem
+drop table product_order
 
-create table testproduct(
-p_num number(10) primary key, 
-p_name varchar2 (100 char) not null,
-p_price number(10) not null
-)
+insert into product_order
+     values(#{orderId},#{memberId},#{productId},#{productCount},#{productPrice},
+     #{memberAddr1},#{memberAddr2},#{orderState},sysdate)
 
-create table testzzim(
-t_no number(10) primary key, 
-t_num number(10) not null,
-t_id varchar2 (100 char) not null,
- constraint f_test FOREIGN KEY (t_id) REFERENCES testid(a_id) on delete cascade,
-constraint f_test2 FOREIGN KEY (t_num) REFERENCES testproduct(p_num) on delete cascade
-)
-
-
-constraint f_test FOREIGN KEY (t_id) REFERENCES testid(a_id) on delete cascade,
-constraint f_test2 FOREIGN KEY (t_num) REFERENCES testproduct(p_num) on delete cascade
-
-insert into testproduct values(1,'물건1',3000)
-insert into testproduct values(2,'물건2',5000)
-insert into testproduct values(3,'물건3',5500)
-insert into testid values('id1','이름1')
-insert into testid values('id2','이름2')
-insert into testzzim values(1,2,'id1')
-insert into testzzim values(2,1,'id1')
-insert into testzzim values(3,1,'id2')
-insert into testzzim values(4,2,'id2')
-insert into testzzim values(5,3,'id2')
-
-
-   select * from testproduct
-   select * from testid
-   select * from testzzim
-   delete from testid where a_id= 'id2';
-   delete from testproduct where p_name= '물건2';
-
-   
-SELECT *
-FROM testid , testzzim, testproduct
-WHERE testid.a_id = testzzim.t_id
-AND testzzim.t_num = testproduct.p_num
-AND testzzim.t_id ='id1'
+이거를 3번반복한다치자 대신에 시퀀스로 프라이머리가 올라감 그럼 같은데이터가 3번이야
+갯 프로덕트 바이를 3번굴려야함 단) 굴릴때마다 +1이되게

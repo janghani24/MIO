@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1" id="cartTalble">
 <input type="hidden" value="장바구니상품" id="productname">
 <input id="id" value="${param.id }" type="hidden">
 <input id="p_num" value="${detail.p_num }" type="hidden">

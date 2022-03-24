@@ -55,6 +55,8 @@ function connectSNSSearchFormSummonEvent() {
 
 $(function() {
 	connectAddrSearchEvent();
+
 	connectSNSSearchFormSummonEvent();
 	connectSNSWriteFormSummonEvent();
 });
+

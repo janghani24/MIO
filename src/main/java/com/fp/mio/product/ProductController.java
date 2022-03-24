@@ -119,6 +119,7 @@ public class ProductController {
 		return "index";
 	}
 
+
 	
 	// 카테고리 하위로 이동
 	@RequestMapping(value = "/product.category.category2", method = RequestMethod.GET)
@@ -437,5 +438,40 @@ public class ProductController {
 
 		return "index";
 	}
+	@RequestMapping(value = "/product.order", method = RequestMethod.GET)
+	public String getOrder(HttpServletRequest request, Product product) {
+		//결제창
+	
+
+		pDAO.getProductDetail(request, product);
+		
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
+		request.setAttribute("contentPage", "orderproduct/order.jsp");
+		
+		return "index";
+	}
+	@RequestMapping(value = "/product.orderbuy", method = RequestMethod.GET)
+	public String orderbuy(HttpServletRequest request,Product product, OrderDAO oda) {
+		pDAO.getProductDetail(request, product);
+		
+	
+		pDAO.getProductorderbuy(request, oda); //구매하기
+		
+		pDAO.order(request); 	//오더 불러오기
+
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
+		request.setAttribute("contentPage", "orderproduct/orderbuy.jsp");
+		
+		return "index";
+	}
+	@RequestMapping(value = "/product.cartorderbuy", method = RequestMethod.GET)
+	public String cartorderbuy(HttpServletRequest request) {
+		
+		pDAO.getCart(request);
+		request.setAttribute("contentPage", "product/cart.jsp");
+		return "index";
+	}
+	
+	
 
 }
