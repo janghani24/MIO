@@ -28,6 +28,7 @@ a:hover, a:active {
 	height: 1000px;
 	width: 98%;
 	text-align: center;
+	
 }
 
 #logo {
@@ -61,8 +62,9 @@ ul {
 
 
 .subMenu{
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	background-color: #bed7cc;
 }
 
 .contentPage{
@@ -70,10 +72,12 @@ ul {
 }
 
 #footer{
-	height:50px;
+	height:80px;
+	background-color: #137048;
 }
 
 .leftLogin{
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 0px;
+	padding-bottom: 15px;
+
 }

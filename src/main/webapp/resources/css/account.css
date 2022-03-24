@@ -1,12 +1,159 @@
 @charset "UTF-8";
 
-#loginTable{
+#loginTable {
+	margin-bottom: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	width: 600px;
+}
+
+#joinTable {
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
+}
+
+#joinConfirmTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#joinSelectTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	padding-top: 20px;
+}
+
+#accountInfoTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#accountDeleteTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#mypageTable {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#myzzimTable {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#accountSearchTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#aSearchResultTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#sellerDetailTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#accountUpdateTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#gradeUpdateTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#infoImg img {
+	padding-right: 100px;
+	width: 350px;
+}
+
+#zzimImg img {
+	padding-left: 100px;
+	width: 350px;
+}
+
+#id {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-style: bold;
+}
+
+#pw {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#idBox {
+	margin-left: 30px;
+}
+
+#passBox {
+	margin-left: 20px;
+}
+
+#joinSearch {
+	padding-top: 10px;
+}
+
+.button {
+	margin-bottom: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 20px;
+	background-color: #bed7cc;
+	border: 0;
+	outline: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-style: bold;
+}
+
+#loginButton {
+
+	background-color: #137048;
+	color:white;
+	border: 0;
+	outline: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
 	
 }
+
 #loginFailTbl{
 	margin-bottom: auto;
 	margin-left: auto;
@@ -27,70 +174,18 @@
 	margin-right: auto;
 	margin-top: auto;
 	
+
+
+.padding{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
-#joinConfirmTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#joinSelectTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#accountInfoTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#accountDeleteTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#mypageTable{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#myzzimTable{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#accountSearchTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#aSearchResultTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#sellerDetailTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#accountUpdateTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
-}
-#gradeUpdateTbl{
-	margin-bottom: auto;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: auto;
+
+#idpadding{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 70px;
+	padding-right: 20px;
 }

@@ -7,18 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table id="mypageTable" border="1">
+	<table id="mypageTable">
 		<tr>
-			<td>
-				<button onclick="goInfo()">내 정보 보기</button>
+			<td id="infoImg">
+				<img src="resources/img/image/Info.png" onclick="goInfo()">
+			</td>
+			<td id="zzimImg">
+				<img src="resources/img/image/zzimlist.png" onclick="goWishlist()">
 			</td>
 		</tr>
-		<tr>
-			<td>
-			<!-- 찜목록 구현테스트중-->
-				<button onclick="goWishlist()">찜 목록 보기</button>
-			</td>
-		</tr>
+		
 	</table>
 </body>
 </html>
