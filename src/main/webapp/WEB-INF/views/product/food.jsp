@@ -14,7 +14,7 @@
 	<table class="categoryTbl">
 
 		<tr>
-			<td colspan="5">FOOD 배너 등</td>
+			<td colspan="5" id="banner"><img src="resources/img/image/foodbanner.png"></td>
 		</tr>
 		<tr>
 			<td class="category2"
@@ -28,7 +28,7 @@
 				onclick="location.href='product.category.category2?p_category1=food&p_category2=요리재료'">요리재료</td>
 		</tr>
 		<tr>
-			<td colspan="5" id="searchTbl">
+			<td colspan="4" id="searchTbl">
 				<form action="product.category.search">
 					<input name="search"> <input type="hidden"
 						name="p_category1" value="food">
@@ -37,7 +37,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="6"><c:forEach var="f" items="${products}">
+			<td colspan="4"><c:forEach var="f" items="${products}">
 					<ul>
 						<li class="productImage"
 							onclick="location.href='product.detail?p_num=${f.p_num}'"><img
@@ -49,7 +49,7 @@
 				</c:forEach></td>
 		</tr>
 		<tr>
-			<td colspan="5" id="paging">
+			<td colspan="4" id="paging">
 				<div align="center">
 					<a
 						href="product.category.paging?p=1&p_category1=${category}&p_category2=${p_category2}">
@@ -65,7 +65,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td colspan="5"><c:if
+			<td colspan="4"><c:if
 					test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
 					<button id="regButton" onclick="location.href='product.foodReg'">상품
 						등록</button>

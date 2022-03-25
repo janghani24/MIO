@@ -10,36 +10,51 @@
 <body>
 
 	<table border="1" class="categoryTbl">
-	
+
 		<tr>
-			<td onclick="location.href='product.category?p_category1=fashion'">전체
+			<td colspan="7" id="banner"><img
+				src="resources/img/image/fashionbanner.png"></td>
+		</tr>
+		<tr>
+			<td class="category2"
+				onclick="location.href='product.category?p_category1=fashion'">전체
 				상품</td>
-			<td
+			<td class="category2"
 				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=의류'">의류</td>
-			<td
+			<td class="category2"
 				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=가방'">가방</td>
-			<td
+			<td class="category2"
 				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=패션소품'">패션
 				소품</td>
-			<c:if
-					test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
-					<button onclick="location.href='product.fashionReg'">상품 등록</button>
-				</c:if></td>
+
+
 		</tr>
 
 		<tr>
-			<td colspan="8"><c:forEach var="f" items="${products}">
+
+			<td colspan="4" id="searchTbl">
+				<form action="product.category.search">
+					<input name="search"> <input type="hidden"
+						name="p_category1" value="fashion">
+					<button id="productSearchButton">검색</button>
+				</form>
+			</td>
+		</tr>
+		<tr>
+
+			<td colspan="4"><c:forEach var="f" items="${products}">
 					<ul>
-						<li class="productImage" onclick="location.href='product.detail?p_num=${f.p_num}'"><img
+						<li class="productImage"
+							onclick="location.href='product.detail?p_num=${f.p_num}'"><img
 							src="resources/img/${f.p_category1}/${f.p_photo}" width="350px;"></li>
-						<li>${f.p_brand}</li>
-						<li>${f.p_name}</li>
-						<li>${f.p_price}원</li>
+						<li id="brand">${f.p_brand}</li>
+						<li id="productName">${f.p_name}</li>
+						<li id="price">${f.p_price}원</li>
 					</ul>
 				</c:forEach></td>
 		</tr>
 		<tr>
-			<td colspan="8">
+			<td colspan="4" id="paging">
 				<div align="center">
 					<a
 						href="product.category.paging?p=1&p_category1=${category}&p_category2=${p_category2}">
@@ -54,14 +69,14 @@
 				</div>
 			</td>
 		</tr>
+
 		<tr>
-			<td colspan="8">
-				<form action="product.category.search">
-					<input name="search"> <input type="hidden"
-						name="p_category1" value="fashion">
-					<button>검색</button>
-				</form>
-			</td>
+			<td colspan="7"><c:if
+					test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
+					<button id="regButton" onclick="location.href='product.fashionReg'">상품
+						등록</button>
+				</c:if></td>
+		</tr>
 	</table>
 </body>
 </html>
