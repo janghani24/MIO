@@ -18,27 +18,27 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="infoTd1">사진:</td>
+				<td class="infoTd1">사진</td>
 				<td class="infoTd"><input name="p_photo" type="file"></td>
 			</tr>
 			<tr>
-				<td class="infoTd1">상품 이름:</td>
+				<td class="infoTd1">상품 이름</td>
 				<td class="infoTd"><input name="p_name" class="input"></td>
 			</tr>
 			<tr>
-				<td class="infoTd1">상품 가격:</td>
+				<td class="infoTd1">상품 가격</td>
 				<td class="infoTd"><input name="p_price" class="input"></td>
 			</tr>
 			<tr>
-				<td class="infoTd1">브랜드:</td>
+				<td class="infoTd1">브랜드</td>
 				<td class="infoTd"><input name="p_brand" class="input"></td>
 			</tr>
 			<tr>
-				<td class="infoTd1">수량:</td>
+				<td class="infoTd1">수량</td>
 				<td class="infoTd"><input name="p_quantity" class="input"></td>
 			</tr>
 			<tr>
-				<td class="infoTd1">상품 상세 정보:</td>
+				<td class="infoTd1">상품 상세 정보</td>
 				<td class="infoTd"><input name="p_content" type="file"></td>
 			</tr>
 			<tr>

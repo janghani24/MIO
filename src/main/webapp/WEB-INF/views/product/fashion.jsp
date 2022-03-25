@@ -17,14 +17,14 @@
 		</tr>
 		<tr>
 			<td class="category2"
-				onclick="location.href='product.category?p_category1=fashion'">전체
+				onclick="location.href='product.category?p_category1=fashion'" width="25%;">전체
 				상품</td>
 			<td class="category2"
-				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=의류'">의류</td>
+				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=의류'" width="25%;">의류</td>
 			<td class="category2"
-				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=가방'">가방</td>
+				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=가방'" width="25%;">가방</td>
 			<td class="category2"
-				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=패션소품'">패션
+				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=패션소품'" width="25%;">패션
 				소품</td>
 
 

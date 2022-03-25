@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,8 @@
 			</tr>
 			<tr>
 				<td class="infoTd1">펀딩 마감 기간:</td>
-				<td class="infoTd">${fundingDetail.f_period}</td>
+				
+				<td class="infoTd"><fmt:formatDate value="${fundingDetail.f_period}" pattern="yyyy년 MM월 dd일 " /></td>
 				<td class="infoTd"><input type="date" name="f_period"></td>
 			</tr>
 			<tr>

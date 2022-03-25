@@ -21,19 +21,19 @@
 
 		<tr>
 			<td class="category2"
-				onclick="location.href='product.category?p_category1=living'">전체
+				onclick="location.href='product.category?p_category1=living'" width="20%;">전체
 				상품</td>
 			<td class="category2"
-				onclick="location.href='product.category.category2?p_category1=living&p_category2=주방용품'">주방
+				onclick="location.href='product.category.category2?p_category1=living&p_category2=주방용품'" width="20%;">주방
 				용품</td>
 			<td class="category2"
-				onclick="location.href='product.category.category2?p_category1=living&p_category2=욕실용품'">욕실
+				onclick="location.href='product.category.category2?p_category1=living&p_category2=욕실용품'" width="20%;">욕실
 				용품</td>
 			<td class="category2"
-				onclick="location.href='product.category.category2?p_category1=living&p_category2=생활용품'">생활
+				onclick="location.href='product.category.category2?p_category1=living&p_category2=생활용품'" width="20%;">생활
 				용품</td>
 			<td class="category2"
-				onclick="location.href='product.category.category2?p_category1=living&p_category2=문구'">문구</td>
+				onclick="location.href='product.category.category2?p_category1=living&p_category2=문구'" width="20%;">문구</td>
 
 		</tr>
 		<tr>

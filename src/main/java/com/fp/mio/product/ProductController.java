@@ -477,7 +477,7 @@ public class ProductController {
 		
 		pDAO.order(request); 
 		
-		request.setAttribute("contentPage", "orderproduct/cartorderbuy.jsp");
+		request.setAttribute("contentPage", "orderproduct/orderbuy.jsp");
 		return "index";
 	}
 	

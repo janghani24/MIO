@@ -39,6 +39,12 @@
 	width:600px;
 }
 
+.orderTd{
+	text-align:left;
+	padding-left:10px;
+	font-size: 12pt;
+}
+
 .productRegTbl {
 	margin-bottom: auto;
 	margin-left: auto;
@@ -63,6 +69,12 @@
 }
 
 #cartTalble {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+#orderbuyTbl {
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;

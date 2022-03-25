@@ -5,5 +5,6 @@ $(document).ready(function(){
      autoControls: false,
      stopAutoOnClick: true,
      pager: false,
+     touchEnabled : false,
    });
 });

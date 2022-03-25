@@ -44,12 +44,12 @@ delete from product_orderItem where productid = 43
 select * from product_orderItem 
 select * from product_order
 
-insert into product_order values('주문고유넘버','test','주소1','주소2','주문대기',sysdate)
-insert into product_order values('주문고유넘버2','test','주소1','주소2','주문대기',sysdate)
-insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버',101,5,3500)
-insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버',44,2,3500)
-insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버2',101,5,3500)
-insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버2',44,2,3500)
+insert into product_order values('주문고유넘버','hn','주소1','주소2','주문대기',sysdate);
+insert into product_order values('주문고유넘버2','test','주소1','주소2','주문대기',sysdate);
+insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버',101,5,3500);
+insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버',44,2,3500);
+insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버',101,5,3500);
+insert into product_orderItem values(product_orderItem_seq.nextval,'주문고유넘버',44,2,3500);
 
 select * from product_order
 

@@ -134,7 +134,9 @@
 		</tr>
 
 		<tr>
-			<td colspan="2" id="footer">푸터</td>
+			<td colspan="2" id="footer">
+			Final Project MIO<br>		
+			장하늬 정유진 윤지호 여동재<br>기간 : 2022.02.21~2022.03.25</td>
 		</tr>
 
 

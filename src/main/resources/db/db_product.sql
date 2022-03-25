@@ -139,9 +139,9 @@ drop table product_reply cascade constraint purge;
 --food
 --식사거리
 insert into product_master values(product_master_seq.nextval,'hn','비건 사천 짜장 떡볶이 (비건밀키트)',13800,'계절의기억','12.jpeg','12-1.jpg',5,'food','식사거리',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','[냉동] 베지프랑크 200g',5000,'베지푸드','20.jpg','20-1.jpg',5,'food','식사거리',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','[냉동] 베지스테이크 2kg',36200,'베지푸드','21.jpg','21-1.jpg',5,'food','식사거리',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','[냉동] 비건크리스피너겟 1kg',18700,'베지푸드','22.jpg','22-1.jpg',5,'food','식사거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','(냉동) 베지프랑크 200g',5000,'베지푸드','20.jpg','20-1.jpg',5,'food','식사거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','(냉동) 베지스테이크 2kg',36200,'베지푸드','21.jpg','21-1.jpg',5,'food','식사거리',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','(냉동) 비건크리스피너겟 1kg',18700,'베지푸드','22.jpg','22-1.jpg',5,'food','식사거리',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','비건라면 자연은 맛있다 정면 (4개 묶음)',3980,'풀무원','23.jpg','23-1.jpg',5,'food','식사거리',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','비건햄 (Vegan Ham) 500g - 무오신채',8400,'러빙헛','24.jpg','24-1.jpg',5,'food','식사거리',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','식물성버거패티 800g',8400,'풀무원','25.jpg','25-1.jpg',5,'food','식사거리',sysdate);
@@ -165,7 +165,7 @@ insert into product_master values(product_master_seq.nextval,'hn','마인탈 유
 insert into product_master values(product_master_seq.nextval,'hn','비오오가닉 오가닉 그린올리브 파티드 280g',6800,'비오오가닉','16.jpg','16-1.jpg',5,'food','요리재료',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','발투센 유기농 칙피 350g',3600,'발투센','17.jpg','17-1.jpg',5,'food','요리재료',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','발사믹비네거 35% 포도농축(6년산) 500ml',8100,'데니그리스','18.jpg','18-1.jpg',5,'food','요리재료',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','밥생각나는 소스 [홍고추 매운맛 - 12 * 10개입]',6000,'더밥','19.jpg','19-1.jpg',5,'food','요리재료',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','밥생각나는 소스 (홍고추 매운맛 - 12 * 10개입)',6000,'더밥','19.jpg','19-1.jpg',5,'food','요리재료',sysdate);
 
 
 --건강식품
@@ -195,7 +195,7 @@ insert into product_master values(product_master_seq.nextval,'hn','세인트바�
 insert into product_detail values(product_detail_seq.nextval,'64','Free','silver');
 insert into product_master values(product_master_seq.nextval,'hn','독도후원 플로히스 팔찌',13000,'플로히스','05.jpg','05-1.jpg',5,'fashion','패션소품',sysdate);
 insert into product_detail values(product_detail_seq.nextval,'65','Free','silver');
-insert into product_master values(product_master_seq.nextval,'hn','[119레오 당근 팔찌] 소방관 기부 후원',22000,'119레오','06.jpg','06-1.jpg',5,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','(119레오 당근 팔찌) 소방관 기부 후원',22000,'119레오','06.jpg','06-1.jpg',5,'fashion','패션소품',sysdate);
 insert into product_detail values(product_detail_seq.nextval,'66','Free','orange');
 
 
@@ -238,7 +238,7 @@ insert into product_master values(product_master_seq.nextval,'hn','비니페라 
 
 --living
 --주방용품
-insert into product_master values(product_master_seq.nextval,'jh','[기부텀블러] 유리컵 340ml_안녕, 고래 시리즈 #01',10880,'88하다(88HADA)','01_1_1.jpg','01-1.jpg',5,'living','주방용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'jh','(기부텀블러) 유리컵 340ml_안녕, 고래 시리즈 #01',10880,'88하다(88HADA)','01_1_1.jpg','01-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','친환경 밥주걱',4000,'슈가랩','02.jpg','02-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','친환경 위생 지퍼백',2800,'슈가랩','03.jpg','03-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','제로웨이스트 키친키트 - 설거지비누 삼베수세미 병세척솔 소창행주 건조집게',34500,'어반에코','11.jpg','11-1.jpg',5,'living','주방용품',sysdate);
