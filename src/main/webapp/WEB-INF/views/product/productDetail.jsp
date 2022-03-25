@@ -115,8 +115,8 @@ $(".btn_buy").on("click", function(){
 		
 		<tr>
 		<td colspan="2"><c:if test="${detail.p_owner == sessionScope.loginAccount.a_id }">
-				<button onclick="deleteProduct(${detail.p_num})">삭제</button>
-				<button onclick="updateProduct(${detail.p_num},'${detail.p_category1}')">수정</button>
+				<button id="delBtn" onclick="deleteProduct(${detail.p_num})">삭제</button>
+				<button id="reBtn" onclick="updateProduct(${detail.p_num},'${detail.p_category1}')">수정</button>
 				</c:if></td>
 		</tr>
 

@@ -58,7 +58,7 @@
 			<td id="leftside">
 				<table id="indexcategory">
 					<tr>
-						<td colspan="2"><a href="/mio"><img id="logo"
+						<td colspan="3"><a href="/mio"><img id="logo"
 								src="resources/img/image/logo1.png"></a></td>
 					</tr>
 					<tr>
@@ -74,46 +74,46 @@
 					<c:choose>
 						<c:when test="${sessionScope.loginAccount != null }">
 							<tr>
-								<td id="topMenu" colspan="2"><a href="account.mypage">My
+								<td id="topMenu" colspan="3"><a href="account.mypage">My
 										Page</a></td>
 							</tr>
 						</c:when>
 						<c:otherwise>
 							<tr>
 
-								<td id="topMenu" colspan="2"><a href="account.login.go">Login</a></td>
+								<td id="topMenu" colspan="3"><a href="account.login.go">Login</a></td>
 
 		
 							</tr>
 						</c:otherwise>
 					</c:choose>
 					<tr>
-						<td id="topMenu" colspan="2"><a href="product.all">Product</a></td>
+						<td id="topMenu" colspan="3"><a href="product.all">Product</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu" colspan="2"><a
+						<td class="subMenu" colspan="3"><a
 							href="product.category?p_category1=food">Food</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu" colspan="2"><a
+						<td class="subMenu" colspan="3"><a
 							href="product.category?p_category1=fashion">Fashion</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu" colspan="2"><a
+						<td class="subMenu" colspan="3"><a
 							href="product.category?p_category1=beauty">Beauty</a></td>
 					</tr>
 					<tr>
-						<td class="subMenu" colspan="2"><a
+						<td class="subMenu" colspan="3"><a
 							href="product.category?p_category1=living">Living</a></td>
 					</tr>
 
 
 					<tr>
-						<td id="topMenu" colspan="2"><a href="funding.all">Funding</a></td>
+						<td id="topMenu" colspan="3"><a href="funding.all">Funding</a></td>
 					</tr>
 					<tr>
 
-						<td id="topMenu"  colspan="2"><a href="community.go">Community</a></td>
+						<td id="topMenu"  colspan="3"><a href="community.go">Community</a></td>
 
 					</tr>
 

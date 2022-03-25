@@ -23,32 +23,40 @@
 #productRandom {
 	padding-top: 20px;
 	padding-bottom: 80px;
+	padding-left: 0px;
+	padding-right: 0px;
 
 }
 #productRandom img{
-	width: 350px;
-	height: 350px;
+	max-width: 350px;
+	width : 350px;
+	height : 350px;
 }
-
+.menu_ul{
+	height: 440px;
+}
 
 #productRandom img:hover {
 	filter: brightness(90%);
-	width: 350px;
-	height: 350px;
 }
 
 #brand{
+	padding-top: 5px;
 	color: gray;
+	font-size: 10pt;
+	font-family: 'GmarketSansMedium';
 }
 
 #productName{
 	padding-top: 5px;
-	font-weight: 14pt;
+	font-size: 12pt;
+	font-family: 'GmarketSansMedium';
 }
 
 #price{
-	font-size: 15pt;
+	font-size: 13pt;
 	font-weight: bold;
 	padding-top: 5px;
 	color: #137048;
+	font-family: 'GmarketSansMedium';
 }
