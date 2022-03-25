@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.fp.mio.SiteOption;
@@ -19,6 +20,7 @@ public class CommunityDAO {
 	@Autowired
 	private SqlSession ss;
 
+	@Qualifier("so2")
 	@Autowired
 	private SiteOption so;
 
@@ -60,7 +62,6 @@ public class CommunityDAO {
 		List<CommunityMsg> msgs = ss.getMapper(CommunityMapper.class).getMsg(search);
 		for (CommunityMsg cmMsg : msgs) {
 			//System.out.println(cmMsg.getC_no());
-			System.out.println(cmMsg.getA_img());
 			List<Communityre> cre = ss.getMapper(CommunityMapper.class).getReply(cmMsg);
 			//System.out.println(cre);
 			for (Communityre re : cre) {
@@ -71,6 +72,8 @@ public class CommunityDAO {
 			cmMsg.setC_re(ss.getMapper(CommunityMapper.class).getReply(cmMsg));
 		}
 		int pageCount = (int) Math.ceil(msgCount / (double) count);
+		System.out.println(pageCount);
+		System.out.println(pageNo);
 		req.setAttribute("pageCount", pageCount);
 
 		req.setAttribute("msgs", msgs);

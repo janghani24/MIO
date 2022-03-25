@@ -9,6 +9,7 @@ import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.fp.mio.account.Account;
@@ -23,6 +24,7 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession ss;
 
+	@Qualifier("so")
 	@Autowired
 	private com.fp.mio.SiteOption so;
 	

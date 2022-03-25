@@ -7,10 +7,34 @@
 	transition:all 0.4s ease-out;
 }
 
+#communityTbl{
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	width:600px;
+}
+
+#communityTd{
+	padding-left: 300px;
+}
+
 #snsWriteTable {
 	width: 1000px;
 	border-spacing: 0px;
 	background-color: #000000BF;
+}
+
+#communitybutton{
+	margin-left: 20px;
+	background-color: #bed7cc;
+    border: 0;
+    outline: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 11pt;
 }
 
 #snsWriteTable textarea {
@@ -163,38 +187,5 @@
 	font-weight: 900;
 }
 
-#snsSearchArea {
-	position: fixed;
-	top: 105px;
-	left: -239px;
-	border-spacing: 0px;
-	transition:all 0.4s ease-out;
-}
 
-#snsSearchArea input {
-	border: none;
-	background-color: transparent;
-	color: white;
-	font-size: 13pt;
-	font-weight: 800;
-	padding: 5px;
-	width: 180px;
-}
 
-#snsSearchArea button {
-	font-size: 13pt;
-	font-weight: 800;
-	border: none;
-	background-color: transparent;
-	color: white;
-}
-
-#snsWriteFormSummoner{
-	cursor:pointer;
-	font-weight: 900;
-	font-size: 30pt;
-}
-#snsSearchFormSummoner{
-	cursor:pointer;
-	margin-left: 5px;
-}

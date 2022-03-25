@@ -1,9 +1,10 @@
 .bxslider img {
-	width: 1200px;
+	width: 100%;
+	
 }
 
 #FundingImg img {
-	width: 1200px;
+	width: 100%;
 }
 
 #FundingImg {

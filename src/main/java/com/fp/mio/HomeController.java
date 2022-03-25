@@ -36,7 +36,7 @@ private boolean firstreq;
 	public String home(HttpServletRequest req) {
 		
 		if(true) {
-			cDAO.getAllMsgCount();
+			cDAO.calcAllmsgCount();
 			firstreq =false;
 		}
 		pDAO.getProductrandom(req);

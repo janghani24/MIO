@@ -6,118 +6,115 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="resources/css/community_css.css">
 <title>Insert title here</title>
 </head>
 <body>
+	<table id="communityTbl" border="1">
+		<tr>
+			<td>배너</td>
+		</tr>
+		<tr>
 
-	<form action="community.search" name="snsSearchForm"
-		onsubmit="return snsSearchCheck();">
-		<table id="snsSearchArea">
-			<tr>
-				<td id="ssaTd1"><input name="search" maxlength="10" autocomplete="off" style="color: black;"></td>
-				<td id="ssaTd2"><button style="color: black">검색</button></td>
-				<td><img id="snsSearchFormSummoner"
-					src="resources/img/community/search.png"></td>
-			</tr>
-		</table>
-	</form>
+			<form action="community.search" name="snsSearchForm"
+				onsubmit="return snsSearchCheck();">
+				<td id="communityTd"><input name="search" maxlength="10" autocomplete="off"
+					style="color: black;">
+					<button style="color: black" class="fundingbutton">검색</button></td>
 
+			</form>
+		</tr>
+		<tr>
+			<td><c:forEach var="m" items="${msgs }">
 
+					<table class="aSNSMsg" border="1">
+						<tr>
+							<td class="asmImgTd" align="center" valign="top" rowspan="3"><img
+								src="resources/img_account/${m.a_img }"></td>
 
-	<c:if test="${curPage != 1 }">
-		<a href="community.page.change?p=${curPage - 1 }" id="snsL">&lt;</a>
-	</c:if>
-	<c:if test="${curPage != pageCount }">
-		<a href="community.page.change?p=${curPage + 1 }" id="snsR">&gt;</a>
-	</c:if>
-
-
-
-	<c:forEach var="m" items="${msgs }">
-
-		<table class="aSNSMsg">
-			<tr>
-				<td class="asmImgTd" align="center" valign="top" rowspan="4"><img
-					src="resources/img_account/${m.a_img }"></td>
-
-				<td class="asmOwner">${m.c_owner }</td>
-			</tr>
-			<tr>
-				<td><fmt:formatDate value="${m.c_date }" type="both"
-						dateStyle="short" timeStyle="short" /></td>
-			</tr>
-			<tr>
-				<td class="asmTxt">${m.c_txt }</td>
-			</tr>
+							<td class="asmOwner">${m.c_owner }</td>
+						</tr>
+						<tr>
+							<td><fmt:formatDate value="${m.c_date }" type="both"
+									dateStyle="short" timeStyle="short" /></td>
+						</tr>
+						<tr>
+							<td class="asmTxt">${m.c_txt }</td>
+						</tr>
 
 
-			<tr>
-				<td class="asmReply"><c:forEach var="sr" items="${m.c_re }">
-						<span class="asmrOwner">${sr.r_owner }</span>&nbsp;${sr.r_txt }&nbsp;
+						<tr>
+							<td class="asmReply" colspan="2"><c:forEach var="sr" items="${m.c_re }">
+									<span class="asmrOwner">${sr.r_owner }</span>&nbsp;${sr.r_txt }&nbsp;
 						<span class="asmrWhen"><fmt:formatDate
-								value="${sr.r_when }" type="both" dateStyle="short"
-								timeStyle="short" /></span>
-						<c:if test="${sr.r_owner == sessionScope.loginAccount.a_id }">
-							<button onclick="delReply('${sr.r_no}', '${curPage }');">삭제</button>
+											value="${sr.r_when }" type="both" dateStyle="short"
+											timeStyle="short" /></span>
+									<c:if test="${sr.r_owner == sessionScope.loginAccount.a_id }">
+										<button onclick="delReply('${sr.r_no}', '${curPage }');"
+											class="fundingbutton">삭제</button>
+									</c:if>
+									<br>
+								</c:forEach> <c:if test="${sessionScope.loginAccount != null }">
+									<form action="community.reply.write"
+										onsubmit="return snsWriteReplyCheck(this);">
+										<span class="asmrOwner">
+											${sessionScope.loginAccount.a_id } </span> <input type="hidden"
+											name="token" value="${token }"> <input type="hidden"
+											name="r_c_no" value="${m.c_no }"> <input
+											type="hidden" name="p" value="${curPage }"> <input
+											class="asmrInput" name="r_txt" maxlength="80"
+											autocomplete="off">
+										<button class="asmrBtn">쓰기</button>
+									</form>
+								</c:if></td>
+						</tr>
+
+						<c:if test="${m.c_owner == sessionScope.loginAccount.a_id }">
+							<tr>
+								<td colspan="2" align="right">
+
+									<button
+										onclick="updateMsg('${m.c_no}', '${m.c_txt}', ${curPage});"
+										class="fundingbutton">수정</button>
+
+									<button onclick="delMsg('${m.c_no}');" class="fundingbutton">삭제</button>
+
+								</td>
+							</tr>
 						</c:if>
-						<br>
-					</c:forEach> <c:if test="${sessionScope.loginAccount != null }">
-						<form action="community.reply.write"
-							onsubmit="return snsWriteReplyCheck(this);">
-							<span class="asmrOwner"> ${sessionScope.loginAccount.a_id }
-							</span> 
-							<input type="hidden" name="token" value="${token }"> 
-							<input type="hidden" name="r_c_no" value="${m.c_no }"> 
-							<input type="hidden" name="p" value="${curPage }"> 
-								<input	class="asmrInput" name="r_txt" maxlength="80" autocomplete="off">
-							<button class="asmrBtn">쓰기</button>
-						</form>
-					</c:if></td>
-			</tr>
+					</table>
+				</c:forEach></td>
+		</tr>
 
-			<c:if test="${m.c_owner == sessionScope.loginAccount.a_id }">
-				<tr>
-					<td colspan="2" align="right">
-						
-						<button onclick="updateMsg('${m.c_no}', '${m.c_txt}', ${curPage});"
-							class="aSNSMsgBtn">수정</button>
-						
-						<button onclick="delMsg('${m.c_no}');" class="aSNSMsgBtn">삭제</button>
-						
-					</td>
-				</tr>
-			</c:if>
-		</table>
-	</c:forEach>
+		<tr>
+			<td>
+				<div align="center">
+					<a href="community.page.change?p=1"> [맨처음] </a>
+					<c:forEach var="p" begin="1" end="${pageCount}">
+						<a href="community.page.change?p=${p}">[${p}]</a>
+					</c:forEach>
+					<a href="community.page.change?p=${pageCount}"> [맨끝] </a>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<!--  로그인한 사람만 쓸 수 있게 -->
+			<c:if test="${sessionScope.loginAccount != null }">
 
-
-
-	<!--  로그인한 사람만 쓸 수 있게 -->
-	<c:if test="${sessionScope.loginAccount != null }">
-		<table id="snsWriteArea" style="bottom: -150px">
-			<tr>
-				<td align="center"><span id="snsWriteFormSummoner"> <img
-						src="resources/img/community/write.png"
-						style="background-color: #000000BF; border-radius: 10px; padding: 5px;">
-				</span></td>
-			</tr>
-			<tr>
 				<td align="center">
 					<form name="snsWriteForm" action="community.write" method="get">
 						<input type="hidden" name="token" value="${token }">
-						<table id="snsWriteTable">
+						<table>
 							<tr>
-								<td id="swtTd1"><textarea name="c_txt" maxlength="200"></textarea></td>
-								<td id="swtTd2"><button>쓰기</button></td>
+								<td><textarea name="c_txt" maxlength="200" rows="5" cols="60"></textarea></td>
+								<td><button id="communitybutton">쓰기</button></td>
 							</tr>
 						</table>
 					</form>
 
 				</td>
-			</tr>
-		</table>
-	</c:if>
+
+			</c:if>
+		</tr>
 
 
 
@@ -126,7 +123,7 @@
 
 
 
-
+	</table>
 
 
 </body>

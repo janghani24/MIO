@@ -41,7 +41,7 @@ public class CommunityController {
 		int p = Integer.parseInt(req.getParameter("p"));
 		
 		aDAO.loginCheck(req);
-		cDAO.getMsg(1, req);
+		cDAO.getMsg(p, req);
 
 		
 		req.setAttribute("contentPage", "community/community.jsp");

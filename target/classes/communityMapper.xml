@@ -20,8 +20,8 @@
 		select rownum as rn, c_no, c_owner, c_txt
 		, c_date,a_img
 		from ( select * from account_mio, mio_community
-		where c_owner =
-		a_id and c_txt like '%'||#{search}||'%'
+		where c_owner = a_id and
+		(c_txt like '%'||#{search}||'%' or a_id like '%'||#{search}||'%')
 		order by c_date desc
 		)
 		)

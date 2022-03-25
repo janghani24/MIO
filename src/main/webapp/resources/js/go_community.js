@@ -1,28 +1,3 @@
-function goHome() {
-	location.href='index.go';
-}
-
-function logout() {
-	let ok = confirm("정말?")
-	if(ok){
-		location.href='member.logout';
-	}
-}
-
-
-function bye() {
-	var ok = confirm("?");
-	if (ok) {
-		location.href = "member.bye";
-	}
-}
-
-function deleteFile(n, f) {
-	var ok = confirm("?");
-	if (ok) {
-		location.href = "dataroom.delete?d_no=" + n + "&d_file=" + f;
-	}
-}
 
 
 function delMsg(n) {
@@ -46,14 +21,6 @@ function updateMsg(n, t, p) {
 	}
 }
 
-
-function goJoin() {
-	location.href = "member.join.go";
-}
-
-function goMemberInfo() {
-	location.href = "member.info";
-}
 
 
 function cmDel(n) {

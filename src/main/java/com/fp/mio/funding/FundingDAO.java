@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 
@@ -24,6 +25,7 @@ public class FundingDAO {
 	@Autowired
 	private SqlSession ss;
 	
+	@Qualifier("so")
 	@Autowired
 	private com.fp.mio.SiteOption so;
 	private int allFCount;
