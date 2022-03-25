@@ -42,8 +42,8 @@ $(".btn_buy").on("click", function(){
 						<td colspan="2" id="pdPrice2">${detail.p_price}원</td>
 					</tr>
 					<tr>
-						<td id="pdQuantity" colspan="2">옵션/수량 체크</td>
-
+						<td id="pdQuantity">옵션/수량 체크</td>
+						<td id="pdQuantity2" colspan="2">
 								<c:if test="${fashionDetail.d_size !=null}">
 							사이즈 : ${fashionDetail.d_size}<br>
 							컬러 : ${fashionDetail.d_color}
