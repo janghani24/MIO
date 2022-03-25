@@ -249,7 +249,7 @@ insert into product_master values(product_master_seq.nextval,'hn','식물성 섬
 insert into product_master values(product_master_seq.nextval,'hn','팔로산토 센트스틱',11500,'어반에코','05.jpg','05-1.jpg',5,'living','생활용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','오가닉 코튼 쿠션커버 S 쌈잎',39000,'어스맨','17.jpg','17-1.jpg',5,'living','생활용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','감귤 천연 살균소독제 휴대용 50ml',4500,'코코리 제주','18.jpg','18-1.jpg',5,'living','생활용품',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','어반 드링크백 /텀블러백 -핸디보틀형 스타일 ,제로웨이스트',11000,'어반에코','19.jpg','19-1.jpg',5,'living','생활용품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','어반 드링크백 /텀블러백 -핸디보틀형 스타일',11000,'어반에코','19.jpg','19-1.jpg',5,'living','생활용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','해피얼쓰(Happy Earth) 스테인레스 빨대',5300,'해피얼쓰','20.jpg','20-1.png',5,'living','생활용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','맘스오가닉 기저귀커버',20000,'로한','21.jpg','21-1.jpg',5,'living','생활용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','쏙, 홀더 거치대',2400,'수딩플레이스','22.jpg','22-1.jpg',5,'living','생활용품',sysdate);
@@ -269,12 +269,12 @@ insert into product_master values(product_master_seq.nextval,'hn','더 크라프
 
 
 
-update product_master set p_category2= '패션소품' where p_name = '세인트바인 길 고양이후원 체인 팔찌';
+update product_master set p_name= '제로웨이스트 키친키트' where p_name = '제로웨이스트 키친키트 - 설거지비누 삼베수세미 병세척솔 소창행주 건조집게';
 
 drop sequence p_num;
 drop sequence product_master_seq;
 
-delete from product_master where p_name='세인트바인 길 고양이후원 체인 팔찌';
+delete from product_master where p_name='아워 비건 시카 선크림 SPF50+ PA++++';
 
 select * from product_master;
 select * from product_detail;

@@ -11,6 +11,7 @@
 
 
 	<table border="1" class="categoryTbl">
+
 		<tr>
 
 			<td onclick="location.href='product.category?p_category1=beauty'">전체
@@ -32,7 +33,7 @@
 		<tr>
 			<td colspan="6"><c:forEach var="b" items="${products}">
 					<ul>
-						<li onclick="location.href='product.detail?p_num=${b.p_num}'"><img
+						<li class="productImage" onclick="location.href='product.detail?p_num=${b.p_num}'"><img
 							src="resources/img/beauty/${b.p_photo}" width="350px;"></li>
 
 						<li>${b.p_brand}</li>

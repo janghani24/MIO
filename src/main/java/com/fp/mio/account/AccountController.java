@@ -41,6 +41,7 @@ public class AccountController {
 		if(result.equals("1")||result.equals("2")) {
 			req.setAttribute("contentPage", "account/loginFail.jsp");
 		}else {
+		pDAO.getProductrandom(req);
 		req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -52,6 +53,7 @@ public class AccountController {
 		// 로그 아웃
 		aDAO.logout(req);
 		aDAO.loginCheck(req);
+		pDAO.getProductrandom(req);
 		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}

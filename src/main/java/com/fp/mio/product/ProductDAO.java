@@ -643,7 +643,7 @@ public void getCategory2Product(int pageNo, HttpServletRequest req) {
 	int pageCount = (int) Math.ceil(pCount / (double) count);
 	req.setAttribute("pageCount", pageCount);
 	
-	req.setAttribute("productc", products);
+	req.setAttribute("products", products);
 	req.setAttribute("curPage", pageNo);
 	req.setAttribute("category", p_category1);
 	req.setAttribute("p_category2", p_category2);
