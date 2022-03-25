@@ -47,14 +47,11 @@
 			<td>총 금액 =</td>
 			<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${total}" />원 
 				<input type="hidden" name="totalPrice" value="${total}" id="price"></td>
-				<td colspan="2"><button id="check_module2" type="button">테스트 결제</button></td>
+				<td colspan="2"><button id="check_module2" type="button">구매하기</button></td>
 		</tr>
-		</table>
-		<br>주소입력창
-		<table border="1" >
-			<tr>
+		<tr>
 				<td class="td1">주소</td>
-				<td class="td2"><input id="jm_addr3Input" readonly="readonly"
+				<td class="td2" colspan ="3"><input id="jm_addr3Input" readonly="readonly"
 					name="a_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
 					<span id="addrSearchBtn">[검색]</span><br> 
 					<input
@@ -62,7 +59,8 @@
 					maxlength="30" autocomplete="off" placeholder="주소"><br>
 					
 				</tr>
-	</table>
+		</table>
+		
 
 </body>
 </html>

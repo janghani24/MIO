@@ -18,13 +18,6 @@
 				</tr>
 
 				<tr>
-					<td>아이디:&nbsp;${o.memberId }</td>
-				</tr>
-				<tr>
-					<td>상품넘버:&nbsp;${o.productId }</td>
-					
-				</tr>
-				<tr>
 					<td>개수:&nbsp;${o.productCount }</td>
 					
 				</tr>
