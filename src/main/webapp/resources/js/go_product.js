@@ -7,15 +7,6 @@ function zzim(no, id) {
 
         alert("찜하기 완료")
 
-        let ok2 = confirm("찜목록으로 이동할래요?")
-        if (ok2) {
-
-        	alert("이동")
-        	
-        window.location.href = "account.Wishlist"
-    	  
-
-        }
 
         location.reload();
 
