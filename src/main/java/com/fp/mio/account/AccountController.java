@@ -43,6 +43,7 @@ public class AccountController {
 		if(result.equals("1")||result.equals("2")) {
 			req.setAttribute("contentPage", "account/loginFail.jsp");
 		}else {
+
 			pDAO.getProductrandom(req);
 		req.setAttribute("contentPage", "home.jsp");
 		}

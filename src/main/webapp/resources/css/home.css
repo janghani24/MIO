@@ -4,6 +4,51 @@
 
 #FundingImg img {
 	width: 1200px;
-	margin-bottom: 0px;
 }
 
+#FundingImg {
+	padding-top: 5px;
+	padding-bottom: 30px;
+	
+}
+
+#value img{
+	padding-top: auto;
+	padding-bottom: auto;
+	padding-left: auto;
+	padding-right: auto;
+	width:300px;
+}
+
+#productRandom {
+	padding-top: 20px;
+	padding-bottom: 80px;
+
+}
+#productRandom img{
+	width: 350px;
+	height: 350px;
+}
+
+
+#productRandom img:hover {
+	filter: brightness(90%);
+	width: 350px;
+	height: 350px;
+}
+
+#brand{
+	color: gray;
+}
+
+#productName{
+	padding-top: 5px;
+	font-weight: 14pt;
+}
+
+#price{
+	font-size: 15pt;
+	font-weight: bold;
+	padding-top: 5px;
+	color: #137048;
+}

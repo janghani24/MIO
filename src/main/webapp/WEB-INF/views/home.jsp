@@ -37,17 +37,23 @@
 			<td id="FundingImg" colspan="3"><img
 				src="resources/img/image/fundingImg.jpg"></td>
 		</tr>
-
+		
 		<tr>
-			<td>
+		
+		<td id="value"><img
+				src="resources/img/image/value.png"></td>
+		</tr>
+		
+		<tr>
+			<td id="productRandom">
 			<c:forEach var="p" items="${productr}">
 					<ul>
 						<li onclick="location.href='product.detail?p_num=${p.p_num}'"><img
-							src="resources/img/${p.p_category1}/${p.p_photo}" width="350px;"></li>
+							src="resources/img/${p.p_category1}/${p.p_photo}"></li>
 
-						<li>${p.p_brand}</li>
-						<li><a href="product.detail?p_num=${p.p_num}">${p.p_name}</a></li>
-						<li><fmt:formatNumber type="number" maxFractionDigits="3"
+						<li id="brand">${p.p_brand}</li>
+						<li id="productName"><a href="product.detail?p_num=${p.p_num}">${p.p_name}</a></li>
+						<li id="price"><fmt:formatNumber type="number" maxFractionDigits="3"
 						value="${p.p_price}" />원</li>
 					</ul>
 				</c:forEach>
