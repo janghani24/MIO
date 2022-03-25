@@ -10,25 +10,27 @@
 
 	<form action="funding.reg" method="post" enctype="multipart/form-data"
 		name="fundingRegForm" onsubmit="return fundingRegCheck();">
-		<table border="1" id="fundingRegTbl">
+		<table id="fundingRegTbl">
 			<tr>
-				<td colspan="2"><h1>펀딩 등록</h1></td>
+				<td colspan="2">
+				<img src="resources/img/image/펀딩등록.jpg">
+				</td>
 			</tr>
 			<tr>
-				<td>대표 이미지 :</td>
-				<td><input name="f_photo" type="file"></td>
+				<td class="infoTd1">대표 이미지 :</td>
+				<td class="infoTd"><input name="f_photo" type="file"></td>
 			</tr>
 			<tr>
-				<td>펀딩명 :</td>
-				<td><input name="f_name"></td>
+				<td class="infoTd1">펀딩명 :</td>
+				<td class="infoTd"><input name="f_name" class="input"></td>
 			</tr>
 			<tr>
-				<td>회사명 :</td>
-				<td><input name="f_company"></td>
+				<td class="infoTd1">회사명 :</td>
+				<td class="infoTd"><input name="f_company" class="input"></td>
 			</tr>
 			<tr>
-				<td>펀딩 카테고리</td>
-				<td><select name="f_category">
+				<td class="infoTd1">펀딩 카테고리</td>
+				<td class="infoTd"><select name="f_category">
 						<option value="일자리창출">일자리 창출</option>
 						<option value="친환경">친환경</option>
 						<option value="기부">기부</option>
@@ -37,16 +39,16 @@
 				</select></td>
 			</tr>
 			<tr>
-				<td>펀딩 마감 기간:</td>
-				<td><input type="date" name="f_period"></td>
+				<td class="infoTd1">펀딩 마감 기간:</td>
+				<td class="infoTd"><input type="date" name="f_period"></td>
 			</tr>
 			<tr>
-				<td>펀딩 주소:</td>
-				<td><input name="f_url"></td>
+				<td class="infoTd1">펀딩 주소:</td>
+				<td class="infoTd"><input name="f_url" class="input"></td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<button>등록</button>
+				<td colspan="2" class="infoTd1">
+					<button class="button">등록</button>
 				</td>
 			</tr>
 		</table>

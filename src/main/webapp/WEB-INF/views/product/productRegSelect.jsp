@@ -10,11 +10,16 @@
 
 	<table id="regSelectTbl" border="1">
 		<tr>
-			<td><a href="product.foodReg"><img src="resources/img/image/food.jpg" id="regImg"></a>
-<a href="product.fashionReg"><img src="resources/img/image/fashion.jpg" id="regImg"></a>
-<a href="product.beautyReg"><img src="resources/img/image/beauty.jpg" id="regImg"></a>
-<a href="product.livingReg"><img src="resources/img/image/living.jpg" id="regImg"></a>
-</td>
+			<td><a href="product.foodReg"><img
+					src="resources/img/image/food.jpg" id="regImg"></a></td>
+			<td><a href="product.fashionReg"><img
+					src="resources/img/image/fashion.jpg" id="regImg"></a></td>
+		</tr>
+		<tr>
+			<td><a href="product.beautyReg"><img
+					src="resources/img/image/beauty.jpg" id="regImg"></a></td>
+			<td><a href="product.livingReg"><img
+					src="resources/img/image/living.jpg" id="regImg"></a></td>
 		</tr>
 	</table>
 

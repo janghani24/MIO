@@ -781,6 +781,7 @@ public void updateProductFashion(HttpServletRequest request, Product product,Pro
 }
 
 public void getFashionDetail(Product p,HttpServletRequest req) {
+	System.out.println(p.getP_num());
 	req.setAttribute("fashionDetail", ss.getMapper(ProductMapper.class).getFashionDetail(p));
 }
 	

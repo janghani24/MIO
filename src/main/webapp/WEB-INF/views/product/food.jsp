@@ -26,8 +26,6 @@
 				onclick="location.href='product.category.category2?p_category1=food&p_category2=간식거리'">간식거리</td>
 			<td class="category2"
 				onclick="location.href='product.category.category2?p_category1=food&p_category2=요리재료'">요리재료</td>
-			<td class="category2"
-				onclick="location.href='product.category.category2?p_category1=food&p_category2=건강식품'">건강식품</td>
 		</tr>
 		<tr>
 			<td colspan="5" id="searchTbl">

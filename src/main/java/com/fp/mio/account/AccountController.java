@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fp.mio.product.Product;
 import com.fp.mio.product.ProductDAO;
-import com.fp.mio.product.ProductSelector;
 import com.fp.mio.product.Zzim;
 
 @Controller

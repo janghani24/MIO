@@ -46,9 +46,10 @@ $(".btn_buy").on("click", function(){
 						<td>옵션/수량 체크 부분</td>
 
 						<td colspan="2">
-								
-							${fashionDetail.d_size}<br>
-							${fashionDetail.d_color}
+								<c:if test="${fashionDetail.d_size !=null}">
+							사이즈 : ${fashionDetail.d_size}<br>
+							컬러 : ${fashionDetail.d_color}
+								</c:if>
 							<form name="form" method="get">
 
 								<input type="hidden" name="sell_price" value="${detail.p_price}"> 

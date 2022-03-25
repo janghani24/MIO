@@ -45,6 +45,11 @@ create table product_detail(
 
 )
 
+select * from product_detail;
+	
+
+drop table product_detail cascade constraint purge;
+
 create table product_cart(
 c_no number(5) primary key,
 c_p_no number(10) not null,
@@ -170,29 +175,28 @@ insert into product_master values(product_master_seq.nextval,'hn','밥생각나�
 --fashion
 --의류
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
-
+insert into product_detail values(product_detail_seq.nextval,'61','M','ivory');
+insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_브라운',189000,'그라인','07.jpg','07-1.jpg',5,'fashion','의류',sysdate);
+insert into product_detail values(product_detail_seq.nextval,'118','M','brown');
 
 
 
 --가방
 insert into product_master values(product_master_seq.nextval,'hn','VIENETTA 베네따 토트 쇼퍼백 (skyblue)',89000,'누깍(Nukak)','02.png','02-1.jpg',5,'fashion','가방',sysdate);
+insert into product_detail values(product_detail_seq.nextval,'62','Free','blue');
 insert into product_master values(product_master_seq.nextval,'hn','CLUTCH 클러치',52000,'누깍(Nukak)','03.png','03-1.jpg',5,'fashion','가방',sysdate);
-
-
-
---지갑
+insert into product_detail values(product_detail_seq.nextval,'63','Free','silver');
 
 
 
 
 --패션소품
 insert into product_master values(product_master_seq.nextval,'hn','세인트바인 길 고양이후원 체인 팔찌',15000,'세인트바인(saintvine)','04.jpeg','04-1.jpg',5,'fashion','패션소품',sysdate);
+insert into product_detail values(product_detail_seq.nextval,'64','Free','silver');
 insert into product_master values(product_master_seq.nextval,'hn','독도후원 플로히스 팔찌',13000,'플로히스','05.jpg','05-1.jpg',5,'fashion','패션소품',sysdate);
+insert into product_detail values(product_detail_seq.nextval,'65','Free','silver');
 insert into product_master values(product_master_seq.nextval,'hn','[119레오 당근 팔찌] 소방관 기부 후원',22000,'119레오','06.jpg','06-1.jpg',5,'fashion','패션소품',sysdate);
-
-
-
---케이스
+insert into product_detail values(product_detail_seq.nextval,'66','Free','orange');
 
 
 
@@ -282,5 +286,6 @@ drop sequence product_master_seq;
 delete from product_master where p_name='아워 비건 시카 선크림 SPF50+ PA++++';
 
 select * from product_master;
+select * from product_master where p_category1='fashion';
 select * from product_detail;
 

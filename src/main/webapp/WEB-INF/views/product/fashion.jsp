@@ -19,15 +19,9 @@
 			<td
 				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=가방'">가방</td>
 			<td
-				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=지갑'">지갑</td>
-			<td
 				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=패션소품'">패션
 				소품</td>
-			<td
-				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=케이스'">케이스</td>
-			<td
-				onclick="location.href='product.category.category2?p_category1=fashion&p_category2=신발'">신발</td>
-			<td><c:if
+			<c:if
 					test="${sessionScope.loginAccount.a_grade eq 'seller' or sessionScope.loginAccount.a_grade eq 'admin'}">
 					<button onclick="location.href='product.fashionReg'">상품 등록</button>
 				</c:if></td>
