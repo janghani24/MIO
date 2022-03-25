@@ -34,8 +34,8 @@
 
 
 		<tr>
-			<td id="FundingImg" colspan="3"><img
-				src="resources/img/image/fundingImg.jpg"></td>
+			<td id="FundingImg" colspan="3"><a href="https://happybean.naver.com/rbundle/1323"><img
+				src="resources/img/image/fundingImg.jpg"></a></td>
 		</tr>
 		
 		<tr>
@@ -47,7 +47,7 @@
 		<tr>
 			<td id="productRandom">
 			<c:forEach var="p" items="${productr}">
-					<ul>
+					<ul class="menu_ul">
 						<li onclick="location.href='product.detail?p_num=${p.p_num}'"><img
 							src="resources/img/${p.p_category1}/${p.p_photo}"></li>
 
