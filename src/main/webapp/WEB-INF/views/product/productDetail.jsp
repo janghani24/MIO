@@ -26,26 +26,25 @@ $(".btn_buy").on("click", function(){
 
 
 		<tr>
-			<td><img
-				src="resources/img/${detail.p_category1}/${detail.p_photo}" width="800px;"></td>
+			<td id="pdImg"><img
+				src="resources/img/${detail.p_category1}/${detail.p_photo}"></td>
 
 			<td>
 				<table border="1" id="productOptionTbl">
 					<tr>
-						<td colspan="3">${detail.p_brand}</td>
+						<td colspan="5" id="pdBrand">${detail.p_brand}</td>
 					</tr>
 					<tr>
-						<td>상품명</td>
-						<td colspan="2">${detail.p_name}</td>
+						<td id="pdName" colspan="3">${detail.p_name}</td>
 					</tr>
 					<tr>
-						<td>상품가</td>
-						<td colspan="2">${detail.p_price}원</td>
+						<td id="pdPrice">상품가</td>
+						<td colspan="2" id="pdPrice2">${detail.p_price}원</td>
 					</tr>
 					<tr>
-						<td>옵션/수량 체크 부분</td>
+						<td id="pdQuantity">옵션/수량 체크</td>
 
-						<td colspan="2">
+						<td colspan="2" id="pdQuantity">
 								
 							${fashionDetail.d_size}<br>
 							${fashionDetail.d_color}
@@ -53,23 +52,21 @@ $(".btn_buy").on("click", function(){
 
 								<input type="hidden" name="sell_price" value="${detail.p_price}"> 
 
-								수량 :<input type="button" value=" + " onclick="add();"> 
+								수량 &nbsp; &nbsp;<input type="button" value=" + " onclick="add();"> 
 								<input type="text" id="amount" value="1" size="3" onchange="change();"> 
 								<input type="button" value=" - " onclick="del();"><br> 
 
 								
 
-								금액 : <input type="text" name="sum" size="11" readonly>원
+								금액  &nbsp; &nbsp;<input type="text" name="sum" size="11" readonly>원
 							</form>
 						</td>
 					</tr>
 					
 					<tr>
 
-			
-
-						<td><button onclick="productorder(${param.p_num}, '${sessionScope.loginAccount.a_id}');">구매하기</button></td>
-						<td><button onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
+						<td><button id="buyBtn" onclick="productorder(${param.p_num}, '${sessionScope.loginAccount.a_id}');">구매하기</button></td>
+						<td><button id="cartBtn" onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
 
 
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
@@ -80,7 +77,7 @@ $(".btn_buy").on("click", function(){
 									test="${sessionScope.loginAccount.a_id == z.z_id && z.z_num == detail.p_num}">
 
 
-									<td colspan="2"><button onclick="deletezzim2(${z.z_no },${detail.p_num});">찜해제</button></td>
+									<td colspan="2"><button id="zzimBtn" onclick="deletezzim2(${z.z_no },${detail.p_num});">찜해제</button></td>
 
 									<%
 										a = 1;
@@ -96,7 +93,7 @@ $(".btn_buy").on("click", function(){
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
 
 
-							<td colspan="2"><button
+							<td colspan="2"><button id="zzimBtn"
 									onclick="zzim(${detail.p_num}, '${sessionScope.loginAccount.a_id}');">찜하기</button></td>
 						</c:if>
 						<%
@@ -109,18 +106,21 @@ $(".btn_buy").on("click", function(){
 
 		</tr>
 		<tr>
-			<td colspan="2"><img
+			<td colspan="2" id="pdContent"><img
 				src="resources/img/${detail.p_category1}/${detail.p_content}" width="800px;">
-				<br>
-				<c:if test="${detail.p_owner == sessionScope.loginAccount.a_id }">
+				
+				</td>
+		</tr>
+		
+		<tr>
+		<td colspan="2"><c:if test="${detail.p_owner == sessionScope.loginAccount.a_id }">
 				<button onclick="deleteProduct(${detail.p_num})">삭제</button>
 				<button onclick="updateProduct(${detail.p_num},'${detail.p_category1}')">수정</button>
-				</c:if>
-				</td>
+				</c:if></td>
 		</tr>
 
 		<tr>
-			<td colspan="2"><c:forEach var="pr" items="${replys}">
+			<td colspan="2" id="pdReply"><c:forEach var="pr" items="${replys}">
 					<span>${pr.r_owner}</span>
 				<span class="starR1" value='${pr.r_rate}'></span>
 						-&nbsp;${pr.r_txt }&nbsp;
