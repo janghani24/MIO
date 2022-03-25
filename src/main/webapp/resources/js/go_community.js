@@ -9,6 +9,7 @@ function logout() {
 	}
 }
 
+
 function bye() {
 	var ok = confirm("?");
 	if (ok) {
@@ -24,24 +25,24 @@ function deleteFile(n, f) {
 }
 
 
-function deleteSNSMsg(n) {
-	var ok = confirm("?");
+function delMsg(n) {
+	var ok = confirm("삭제하시겠습니까?");
 	if (ok) {
-		location.href = "sns.delete?s_no=" + n;
+		location.href = "community.delete?c_no=" + n;
 	}
 }
 
-function deleteSNSReply(n, p) {
-	var ok = confirm("?");
+function delReply(n, p) {
+	var ok = confirm("삭제하시겠습니까?");
 	if (ok) {
-		location.href = "sns.reply.delete?r_no=" + n + "&p=" + p;
+		location.href = "community.reply.delete?r_no=" + n + "&p=" + p;
 	}
 }
 
-function updateSNSMsg(n, t, p) {
-	t = prompt("말", t);
+function updateMsg(n, t, p) {
+	t = prompt("다음으로 수정", t);
 	if (t != null && t.length > 0 && t.length < 250) {
-		location.href = "sns.update?s_no=" + n + "&s_txt=" + t + "&p=" + p;
+		location.href = "community.update?c_no=" + n + "&c_txt=" + t + "&p=" + p;
 	}
 }
 
@@ -55,7 +56,7 @@ function goMemberInfo() {
 }
 
 
-function deleteCommunityMsg(n) {
+function cmDel(n) {
 	var ok = confirm("?");
 	if (ok) {
 		location.href = "community.delete?c_no=" + n;

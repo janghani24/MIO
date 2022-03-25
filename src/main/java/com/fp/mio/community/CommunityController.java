@@ -2,6 +2,7 @@ package com.fp.mio.community;
 
 import javax.servlet.http.HttpServletRequest;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -94,6 +95,23 @@ public class CommunityController {
 	}
 
 		
+	@RequestMapping(value = "community.reply.delete", method = RequestMethod.GET)
+
+	public String cmReplydel(Communityre cmr ,HttpServletRequest req) {
+		TokenMaker.make(req);
+		int p = Integer.parseInt(req.getParameter("p"));
+		
+		if(aDAO.loginCheck(req)) {
+			cDAO.delReply(cmr, req);
+			
+		}
+
+		cDAO.getMsg(p, req);
+
+		req.setAttribute("contentPage", "community/community.jsp");
+		return "index";
+	}
+	
 		
 	@RequestMapping(value = "community.delete", method = RequestMethod.GET)
 
@@ -115,4 +133,24 @@ public class CommunityController {
 		
 		
 		}
+	
+	
+	@RequestMapping(value = "community.update", method = RequestMethod.GET)
+
+	public String updateCm(CommunityMsg cm ,HttpServletRequest req) {
+		TokenMaker.make(req);
+		SiteOption.clearSearch(req);
+		
+		if(aDAO.loginCheck(req)) {
+			cDAO.updateMsg(cm, req);
+			
+		}
+
+		cDAO.getMsg(1, req);
+
+		req.setAttribute("contentPage", "community/community.jsp");
+		return "index";
+	
+	}
+	
 }

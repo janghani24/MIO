@@ -18,7 +18,7 @@ insert into mio_community values (202, 'jh' , 'TestTestTesttest~~!!22444444', sy
 
 insert into mio_community_re values (100, 200 ,'dj' ,'re_test~~!!22', sysdate );
 insert into mio_community_re values (101, 200 ,'hn' ,'re_teste_teste_test~~!!22', sysdate );
-insert into mio_community_re values (102, 200 ,'jsjs' ,'re_teste_teste_teste_test~~!!22', sysdate );
+insert into mio_community_re values (102, 200 ,'jh' ,'re_teste_teste_teste_test~~!!22', sysdate );
 
 create table mio_community_re(
 	r_no number(5) primary key,
@@ -34,3 +34,6 @@ create table mio_community_re(
 
 create sequence mio_community_re_seq;
 select * from mio_community_re;
+delete MIO_COMMUNITY_RE;
+
+	

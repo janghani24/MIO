@@ -1,6 +1,7 @@
 package com.fp.mio.community;
 
 import java.math.BigDecimal;
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -57,14 +58,17 @@ public class CommunityDAO {
 		}
 
 		List<CommunityMsg> msgs = ss.getMapper(CommunityMapper.class).getMsg(search);
-		
-		
-		
-		
 		for (CommunityMsg cmMsg : msgs) {
-			System.out.println(cmMsg);
+			//System.out.println(cmMsg.getC_no());
+			System.out.println(cmMsg.getA_img());
+			List<Communityre> cre = ss.getMapper(CommunityMapper.class).getReply(cmMsg);
+			//System.out.println(cre);
+			for (Communityre re : cre) {
+					System.out.println(re.getR_c_no());
+					System.out.println(re.getR_txt());
+			}
+			
 			cmMsg.setC_re(ss.getMapper(CommunityMapper.class).getReply(cmMsg));
-
 		}
 		int pageCount = (int) Math.ceil(msgCount / (double) count);
 		req.setAttribute("pageCount", pageCount);
@@ -104,13 +108,14 @@ public class CommunityDAO {
 
 			String token = req.getParameter("token");
 			String successToken = (String) req.getSession().getAttribute("successToken");
-
-			if (successToken != null && token.equals(successToken)) {
+			
+			if (token.equals(successToken)) {
 				return;
 			}
 			Account a = (Account) req.getSession().getAttribute("loginAccount");
 			cmr.setR_owner(a.getA_id());
-
+			
+			//System.out.println(cmr.getR_c_no());
 			if (ss.getMapper(CommunityMapper.class).writeReply(cmr) == 1) {
 				req.setAttribute("result", "댓글쓰기 성공");
 				req.getSession().setAttribute("successToken", token);

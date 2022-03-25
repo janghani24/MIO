@@ -1,7 +1,6 @@
 package com.fp.mio.community;
 
 import java.math.BigDecimal;
-
 import java.util.Date;
 
 public class Communityre {

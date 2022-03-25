@@ -287,5 +287,6 @@ delete from product_master where p_name='아워 비건 시카 선크림 SPF50+ P
 
 select * from product_master;
 select * from product_master where p_category1='fashion';
+select * from product_master where p_name like '%스콘%';
 select * from product_detail;
 

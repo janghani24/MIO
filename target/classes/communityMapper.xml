@@ -18,7 +18,7 @@
 		parameterType="com.fp.mio.community.CmSelector">
 		select * from (
 		select rownum as rn, c_no, c_owner, c_txt
-		, c_date
+		, c_date,a_img
 		from ( select * from account_mio, mio_community
 		where c_owner =
 		a_id and c_txt like '%'||#{search}||'%'
@@ -34,7 +34,7 @@
 	<select id="getReply"
 		parameterType="com.fp.mio.community.CommunityMsg"
 		resultType="com.fp.mio.community.Communityre">
-		select count(*)
+		select *
 		from mio_community_re
 		where r_c_no = #{c_no}
 
@@ -60,7 +60,7 @@
 	</delete>
 
 	<delete id="delReply"
-		parameterType="com.fp.mio.community.Communityre">
+		parameterType="Communityre">
 		delete from mio_community_re
 		where r_no = #{r_no}
 	</delete>
@@ -75,7 +75,7 @@
 	<select id="getMsgCountByOwner"
 		parameterType="com.fp.mio.account.Account"
 		resultType="java.lang.Integer">
-		select count(*)
+		select *
 		from mio_community
 		where c_owner = #{a_id}
 	</select>

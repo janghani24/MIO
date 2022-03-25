@@ -1,8 +1,6 @@
 package com.fp.mio.community;
 
 import java.util.Date;
-
-
 import java.util.List;
 
 public class CommunityMsg {
@@ -12,21 +10,11 @@ public class CommunityMsg {
 	private String c_txt;
 	private Date c_date;
 	
-	private String m_photo;
+	private String a_img;
 	private List<Communityre> c_re;
 
 	public CommunityMsg() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public CommunityMsg(int c_no, String c_owner, String c_txt, Date c_date, String m_photo, List<Communityre> c_re) {
-		super();
-		this.c_no = c_no;
-		this.c_owner = c_owner;
-		this.c_txt = c_txt;
-		this.c_date = c_date;
-		this.m_photo = m_photo;
-		this.c_re = c_re;
 	}
 
 	public int getC_no() {
@@ -61,12 +49,12 @@ public class CommunityMsg {
 		this.c_date = c_date;
 	}
 
-	public String getM_photo() {
-		return m_photo;
+	public String getA_img() {
+		return a_img;
 	}
 
-	public void setM_photo(String m_photo) {
-		this.m_photo = m_photo;
+	public void setA_img(String a_img) {
+		this.a_img = a_img;
 	}
 
 	public List<Communityre> getC_re() {
@@ -76,6 +64,17 @@ public class CommunityMsg {
 	public void setC_re(List<Communityre> c_re) {
 		this.c_re = c_re;
 	}
+
+	public CommunityMsg(int c_no, String c_owner, String c_txt, Date c_date, String a_img, List<Communityre> c_re) {
+		super();
+		this.c_no = c_no;
+		this.c_owner = c_owner;
+		this.c_txt = c_txt;
+		this.c_date = c_date;
+		this.a_img = a_img;
+		this.c_re = c_re;
+	}
+	
 	
 	}
 	
