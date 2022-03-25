@@ -11,57 +11,57 @@
 	<form action="account.join.seller"
 		method="post" enctype="multipart/form-data"
 		name="joinForm" onsubmit="return joinChecks();">
-		<table id="joinTable" border="1">
+		<table id="joinTable">
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center">
-					회원가입
+					<img src="resources/img/image/회원가입.jpg">
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">ID</td>
-				<td class="td2">
-				<input id="join_idInput" name="a_s_id" placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="20" autocomplete="off" autofocus="autofocus">
+				<td class="infoTd1">ID</td>
+				<td class="infoTd">
+				<input id="join_idInput" class="input" name="a_s_id" placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="20" autocomplete="off" autofocus="autofocus">
 				<div id="id_check"></div>
 				<input type="hidden" id="idCheckOk" value="idUncheck">
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">PW</td>
-				<td class="td2">
-				<input name="s_pw" placeholder="필수,영어/숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
+				<td class="infoTd1">PW</td>
+				<td class="infoTd">
+				<input name="s_pw" class="input" placeholder="필수,영어/숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
 			</tr>
 			<tr>
-				<td class="td1">PW확인</td>
-				<td class="td2">
-				<input name="s_pwChk" placeholder="위의 PW와 같게 입력해주세요." type="password" maxlength="20" autocomplete="off"></td>
+				<td class="infoTd1">PW확인</td>
+				<td class="infoTd">
+				<input name="s_pwChk" class="input" placeholder="위의 PW와 같게 입력해주세요." type="password" maxlength="20" autocomplete="off"></td>
 			</tr>
 			<tr>
-				<td class="td1">이름</td>
-				<td class="td2">
-				<input name="s_name" placeholder="필수" maxlength="10" autocomplete="off"></td>
+				<td class="infoTd1">이름</td>
+				<td class="infoTd">
+				<input name="s_name" class="input" placeholder="필수" maxlength="10" autocomplete="off"></td>
 			</tr>
 			<tr>
-				<td class="td1">주소</td>
-				<td class="td2">
-					<input id="jm_addr3Input" readonly="readonly" name="s_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
-					<span id="addrSearchBtn">[검색]</span><br>
-					<input id="jm_addr1Input" readonly="readonly" name="s_addr1" maxlength="30" autocomplete="off" placeholder="주소"><br>
-					<input name="s_addr2" maxlength="30" autocomplete="off" placeholder="상세주소">
+				<td class="infoTd1">주소</td>
+				<td class="infoTd">
+					<input id="jm_addr3Input" class="input" readonly="readonly" name="s_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
+					<button type="button" id="addrSearchBtn" class="smallbutton">검색</button><br>
+					<input id="jm_addr1Input" class="input" readonly="readonly" name="s_addr1" maxlength="30" autocomplete="off" placeholder="주소"><br>
+					<input name="s_addr2" class="input" maxlength="30" autocomplete="off" placeholder="상세주소">
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">휴대전화 번호</td>
-				<td class="td2">
-				<input name="s_phone" placeholder="필수,-없이 숫자만 입력해주세요." maxlength="11" autocomplete="off" autofocus="autofocus"></td>
+				<td class="infoTd1">휴대전화 번호</td>
+				<td class="infoTd">
+				<input name="s_phone" class="input" placeholder="필수,-없이 숫자만 입력해주세요." maxlength="11" autocomplete="off" autofocus="autofocus"></td>
 			</tr>
 			<tr>
-				<td class="td1">사진</td>
-				<td class="td2">
+				<td class="infoTd1">사진</td>
+				<td class="infoTd">
 				<input name="s_img" type="file"></td>
 			</tr>
 			<tr>
-				<td class="td1">비밀번호 찾기 질문</td>
-				<td class="td2">
+				<td class="infoTd1">비밀번호 찾기 질문</td>
+				<td class="infoTd">
 				<select name="s_question">
 				<option value="q1">질문1</option>
 				<option value="q2">질문2</option>
@@ -70,17 +70,17 @@
 				</select></td>
 			</tr>
 			<tr>
-				<td class="td1">비밀번호 찾기 답</td>
-				<td class="td2">
-				<input name="s_answer" placeholder="30자 이내로 작성해주세요." maxlength="30"autocomplete="off" autofocus="autofocus"></td>
+				<td class="infoTd1">비밀번호 찾기 답</td>
+				<td class="infoTd">
+				<input name="s_answer" class="input" placeholder="30자 이내로 작성해주세요." maxlength="30"autocomplete="off" autofocus="autofocus"></td>
 			</tr>
 			<tr>
-				<td>소개글</td>
-				<td><textarea name="s_intro" maxlength="500"placeholder="500자 이내로 작성해주세요."></textarea></td>
+				<td class="infoTd1">소개글</td>
+				<td class="infoTd"><textarea name="s_intro" maxlength="500"placeholder="500자 이내로 작성해주세요." rows="5" cols="40"></textarea></td>
 			</tr>
 			<tr>
-				<td>판매 종류</td>
-				<td><select name="s_sellsort">
+				<td class="infoTd1">판매 종류</td>
+				<td class="infoTd"><select name="s_sellsort">
 						<option value="fasion">패션</option>
 						<option value="beauty">뷰티</option>
 						<option value="food">푸드</option>
@@ -89,7 +89,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button name="s_grade" value="seller">가입</button>
+					<button name="s_grade" value="seller" class="button">가입</button>
 				</td>
 			</tr>
 		</table>

@@ -1,13 +1,25 @@
 
 function zzim(no, id) {
 
-	let ok = confirm("구매?")
-	if (ok) {
-		
-		location.href="product.order?p_num=" + no + "&id=" + id;
-		
+    let ok = confirm("찜할래요?")
+    if (ok) {
+        location.href = "product.zzim?p_num=" + no + "&id=" + id;
 
-		}
+        alert("찜하기 완료")
+
+        let ok2 = confirm("찜목록으로 이동할래요?")
+        if (ok2) {
+
+        	alert("이동")
+        	
+        window.location.href = "account.Wishlist"
+    	  
+
+        }
+
+        location.reload();
+
+        }
 
 
 }

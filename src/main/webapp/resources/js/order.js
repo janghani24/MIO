@@ -89,7 +89,6 @@ function testorder2() {
 		let amount = $("#amount").val()
 		let addr3 = $("#jm_addr3Input").val()	//주소번호
 		let addr1 = $("#jm_addr1Input").val()	//실제주소
-		let p_num = $("#p_num").val()
 	
 		let email = "test@naver.com";	//나중에 진짜이메일넣기
 		
@@ -126,7 +125,9 @@ function testorder2() {
 				  if ( rsp.success ) {
 		  
 					 
-		               location.href="product.cartorderbuy";
+		               location.href="product.cartorderbuy?productname="+productname+
+	  "&price="+price+"&orderid="+rsp.merchant_uid+"&amount="+amount+
+	  "&id="+rsp.buyer_name+"&email="+rsp.buyer_email+"&addr1="+rsp.buyer_addr+"&addr2="+rsp.buyer_postcode;
 				
 			} else {
 				var msg = '결제에 실패하였습니다.';

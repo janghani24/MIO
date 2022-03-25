@@ -451,11 +451,12 @@ public class ProductController {
 		return "index";
 	}
 	@RequestMapping(value = "/product.orderbuy", method = RequestMethod.GET)
-	public String orderbuy(HttpServletRequest request,Product product, OrderDAO oda) {
+	public String orderbuy(HttpServletRequest request,Product product, OrderDAO oda,OrderDAOmain odamain) {
 		pDAO.getProductDetail(request, product);
 		
 	
 		pDAO.getProductorderbuy(request, oda); //구매하기
+		pDAO.getProductorderbuy2(request, odamain); //구매하기2
 		
 		pDAO.order(request); 	//오더 불러오기
 
@@ -465,10 +466,18 @@ public class ProductController {
 		return "index";
 	}
 	@RequestMapping(value = "/product.cartorderbuy", method = RequestMethod.GET)
-	public String cartorderbuy(HttpServletRequest request) {
+	public String cartorderbuy(HttpServletRequest request,Product product, OrderDAO oda,OrderDAOmain odamain) {
+		
+		
+		aDAO.loginCheck(request);
 		
 		pDAO.getCart(request);
-		request.setAttribute("contentPage", "product/cart.jsp");
+		pDAO.getProductorderbuy(request, oda);
+		pDAO.getProductorderbuy3(request, odamain); //구매하기3 카트버전
+		
+		pDAO.order(request); 
+		
+		request.setAttribute("contentPage", "orderproduct/cartorderbuy.jsp");
 		return "index";
 	}
 	

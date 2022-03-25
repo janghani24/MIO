@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fp.mio.product.Product;
 import com.fp.mio.product.ProductDAO;
+import com.fp.mio.product.ProductSelector;
 import com.fp.mio.product.Zzim;
 
 @Controller
@@ -20,6 +21,7 @@ public class AccountController {
 	private AccountDAO aDAO;
 	@Autowired
 	private ProductDAO pDAO;
+	
 	
 	
 	@RequestMapping(value = "/account.login.go", method = RequestMethod.GET)
@@ -41,7 +43,8 @@ public class AccountController {
 		if(result.equals("1")||result.equals("2")) {
 			req.setAttribute("contentPage", "account/loginFail.jsp");
 		}else {
-		pDAO.getProductrandom(req);
+
+			pDAO.getProductrandom(req);
 		req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -58,6 +61,33 @@ public class AccountController {
 		return "index";
 	}
 	
+	//페이지 이동(등급조정)
+		@RequestMapping(value = "/account.paging", method = RequestMethod.GET)
+		public String accountPageChange(HttpServletRequest request,AccountSelector as) {
+			int p = Integer.parseInt(request.getParameter("p"));
+			aDAO.loginCheck(request);
+			if (request.getParameter("search")!=null) {
+				aDAO.AccountSearch(as, request);
+			}
+			aDAO.getAllAccount(p, request);
+			request.setAttribute("contentPage", "account/updateGrade.jsp");
+			return "index";
+		}
+	//검색(등급조정)
+		@RequestMapping(value = "/account.search", method = RequestMethod.GET)
+		public String accountSearch(HttpServletRequest request, AccountSelector as) {
+
+			
+			aDAO.loginCheck(request);
+			aDAO.AccountSearch(as, request);
+			aDAO.getAllAccount(1, request);
+
+			request.setAttribute("contentPage", "account/updateGrade.jsp");
+			return "index";
+
+		}
+		
+		
 	@RequestMapping(value = "/account.searchId.go", method = RequestMethod.GET)
 	public String goSearchId(HttpServletRequest req) {
 		
@@ -130,6 +160,7 @@ public class AccountController {
 		aDAO.loginCheck(req);
 		
 			aDAO.joinGeneral(a,req);
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		
 		return "index";
@@ -154,6 +185,7 @@ public class AccountController {
 		if (aDAO.loginCheck(req)) {
 			req.setAttribute("contentPage", "account/mypage.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -165,6 +197,7 @@ public class AccountController {
 			aDAO.splitAddr(req);
 			req.setAttribute("contentPage", "account/info.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -177,6 +210,7 @@ public class AccountController {
 			aDAO.splitAddr(req);
 			req.setAttribute("contentPage", "account/update.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -189,6 +223,7 @@ public class AccountController {
 			aDAO.splitAddr(req);
 			req.setAttribute("contentPage", "account/info.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -198,10 +233,10 @@ public class AccountController {
 	public String GradeUpdate(Account a, HttpServletRequest req) {
 		if (aDAO.loginCheck(req)) {
 			aDAO.updateGrade(a,req);
-			// jsp 수정 필요 - 관리자의 등급 조정 페이지 생성
-			aDAO.getAccount(req);
+			aDAO.getAllAccount(1, req);
 			req.setAttribute("contentPage", "account/updateGrade.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -210,9 +245,11 @@ public class AccountController {
 	public String GradeUpdateGo(HttpServletRequest req) {
 		// 등급 조정 페이지로
 		if (aDAO.loginCheck(req)) {
-			aDAO.getAccount(req);
+			aDAO.calcAllACount();
+			aDAO.getAllAccount(1, req);
 			req.setAttribute("contentPage", "account/updateGrade.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -224,6 +261,7 @@ public class AccountController {
 			aDAO.getSeller(req);
 			req.setAttribute("contentPage", "account/joinConfirm.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -236,6 +274,7 @@ public class AccountController {
 			aDAO.splitAddr(req);
 			req.setAttribute("contentPage", "account/sellerDetail.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -249,6 +288,7 @@ public class AccountController {
 			aDAO.getSeller(req);
 			req.setAttribute("contentPage", "account/joinConfirm.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -262,6 +302,7 @@ public class AccountController {
 			aDAO.getSeller(req);
 			req.setAttribute("contentPage", "account/joinConfirm.jsp");
 		} else {
+			pDAO.getProductrandom(req);
 			req.setAttribute("contentPage", "home.jsp");
 		}
 		return "index";
@@ -274,8 +315,10 @@ public class AccountController {
 		// 탈퇴
 		if (aDAO.loginCheck(req)) {
 			aDAO.deleteAccount(req);
+			pDAO.getProductrandom(req);
+				req.setAttribute("contentPage", "home.jsp");
+			
 		}
-		req.setAttribute("contentPage", "home.jsp");
 		return "index";
 	}
 	

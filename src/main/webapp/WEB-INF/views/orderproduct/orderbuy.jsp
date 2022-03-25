@@ -13,17 +13,7 @@
 <body>
 		
 	구매내역보기<br>
-	
-	상품고유번호:${param.p_num }<br>
-	상품명: ${detail.p_name} <br>
-	상품가격:${param.price}<br>
-	갯수안나옴:${param.amount}<br>
-	주문고유id:${param.orderid}<br>
-	주문자id:${param.id}<br>
-	이메일:${param.email }<br>
-	주소1:${param.addr1 }<br>
-	주소2:${param.addr2 }<br>
-	
+
 
 		<c:forEach var="o" items="${order }">
 			<table border="1">			
@@ -64,7 +54,7 @@
 				</tr>
 				<tr>
 					<td><img
-				src="resources/img/${o.p_category1}/${o.p_photo }" width="150" height="150"></td>
+				src="resources/img/${o.p_category1}/${o.p_photo }" width="50" height="50"></td>
 				
 				</tr>
 			</table>

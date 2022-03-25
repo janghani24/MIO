@@ -8,57 +8,57 @@
 <title>Insert title here</title>
 </head>
 <body>
-		<table id="accountInfoTbl" border="1">
+		<table id="accountInfoTbl" >
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center">
-					회원 정보
+					<img src="resources/img/image/회원정보.jpg">
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">ID</td>
-				<td class="td2">${sessionScope.loginAccount.a_id}
+				<td class="infoTd1">ID</td>
+				<td class="infoTd">${sessionScope.loginAccount.a_id}
 				</td>
 			</tr>
 			
 			<tr>
-				<td class="td1">이름</td>
-				<td class="td2">${sessionScope.loginAccount.a_name}
+				<td class="infoTd1">이름</td>
+				<td class="infoTd">${sessionScope.loginAccount.a_name}
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">주소</td>
-				<td class="td2"> ${addr[0]} ${addr[1]} ${addr[2]}
+				<td class="infoTd1">주소</td>
+				<td class="infoTd"> ${addr[0]} ${addr[1]} ${addr[2]}
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">휴대전화 번호</td>
-				<td class="td2">${sessionScope.loginAccount.a_phone}
+				<td class="infoTd1">휴대전화 번호</td>
+				<td class="infoTd">${sessionScope.loginAccount.a_phone}
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">사진</td>
-				<td class="td2"><img src="resources/img_account/${sessionScope.loginAccount.a_img}" width="200px;">
+				<td class="infoTd1">사진</td>
+				<td class="infoTd"><img src="resources/img_account/${sessionScope.loginAccount.a_img}" width="200px;">
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">비밀번호 찾기 질문</td>
-				<td class="td2">${sessionScope.loginAccount.a_question}
+				<td class="infoTd1">비밀번호 찾기 질문</td>
+				<td class="infoTd">${sessionScope.loginAccount.a_question}
 				</td>
 			</tr>
 			<tr>
-				<td class="td1">회원 등급</td>
-				<td class="td2">${sessionScope.loginAccount.a_grade}
+				<td class="infoTd1">회원 등급</td>
+				<td class="infoTd">${sessionScope.loginAccount.a_grade}
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="2" class="infoTd">
 				<!-- 정보 수정 시 비밀번호 확인 단계 추가 -->
-					<button onclick="goUpdate()">정보 수정</button>
-					<button onclick="goDelete()">탈퇴</button>
+					<button onclick="goUpdate()" class="button">정보 수정</button>
+					<button onclick="goDelete()" class="button">탈퇴</button>
 					<c:if test="${sessionScope.loginAccount.a_grade eq 'admin'}">
 					<!-- 만들어야함 -->
-					<button onclick="goGradeUpdate()">회원 등급 조정</button>
-					<button onclick="goJoinConfirm()">가입 신청 승인</button>
+					<button onclick="goGradeUpdate()" class="button">회원 등급 조정</button>
+					<button onclick="goJoinConfirm()" class="button">가입 신청 승인</button>
 					</c:if>
 				</td>
 			</tr>

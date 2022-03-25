@@ -10,59 +10,59 @@
 	<br>
 	<form action="account.join.general" method="post" enctype="multipart/form-data"
 		name="joinForm" onsubmit="return joinCheck();">
-		<table id="joinTable" border="1">
+		<table id="joinTable">
 			<tr>
-				<td id="joinTableTitle" colspan="2" align="center">회원가입</td>
+				<td id="joinTableTitle" colspan="2" align="center"><img src="resources/img/image/회원가입.jpg"></td>
 			</tr>
 
 			<tr>
-				<td class="td1">ID</td>
-				<td class="td2"><input id="join_idInput" name="a_id"
+				<td class="infoTd1">ID</td>
+				<td class="infoTd"><input id="join_idInput" name="a_id"
 					placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="20" autocomplete="off"
-					autofocus="autofocus"> 
+					autofocus="autofocus" class="input"> 
 					<div id="id_check"></div>
 					<input type="hidden" id="idCheckOk" value="idUncheck">
 					 
 			</tr>
 			<tr>
-				<td class="td1">PW</td>
-				<td class="td2"><input name="a_pw"
+				<td class="infoTd1">PW</td>
+				<td class="infoTd"><input name="a_pw"
 					placeholder="필수,영어/숫자 하나이상 반드시" type="password" maxlength="20"
-					autocomplete="off"></td>
+					autocomplete="off" class="input"></td>
 			</tr>
 			<tr>
-				<td class="td1">PW확인</td>
-				<td class="td2"><input name="a_pwChk"
+				<td class="infoTd1">PW확인</td>
+				<td class="infoTd"><input name="a_pwChk"
 					placeholder="위의 PW와 같게 입력해주세요." type="password" maxlength="20"
-					autocomplete="off"></td>
+					autocomplete="off" class="input"></td>
 			</tr>
 			<tr>
-				<td class="td1">이름</td>
-				<td class="td2"><input name="a_name" placeholder="필수"
-					maxlength="10" autocomplete="off"></td>
+				<td class="infoTd1">이름</td>
+				<td class="infoTd"><input name="a_name" placeholder="필수"
+					maxlength="10" autocomplete="off" class="input"></td>
 			</tr>
 			<tr>
-				<td class="td1">주소</td>
-				<td class="td2"><input id="jm_addr3Input" readonly="readonly"
-					name="a_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
-					<span id="addrSearchBtn">[검색]</span><br> <input
+				<td class="infoTd1">주소</td>
+				<td class="infoTd"><input id="jm_addr3Input" readonly="readonly"
+					name="a_addr3" maxlength="5" autocomplete="off" placeholder="우편번호" class="input">
+					<button type="button" id="addrSearchBtn" class="smallbutton">검색</button><br> <input
 					id="jm_addr1Input" readonly="readonly" name="a_addr1"
-					maxlength="30" autocomplete="off" placeholder="주소"><br>
+					maxlength="30" autocomplete="off" placeholder="주소" class="input"><br>
 					<input name="a_addr2" maxlength="30" autocomplete="off"
-					placeholder="상세주소"></td>
+					placeholder="상세주소" class="input"></td>
 			</tr>
 			<tr>
-				<td class="td1">휴대전화 번호</td>
-				<td class="td2"><input name="a_phone" placeholder="필수,-없이 숫자만 입력해주세요."
-					maxlength="11" autocomplete="off" autofocus="autofocus"></td>
+				<td class="infoTd1">휴대전화 번호</td>
+				<td class="infoTd"><input name="a_phone" placeholder="-없이 숫자만 입력해주세요."
+					maxlength="11" autocomplete="off" autofocus="autofocus" class="input"></td>
 			</tr>
 			<tr>
-				<td class="td1">사진</td>
-				<td class="td2"><input name="a_img" type="file"></td>
+				<td class="infoTd1">사진</td>
+				<td class="infoTd"><input name="a_img" type="file"></td>
 			</tr>
 			<tr>
-				<td class="td1">비밀번호 찾기 질문</td>
-				<td class="td2"><select name="a_question">
+				<td class="infoTd1">비밀번호 찾기 질문</td>
+				<td class="infoTd"><select name="a_question">
 						<option value="q1">질문1</option>
 						<option value="q2">질문2</option>
 						<option value="q3">질문3</option>
@@ -70,14 +70,14 @@
 				</select></td>
 			</tr>
 			<tr>
-				<td class="td1">비밀번호 찾기 답</td>
-				<td class="td2"><input name="a_answer"
+				<td class="infoTd1">비밀번호 찾기 답</td>
+				<td class="infoTd"><input name="a_answer"
 					placeholder="30자 이내로 작성해주세요." maxlength="30" autocomplete="off"
-					autofocus="autofocus"></td>
+					autofocus="autofocus" class="input"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<button name="a_grade" value="general" id="join_submit">가입</button>
+					<button name="a_grade" value="general" id="join_submit" class="button">가입</button>
 				</td>
 			</tr>
 		</table>

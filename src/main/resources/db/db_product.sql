@@ -11,6 +11,12 @@ p_category1 varchar2(20 char) not null,
 p_category2 varchar2(20 char) not null,
 p_date date not null
 )
+drop table  product_master
+drop table  product_order
+drop table  product_cart
+drop table  product_detail
+drop table   product_zzim
+drop table   product_reply
 
 select *from (
 select rownum as rn,p_num,p_owner,p_name,p_price,p_brand,
@@ -232,7 +238,6 @@ insert into product_master values(product_master_seq.nextval,'jh','[기부텀블
 insert into product_master values(product_master_seq.nextval,'hn','친환경 밥주걱',4000,'슈가랩','02.jpg','02-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','친환경 위생 지퍼백',2800,'슈가랩','03.jpg','03-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','제로웨이스트 키친키트 - 설거지비누 삼베수세미 병세척솔 소창행주 건조집게',34500,'어반에코','11.jpg','11-1.jpg',5,'living','주방용품',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','푸드 커버 랩 대용 천연 삼베 덮개',6200,'예고은삼배','10.jpg','10-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','푸드 커버 랩 대용 천연 삼베 덮개',6200,'예고은삼배','10.jpg','10-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','친환경 일회용 비닐장갑',2200,'슈가랩','12.jpg','12-1.jpg',5,'living','주방용품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','색깔, 먼지 흡착티슈',5300,'해피얼쓰','15.jpg','15-1.jpg',5,'living','주방용품',sysdate);

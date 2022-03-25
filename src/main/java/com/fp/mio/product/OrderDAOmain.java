@@ -3,8 +3,7 @@ package com.fp.mio.product;
 public class OrderDAOmain {
 
 	private int orderItemId ;
-
-	private int orderId;
+	private String orderId;
 	private int productId;
 	private int productCount;
 	private int productPrice;
@@ -21,11 +20,11 @@ public class OrderDAOmain {
 		this.orderItemId = orderItemId;
 	}
 
-	public int getOrderId() {
+	public String getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(String orderId) {
 		this.orderId = orderId;
 	}
 
@@ -53,7 +52,7 @@ public class OrderDAOmain {
 		this.productPrice = productPrice;
 	}
 
-	public OrderDAOmain(int orderItemId, int orderId, int productId, int productCount, int productPrice) {
+	public OrderDAOmain(int orderItemId, String orderId, int productId, int productCount, int productPrice) {
 		super();
 		this.orderItemId = orderItemId;
 		this.orderId = orderId;
