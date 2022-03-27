@@ -9,16 +9,17 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<table id="communityTbl" border="1">
-		<tr>
-			<td>배너</td>
+	<tr>
+			<td id="banner"><img src="resources/img/community/communitybanner.png"></td>
 		</tr>
 		<tr>
 
 			<form action="community.search" name="snsSearchForm"
 				onsubmit="return snsSearchCheck();">
-				<td id="communityTd"><input name="search" maxlength="10" autocomplete="off"
-					style="color: black;">
+				<td id="communityTd"><input name="search" maxlength="10"
+					autocomplete="off" style="color: black;">
 					<button style="color: black" class="fundingbutton">검색</button></td>
 
 			</form>
@@ -32,25 +33,25 @@
 								src="resources/img_account/${m.a_img }"></td>
 
 							<td class="asmOwner">${m.c_owner }</td>
-						</tr>
-						<tr>
-							<td><fmt:formatDate value="${m.c_date }" type="both"
+							<td class="asmDate"><fmt:formatDate value="${m.c_date }" type="both"
 									dateStyle="short" timeStyle="short" /></td>
 						</tr>
+						
 						<tr>
-							<td class="asmTxt">${m.c_txt }</td>
+							<td class="asmTxt" colspan="2">${m.c_txt }</td>
 						</tr>
 
 
 						<tr>
-							<td class="asmReply" colspan="2"><c:forEach var="sr" items="${m.c_re }">
+							<td class="asmReply" colspan="2"><c:forEach var="sr"
+									items="${m.c_re }">
 									<span class="asmrOwner">${sr.r_owner }</span>&nbsp;${sr.r_txt }&nbsp;
 						<span class="asmrWhen"><fmt:formatDate
 											value="${sr.r_when }" type="both" dateStyle="short"
 											timeStyle="short" /></span>
 									<c:if test="${sr.r_owner == sessionScope.loginAccount.a_id }">
 										<button onclick="delReply('${sr.r_no}', '${curPage }');"
-											class="fundingbutton">삭제</button>
+											id="delButton">삭제</button>
 									</c:if>
 									<br>
 								</c:forEach> <c:if test="${sessionScope.loginAccount != null }">
@@ -70,7 +71,7 @@
 
 						<c:if test="${m.c_owner == sessionScope.loginAccount.a_id }">
 							<tr>
-								<td colspan="2" align="right">
+								<td colspan="3" align="right">
 
 									<button
 										onclick="updateMsg('${m.c_no}', '${m.c_txt}', ${curPage});"
@@ -105,7 +106,8 @@
 						<input type="hidden" name="token" value="${token }">
 						<table>
 							<tr>
-								<td><textarea name="c_txt" maxlength="200" rows="5" cols="60"></textarea></td>
+								<td><textarea name="c_txt" maxlength="200" rows="5"
+										cols="60"></textarea></td>
 								<td><button id="communitybutton">쓰기</button></td>
 							</tr>
 						</table>
