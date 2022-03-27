@@ -64,6 +64,7 @@
 				</c:forEach></td>
 		</tr>
 		<tr>
+		<c:if test="${f_category eq null}">
 			<td colspan="5">
 				<div align="center">
 					<a href="funding.paging?p=1"> [맨처음] </a>
@@ -73,6 +74,7 @@
 					<a href="funding.paging?p=${pageCount}"> [맨끝] </a>
 				</div>
 			</td>
+		</c:if>
 		</tr>
 		<tr>
 			<td colspan="5"><c:if

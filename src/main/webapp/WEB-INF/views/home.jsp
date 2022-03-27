@@ -17,18 +17,18 @@
 			<td colspan="3" class="slideArray" colspan="3">
 				<div class="bxslider">
 					<div>
-						<a href='product.detail?p_num=70'>
+						<a href='product.detail?p_num=55'>
 						<img src="resources/img/image/slide1.jpg">
 						</a>
 					</div>
 					<div>
-						<a href='product.detail?p_num=87'><img src="resources/img/image/slide2.jpg"></a>
+						<a href='product.detail?p_num=71'><img src="resources/img/image/slide2.jpg"></a>
 					</div>
 					<div>
-						<a href='product.detail?p_num=45'><img src="resources/img/image/slide3.jpg"></a>
+						<a href='product.detail?p_num=9'><img src="resources/img/image/slide3.jpg"></a>
 					</div>
 					<div>
-						<a href='product.detail?p_num=47'><img src="resources/img/image/slide4.jpg"></a>
+						<a href='product.detail?p_num=11'><img src="resources/img/image/slide4.jpg"></a>
 					</div>
 				</div>
 			</td>

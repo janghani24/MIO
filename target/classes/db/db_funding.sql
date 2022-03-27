@@ -28,7 +28,6 @@ insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_4.jpg','세
 insert into fundingTbl values(fundingTbl_seq.nextval,'hn','02.jpg','자연이 준 선물, 꿀벌 벌집으로 만든 롤밀랍랩','손끋비','친환경','2022-04-05','https://happybean.naver.com/fundings/detail/F481');
 insert into fundingTbl values(fundingTbl_seq.nextval,'hn','03.jpg','매일 간편하게 즐기는 7가지 해초샐러드','마린이노베이션','친환경','2022-03-28','https://happybean.naver.com/fundings/detail/F475');
 insert into fundingTbl values(fundingTbl_seq.nextval,'hn','친환경_01.jpg','바다를 위한 동행, 커피 스크럽 바디바 KIT','이디야','친환경','2022-04-21','https://happybean.naver.com/fundings/detail/F493');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','친환경_02.jpg','화분과 지구에 나무를 심는 환경교육키트','트리플래닛','친환경','2022-04-26','https://happybean.naver.com/fundings/detail/F494');
 insert into fundingTbl values(fundingTbl_seq.nextval,'hn','친환경_03.jpg','지구를 위하는 고체 치약과 대나무 칫솔','디어얼스','친환경','2022-04-25','https://happybean.naver.com/fundings/detail/F488');
 insert into fundingTbl values(fundingTbl_seq.nextval,'hn','친환경_04.jpg','자연이 준 선물, 꿀벌 벌집으로 만든 롤밀랍랩','손끈비','친환경','2022-04-05','https://happybean.naver.com/fundings/detail/F481');
 insert into fundingTbl values(fundingTbl_seq.nextval,'hn','친환경_05.jpg','미세플라스틱 걱정 덜은 옥수수로 만든 칫솔','HAYAN','친환경','2022-03-27','https://happybean.naver.com/fundings/detail/F474');

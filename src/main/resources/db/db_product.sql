@@ -176,7 +176,6 @@ insert into product_master values(product_master_seq.nextval,'hn','밥생각나�
 --의류
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_브라운',189000,'그라인','07.jpg','07-1.jpg',5,'fashion','의류',sysdate);
-insert into product_detail values(product_detail_seq.nextval,'118','M','brown');
 insert into product_master values(product_master_seq.nextval,'hn','따뜻함을 더해줄 부드러운 양털 베스트',95000,'그라인','패션_01.jpg','패션_01_1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','UL:KIN X DUNE_DUNE Logo Print Hoodie_Black',79000,'ULKIN','패션_02.jpg','패션_02_1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','UL:KIN X KWJ Blue Wave Typo-art T-shirts_White',45000,'ULKIN','패션_03.jpg','패션_03_1.jpg',5,'fashion','의류',sysdate);
@@ -203,17 +202,44 @@ insert into product_master values(product_master_seq.nextval,'hn','선인장 가
 --패션소품
 insert into product_master values(product_master_seq.nextval,'hn','세인트바인 길 고양이후원 체인 팔찌',15000,'세인트바인(saintvine)','04.jpeg','04-1.jpg',5,'fashion','패션소품',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','독도후원 플로히스 팔찌',13000,'플로히스','05.jpg','05-1.jpg',5,'fashion','패션소품',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','(119레오 당근 팔찌) 소방관 기부 후원',22000,'119레오','06.jpg','06-1.jpg',5,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','여자 나무시계_더 라디에이터 블랙',309000,'월스파브릭','16.jpg','16-1.jpg',15,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','실버925 천연오팔 물방울 목걸이',22800,'FFM13','17.jpg','17-1.jpg',5,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','독도후원 플로히스 목걸이',17000,'플로히스','18.jpg','18-1.jpg',25,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','독도후원 플로히스 은반지',25000,'플로히스','19.jpg','19-1.jpg',35,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','PLASTIC Key Ring',8000,'프로젝트1907','20.jpg','20-1.jpg',45,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','느릿느릿스카프 L 다크인디고',60000,'어스맨','21.jpg','21-1.jpg',55,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','실버925 18k gold plated 피어싱',12800,'FFM13','22.jpg','22-1.jpg',9,'fashion','패션소품',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','바람마을 바람 스카프',32000,'공기핸디크래프트','23.jpg','23-1.png',15,'fashion','패션소품',sysdate);
 
 
 --패션 디테일(마스터 등록 후 등록)
-insert into product_detail values(product_detail_seq.nextval,'61','M','ivory');
-insert into product_detail values(product_detail_seq.nextval,'118','M','brown');
-insert into product_detail values(product_detail_seq.nextval,'62','Free','blue');
-insert into product_detail values(product_detail_seq.nextval,'63','Free','silver');
-insert into product_detail values(product_detail_seq.nextval,'64','Free','silver');
-insert into product_detail values(product_detail_seq.nextval,'65','Free','silver');
-insert into product_detail values(product_detail_seq.nextval,'66','Free','orange');
+insert into product_detail values(product_detail_seq.nextval,'25','M','ivory');
+insert into product_detail values(product_detail_seq.nextval,'26','M','brown');
+insert into product_detail values(product_detail_seq.nextval,'27','M','ivory');
+insert into product_detail values(product_detail_seq.nextval,'28','M','black');
+insert into product_detail values(product_detail_seq.nextval,'29','M','white');
+insert into product_detail values(product_detail_seq.nextval,'30','M','black');
+insert into product_detail values(product_detail_seq.nextval,'31','M','yellow');
+insert into product_detail values(product_detail_seq.nextval,'32','Free','blue');
+insert into product_detail values(product_detail_seq.nextval,'33','Free','silver');
+insert into product_detail values(product_detail_seq.nextval,'34','Free','green');
+insert into product_detail values(product_detail_seq.nextval,'35','Free','green');
+insert into product_detail values(product_detail_seq.nextval,'36','Free','ivory');
+insert into product_detail values(product_detail_seq.nextval,'37','Free','white');
+insert into product_detail values(product_detail_seq.nextval,'38','Free','green');
+insert into product_detail values(product_detail_seq.nextval,'39','Free','black');
+insert into product_detail values(product_detail_seq.nextval,'40','Free','ivory');
+insert into product_detail values(product_detail_seq.nextval,'41','Free','green');
+insert into product_detail values(product_detail_seq.nextval,'42','Free','silver');
+insert into product_detail values(product_detail_seq.nextval,'43','Free','silver');
+insert into product_detail values(product_detail_seq.nextval,'44','Free','black');
+insert into product_detail values(product_detail_seq.nextval,'45','Free','blue');
+insert into product_detail values(product_detail_seq.nextval,'46','Free','silvr');
+insert into product_detail values(product_detail_seq.nextval,'47','Free','silver');
+insert into product_detail values(product_detail_seq.nextval,'48','Free','ivory');
+insert into product_detail values(product_detail_seq.nextval,'49','Free','dark indigo');
+insert into product_detail values(product_detail_seq.nextval,'50','Free','gold');
+insert into product_detail values(product_detail_seq.nextval,'51','Free','ivory');
 
 
 
@@ -230,8 +256,7 @@ insert into product_master values(product_master_seq.nextval,'yj','바르 비건
 
 --바디케어
 insert into product_master values(product_master_seq.nextval,'yj','비퓨어 병풀비누 문제성 피부용',13000,'퐁(fxng)','05.jpg','05-1.jpg',5,'beauty','바디케어',sysdate);
-insert into product_master values(product_master_seq.nextval,'yj','허그 140g 대용량 수분 부족형 피부 비누',16000,'퐁(fxng)','06.jpg','06-1.jpg',5,'beauty','바디케어',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','허그 140g 대용량 수분 부족형 피부 비누',16000,'퐁(fxng)','06.jpg','06-1.jpg',5,'beauty','바디케어',sysdate);
+insert into product_master values(product_master_seq.nextval,'yj','허그 140g 대용량 수분 부족형 피부 비누',16000,'퐁(fxng)','06.jpg','06-2.jpg',5,'beauty','바디케어',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','ZERO플라스틱 고체로션 템퍼러처',31000,'템퍼러처(temperatur)','19.jpg','19-1.png',5,'beauty','바디케어',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','유기농 사과 페미닌 워시폼',35000,'어글리시크(UGLYCHIC)','20.png','20-1.jpg',5,'beauty','바디케어',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','유기농 풋귤 이너젤',35000,'어글리시크(UGLYCHIC)','21.png','21-1.jpg',5,'beauty','바디케어',sysdate);
@@ -304,6 +329,6 @@ delete from product_master where p_name='아워 비건 시카 선크림 SPF50+ P
 
 select * from product_master;
 select * from product_master where p_category1='fashion';
-select * from product_master where p_name like '%스콘%';
+select * from product_master where p_name like '%트래블%';
 select * from product_detail;
 
