@@ -175,27 +175,38 @@ insert into product_master values(product_master_seq.nextval,'hn','밥생각나�
 --fashion
 --의류
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
-insert into product_detail values(product_detail_seq.nextval,'61','M','ivory');
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_브라운',189000,'그라인','07.jpg','07-1.jpg',5,'fashion','의류',sysdate);
-insert into product_detail values(product_detail_seq.nextval,'118','M','brown');
 
 
 
 --가방
 insert into product_master values(product_master_seq.nextval,'hn','VIENETTA 베네따 토트 쇼퍼백 (skyblue)',89000,'누깍(Nukak)','02.png','02-1.jpg',5,'fashion','가방',sysdate);
-insert into product_detail values(product_detail_seq.nextval,'62','Free','blue');
 insert into product_master values(product_master_seq.nextval,'hn','CLUTCH 클러치',52000,'누깍(Nukak)','03.png','03-1.jpg',5,'fashion','가방',sysdate);
-insert into product_detail values(product_detail_seq.nextval,'63','Free','silver');
+insert into product_master values(product_master_seq.nextval,'hn','타이거 파우치',59000,'카네이테이(KANEI TEI)','08.jpg','08-1.jpg',10,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','사과가죽 파우치',28900,'에끌라토(Eclatto)','09.jpg','09-1.jpg',15,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','Basic Back Pack',51000,'프로젝트1907(project1907)','10.jpg','10-1.jpg',9,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','에리제론 네트백',6900,'에리제론(erigeron)','11.jpg','11-1.jpg',8,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','잎섬유 카모 노트/북커버',44000,'타몬','12.jpg','12-1.jpg',12,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','어반 드링크백 /텀블러백 -크로스보틀형 스타일',21000,'어반에코','13.jpg','13-1.jpg',20,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 에코 백_아이보리',68000,'그라인','14.jpg','14-1.jpg',25,'fashion','가방',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','선인장 가죽 가치백 Green',225000,'쏘왓(SoWhat)','15.jpg','15-1.jpg',35,'fashion','가방',sysdate);
 
 
 
 
 --패션소품
 insert into product_master values(product_master_seq.nextval,'hn','세인트바인 길 고양이후원 체인 팔찌',15000,'세인트바인(saintvine)','04.jpeg','04-1.jpg',5,'fashion','패션소품',sysdate);
-insert into product_detail values(product_detail_seq.nextval,'64','Free','silver');
 insert into product_master values(product_master_seq.nextval,'hn','독도후원 플로히스 팔찌',13000,'플로히스','05.jpg','05-1.jpg',5,'fashion','패션소품',sysdate);
-insert into product_detail values(product_detail_seq.nextval,'65','Free','silver');
 insert into product_master values(product_master_seq.nextval,'hn','(119레오 당근 팔찌) 소방관 기부 후원',22000,'119레오','06.jpg','06-1.jpg',5,'fashion','패션소품',sysdate);
+
+
+--패션 디테일(마스터 등록 후 등록)
+insert into product_detail values(product_detail_seq.nextval,'61','M','ivory');
+insert into product_detail values(product_detail_seq.nextval,'118','M','brown');
+insert into product_detail values(product_detail_seq.nextval,'62','Free','blue');
+insert into product_detail values(product_detail_seq.nextval,'63','Free','silver');
+insert into product_detail values(product_detail_seq.nextval,'64','Free','silver');
+insert into product_detail values(product_detail_seq.nextval,'65','Free','silver');
 insert into product_detail values(product_detail_seq.nextval,'66','Free','orange');
 
 
