@@ -7,6 +7,11 @@
 	transition: all 0.4s ease-out;
 }
 
+#communitytxt{
+	resize: none;
+	border-color: #bed7cc;
+}
+
 #communityTbl {
 	margin-bottom: auto;
 	margin-left: auto;

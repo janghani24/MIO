@@ -107,7 +107,7 @@
 						<table>
 							<tr>
 								<td><textarea name="c_txt" maxlength="200" rows="5"
-										cols="60"></textarea></td>
+										cols="60" id="communitytxt"></textarea></td>
 								<td><button id="communitybutton">쓰기</button></td>
 							</tr>
 						</table>
