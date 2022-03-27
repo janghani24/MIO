@@ -42,12 +42,12 @@ insert into fundingTbl values(fundingTbl_seq.nextval,'hn','기부_04.jpg','아�
 
 --유기동물후원
 
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_01.jpg','야생조류가 유리창 충돌로 하루 2만 마리나 죽는다구요?','자연의벗연구소','유기동물','2022-04-26','https://happybean.naver.com/donations/H000000182838');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_02.jpg','죽음을 벗어난 농장동물들의 보호소, 함께 만들어요','사단법인 동물권행동 카라','유기동물','2022-04-13','https://happybean.naver.com/donations/H000000182647');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_03.jpg','아이들에게 따뜻한 보호소 공간을 만들어 주고 싶습니다','사단법인 공존','유기동물','2022-05-12','https://happybean.naver.com/donations/H000000183062');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_04.jpg','배고프지 않게 유기견들을 도와주세요','행동하는동물사랑','유기동물','2022-03-31','https://happybean.naver.com/donations/H000000183266');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_05.jpg','입양센터의 유기견들을 지켜주는 사람들','사단법인 팅커벨프로젝트','유기동물','2022-05-05','https://happybean.naver.com/donations/H000000182961');
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_01.jpg','야생조류가 유리창 충돌로 하루 2만 마리나 죽는다구요?','자연의벗연구소','유기동물후원','2022-04-26','https://happybean.naver.com/donations/H000000182838');
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_02.png','죽음을 벗어난 농장동물들의 보호소, 함께 만들어요','사단법인 동물권행동 카라','유기동물후원','2022-04-13','https://happybean.naver.com/donations/H000000182647');
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_03.jpg','아이들에게 따뜻한 보호소 공간을 만들어 주고 싶습니다','사단법인 공존','유기동물후원','2022-05-12','https://happybean.naver.com/donations/H000000183062');
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_04.jpg','배고프지 않게 유기견들을 도와주세요','행동하는동물사랑','유기동물후원','2022-03-31','https://happybean.naver.com/donations/H000000183266');
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','동물_05.jpg','입양센터의 유기견들을 지켜주는 사람들','사단법인 팅커벨프로젝트','유기동물후원','2022-05-05','https://happybean.naver.com/donations/H000000182961');
 
-
+delete from fundingTbl where f_name='죽음을 벗어난 농장동물들의 보호소, 함께 만들어요';
 
 select * from fundingTbl;

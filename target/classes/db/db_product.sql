@@ -176,6 +176,12 @@ insert into product_master values(product_master_seq.nextval,'hn','밥생각나�
 --의류
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_브라운',189000,'그라인','07.jpg','07-1.jpg',5,'fashion','의류',sysdate);
+insert into product_detail values(product_detail_seq.nextval,'118','M','brown');
+insert into product_master values(product_master_seq.nextval,'hn','따뜻함을 더해줄 부드러운 양털 베스트',95000,'그라인','패션_01.jpg','패션_01_1.jpg',5,'fashion','의류',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','UL:KIN X DUNE_DUNE Logo Print Hoodie_Black',79000,'ULKIN','패션_02.jpg','패션_02_1.jpg',5,'fashion','의류',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','UL:KIN X KWJ Blue Wave Typo-art T-shirts_White',45000,'ULKIN','패션_03.jpg','패션_03_1.jpg',5,'fashion','의류',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','[BAMBOO] Bamboo Pants',42000,'project 1907','패션_04.jpg','패션_04_1.jpg',5,'fashion','의류',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','[Recycled] 프레자일드 후드티 - Sunflower yellow',119000,'FRAGILED','패션_05.jpg','패션_05_1.jpg',5,'fashion','의류',sysdate);
 
 
 

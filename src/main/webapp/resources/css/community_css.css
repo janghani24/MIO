@@ -4,18 +4,19 @@
 	position: fixed;
 	left: 0px;
 	width: 100%;
-	transition:all 0.4s ease-out;
+	transition: all 0.4s ease-out;
 }
 
-#communityTbl{
+#communityTbl {
 	margin-bottom: auto;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
-	width:600px;
+	width: 600px;
+	padding-bottom: 50px;
 }
 
-#communityTd{
+#communityTd {
 	padding-left: 300px;
 }
 
@@ -25,16 +26,16 @@
 	background-color: #000000BF;
 }
 
-#communitybutton{
+#communitybutton {
 	margin-left: 20px;
 	background-color: #bed7cc;
-    border: 0;
-    outline: 0;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 11pt;
+	border: 0;
+	outline: 0;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 11pt;
 }
 
 #snsWriteTable textarea {
@@ -68,7 +69,6 @@
 	border-bottom: white solid 4px;
 }
 
-
 .aSNSMsg {
 	margin: 30px;
 	font-family: "a";
@@ -83,6 +83,7 @@
 .aSNSMsg td {
 	padding: 10px;
 }
+
 .asmImgTd {
 	width: 100px;
 }
@@ -91,16 +92,27 @@
 	max-width: 90px;
 	border-radius: 10px;
 	box-shadow: 2px 2px 2px black;
+	height: 200px;
 }
 
 .asmOwner {
-	font-size: 18pt;
+	font-size: 15pt;
+	color: #137048;
+	float: left;
+	margin-left: 30px;
 }
 
 .asmTxt {
 	word-break: break-all;
+	font-family: 'GmarketSansMedium';
+	margin-top: 30px;
 }
 
+.asmDate {
+	font-size: 7pt;
+	float: right;
+	color: gray;
+}
 
 #snsL {
 	color: black;
@@ -120,7 +132,6 @@
 	right: 150px;
 }
 
-
 #snsL:hover, #snsR:hover {
 	text-shadow: 0px 0px 10px white;
 }
@@ -130,7 +141,7 @@
 	top: 105px;
 	left: -239px;
 	border-spacing: 0px;
-	transition:all 0.4s ease-out;
+	transition: all 0.4s ease-out;
 }
 
 #ssaTd1 {
@@ -162,30 +173,50 @@
 	background-color: transparent;
 	color: white;
 }
-.asmReply{
+
+.asmReply {
 	font-size: 11pt;
+	text-align: left;
 }
-.asmrOwner{
+
+.asmrOwner {
 	margin-right: 10px;
 	font-size: 12pt;
+	color:#137048;
 }
-.asmrWhen{
-	font-size: 9pt;
+
+.asmrWhen {
+	font-size: 5pt;
+	float: right;
+	color: gray;
 }
-.asmrBtn{
+
+.asmrBtn {
 	border: none;
 	background-color: transparent;
 	font-size: 11pt;
 	font-weight: 900;
+	float: right;
 }
-.asmrInput{
+
+.asmrInput {
 	border: none;
-	border-bottom:black solid 2px;
+	border-bottom: black solid 2px;
 	background-color: transparent;
 	font-size: 11pt;
-	width:80%;
+	width: 70%;
 	font-weight: 900;
 }
 
-
-
+#delButton{
+	margin-top:10px;
+    background-color: #bed7cc;
+    border: 0;
+    outline: 0;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    font-size: 10pt;
+    
+}

@@ -13,7 +13,7 @@
 
 
 
-	<table class="itemListTbl" border="1">
+	<table class="fundingTbl" border="1">
 
 		<tr>
 			<td colspan="5" id="banner"><img
@@ -44,10 +44,10 @@
 
 		<tr>
 			<td colspan="6"><c:forEach var="f" items="${funding2}">
-					<ul>
+					<ul class="menu_ul">
 
-						<li><img src="resources/img/funding/${f.f_photo}"
-							id="fundingImg" width="350px;" onclick="fundingGo('${f.f_url}')"></a></li>
+						<li id="fundingImg"><img src="resources/img/funding/${f.f_photo}"
+							id="fundingImg" onclick="fundingGo('${f.f_url}')"></a></li>
 						<li id="brand"><span onclick="fundingGo('${f.f_url}')">${f.f_company}</span></li>
 						<li id="fundingName"><span onclick="fundingGo('${f.f_url}')">${f.f_name}</span></li>
 						<li id="period"><fmt:formatDate value="${f.f_period}"
