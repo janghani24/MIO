@@ -18,10 +18,10 @@
 		<tr>
 			<td >PW 찾기 질문</td>
 				<td><select name="a_question">
-						<option value="q1">질문1</option>
-						<option value="q2">질문2</option>
-						<option value="q3">질문3</option>
-						<option value="q4">질문4</option>
+						<option value="q1">가장 좋아하는 과일은?</option>
+						<option value="q2">가장 친한 친구의 이름은?</option>
+						<option value="q3">가장 인상깊게 본 영화제목은?</option>
+						<option value="q4">가장 인상깊게 읽은 책 제목은?</option>
 				</select></td>
 		</tr>
 		<tr>

@@ -42,7 +42,21 @@
 			</tr>
 			<tr>
 				<td class="infoTd1">비밀번호 찾기 질문</td>
-				<td class="infoTd">${sessionScope.loginAccount.a_question}
+				<td class="infoTd">
+				<c:choose>
+				<c:when test="${sessionScope.loginAccount.a_question eq 'q1'}">
+				가장 좋아하는 과일은?
+				</c:when>
+				<c:when test="${sessionScope.loginAccount.a_question eq 'q2'}">
+				가장 친한 친구의 이름은?
+				</c:when>
+				<c:when test="${sessionScope.loginAccount.a_question eq 'q3'}">
+				가장 인상깊게 본 영화제목은?
+				</c:when>
+				<c:when test="${sessionScope.loginAccount.a_question eq 'q4'}">
+				가장 인상깊게 읽은 책 제목은?
+				</c:when>
+				</c:choose>
 				</td>
 			</tr>
 			<tr>

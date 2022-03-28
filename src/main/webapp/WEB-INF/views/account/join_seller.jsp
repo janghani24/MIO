@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,75 +8,80 @@
 </head>
 <body>
 	<br>
-	<form action="account.join.seller"
-		method="post" enctype="multipart/form-data"
-		name="joinForm" onsubmit="return joinChecks();">
+	<form action="account.join.seller" method="post"
+		enctype="multipart/form-data" name="joinForm"
+		onsubmit="return joinChecks();">
 		<table id="joinTable">
 			<tr>
-				<td id="joinTableTitle" colspan="2" align="center">
-					<img src="resources/img/image/회원가입.jpg">
-				</td>
+				<td id="joinTableTitle" colspan="2" align="center"><img
+					src="resources/img/image/회원가입.jpg"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">ID</td>
-				<td class="infoTd">
-				<input id="join_idInput" class="input" name="a_s_id" placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="20" autocomplete="off" autofocus="autofocus">
-				<div id="id_check"></div>
-				<input type="hidden" id="idCheckOk" value="idUncheck">
-				</td>
+				<td class="infoTd"><input id="join_idInput" class="input"
+					name="a_s_id" placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="20"
+					autocomplete="off" autofocus="autofocus">
+					<div id="id_check"></div> <input type="hidden" id="idCheckOk"
+					value="idUncheck"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">PW</td>
-				<td class="infoTd">
-				<input name="s_pw" class="input" placeholder="필수,영어/숫자 하나이상 반드시" type="password" maxlength="20" autocomplete="off"></td>
+				<td class="infoTd"><input name="s_pw" class="input"
+					placeholder="필수,영어/숫자 하나이상 반드시" type="password" maxlength="20"
+					autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">PW확인</td>
-				<td class="infoTd">
-				<input name="s_pwChk" class="input" placeholder="위의 PW와 같게 입력해주세요." type="password" maxlength="20" autocomplete="off"></td>
+				<td class="infoTd"><input name="s_pwChk" class="input"
+					placeholder="위의 PW와 같게 입력해주세요." type="password" maxlength="20"
+					autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">이름</td>
-				<td class="infoTd">
-				<input name="s_name" class="input" placeholder="필수" maxlength="10" autocomplete="off"></td>
+				<td class="infoTd"><input name="s_name" class="input"
+					placeholder="필수" maxlength="10" autocomplete="off"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">주소</td>
-				<td class="infoTd">
-					<input id="jm_addr3Input" class="input" readonly="readonly" name="s_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
-					<button type="button" id="addrSearchBtn" class="smallbutton">검색</button><br>
-					<input id="jm_addr1Input" class="input" readonly="readonly" name="s_addr1" maxlength="30" autocomplete="off" placeholder="주소"><br>
-					<input name="s_addr2" class="input" maxlength="30" autocomplete="off" placeholder="상세주소">
-				</td>
+				<td class="infoTd"><input id="jm_addr3Input" class="input"
+					readonly="readonly" name="s_addr3" maxlength="5" autocomplete="off"
+					placeholder="우편번호">
+					<button type="button" id="addrSearchBtn" class="smallbutton">검색</button>
+					<br> <input id="jm_addr1Input" class="input"
+					readonly="readonly" name="s_addr1" maxlength="30"
+					autocomplete="off" placeholder="주소"><br> <input
+					name="s_addr2" class="input" maxlength="30" autocomplete="off"
+					placeholder="상세주소"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">휴대전화 번호</td>
-				<td class="infoTd">
-				<input name="s_phone" class="input" placeholder="필수,-없이 숫자만 입력해주세요." maxlength="11" autocomplete="off" autofocus="autofocus"></td>
+				<td class="infoTd"><input name="s_phone" class="input"
+					placeholder="필수,-없이 숫자만 입력해주세요." maxlength="11" autocomplete="off"
+					autofocus="autofocus"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">사진</td>
-				<td class="infoTd">
-				<input name="s_img" type="file"></td>
+				<td class="infoTd"><input name="s_img" type="file"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">비밀번호 찾기 질문</td>
-				<td class="infoTd">
-				<select name="s_question">
-				<option value="q1">질문1</option>
-				<option value="q2">질문2</option>
-				<option value="q3">질문3</option>
-				<option value="q4">질문4</option>
+				<td class="infoTd"><select name="s_question">
+						<option value="q1">가장 좋아하는 과일은?</option>
+						<option value="q2">가장 친한 친구의 이름은?</option>
+						<option value="q3">가장 인상깊게 본 영화제목은?</option>
+						<option value="q4">가장 인상깊게 읽은 책 제목은?</option>
 				</select></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">비밀번호 찾기 답</td>
-				<td class="infoTd">
-				<input name="s_answer" class="input" placeholder="30자 이내로 작성해주세요." maxlength="30"autocomplete="off" autofocus="autofocus"></td>
+				<td class="infoTd"><input name="s_answer" class="input"
+					placeholder="30자 이내로 작성해주세요." maxlength="30" autocomplete="off"
+					autofocus="autofocus"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">소개글</td>
-				<td class="infoTd"><textarea name="s_intro" maxlength="500"placeholder="500자 이내로 작성해주세요." rows="5" cols="40"></textarea></td>
+				<td class="infoTd"><textarea name="s_intro" maxlength="500"
+						placeholder="500자 이내로 작성해주세요." rows="5" cols="40"></textarea></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">판매 종류</td>

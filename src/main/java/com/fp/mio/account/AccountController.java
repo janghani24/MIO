@@ -297,7 +297,7 @@ public class AccountController {
 	public String SellerReject(Account a,Seller s, HttpServletRequest req) {
 		// 판매자 거절
 		if (aDAO.loginCheck(req)) {
-			aDAO.deleteSellerjoin(s, req);
+			aDAO.deleteSellerjoinPhoto(s, req);
 			aDAO.getSeller(req);
 			req.setAttribute("contentPage", "account/joinConfirm.jsp");
 		} else {

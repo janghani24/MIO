@@ -11,7 +11,7 @@
 </style>
 </head>
 <body>
-	<table border="1">
+	<table>
 
 		<tr>
 			<td colspan="3" class="slideArray" colspan="3">

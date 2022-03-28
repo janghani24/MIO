@@ -53,7 +53,7 @@
 
 
 
-	<table border="1" id="wrapTable">
+	<table id="wrapTable">
 		<tr>
 			<!-- left side -->
 			<td id="leftside">

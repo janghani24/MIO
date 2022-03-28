@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table id="sellerJoinOkTbl" border="1">
+	<table id="sellerJoinOkTbl">
 		<tr>
 			<td>
 				<h1>가입 신청이 완료되었습니다!</h1>
@@ -15,7 +15,7 @@
 		</tr>
 		<tr>
 			<td>
-				<button onclick="location.href='/mio'">홈으로</button>
+				<button onclick="location.href='/mio'" class="button">홈으로</button>
 			</td>
 		</tr>
 	</table>

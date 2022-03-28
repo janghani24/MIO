@@ -411,8 +411,8 @@ public class AccountDAO {
 		
 	}
 
-	// 승인신청에서 삭제
-	public void deleteSellerjoin(Seller s,HttpServletRequest req) {
+	// 승인 거절
+	public void deleteSellerjoinPhoto(Seller s,HttpServletRequest req) {
 		try {
 			Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
 			String join_photo = sss.getS_img();
@@ -433,6 +433,20 @@ public class AccountDAO {
 		}
 
 }
+	// 승인신청에서 삭제
+	public void deleteSellerjoin(Seller s,HttpServletRequest req) {
+		try {
+			Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
+			if (ss.getMapper(AccountMapper.class).deleteAccountS(s) == 1) {
+				req.setAttribute("result", "탈퇴성공");
+				
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	// id찾기(이름, 핸드폰 번호로)
 	public void idSearch(Account a, HttpServletRequest req) {
