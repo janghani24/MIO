@@ -24,7 +24,7 @@
 					<td><input id="amount" value="${param.cnt }" type="hidden">${param.cnt }개</td>
 				</tr>
 				<tr>
-					<td><input id="price" value="${detail.p_price}" type="hidden">${detail.p_price}원</td>					
+					<td><input id="price" value="${detail.p_price}" type="hidden">${detail.p_price * param.cnt}원</td>					
 				</tr>			
 				<tr>	
 					<td><img
