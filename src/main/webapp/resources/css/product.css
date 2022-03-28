@@ -119,6 +119,8 @@
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: auto;
+	padding-top: 50px;
+	padding-bottom: 70px;
 }
 
 .pSearchResultTbl {

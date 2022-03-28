@@ -98,7 +98,8 @@
 	max-width: 150px;
 	border-radius: 10px;
 	box-shadow: 2px 2px 2px black;
-	height: 180px;
+	height: 180px;	
+	margin-right: 30px;
 }
 
 .asmOwner {
