@@ -102,12 +102,12 @@
 			<c:if test="${sessionScope.loginAccount != null }">
 
 				<td align="center">
-					<form name="snsWriteForm" action="community.write" method="get">
+					<form name="snsWriteForm" action="community.write" method="get" onsubmit="return communityCheck();">
 						<input type="hidden" name="token" value="${token }">
 						<table>
 							<tr>
 								<td><textarea name="c_txt" maxlength="200" rows="5"
-										cols="60" id="communitytxt"></textarea></td>
+										cols="60" id="communitytxt" ></textarea></td>
 								<td><button id="communitybutton">쓰기</button></td>
 							</tr>
 						</table>
