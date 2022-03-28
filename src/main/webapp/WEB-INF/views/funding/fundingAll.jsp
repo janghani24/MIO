@@ -66,12 +66,12 @@
 		<tr>
 		<c:if test="${f_category eq null}">
 			<td colspan="5">
-				<div align="center">
-					<a href="funding.paging?p=1"> [맨처음] </a>
+				<div align="center" id="productName">
+					<a href="funding.paging?p=1"> 맨처음 | </a>
 					<c:forEach var="p" begin="1" end="${pageCount}">
-						<a href="funding.paging?p=${p}">[${p}]</a>
+						<a href="funding.paging?p=${p}">${p} |</a>
 					</c:forEach>
-					<a href="funding.paging?p=${pageCount}"> [맨끝] </a>
+					<a href="funding.paging?p=${pageCount}"> 맨끝 </a>
 				</div>
 			</td>
 		</c:if>

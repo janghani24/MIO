@@ -88,12 +88,12 @@
 
 		<tr>
 			<td>
-				<div align="center">
-					<a href="community.page.change?p=1"> [맨처음] </a>
+				<div align="center" id="productName">
+					<a href="community.page.change?p=1"> 맨처음 | </a>
 					<c:forEach var="p" begin="1" end="${pageCount}">
-						<a href="community.page.change?p=${p}">[${p}]</a>
+						<a href="community.page.change?p=${p}">${p} |</a>
 					</c:forEach>
-					<a href="community.page.change?p=${pageCount}"> [맨끝] </a>
+					<a href="community.page.change?p=${pageCount}"> 맨끝 </a>
 				</div>
 			</td>
 		</tr>

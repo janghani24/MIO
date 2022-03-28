@@ -61,17 +61,17 @@
 		</tr>
 		<tr>
 			<td colspan="6">
-				<div align="center">
+				<div align="center" id="productName">
 					<a
 						href="product.category.paging?p=1&p_category1=${category}&p_category2=${p_category2}">
-						[맨처음] </a>
+						맨처음 | </a>
 					<c:forEach var="p" begin="1" end="${pageCount}">
 						<a
-							href="product.category.paging?p=${p}&p_category1=${category}&p_category2=${p_category2}">[${p}]</a>
+							href="product.category.paging?p=${p}&p_category1=${category}&p_category2=${p_category2}">${p} |</a>
 					</c:forEach>
 					<a
 						href="product.category.paging?p=${pageCount}&p_category1=${category}&p_category2=${p_category2}">
-						[맨끝] </a>
+						맨끝 </a>
 				</div>
 			</td>
 		</tr>

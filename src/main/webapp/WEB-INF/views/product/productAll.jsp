@@ -51,12 +51,12 @@
 		</tr>
 		<tr>
 			<td colspan="5" id="paging">
-				<div align="center">
-					<a href="product.paging?p=1"> [맨처음] </a>
+				<div align="center" id="productName">
+					<a href="product.paging?p=1"> 맨처음 |</a>
 					<c:forEach var="p" begin="1" end="${pageCount}">
-						<a href="product.paging?p=${p}">[${p}]</a>
+						<a href="product.paging?p=${p}">${p} |</a>
 					</c:forEach>
-					<a href="product.paging?p=${pageCount}"> [맨끝] </a>
+					<a href="product.paging?p=${pageCount}"> 맨끝 </a>
 				</div>
 			</td>
 			

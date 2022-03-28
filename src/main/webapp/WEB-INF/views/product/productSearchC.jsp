@@ -48,18 +48,17 @@
 		</tr>
 		<tr>
 			<td colspan="4" id="paging">
-				<div align="center">
+				<div align="center" id="productName">
 					<a
 						href="product.search.category.paging?p=1&search=${search}&p_category1=${category}">
-						[맨처음] </a>
+						맨처음 | </a>
 					<c:forEach var="p" begin="1" end="${pageCount}">
-						<!-- 페이지 카운터를 누르면 해당 페이지로 이동함 -->
 						<a
-							href="product.search.category.paging?p=${p}&search=${search}&p_category1=${category}">[${p}]</a>
+							href="product.search.category.paging?p=${p}&search=${search}&p_category1=${category}">${p} |</a>
 					</c:forEach>
 					<a
 						href="product.search.category.paging?p=${pageCount}&search=${search}&p_category1=${category}">
-						[맨끝] </a>
+						맨끝 </a>
 				</div>
 			</td>
 		</tr>

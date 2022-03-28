@@ -60,13 +60,13 @@
 		<tr>
 			<td colspan="5">
 
-				<div align="center">
-					<a href="funding.search.paging?p=1&search=${search}"> [맨처음] </a>
+				<div align="center" id="productName">
+					<a href="funding.search.paging?p=1&search=${search}"> 맨처음 | </a>
 					<c:forEach var="p" begin="1" end="${pageCount}">
-						<a href="funding.search.paging?p=${p}&search=${search}">[${p}]</a>
+						<a href="funding.search.paging?p=${p}&search=${search}">${p} |</a>
 					</c:forEach>
 					<a href="funding.search.paging?p=${pageCount}&search=${search}">
-						[맨끝] </a>
+						맨끝 </a>
 				</div>
 			</td>
 		</tr>
