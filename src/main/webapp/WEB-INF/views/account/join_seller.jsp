@@ -11,7 +11,7 @@
 	<form action="account.join.seller" method="post"
 		enctype="multipart/form-data" name="joinForm"
 		onsubmit="return joinChecks();">
-		<table id="joinTable">
+		<table id="joinTable" border="1">
 			<tr>
 				<td id="joinTableTitle" colspan="2" align="center"><img
 					src="resources/img/image/회원가입.jpg"></td>

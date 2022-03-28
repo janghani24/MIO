@@ -101,7 +101,7 @@ public class FundingController {
     	fDAO.deleteFunding(request,funding);
     	
     }
-    	fDAO.getFundingAll(request);
+    	fDAO.getFunding(1, request);
     	request.setAttribute("contentPage", "funding/fundingAll.jsp");
     	return "index";
     }

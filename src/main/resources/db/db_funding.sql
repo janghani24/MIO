@@ -6,7 +6,8 @@ f_name varchar2 (100 char) not null,
 f_company varchar2 (100 char) not null,
 f_category varchar2 (100 char) not null,
 f_period date not null,
-f_url varchar2 (200 char) not null
+f_url varchar2 (200 char) not null,
+f_date date not null
 )
 
 drop table fundingTbl cascade constraint purge;
@@ -17,11 +18,11 @@ alter sequence fundingTbl_seq nocache;
 alter sequence fundingTbl_seq increment by 1; 
 
 --일자리 창출
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','01.jpg','취약계층의 자립을 응원하는 티크 원목 도마','디랜드협동조합','일자리창출','2022-04-06','https://happybean.naver.com/fundings/detail/F479');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_1.jpg','네팔 여성들의 자립을 돕는 네팔리 백과 굿즈','지구촌공생회','일자리창출','2022-05-02','https://happybean.naver.com/fundings/detail/F497');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_2.jpg','완주 농산물로 만든 샛노란 단호박 식혜','본앤하이리','일자리창출','2022-04-21','https://happybean.naver.com/fundings/detail/F489');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_3.jpg','화분과 지구에 나무를 심는 환경교육키트','트리플래닛','일자리창출','2022-04-26','https://happybean.naver.com/fundings/detail/F494');
-insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_4.jpg','세상을 바꾸는 특별한 커피, 히즈빈스','히즈빈스','일자리창출','2022-03-28','https://happybean.naver.com/fundings/detail/F476');
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','01.jpg','취약계층의 자립을 응원하는 티크 원목 도마','디랜드협동조합','일자리창출','2022-04-06','https://happybean.naver.com/fundings/detail/F479',sysdate);
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_1.jpg','네팔 여성들의 자립을 돕는 네팔리 백과 굿즈','지구촌공생회','일자리창출','2022-05-02','https://happybean.naver.com/fundings/detail/F497',sysdate);
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_2.jpg','완주 농산물로 만든 샛노란 단호박 식혜','본앤하이리','일자리창출','2022-04-21','https://happybean.naver.com/fundings/detail/F489',sysdate);
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_3.jpg','화분과 지구에 나무를 심는 환경교육키트','트리플래닛','일자리창출','2022-04-26','https://happybean.naver.com/fundings/detail/F494',sysdate);
+insert into fundingTbl values(fundingTbl_seq.nextval,'hn','일자리_4.jpg','세상을 바꾸는 특별한 커피, 히즈빈스','히즈빈스','일자리창출','2022-03-28','https://happybean.naver.com/fundings/detail/F476',sysdate);
 
 --친환경
 
