@@ -22,7 +22,7 @@ $(".btn_buy").on("click", function(){
 		int a = 0;
 	%>
 
-	<table border="1" class="productDetailTbl">
+	<table class="productDetailTbl">
 
 
 		<tr>
@@ -30,7 +30,7 @@ $(".btn_buy").on("click", function(){
 				src="resources/img/${detail.p_category1}/${detail.p_photo}"></td>
 
 			<td>
-				<table border="1" id="productOptionTbl">
+				<table id="productOptionTbl">
 					<tr>
 						<td colspan="5" id="pdBrand">${detail.p_brand}</td>
 					</tr>

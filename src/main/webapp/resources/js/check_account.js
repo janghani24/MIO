@@ -18,7 +18,13 @@ function joinCheck(){
 		idInput.value="";
 		idInput.focus();
 		return false;
-	}else if(containsHS(idInput)){
+	}else if(lessThan(idInput,6)){
+		alert("id를 6자 이상 입력해주세요.");
+		idInput.value="";
+		idInput.focus();
+		return false;
+	}
+	else if(containsHS(idInput)){
 		alert("id는 영어/숫자 조합으로 입력해주세요.");
 		idInput.value="";
 		idInput.focus();
@@ -29,7 +35,7 @@ function joinCheck(){
 		idInput.focus();
 		return false;
 	}else if (isEmpty(pwInput) || notEquals(pwInput, pwChkInput)
-			|| containsHS(pwInput)) {
+			|| containsHS(pwInput)||lessThan(pwInput,6)) {
 		alert("비밀번호를 확인해주세요.");
 		pwInput.value = "";
 		pwChkInput.value = "";
@@ -48,7 +54,7 @@ function joinCheck(){
 		addr3Input.value = "";
 		addr1Input.focus();
 		return false;
-	}else if(isEmpty(phoneInput)||isNotNumber(phoneInput)){
+	}else if(isEmpty(phoneInput)||isNotNumber(phoneInput)||lessThan(phoneInput,10)){
 		alert("휴대전화 번호를 확인해주세요.");
 		phoneInput.value="";
 		phoneInput.focus();
@@ -88,6 +94,11 @@ function joinChecks(){
 		idInput.value="";
 		idInput.focus();
 		return false;
+	}else if(lessThan(idInput,6)){
+		alert("id를 6자 이상 입력해주세요.");
+		idInput.value="";
+		idInput.focus();
+		return false;
 	}else if(containsHS(idInput)){
 		alert("id는 영어/숫자 조합으로 입력해주세요.");
 		idInput.value="";
@@ -99,7 +110,7 @@ function joinChecks(){
 		idInput.focus();
 		return false;
 	}else if (isEmpty(pwInput) || notEquals(pwInput, pwChkInput)
-			|| containsHS(pwInput)) {
+			|| containsHS(pwInput)||lessThan(pwInput,6)) {
 		alert("비밀번호를 확인해주세요.");
 		pwInput.value = "";
 		pwChkInput.value = "";
@@ -118,7 +129,7 @@ function joinChecks(){
 		addr3Input.value = "";
 		addr1Input.focus();
 		return false;
-	}else if(isEmpty(phoneInput)||isNotNumber(phoneInput)){
+	}else if(isEmpty(phoneInput)||isNotNumber(phoneInput)||lessThan(phoneInput,10)){
 		alert("휴대전화 번호를 확인해주세요.");
 		phoneInput.value="";
 		phoneInput.focus();

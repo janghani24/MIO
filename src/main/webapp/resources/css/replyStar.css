@@ -2,7 +2,7 @@
 
 
 .starR22{
-	color: #424D97;
+	color: #137048;
 	font-size: 20pt;
 }
 
@@ -10,9 +10,9 @@
    text-decoration: none;
    font-size: 20pt;
    color: white;
-   text-shadow: -1px 0 #424D97, 0 1px #424D97, 1px 0 #424D97, 0 -1px #424D97;
+   text-shadow: -1px 0 #137048, 0 1px #137048, 1px 0 #137048, 0 -1px #137048;
   }
 #star a.on{
-   color: #424D97;
+   color: #137048;
   font-size: 20pt;
   } 

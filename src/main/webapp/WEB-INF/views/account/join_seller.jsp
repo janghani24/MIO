@@ -19,27 +19,27 @@
 			<tr>
 				<td class="infoTd1">ID</td>
 				<td class="infoTd"><input id="join_idInput" class="input"
-					name="a_s_id" placeholder="필수, 영어/숫자로만 입력해주세요." maxlength="20"
-					autocomplete="off" autofocus="autofocus">
+					name="a_s_id" placeholder="필수, 영어/숫자로만.6자 이상" maxlength="20"
+					autocomplete="off" autofocus="autofocus" size=25>
 					<div id="id_check"></div> <input type="hidden" id="idCheckOk"
 					value="idUncheck"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">PW</td>
 				<td class="infoTd"><input name="s_pw" class="input"
-					placeholder="필수,영어/숫자 하나이상 반드시" type="password" maxlength="20"
-					autocomplete="off"></td>
+					placeholder="필수,영어/숫자 하나이상.6자 이상" type="password" maxlength="20"
+					autocomplete="off" size=25></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">PW확인</td>
 				<td class="infoTd"><input name="s_pwChk" class="input"
 					placeholder="위의 PW와 같게 입력해주세요." type="password" maxlength="20"
-					autocomplete="off"></td>
+					autocomplete="off" size=25></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">이름</td>
 				<td class="infoTd"><input name="s_name" class="input"
-					placeholder="필수" maxlength="10" autocomplete="off"></td>
+					placeholder="필수" maxlength="10" autocomplete="off" size=25></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">주소</td>
@@ -49,15 +49,15 @@
 					<button type="button" id="addrSearchBtn" class="smallbutton">검색</button>
 					<br> <input id="jm_addr1Input" class="input"
 					readonly="readonly" name="s_addr1" maxlength="30"
-					autocomplete="off" placeholder="주소"><br> <input
+					autocomplete="off" placeholder="주소" size=28><br> <input
 					name="s_addr2" class="input" maxlength="30" autocomplete="off"
-					placeholder="상세주소"></td>
+					placeholder="상세주소" size=28></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">휴대전화 번호</td>
 				<td class="infoTd"><input name="s_phone" class="input"
 					placeholder="필수,-없이 숫자만 입력해주세요." maxlength="11" autocomplete="off"
-					autofocus="autofocus"></td>
+					autofocus="autofocus" size=25></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">사진</td>
@@ -76,12 +76,12 @@
 				<td class="infoTd1">비밀번호 찾기 답</td>
 				<td class="infoTd"><input name="s_answer" class="input"
 					placeholder="30자 이내로 작성해주세요." maxlength="30" autocomplete="off"
-					autofocus="autofocus"></td>
+					autofocus="autofocus" size=25></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">소개글</td>
 				<td class="infoTd"><textarea name="s_intro" maxlength="500"
-						placeholder="500자 이내로 작성해주세요." rows="5" cols="40"></textarea></td>
+						placeholder="500자 이내로 작성해주세요." rows="5" cols="40" id="communitytxt"></textarea></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">판매 종류</td>

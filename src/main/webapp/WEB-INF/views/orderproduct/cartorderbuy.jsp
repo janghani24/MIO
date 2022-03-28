@@ -12,7 +12,7 @@
 	카트 구매내역
 
 	<c:forEach var="o" items="${order }">
-			<table border="1">			
+			<table>			
 				<tr>
 					<td >주문넘버:&nbsp;${o.orderId }</td>
 				</tr>

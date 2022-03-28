@@ -39,8 +39,8 @@
 					<input class="input" id="jm_addr3Input" readonly="readonly" value="${addr[2]}"  name="jm_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
 					<button type="button" id="addrSearchBtn" class="smallbutton">검색</button>
 					<br>
-					<input class="input" id="jm_addr1Input" readonly="readonly" value="${addr[0]}"  name="jm_addr1" maxlength="30" autocomplete="off" placeholder="주소"><br>
-					<input class="input" value="${addr[1] }"  name="jm_addr2" maxlength="30" autocomplete="off" placeholder="상세주소">
+					<input class="input" id="jm_addr1Input" readonly="readonly" value="${addr[0]}"  name="jm_addr1" maxlength="30" autocomplete="off" placeholder="주소" size=28><br>
+					<input class="input" value="${addr[1] }"  name="jm_addr2" maxlength="30" autocomplete="off" placeholder="상세주소" size=28>
 				</td>
 			</tr>
 			<tr>

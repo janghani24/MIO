@@ -19,7 +19,11 @@ function idCheck(){
 					}else if(containsHS(id_check)){
 						$("#id_check").text("영어/숫자만 입력해주세요.");
 						$("#id_check").css("color","red");
-					}else{
+					}else if(lessThan(id_check,6)){
+						$("#id_check").text("6자 이상 입력해주세요.");
+						$("#id_check").css("color","red");
+					}
+					else{
 						$("#id_check").text("사용 가능한 ID입니다.");
 						$("#id_check").css("color","green");
 						document.getElementById("idCheckOk").value="idCheckOk";

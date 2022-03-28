@@ -12,7 +12,7 @@
 
 
 
-	<table border="1" class="categoryTbl">
+	<table class="categoryTbl">
 
 		<tr>
 			<td colspan="7" id="banner"><img

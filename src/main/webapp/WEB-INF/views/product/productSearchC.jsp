@@ -12,7 +12,7 @@
 
 
 
-	<table border=1 class="itemListTb">
+	<table class="itemListTb">
 		<tr>
 			<td class="icon"><a href="product.category?p_category1=food"><img
 					src="resources/img/image/foodicon.jpg"></a></td>
