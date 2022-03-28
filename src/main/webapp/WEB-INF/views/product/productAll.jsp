@@ -37,13 +37,13 @@
 	
 		<tr>
 			<td colspan="4"><c:forEach var="p" items="${products}">
-					<ul class="menu_ul">
+					<ul class="menu_ul2">
 						<li class="productImage"
 							onclick="location.href='product.detail?p_num=${p.p_num}'"><img
 							src="resources/img/${p.p_category1}/${p.p_photo}"></li>
 
 						<li id="brand">${p.p_brand}</li>
-						<li id="productName">${p.p_name}</li>
+						<li id="productName" onclick="location.href='product.detail?p_num=${p.p_num}'">${p.p_name}</li>
 						<li id="price"><fmt:formatNumber type="number" maxFractionDigits="3"
 								value="${p.p_price}" />원</li>
 					</ul>

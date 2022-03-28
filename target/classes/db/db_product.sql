@@ -177,7 +177,7 @@ insert into product_master values(product_master_seq.nextval,'hn','밥생각나�
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_아이보리',189000,'그라인','01.jpg','01-1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','지속가능한 뽀글이 플리스 점퍼_브라운',189000,'그라인','07.jpg','07-1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','따뜻함을 더해줄 부드러운 양털 베스트',95000,'그라인','패션_01.jpg','패션_01_1.jpg',5,'fashion','의류',sysdate);
-insert into product_master values(product_master_seq.nextval,'hn','UL:KIN X DUNE_DUNE Logo Print Hoodie_Black',79000,'ULKIN','패션_02.jpg','패션_02_1.jpg',5,'fashion','의류',sysdate);
+insert into product_master values(product_master_seq.nextval,'hn','Logo Print Hoodie_Black',79000,'ULKIN','패션_02.jpg','패션_02_1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','UL:KIN X KWJ Blue Wave Typo-art T-shirts_White',45000,'ULKIN','패션_03.jpg','패션_03_1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','[BAMBOO] Bamboo Pants',42000,'project 1907','패션_04.jpg','패션_04_1.jpg',5,'fashion','의류',sysdate);
 insert into product_master values(product_master_seq.nextval,'hn','[Recycled] 프레자일드 후드티 - Sunflower yellow',119000,'FRAGILED','패션_05.jpg','패션_05_1.jpg',5,'fashion','의류',sysdate);
@@ -320,7 +320,7 @@ insert into product_master values(product_master_seq.nextval,'hn','더 크라프
 
 
 
-update product_master set p_name= '제로웨이스트 키친키트' where p_name = '제로웨이스트 키친키트 - 설거지비누 삼베수세미 병세척솔 소창행주 건조집게';
+update product_master set p_name= 'Blue Wave Typo-art T-shirts_White' where p_name = 'UL:KIN X KWJ Blue Wave Typo-art T-shirts_White';
 
 drop sequence p_num;
 drop sequence product_master_seq;

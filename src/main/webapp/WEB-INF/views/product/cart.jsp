@@ -10,14 +10,13 @@
 </head>
 <body>
 
-	<table id="cartTalble">
+	<table id="cartTalble" >
 		<tr>
-			<td colspan="4">
-<input type="hidden" value="장바구니상품" id="productname">
-<input id="id" value="${sessionScope.loginAccount.a_id}" type="hidden">
-<input id="amount" value="1" type="hidden">
-			<img src="resources/img/image/장바구니.jpg">
-			</td>
+			<td colspan="4"><input type="hidden" value="장바구니상품"
+				id="productname"> <input id="id"
+				value="${sessionScope.loginAccount.a_id}" type="hidden"> <input
+				id="amount" value="1" type="hidden"> <img
+				src="resources/img/image/장바구니.jpg"></td>
 
 
 		</tr>
@@ -35,12 +34,11 @@
 				<td>${c.c_quantity}</td>
 				<c:set var="totalprice" value="${c.c_price * c.c_quantity}" />
 				<td><fmt:formatNumber type="number" maxFractionDigits="3"
-						value="${totalprice}" /> 원 
-						<c:set var="total" value="${total + totalprice}" /></td>
+						value="${totalprice}" /> 원 <c:set var="total"
+						value="${total + totalprice}" /></td>
 				<td>
-					<button onclick="updateCart(${c.c_p_no})" id="cartbutton">수량 수정</button>
-				<br>
-				<br>
+					<button onclick="updateCart(${c.c_p_no})" id="cartbutton">수량
+						수정</button> <br> <br>
 					<button onclick="deleteCart(${c.c_p_no})" id="cartbutton">삭제</button>
 				</td>
 			</tr>
@@ -48,22 +46,22 @@
 		</c:forEach>
 		<tr>
 			<td id="cartTd">총 금액 =</td>
-			<td id="cartTd"><fmt:formatNumber type="number" maxFractionDigits="3" value="${total}" />원 
-				<input type="hidden" name="totalPrice" value="${total}" id="price"></td>
-				<td colspan="2"><button id="check_module2" type="button">구매하기</button></td>
+			<td id="cartTd"><fmt:formatNumber type="number"
+					maxFractionDigits="3" value="${total}" />원 <input type="hidden"
+				name="totalPrice" value="${total}" id="price"></td>
+			<td colspan="2"><button id="check_module2" type="button">구매하기</button></td>
 		</tr>
+		<tr><td colspan="4"> <hr></td><tr>
 		<tr>
-				<td class="td1">주소</td>
-				<td class="td2" colspan ="3"><input id="jm_addr3Input" readonly="readonly"
-					name="a_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
-					<span id="addrSearchBtn">[검색]</span><br> 
-					<input
-					id="jm_addr1Input" readonly="readonly" name="a_addr1"
-					maxlength="30" autocomplete="off" placeholder="주소"><br>
-					
-				</tr>
-		</table>
-		
+			<td class="td1">주소</td>
+			<td class="td2" colspan="3"><input id="jm_addr3Input"
+				readonly="readonly" name="a_addr3" maxlength="5" autocomplete="off"
+				placeholder="우편번호"> <span id="addrSearchBtn">검색</span><br>
+				<input id="jm_addr1Input" readonly="readonly" name="a_addr1"
+				maxlength="30" autocomplete="off" placeholder="주소"><br>
+		</tr>
+	</table>
+
 
 </body>
 </html>

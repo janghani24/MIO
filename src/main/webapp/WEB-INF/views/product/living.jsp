@@ -48,7 +48,7 @@
 		</tr>
 		<tr>
 			<td colspan="6" id="productRandom"><c:forEach var="l" items="${products}">
-					<ul class="menu_ul">
+					<ul class="menu_ul2">
 						<li class="productImage"
 							onclick="location.href='product.detail?p_num=${l.p_num}'"><img
 							src="resources/img/living/${l.p_photo}" width="350px;"></li>

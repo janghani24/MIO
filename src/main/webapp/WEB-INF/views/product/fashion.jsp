@@ -43,7 +43,7 @@
 		<tr>
 
 			<td colspan="4"><c:forEach var="f" items="${products}">
-					<ul class="menu_ul">
+					<ul class="menu_ul2">
 						<li class="productImage"
 							onclick="location.href='product.detail?p_num=${f.p_num}'"><img
 							src="resources/img/${f.p_category1}/${f.p_photo}" width="350px;"></li>

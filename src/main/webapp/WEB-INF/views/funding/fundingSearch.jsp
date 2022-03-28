@@ -12,7 +12,7 @@
 
 
 
-	<table border=1 class="itemListTbl">
+	<table class="itemListTbl">
 
 		<tr>
 			<td colspan="5" id="banner"><img
