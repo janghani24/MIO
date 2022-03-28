@@ -481,6 +481,19 @@ public class ProductController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/product.showorderbuy", method = RequestMethod.GET)
+	public String showorderbuy(HttpServletRequest request,Product product, OrderDAO oda,OrderDAOmain odamain) {
+		pDAO.getProductDetail(request, product);
+		
 	
+		
+		
+		pDAO.order(request); 	//오더 불러오기
+
+		request.setAttribute("detail", pDAO.getProductDetail(request, product));
+		request.setAttribute("contentPage", "orderproduct/orderbuy.jsp");
+		
+		return "index";
+	}
 
 }
