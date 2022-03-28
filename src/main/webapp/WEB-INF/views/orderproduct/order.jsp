@@ -44,7 +44,7 @@
 			<td id="td3">주소</td>
 			<td class="td2"><input id="jm_addr3Input" readonly="readonly"
 				name="a_addr3" maxlength="5" autocomplete="off" placeholder="우편번호">
-				<span id="addrSearchBtn">검색</span><br> <input
+				<span class="addrButton">검색</span><br> <input
 				id="jm_addr1Input" readonly="readonly" name="a_addr1" maxlength="30"
 				autocomplete="off" placeholder="주소"><br>
 		</tr>
