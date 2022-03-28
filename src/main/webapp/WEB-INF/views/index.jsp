@@ -68,7 +68,7 @@
 
 							<td class="leftLogin"><a href="product.go.cart">장바구니</a></td>
 							
-							<td class="leftLogin"><a href="product.orderbuy">구매내역</a></td>
+							<td class="leftLogin"><a href="product.showorderbuy">구매내역</a></td>
 
 						</c:if>
 					</tr>
