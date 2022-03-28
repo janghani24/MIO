@@ -381,7 +381,7 @@
 	float: right;
 }
 
-#addrSearchBtn {
+.addrButton{
 	background-color: #bed7cc;
 	border: 0;
 	outline: 0;

@@ -30,21 +30,21 @@
 			<td align="center" colspan="4" class="infoTd">
 			<c:choose>
 			<c:when test="${search != null}">
-			<div>
-					<a href="account.paging?p=1&search=${search}"> [맨처음] </a>
+			<div id="productName">
+					<a href="account.paging?p=1&search=${search}"> 맨처음| </a>
 					<c:forEach var="p" begin="1" end="${pageCount}">
-						<a href="account.paging?p=${p}&search=${search}">[${p}]</a>
+						<a href="account.paging?p=${p}&search=${search}">${p} |</a>
 					</c:forEach>
-					<a href="account.paging?p=${pageCount}&search=${search}"> [맨끝] </a>
+					<a href="account.paging?p=${pageCount}&search=${search}"> 맨끝 </a>
 				</div>
 				</c:when>
 			<c:otherwise>
-			<div>
-					<a href="account.paging?p=1"> [맨처음] </a>
+			<div id="productName">
+					<a href="account.paging?p=1"> 맨처음 | </a>
 					<c:forEach var="p" begin="1" end="${pageCount}">
-						<a href="account.paging?p=${p}">[${p}]</a>
+						<a href="account.paging?p=${p}">${p} |</a>
 					</c:forEach>
-					<a href="account.paging?p=${pageCount}"> [맨끝] </a>
+					<a href="account.paging?p=${pageCount}"> 맨끝 </a>
 				</div>
 			</c:otherwise>
 			</c:choose>

@@ -131,7 +131,7 @@ $(".btn_buy").on("click", function(){
 					</span>
 					<c:if test="${pr.r_owner == sessionScope.loginAccount.a_id }">
 						<button 
-							onclick="deleteReply(${pr.r_no},${detail.p_num});">삭제</button>
+							onclick="deleteReply(${pr.r_no},${detail.p_num});" id="replybutton">삭제</button>
 					</c:if>
 				</c:forEach> 
 					</td></tr>
