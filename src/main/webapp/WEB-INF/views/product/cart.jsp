@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<table id="cartTalble" >
+	<table id="cartTalble">
 		<tr>
 			<td colspan="4"><input type="hidden" value="장바구니상품"
 				id="productname"> <input id="id"
@@ -28,12 +28,12 @@
 					src="resources/img/${c.c_category}/${c.c_p_photo}" width="200px;"
 					onclick="location.href='product.detail?p_num=${c.c_p_no}'"></td>
 				<td colspan="3"
-					onclick="location.href='product.detail?p_num=${c.c_p_no}'">${c.c_name}</td>
+					onclick="location.href='product.detail?p_num=${c.c_p_no}'" id="cartName">${c.c_name}</td>
 			</tr>
 			<tr>
-				<td>${c.c_quantity}</td>
+				<td id="cartAmount">${c.c_quantity}</td>
 				<c:set var="totalprice" value="${c.c_price * c.c_quantity}" />
-				<td><fmt:formatNumber type="number" maxFractionDigits="3"
+				<td id="cartPrice"><fmt:formatNumber type="number" maxFractionDigits="3"
 						value="${totalprice}" /> 원 <c:set var="total"
 						value="${total + totalprice}" /></td>
 				<td>
@@ -49,16 +49,23 @@
 			<td id="cartTd"><fmt:formatNumber type="number"
 					maxFractionDigits="3" value="${total}" />원 <input type="hidden"
 				name="totalPrice" value="${total}" id="price"></td>
-			<td colspan="2"><button id="check_module2" type="button">구매하기</button></td>
+
 		</tr>
-		<tr><td colspan="4"> <hr></td><tr>
 		<tr>
-			<td class="td1">주소</td>
+			<td colspan="4">
+				<hr>
+			</td>
+		<tr>
+		<tr>
+			<td id="td3">주소</td>
 			<td class="td2" colspan="3"><input id="jm_addr3Input"
 				readonly="readonly" name="a_addr3" maxlength="5" autocomplete="off"
 				placeholder="우편번호"> <span id="addrSearchBtn">검색</span><br>
 				<input id="jm_addr1Input" readonly="readonly" name="a_addr1"
 				maxlength="30" autocomplete="off" placeholder="주소"><br>
+		</tr>
+		<tr>
+			<td colspan="2"><button id="check_module2" type="button">구매하기</button></td>
 		</tr>
 	</table>
 
