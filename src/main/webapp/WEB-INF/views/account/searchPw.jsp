@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="account.searchPw" name="pwSearchForm" onsubmit="return searchPwCheck();">
-	<table border="1" id="accountSearchTbl">
+	<table id="accountSearchTbl">
 		<tr>
 			<td colspan="2"><img src="resources/img/image/pw.jpg"></td>
 		</tr>

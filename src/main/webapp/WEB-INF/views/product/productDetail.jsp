@@ -22,7 +22,7 @@ $(".btn_buy").on("click", function(){
 		int a = 0;
 	%>
 
-	<table border="1" class="productDetailTbl">
+	<table class="productDetailTbl">
 
 
 		<tr>
@@ -146,9 +146,9 @@ $(".btn_buy").on("click", function(){
 						<a href="#;" class="starR" value="4">★</a>						
 						<a href="#;" class="starR" value="5">★</a>						
 						</div>
-						<input name="r_txt" maxlength="300" autocomplete="off" placeholder="300자 이내로 작성해주세요.">
+						<input id="txt" name="r_txt" maxlength="300" autocomplete="off" placeholder="300자 이내로 작성해주세요.">
 						<input type="hidden" name="r_rate" value="1">
-						<button name="p_num" value="${detail.p_num}">쓰기</button>
+						<button name="p_num" value="${detail.p_num}" id="replyBtn">쓰기</button>
 					</form>
 				</c:if></td>
 		</tr>

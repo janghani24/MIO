@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<table border="1" class="categoryTbl">
+	<table class="categoryTbl">
 
 		<tr>
 			<td colspan="7" id="banner"><img
@@ -43,7 +43,7 @@
 		<tr>
 
 			<td colspan="4"><c:forEach var="f" items="${products}">
-					<ul>
+					<ul class="menu_ul2">
 						<li class="productImage"
 							onclick="location.href='product.detail?p_num=${f.p_num}'"><img
 							src="resources/img/${f.p_category1}/${f.p_photo}" width="350px;"></li>

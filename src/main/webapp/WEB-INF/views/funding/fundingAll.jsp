@@ -13,7 +13,7 @@
 
 
 
-	<table class="fundingTbl" border="1">
+	<table class="fundingTbl">
 
 		<tr>
 			<td colspan="5" id="banner"><img

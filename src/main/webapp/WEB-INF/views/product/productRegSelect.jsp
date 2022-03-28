@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<table id="regSelectTbl" border="1">
+	<table id="regSelectTbl">
 		<tr>
 			<td><a href="product.foodReg"><img
 					src="resources/img/image/food.jpg" id="regImg"></a></td>

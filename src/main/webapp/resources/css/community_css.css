@@ -89,10 +89,10 @@
 }
 
 .asmImgTd img {
-	max-width: 90px;
-	border-radius: 10px;
+	max-width: 150px;
+	border-radius: 5px;
 	box-shadow: 2px 2px 2px black;
-	height: 200px;
+	height: 180px;
 }
 
 .asmOwner {
@@ -106,6 +106,7 @@
 	word-break: break-all;
 	font-family: 'GmarketSansMedium';
 	margin-top: 30px;
+	background-color: #e9f4ef;
 }
 
 .asmDate {

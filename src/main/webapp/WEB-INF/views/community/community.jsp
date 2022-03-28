@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<table id="communityTbl" border="1">
+	<table id="communityTbl">
 	<tr>
 			<td id="banner"><img src="resources/img/community/communitybanner.png"></td>
 		</tr>
@@ -27,7 +27,7 @@
 		<tr>
 			<td><c:forEach var="m" items="${msgs }">
 
-					<table class="aSNSMsg" border="1">
+					<table class="aSNSMsg">
 						<tr>
 							<td class="asmImgTd" align="center" valign="top" rowspan="3"><img
 								src="resources/img_account/${m.a_img }"></td>
