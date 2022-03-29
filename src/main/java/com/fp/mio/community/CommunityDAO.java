@@ -72,6 +72,8 @@ public class CommunityDAO {
 			cmMsg.setC_re(ss.getMapper(CommunityMapper.class).getReply(cmMsg));
 		}
 		int pageCount = (int) Math.ceil(msgCount / (double) count);
+		System.out.println(msgCount);
+		System.out.println(count);
 		System.out.println(pageCount);
 		System.out.println(pageNo);
 		req.setAttribute("pageCount", pageCount);
@@ -123,7 +125,6 @@ public class CommunityDAO {
 				req.setAttribute("result", "댓글쓰기 성공");
 				req.getSession().setAttribute("successToken", token);
 
-				allMsgCount++;
 
 			} else {
 				req.setAttribute("result", "댓글쓰기 실패");

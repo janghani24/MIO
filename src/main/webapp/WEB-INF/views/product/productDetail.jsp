@@ -133,6 +133,7 @@ $(".btn_buy").on("click", function(){
 						<button 
 							onclick="deleteReply(${pr.r_no},${detail.p_num});" id="replybutton">삭제</button>
 					</c:if>
+					<br>
 				</c:forEach> 
 					</td></tr>
 					<tr>

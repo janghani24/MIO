@@ -74,8 +74,6 @@ create sequence product_cart_seq;
 select * from product_cart;
 drop table product_cart cascade constraint purge;
 
-insert into product_detail values(product_detail_seq.nextval,'3','의류','5','s','ivory');
-insert into product_detail values(product_detail_seq.nextval,'3','의류','3','m','ivory');
 
 
 create table product_cart(
@@ -119,6 +117,10 @@ constraint p_r
 		references product_master(p_num)
 		on delete cascade
 );
+
+insert into product_reply values(product_reply_seq.nextval,100,'yj','선물 포장할 때 썼었는데 너무 예뻐요!',4,sysdate);
+insert into product_reply values(product_reply_seq.nextval,100,'dj','디자인이 예쁘네요',5,sysdate);
+insert into product_reply values(product_reply_seq.nextval,100,'jh','품질도 괜찮고 배송도 빨라요!',4,sysdate);
 
 
 create sequence product_reply_seq;
@@ -329,6 +331,6 @@ delete from product_master where p_name='아워 비건 시카 선크림 SPF50+ P
 
 select * from product_master;
 select * from product_master where p_category1='fashion';
-select * from product_master where p_name like '%트래블%';
+select * from product_master where p_name like '%크라프트%';
 select * from product_detail;
 
