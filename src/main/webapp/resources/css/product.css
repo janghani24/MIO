@@ -283,6 +283,7 @@
 }
 
 #buyBtn {
+	margin-right:20px;
 	background-color: #137048;
 	font-family: 'GmarketSansMedium';
 	border: 0;
@@ -309,6 +310,7 @@
 }
 
 #zzimBtn {
+	margin-left:20px;
 	background-color: #bed7cc;
 	font-family: 'GmarketSansMedium';
 	border: 0;

@@ -100,7 +100,7 @@ public class CommunityController {
 	public String cmReplydel(Communityre cmr ,HttpServletRequest req) {
 		TokenMaker.make(req);
 		int p = Integer.parseInt(req.getParameter("p"));
-		
+
 		if(aDAO.loginCheck(req)) {
 			cDAO.delReply(cmr, req);
 			

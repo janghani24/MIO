@@ -66,8 +66,8 @@ $(".btn_buy").on("click", function(){
 					
 					<tr>
 
-						<td><button id="buyBtn" onclick="productorder(${param.p_num}, '${sessionScope.loginAccount.a_id}');">구매하기</button></td>
-						<td><button id="cartBtn" onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button></td>
+						<td colspan="2"><button id="buyBtn" onclick="productorder(${param.p_num}, '${sessionScope.loginAccount.a_id}');">구매하기</button>
+						<button id="cartBtn" onclick="goCart('${sessionScope.loginAccount.a_id}',${param.p_num},${detail.p_price},'${detail.p_category1}','${detail.p_photo}')">장바구니</button>
 
 
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
@@ -78,8 +78,7 @@ $(".btn_buy").on("click", function(){
 									test="${sessionScope.loginAccount.a_id == z.z_id && z.z_num == detail.p_num}">
 
 
-									<td colspan="2"><button id="zzimBtn" onclick="deletezzim2(${z.z_no },${detail.p_num});">찜해제</button></td>
-
+									<button id="zzimBtn" onclick="deletezzim2(${z.z_no },${detail.p_num});">찜해제</button>
 									<%
 										a = 1;
 									%>
@@ -94,9 +93,10 @@ $(".btn_buy").on("click", function(){
 						<c:if test="${sessionScope.loginAccount.a_id != null }">
 
 
-							<td colspan="2"><button id="zzimBtn"
-									onclick="zzim(${detail.p_num}, '${sessionScope.loginAccount.a_id}');">찜하기</button></td>
+							<button id="zzimBtn"
+									onclick="zzim(${detail.p_num}, '${sessionScope.loginAccount.a_id}');">찜하기</button>
 						</c:if>
+									</td>
 						<%
 							}
 						%>
