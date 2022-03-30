@@ -63,7 +63,7 @@ function fundingUpdateCheck(){
 	}else if(isEmpty(dateInput)){
 		alert("펀딩 마감 기간을 설정해주세요.");
 		return false;
-	}else if(!regex.test(urlInput)||isEmpty(urlInput)){
+	}else if(!regex.test(urlInput.value)||isEmpty(urlInput)){
 		alert("펀딩 주소를 확인해주세요.");
 		urlInput.value="";
 		urlInput.focus();
