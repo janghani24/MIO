@@ -29,7 +29,7 @@
 			<td id="cartAmount" colspan="2"><input id="amount" value="${param.cnt }" type="hidden">${param.cnt }개</td>
 		</tr>
 		<tr>
-			<td id="cartPrice" colspan="2"><input id="price" value="${detail.p_price}" type="hidden">${detail.p_price}원</td>
+			<td id="cartPrice" colspan="2"><input id="price" value="${detail.p_price}" type="hidden">${detail.p_price*param.cnt}원</td>
 		</tr>
 		<tr>
 			<td id="cartImg" colspan="2"><img
