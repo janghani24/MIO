@@ -118,9 +118,10 @@ constraint p_r
 		on delete cascade
 );
 
-insert into product_reply values(product_reply_seq.nextval,100,'yj','선물 포장할 때 썼었는데 너무 예뻐요!',4,sysdate);
-insert into product_reply values(product_reply_seq.nextval,100,'dj','디자인이 예쁘네요',5,sysdate);
-insert into product_reply values(product_reply_seq.nextval,100,'jh','품질도 괜찮고 배송도 빨라요!',4,sysdate);
+insert into product_reply values(product_reply_seq.nextval,99,'yjtest','너무 예뻐요!',4,sysdate);
+insert into product_reply values(product_reply_seq.nextval,99,'djtest','디자인이 예쁘네요',5,sysdate);
+insert into product_reply values(product_reply_seq.nextval,99,'jhtest','품질도 괜찮고 배송도 빨라요!',4,sysdate);
+insert into product_reply values(product_reply_seq.nextval,99,'hntest','색이 예뻐요',4,sysdate);
 
 
 create sequence product_reply_seq;

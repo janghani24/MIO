@@ -24,19 +24,19 @@
 			<tr>
 				<td class="infoTd1">상품 이름</td>
 				<td class="infoTd">${detail.p_name}</td>
-				<td class="infoTd"><input name="p_name" class="input"></td>
+				<td class="infoTd"><input name="p_name" class="input" value="${detail.p_name}"></td>
 			<tr>
 				<td class="infoTd1">상품 가격</td>
 				<td class="infoTd">${detail.p_price}원</td>
-				<td class="infoTd"><input name="p_price" class="input"></td>
+				<td class="infoTd"><input name="p_price" class="input" value="${detail.p_price}"></td>
 			<tr>
 				<td class="infoTd1">브랜드</td>
 				<td class="infoTd">${detail.p_brand}</td>
-				<td class="infoTd"><input name="p_brand" class="input"></td>
+				<td class="infoTd"><input name="p_brand" class="input" value="${detail.p_brand}"></td>
 			<tr>
 				<td class="infoTd1">수량</td>
 				<td class="infoTd">${detail.p_quantity}</td>
-				<td class="infoTd"><input name="p_quantity" class="input"></td>
+				<td class="infoTd"><input name="p_quantity" class="input" value="${detail.p_quantity}"></td>
 			<tr>
 				<td class="infoTd1">상품 상세 정보</td>
 				<td colspan="2" class="infoTd"><input name="p_content" type="file"></td>
@@ -53,7 +53,7 @@
 			<tr>
 				<td class="infoTd1">컬러</td>
 				<td class="infoTd">${fashionDetail.d_color}</td>
-				<td class="infoTd"><input name="d_color" class="input"> <input type="hidden"
+				<td class="infoTd"><input name="d_color" class="input" value="${fashionDetail.d_color}"> <input type="hidden"
 					name="p_num" value="${detail.p_num}"></td>
 			</tr>
 			<tr>

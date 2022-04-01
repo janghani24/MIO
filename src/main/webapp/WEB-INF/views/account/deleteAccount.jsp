@@ -19,7 +19,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td align="center" id="pw">PW <input name="a_pw"  id="passBox">
+			<td align="center" id="pw">PW <input name="a_pw"  id="passBox" type="password">
 			<input type="hidden" name="a_pw2" value="${sessionScope.loginAccount.a_pw}">
 			</td>
 		</tr>

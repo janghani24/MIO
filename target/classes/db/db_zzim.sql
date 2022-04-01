@@ -16,7 +16,7 @@ AND product_zzim.z_id = #{a_id}
 delete from
 		product_zzim where z_no = #{p_no}
 
-drop table product_zzim
+drop table product_zzim cascade constraint purge;
 create sequence product_zzim_seq;
 select * from product_zzim;
 select * from product_zzim where p_id = 'test'
@@ -37,7 +37,7 @@ create table product_order(
     memberAddr2 varchar2(100) not null,	--주문자 주소2
     orderState varchar2(30) not null,	--주문 정보 대기 완료이런거
     orderDate date default sysdate,	--주문날짜 
-    FOREIGN KEY (memberId) REFERENCES account_mio(a_id)
+    FOREIGN KEY (memberId) REFERENCES account_mio(a_id) on delete cascade
 )
 
 delete from product_orderItem where productid = 43
@@ -85,8 +85,8 @@ order by orderDate desc
 
 AND product_order.orderId = 'merchant_1648106042242'//고유번호로 get할떄 쓸거
 
-drop table product_orderItem
-drop table product_order
+drop table product_orderItem cascade constraint purge;
+drop table product_order cascade constraint purge;
 
 insert into product_order
      values(#{orderId},#{memberId},#{productId},#{productCount},#{productPrice},

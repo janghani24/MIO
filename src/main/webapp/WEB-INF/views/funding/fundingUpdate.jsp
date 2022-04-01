@@ -26,12 +26,12 @@
 			<tr>
 				<td class="infoTd1">펀딩명 :</td>
 				<td class="infoTd">${fundingDetail.f_name}</td>
-				<td class="infoTd"><input name="f_name" class="input"></td>
+				<td class="infoTd"><input name="f_name" class="input" value="${fundingDetail.f_name}"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">회사명 :</td>
 				<td class="infoTd">${fundingDetail.f_company}</td>
-				<td class="infoTd"><input name="f_company" class="input"></td>
+				<td class="infoTd"><input name="f_company" class="input" value="${fundingDetail.f_company}"></td>
 			</tr>
 			<tr>
 				<td class="infoTd1">펀딩 마감 기간:</td>

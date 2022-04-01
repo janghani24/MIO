@@ -44,7 +44,7 @@
 
 		<tr>
 			<td colspan="6"><c:forEach var="f" items="${funding2}">
-					<ul>
+					<ul class="menu_ul2">
 
 						<li id="fundingImg"><img src="resources/img/funding/${f.f_photo}"
 							id="fundingImg" onclick="fundingGo('${f.f_url}')"></a></li>

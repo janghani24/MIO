@@ -42,17 +42,20 @@
 
 		<tr>
 			<td colspan="5"><c:forEach var="f" items="${funding2}">
-					<ul>
+					<ul class="menu_ul2">
 
-						<li><a href="${f.f_url}"><img
-								src="resources/img/funding/${f.f_photo}" id="fundingImg"
-								width="350px;"></a></li>
+						<li id="fundingImg"><a href="${f.f_url}"><img
+								src="resources/img/funding/${f.f_photo}" 
+								></a></li>
 						<li id="brand"><a href="${f.f_url}">${f.f_company}</a></li>
 						<li id="fundingName">${f.f_name}</li>
 						<li id="period"><fmt:formatDate value="${f.f_period}"
 								pattern="yyyy년 MM월 dd일" />&nbsp;종료</li>
 						<c:if test="${f.f_owner == sessionScope.loginAccount.a_id }">
-							<li><button onclick="deleteFunding(${f.f_num})">삭제</button></li>
+							<li>
+							<button onclick="updateFunding(${f.f_num})"
+									class="fundingbutton">수정</button>
+							<button onclick="deleteFunding(${f.f_num})" class="fundingbutton">삭제</button></li>
 						</c:if>
 					</ul>
 				</c:forEach></td>

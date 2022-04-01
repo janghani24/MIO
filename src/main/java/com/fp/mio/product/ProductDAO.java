@@ -336,6 +336,7 @@ public class ProductDAO {
 				p_category2 = "신발";
 			}
 			product.setP_category1(mr.getParameter("p_category1"));
+			System.out.println(mr.getParameter("p_category1"));
 			product.setP_category2(p_category2);
 
 			Date today = new Date();

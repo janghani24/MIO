@@ -10,12 +10,17 @@ a_question varchar2(100 char) not null,
 a_answer varchar2(30 char) not null
 );
 
+drop table account_mio cascade constraint purge;
+drop table account_sellerjoin cascade constraint purge;
+
 select * from account_mio;
 delete from account_mio;
 insert into ACCOUNT_MIO values ('hntest','hn','hn','경기 성남시 중원구 사기막골로62번길 18!11!13210','01000000000','hn.jpg','admin','q4','a');
-insert into ACCOUNT_MIO values ('djtest','dj','dj','경기 광진구 자양강변길 7!111!05088','01000000000','dj.jpg','general','q1','a');
+insert into ACCOUNT_MIO values ('hn','hn','hn','경기 성남시 중원구 사기막골로62번길 18!11!13210','01000000000','hn.jpg','admin','q4','a');
+insert into ACCOUNT_MIO values ('djtest','dj','dj','경기 광진구 자양강변길 7!111!05088','01000000000','test.jpg','general','q1','a');
 insert into ACCOUNT_MIO values ('yjtest','yj','yj','경기 성남시 중원구 사기막골로62번길 18!11!13210','01000000000','yj.jpg','seller','q2','a');
 insert into ACCOUNT_MIO values ('jhtest','jh','jh','경기 안성시 일죽면 판교길 6!11!17532','01000000000','jh.jpg','general','q3','a');
+insert into ACCOUNT_MIO values ('test11','111111','test','경기 안성시 일죽면 판교길 6!11!17532','01012345678','dj.jpg','general','q3','a');
 
 select * from account_sellerjoin;
 
