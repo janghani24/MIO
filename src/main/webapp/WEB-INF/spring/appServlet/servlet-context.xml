@@ -29,8 +29,11 @@
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<beans:property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<beans:property name="username" value="[username]" />
-		<beans:property name="password" value="[password]" />
+
+
+		<beans:property name="username" value="c##hn" />
+		<beans:property name="password" value="hn" />
+
 	</beans:bean>
 
 	<beans:bean id="transactionManager"
@@ -55,5 +58,12 @@
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</beans:bean>
+
+	<beans:bean id="so" class="com.fp.mio.SiteOption">
+<beans:constructor-arg value="9"></beans:constructor-arg>
+</beans:bean>
+	<beans:bean id="so2" class="com.fp.mio.SiteOption">
+<beans:constructor-arg value="5"></beans:constructor-arg>
+</beans:bean>
 
 </beans:beans>

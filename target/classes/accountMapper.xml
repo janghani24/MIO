@@ -1,3 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fp.mio.account.AccountMapper"></mapper>
+<mapper namespace="com.fp.mio.account.AccountMapper">
+
+<select id="getAccountCount"
+		parameterType="com.fp.mio.account.AccountSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from account_mio
+		where a_id like '%'||#{search}||'%' or a_name like '%'||#{search}||'%'
+
+	</select>
+
+<select id="getAccountSearch"
+	parameterType="com.fp.mio.account.AccountSelector"
+		resultType="com.fp.mio.account.Account">
+		select *
+		from (
+		select rownum as rn,a_id,a_pw,a_name,a_addr,a_phone,
+		a_img,a_grade,a_question,a_answer
+		from (
+		select * from account_mio
+		where a_id like
+		'%'||#{search}||'%' or a_name like'%'||#{search}||'%'
+		)
+		)
+		where rn &gt;= #{start} and
+		rn &lt;= #{end}
+	</select>
+
+
+<select id="getAccountByID" resultType="com.fp.mio.account.Account">
+		select * from account_mio
+		where a_id = #{a_id}
+	</select>
+	<select id="searchId" resultType="com.fp.mio.account.Account">
+		select * from account_mio
+		where a_name=#{a_name} and a_phone=#{a_phone}
+	</select>
+	
+	<insert id="joinGeneral" parameterType="com.fp.mio.account.Account">
+		insert into account_mio
+		values(#{a_id}, #{a_pw},
+		#{a_name}, #{a_addr}, #{a_phone},
+		#{a_img},#{a_grade},#{a_question},#{a_answer}
+		)
+	</insert>
+	
+	<insert id="joinSeller" parameterType="com.fp.mio.account.Seller">
+		insert into account_sellerjoin
+		values(#{a_s_id}, #{s_pw},
+		#{s_name}, #{s_addr}, #{s_phone},
+		#{s_img},#{s_grade},#{s_question},#{s_answer},
+		#{s_intro},#{s_sellsort}
+		)
+	</insert>
+	
+	<delete id="deleteAccount"
+		parameterType="com.fp.mio.account.Account">
+		delete from account_mio
+		where a_id = #{a_id}	
+	</delete>
+	
+	<delete id="deleteAccountS"
+		parameterType="com.fp.mio.account.Seller">
+		delete from account_sellerjoin
+		where a_s_id = #{a_s_id}	
+	</delete>
+	
+	<update id="updateAccount"
+		parameterType="com.fp.mio.account.Account">
+		update account_mio
+		set a_pw=#{a_pw},
+		a_name=#{a_name}, a_addr=#{a_addr}, a_phone=#{a_phone},
+		a_img=#{a_img}
+		where
+		a_id=#{a_id}
+	</update>
+	
+	<update id="updateGrade" parameterType="com.fp.mio.account.Account">
+	update account_mio
+	set a_grade=#{a_grade}
+	where
+	a_id=#{a_id}
+	</update>
+	
+	<select id="getAccount"
+		resultType="com.fp.mio.account.Account">
+		select * from account_mio order by a_grade
+	</select>
+	
+	<select id="getSeller"
+		resultType="com.fp.mio.account.Seller">
+		select * from account_sellerjoin order by a_s_id
+	</select>
+	
+	<select id="getSellerById"
+		resultType="com.fp.mio.account.Seller">
+		select * from account_sellerjoin 
+		where a_s_id = #{a_s_id}
+	</select>
+	
+	<select id="IdCheck" parameterType="String" resultType="int">
+	select count(*) from account_mio where a_id = #{a_id}
+	</select>
+	
+	<select id="IdCheckS" parameterType="String" resultType="int">
+	select count(*) from account_sellerjoin where a_s_id = #{a_id}
+	</select>
+	
+</mapper>

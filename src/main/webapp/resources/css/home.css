@@ -1,0 +1,63 @@
+.bxslider img {
+	width: 100%;
+	
+}
+
+#FundingImg img {
+	width: 100%;
+}
+
+#FundingImg {
+	padding-top: 5px;
+	padding-bottom: 30px;
+	
+}
+
+#value img{
+	padding-top: auto;
+	padding-bottom: auto;
+	padding-left: auto;
+	padding-right: auto;
+	width:300px;
+}
+
+#productRandom {
+	padding-top: 20px;
+	padding-bottom: 80px;
+	padding-left: 0px;
+	padding-right: 0px;
+
+}
+#productRandom img{
+	max-width: 350px;
+	width : 350px;
+	height : 330px;
+}
+.menu_ul{
+	height: 440px;
+}
+
+#productRandom img:hover {
+	filter: brightness(90%);
+}
+
+#brand{
+	padding-top: 5px;
+	color: gray;
+	font-size: 10pt;
+	font-family: 'GmarketSansMedium';
+}
+
+#productName{
+	padding-top: 5px;
+	font-size: 12pt;
+	font-family: 'GmarketSansMedium';
+}
+
+#price{
+	font-size: 13pt;
+	font-weight: bold;
+	padding-top: 5px;
+	color: #137048;
+	font-family: 'GmarketSansMedium';
+}

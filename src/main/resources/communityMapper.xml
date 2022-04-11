@@ -1,3 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fp.mio.community.CommunityMapper"></mapper>
+<mapper namespace="com.fp.mio.community.CommunityMapper">
+
+	<select id="getMsgCount"
+		parameterType="com.fp.mio.community.CmSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from account_mio, mio_community
+		where c_owner
+		= a_id
+		and c_txt like '%'||#{search}||'%'
+
+	</select>
+
+	<select id="getMsg"
+		resultType="com.fp.mio.community.CommunityMsg"
+		parameterType="com.fp.mio.community.CmSelector">
+		select * from (
+		select rownum as rn, c_no, c_owner, c_txt
+		, c_date,a_img
+		from ( select * from account_mio, mio_community
+		where c_owner = a_id and
+		(c_txt like '%'||#{search}||'%' or a_id like '%'||#{search}||'%')
+		order by c_date desc
+		)
+		)
+
+		where rn
+		&gt;= #{start} and rn &lt;= #{end}
+
+	</select>
+
+	<select id="getReply"
+		parameterType="com.fp.mio.community.CommunityMsg"
+		resultType="com.fp.mio.community.Communityre">
+		select *
+		from mio_community_re
+		where r_c_no = #{c_no}
+
+
+	</select>
+
+
+	<insert id="writeMsg" parameterType="CommunityMsg">
+		insert into mio_community
+		values(mio_community_seq.nextval, #{c_owner}, #{c_txt}, sysdate)
+	</insert>
+
+	<insert id="writeReply"
+		parameterType="com.fp.mio.community.Communityre">
+		insert into mio_community_re
+		values(mio_community_re_seq.nextval,#{r_c_no} ,#{r_owner}, #{r_txt},sysdate)
+	</insert>
+
+
+	<delete id="delMsg" parameterType="CommunityMsg">
+		delete from mio_community
+		where c_no = #{c_no}
+	</delete>
+
+	<delete id="delReply"
+		parameterType="Communityre">
+		delete from mio_community_re
+		where r_no = #{r_no}
+	</delete>
+
+	<update id="updateMsg" parameterType="CommunityMsg">
+		update mio_community
+		set c_txt = #{c_txt}
+		where c_no =#{c_no}
+	</update>
+
+
+	<select id="getMsgCountByOwner"
+		parameterType="com.fp.mio.account.Account"
+		resultType="java.lang.Integer">
+		select *
+		from mio_community
+		where c_owner = #{a_id}
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

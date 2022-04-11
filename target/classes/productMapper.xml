@@ -1,3 +1,316 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fp.mio.product.ProductMapper"></mapper>
+<mapper namespace="com.fp.mio.product.ProductMapper">
+
+	<select id="getProductAll"
+		resultType="com.fp.mio.product.Product">
+
+		select * from product_master
+
+	</select>
+
+<select id="getProductCount"
+		parameterType="com.fp.mio.product.ProductSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from product_master
+		where p_name like '%'||#{search}||'%' or p_brand like '%'||#{search}||'%'
+
+	</select>
+<select id="getCProductCount"
+		parameterType="com.fp.mio.product.ProductCSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from product_master
+		where (p_name like '%'||#{search}||'%' or p_brand like '%'||#{search}||'%') and p_category1 = #{p_category1}
+
+	</select>
+<select id="getC2ProductCount"
+		parameterType="com.fp.mio.product.ProductCSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from product_master
+		where (p_name like '%'||#{search}||'%' or p_brand like '%'||#{search}||'%') and p_category2 = #{p_category1}
+
+	</select>
+
+
+	<select id="getFood" resultType="com.fp.mio.product.Product">
+
+		select * from product_master
+		where p_category1 = 'food' order by p_date desc
+
+	</select>
+	<select id="getFashionDetail" resultType="com.fp.mio.product.ProductDetail" parameterType="com.fp.mio.product.Product">
+
+		select * from product_detail
+		where d_master_num=#{p_num}
+
+	</select>
+
+	<select id="getFashion" resultType="com.fp.mio.product.Product">
+
+		select * from product_master where p_category1 = 'fashion' order by p_date desc
+
+	</select>
+
+	<select id="getBeauty" resultType="com.fp.mio.product.Product">
+
+		select * from product_master where p_category1 = 'beauty' order by p_date desc
+
+	</select>
+
+	<select id="getLiving" resultType="com.fp.mio.product.Product">
+
+		select * from product_master where p_category1 = 'living' order by p_date desc
+
+	</select>
+
+	<select id="getProductDetail"
+		resultType="com.fp.mio.product.Product">
+
+		select * from product_master where p_num=#{p_num}
+
+	</select>
+	<select id="getProductPnum"
+		resultType="java.lang.Integer">
+
+		select p_num from product_master where p_name=#{p_name}
+
+	</select>
+	
+
+	<select id="getProductCategory"
+		resultType="com.fp.mio.product.Product">
+
+		select * from product_master where p_category2=#{p_category2}
+
+
+	</select>
+	<select id="getCart" parameterType="com.fp.mio.account.Account"
+		resultType="com.fp.mio.product.Cart">
+
+		select * from product_cart where c_a_id = #{a_id}
+
+	</select>
+	<select id="getCartByPNo" resultType="java.lang.Integer">
+
+		select count(*) from product_cart where c_p_no = #{c_p_no} and c_a_id =
+		#{c_a_id}
+
+	</select>
+
+	<update id="updateCart" parameterType="com.fp.mio.product.Cart">
+		update product_cart
+		set
+		c_quantity=#{c_quantity}
+		where
+		c_a_id=#{c_a_id} and c_p_no = #{c_p_no}
+	</update>
+	<update id="updateProduct" parameterType="com.fp.mio.product.Product">
+		update product_master
+		set
+		p_name=#{p_name},p_price=#{p_price},p_brand=#{p_brand},
+		p_photo=#{p_photo},p_quantity=#{p_quantity},p_content=#{p_content}
+		where
+		p_num=#{p_num}
+	</update>
+	<update id="updateProductDetail" parameterType="com.fp.mio.product.ProductDetail">
+		update product_detail
+		set
+		d_size=#{d_size},d_color=#{d_color}
+		where
+		d_master_num=#{d_master_num}
+	</update>
+
+
+	<insert id="getProductzzim"
+		parameterType="com.fp.mio.product.Zzim">
+		insert into product_zzim
+
+		values(product_zzim_seq.nextval,#{p_num}, #{z_id})
+	</insert>
+	<insert id="regFashionDetail"
+		parameterType="com.fp.mio.product.ProductDetail">
+		insert into product_detail
+		values(product_detail_seq.nextval,#{d_master_num}, #{d_size},#{d_color})
+	</insert>
+
+	<insert id="insertCart" parameterType="com.fp.mio.product.Cart">
+		insert into product_cart
+		values(product_cart_seq.nextval,#{c_p_no}, #{c_a_id},
+		#{c_quantity},#{c_name},#{c_price},#{c_category},#{c_p_photo})
+	</insert>
+
+	<select id="getAccount" resultType="com.fp.mio.account.Account">
+		select * from account_mio
+		order by a_id
+
+	</select>
+
+
+	<select id="showzzim"	parameterType="com.fp.mio.account.Account" resultType="com.fp.mio.product.Zzim">
+		SELECT *
+	FROM product_zzim , account_mio, product_master
+	WHERE product_zzim.z_id = account_mio.a_id
+	AND product_zzim.z_num = product_master.p_num
+	AND product_zzim.z_id = #{a_id}
+
+	</select>
+
+	<delete id="deletezzim" parameterType="com.fp.mio.product.Zzim">
+		delete from
+
+		product_zzim where z_no = #{z_no}
+
+	</delete>
+
+	<delete id="deleteReply"
+		parameterType="com.fp.mio.product.ProductReply">
+		delete from
+		product_reply where r_no = #{r_no}
+	</delete>
+
+
+	<delete id="deleteCart" parameterType="com.fp.mio.product.Cart">
+		delete from
+		product_cart
+		where c_p_no=#{c_p_no} and c_a_id=#{c_a_id}
+	</delete>
+
+	<delete id="deleteProduct"
+		parameterType="com.fp.mio.product.Product">
+		delete from
+		product_master where p_num=#{p_num}
+	</delete>
+
+	<select id="getProductSearch"
+	parameterType="com.fp.mio.product.ProductSelector"
+		resultType="com.fp.mio.product.Product">
+		select *
+		from (
+		select rownum as rn,p_num,p_owner,p_name,p_price,p_brand,
+		p_photo,p_content,p_quantity,p_category1,p_category2,p_date
+		from (
+		select * from product_master
+		where p_name like
+		'%'||#{search}||'%' or p_brand like'%'||#{search}||'%'
+		order by p_date desc
+		)
+		)
+		where rn &gt;= #{start} and
+		rn &lt;= #{end}
+	</select>
+	<select id="getProductRandom"
+		resultType="com.fp.mio.product.Product">
+		select *
+		from (
+		select rownum as rn,p_num,p_owner,p_name,p_price,p_brand,
+		p_photo,p_content,p_quantity,p_category1,p_category2,p_date
+		from (
+		select * from product_master
+		order by dbms_random.random
+		)
+		)
+		where rn &lt;= 9
+	</select>
+	<select id="getCProductSearch"
+	parameterType="com.fp.mio.product.ProductCSelector"
+		resultType="com.fp.mio.product.Product">
+		select *
+		from (
+		select rownum as rn,p_num,p_owner,p_name,p_price,p_brand,
+		p_photo,p_content,p_quantity,p_category1,p_category2,p_date
+		from (
+		select * from product_master
+		where (p_name like
+		'%'||#{search}||'%' or p_brand like'%'||#{search}||'%') and p_category1=#{p_category1}
+		order by p_date desc
+		)
+		)
+		where rn &gt;= #{start} and
+		rn &lt;= #{end}
+	</select>
+	<select id="getC2ProductSearch"
+	parameterType="com.fp.mio.product.ProductCSelector"
+		resultType="com.fp.mio.product.Product">
+		select *
+		from (
+		select rownum as rn,p_num,p_owner,p_name,p_price,p_brand,
+		p_photo,p_content,p_quantity,p_category1,p_category2,p_date
+		from (
+		select * from product_master
+		where (p_name like
+		'%'||#{search}||'%' or p_brand like'%'||#{search}||'%') and p_category2=#{p_category1}
+		order by p_date desc
+		)
+		)
+		where rn &gt;= #{start} and
+		rn &lt;= #{end}
+	</select>
+
+	<insert id="writeReply"
+		parameterType="com.fp.mio.product.ProductReply">
+		insert into product_reply
+		values(product_reply_seq.nextval,
+		#{r_p_no}, #{r_owner},
+		#{r_txt},
+		#{r_rate}, sysdate)
+	</insert>
+
+	<select id="getReply" parameterType="com.fp.mio.product.Product"
+		resultType="com.fp.mio.product.ProductReply">
+		select *
+		from product_reply
+		where r_p_no = #{p_num}
+	</select>
+
+	<insert id="regFood" parameterType="com.fp.mio.product.Product">
+		insert into product_master
+		values(product_master_seq.nextval,#{p_owner},#{p_name},
+		#{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+	</insert>
+
+	<insert id="regFashion"
+		parameterType="com.fp.mio.product.Product">
+		insert into product_master
+		values(product_master_seq.nextval,#{p_owner},#{p_name},
+		#{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+	</insert>
+
+	<insert id="regBeauty"
+		parameterType="com.fp.mio.product.Product">
+		insert into product_master
+		values(product_master_seq.nextval,#{p_owner},#{p_name},
+		#{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+	</insert>
+
+	<insert id="regLiving"
+		parameterType="com.fp.mio.product.Product">
+		insert into product_master
+		values(product_master_seq.nextval,#{p_owner},#{p_name},
+		#{p_price},#{p_brand},#{p_photo},#{p_content},#{p_quantity},#{p_category1},#{p_category2},#{p_date})
+	</insert>
+
+
+	<select id="getOrder" parameterType="com.fp.mio.account.Account" 
+	resultType="com.fp.mio.product.OrderDAO">
+	SELECT * FROM product_order , account_mio, product_master, product_orderItem
+	WHERE product_order.memberId = account_mio.a_id
+	AND product_orderItem.productId = product_master.p_num
+	AND	product_order.orderId = product_orderItem.orderId
+	AND	product_order.memberId = #{a_id}
+	order by orderDate desc
+	</select>
+
+<insert id="getProductorderbuy" parameterType="com.fp.mio.product.OrderDAO">
+ insert into product_order
+     values(#{orderId},#{memberId},#{memberAddr1},#{memberAddr2},#{orderState},sysdate)
+</insert>
+<insert id="getProductorderbuy2" parameterType="com.fp.mio.product.OrderDAOmain">
+ insert into product_orderItem
+     values(product_orderItem_seq.nextval,#{orderId},#{productId},#{productCount},#{productPrice})
+</insert>
+
+
+</mapper>

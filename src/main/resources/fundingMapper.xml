@@ -1,3 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.fp.mio.funding.FundingMapper"></mapper>
+<mapper namespace="com.fp.mio.funding.FundingMapper">
+
+<select id="getFundingCount"
+		parameterType="com.fp.mio.funding.FundingSelector"
+		resultType="java.lang.Integer">
+		select count(*)
+		from fundingTbl
+		where f_name like '%'||#{search}||'%' or f_company like '%'||#{search}||'%'
+
+	</select>
+	<select id="getFundingSearch"
+	parameterType="com.fp.mio.funding.FundingSelector"
+		resultType="com.fp.mio.funding.Funding">
+		select *
+		from (
+		select rownum as rn,f_num,f_owner,f_name,f_photo,f_company,
+		f_category,f_period,f_url
+		from (
+		select * from fundingTbl
+		where f_name like
+		'%'||#{search}||'%' or f_company like'%'||#{search}||'%'
+		order by f_date desc
+		)
+		)
+		where rn &gt;= #{start} and
+		rn &lt;= #{end}
+	</select>
+	
+	<select id="getFundingAll"
+		resultType="com.fp.mio.funding.Funding">
+		select * from fundingTbl
+	</select>
+
+	<delete id="deleteFunding"
+		parameterType="com.fp.mio.funding.Funding">
+		delete fundingTbl where f_num = #{f_num}
+	</delete>
+
+
+	<insert id="regFunding"
+		parameterType="com.fp.mio.funding.Funding">
+		insert into fundingTbl values
+		(fundingTbl_seq.nextval,#{f_owner},#{f_photo},#{f_name},#{f_company},#{f_category},#{f_period},#{f_url},sysdate)
+	</insert>
+
+	<select id="getFundingCategory" resultType="com.fp.mio.funding.Funding">
+
+		select * from fundingTbl where f_category=#{f_category}
+
+	</select>
+	<select id="getFundingtDetail" resultType="com.fp.mio.funding.Funding">
+
+		select * from fundingTbl where f_num=#{f_num}
+
+	</select>
+
+<update id="updateFunding" parameterType="com.fp.mio.funding.Funding">
+		update fundingTbl
+		set
+		f_photo=#{f_photo},f_name=#{f_name},f_company=#{f_company},
+		f_period=#{f_period},f_url=#{f_url}
+		where
+		f_num=#{f_num}
+	</update>
+</mapper>

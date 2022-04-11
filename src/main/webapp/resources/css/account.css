@@ -1,0 +1,271 @@
+@charset "UTF-8";
+
+#loginTable {
+	margin-bottom: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	width: 600px;
+	font-size: 15pt;
+}
+
+#joinTable {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#joinConfirmTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	font-size: 12pt;
+}
+
+#joinSelectTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	padding-top: 20px;
+}
+
+#accountInfoTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#accountDeleteTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#mypageTable {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#myzzimTable {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	font-size: 13pt;
+}
+
+#accountSearchTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#aSearchResultTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#sellerDetailTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#accountUpdateTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+}
+
+#gradeUpdateTbl {
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	font-size: 12pt;
+}
+
+#infoImg img {
+	padding-right: 100px;
+	width: 350px;
+}
+
+#zzimImg img {
+	padding-left: 100px;
+	width: 350px;
+}
+
+.infoTd{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 13pt;
+}
+.infoTd1{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	width:40%;
+	font-size: 13pt;
+	font-weight: bold;
+}
+
+#id {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-style: bold;
+}
+
+#pw {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#idBox {
+	margin-left: 30px;
+	height: 20px;
+}
+
+#passBox {
+	margin-left: 20px;
+	height: 20px;
+}
+
+#joinSearch {
+	padding-top: 10px;
+}
+
+.button {
+	margin-bottom: 20px;
+	margin-left: 15px;
+	margin-right: 15px;
+	margin-top: 20px;
+	background-color: #bed7cc;
+	border: 0;
+	outline: 0;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-weight: bold;
+	font-size: 12pt;
+}
+.smallbutton {
+	
+	background-color: #bed7cc;
+	border: 0;
+	outline: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+#cartTd{
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-weight: bold;
+	font-size: 14pt;
+}
+#cartbutton {
+	font-family: 'GmarketSansMedium';
+	background-color: #bed7cc;
+	border: 0;
+	outline: 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 11pt;
+}
+#gradebutton {
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	background-color: #bed7cc;
+	border: 0;
+	outline: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+.input{
+	height: 18px;
+}
+
+#joidTd{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#loginButton {
+
+	background-color: #137048;
+	color:white;
+	border: 0;
+	outline: 0;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 30px;
+	padding-right: 30px;
+	font-size: 13pt;
+	
+}
+
+#loginFailTbl{
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	font-size: 15pt;
+	font-weight: bold;
+	
+}
+#sellerJoinOkTbl{
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	
+}
+#joinTable{
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+
+}
+
+
+.padding{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#idpadding{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 70px;
+	padding-right: 20px;
+}
