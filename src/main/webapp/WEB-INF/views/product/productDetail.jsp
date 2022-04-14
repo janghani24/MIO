@@ -146,11 +146,11 @@ $(".btn_buy").on("click", function(){
 						<span> ${sessionScope.loginAccount.a_id } </span>
 						<input type="hidden" name="r_p_no" value="${detail.p_num}">
 						<div id="star">
-						<a href="#;" class="starR on" value="1">★</a>						
-						<a href="#;" class="starR" value="2">★</a>						
-						<a href="#;" class="starR" value="3">★</a>						
-						<a href="#;" class="starR" value="4">★</a>						
-						<a href="#;" class="starR" value="5">★</a>						
+						<a href="#;" value="1">★</a>						
+						<a href="#;" value="2">★</a>						
+						<a href="#;" value="3">★</a>						
+						<a href="#;" value="4">★</a>						
+						<a href="#;" value="5">★</a>						
 						</div>
 						</td></tr>
 						<tr><td>
