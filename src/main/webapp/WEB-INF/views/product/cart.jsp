@@ -42,7 +42,6 @@
 					<button onclick="deleteCart(${c.c_p_no})" id="cartbutton">삭제</button>
 				</td>
 			</tr>
-			<c:set var="totalprice" value="0" />
 		</c:forEach>
 		<tr>
 			<td id="cartTd">총 금액 =</td>
