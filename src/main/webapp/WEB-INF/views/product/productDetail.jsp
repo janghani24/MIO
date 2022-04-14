@@ -143,9 +143,8 @@ $(".btn_buy").on("click", function(){
 				<td colspan="2">
 				 <c:if test="${sessionScope.loginAccount != null }">
 					<form action="product.reply.write" name="productReply" onsubmit="return replyCheck();">
-						<span> ${sessionScope.loginAccount.a_id } </span> <input
-							type="hidden" name="token" value="${token }"> <input
-							type="hidden" name="r_p_no" value="${detail.p_num}">
+						<span> ${sessionScope.loginAccount.a_id } </span>
+						<input type="hidden" name="r_p_no" value="${detail.p_num}">
 						<div id="star">
 						<a href="#;" class="starR on" value="1">★</a>						
 						<a href="#;" class="starR" value="2">★</a>						
