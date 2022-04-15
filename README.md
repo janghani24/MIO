@@ -11,7 +11,7 @@
 
 # 2. 사용 기술
 * Java 14
-* Spring 1.6
+* Springframework 3.1.1
 * oracle 18c
 * Maven
 * javascript
@@ -51,7 +51,7 @@
 <details markdown="1">
 <summary>덧글기능 기능 설명 펼치기</summary>
 
-<img src="https://user-images.githubusercontent.com/90094696/163350342-931bee0f-889d-447b-a037-5e7531228fae.jpg" width="1000"/> 
+<img src="https://user-images.githubusercontent.com/90094696/163555952-eca08b80-8830-4898-86d6-11e53fd5efc2.jpg" width="1000"/> 
 
 * 덧글의 별점은 jQuery를 이용해 구현했습니다. 별점에 따른 숫자를 rate에 저장한 후 덧글을 불러올 때 저장된 rate에 따라 별점이 표시됩니다.
 
@@ -60,7 +60,7 @@
 <details markdown="1">
 <summary>장바구니 기능 설명 펼치기</summary>
 
-<img src="https://user-images.githubusercontent.com/90094696/163353480-a4129f12-ebf7-4366-84e8-48a64cd2711d.jpg" width="1000"/> 
+<img src="https://user-images.githubusercontent.com/90094696/163555997-a04696fe-3bab-4c83-80bc-cd3a4003d669.jpg" width="1000"/> 
 
 * 장바구니는 js를 이용해 컨트롤러로 이동하게 되는데 이 때 ajax로 장바구니에 넣는 비동기 요청을 보내고, location.href로 장바구니로 이동합니다.
 </details>
