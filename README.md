@@ -16,35 +16,51 @@
 * Maven
 * javascript
 
-# 3. 기능 설명
+# 3. 참고자료
+* [프로젝트 전체구조](https://drive.google.com/file/d/1voVVVPvcnnfWAr6dQFk5IZL15XypMqGR/view)    
+* [프로젝트 세부구조](https://drive.google.com/file/d/1sekZjojhVVqkqo02eQrnCGRvW7S-CBS7/view?usp=sharing)
+<details markdown="1">
+<summary>전체 DB</summary>
+
+![DB](https://user-images.githubusercontent.com/90094696/164127886-f750b5ba-4d9b-40f1-a5d1-6f2aa53dc811.png)
+
+</details>
+
+# 4. 기능 설명
 이 프로젝트에서 제가 맡은 부분은 회원과 관련된 로그인, 회원가입, 관리자페이지등과 상품 상세페이지의 덧글 기능, 장바구니 기능입니다.  
 
 <details markdown="1">
 <summary>회원관련 기능 설명 펼치기</summary>
 
 ### 1. 로그인
-<img src="https://user-images.githubusercontent.com/90094696/163195282-a01466ae-0e92-403e-9ac4-db3ee7956c26.jpg" width="1200"/> 
+![제목 없는 프레젠테이션 (2)](https://user-images.githubusercontent.com/90094696/164128108-03982315-9c43-4c52-b42c-7e2ae6838e27.jpg)
 
 * 로그인은 DB의 ID와 비밀번호가 일치한 경우에 세션을 얻어 회원 정보를 실었습니다.
 * 로그인이 실패할 경우를 구분하기위해 변수를 설정하고 return되는 변수의 값에 따라 이동하는 페이지를 다르게했습니다.
 
 ### 2. 회원가입 
-<img src="https://user-images.githubusercontent.com/90094696/163191268-03749c4c-6d8a-40f7-b9b0-902afc45921d.jpg" width="1200"/> 
+
+![제목 없는 프레젠테이션 (1)](https://user-images.githubusercontent.com/90094696/164128033-8dc2a64c-4caf-4bd2-bd95-c988b6762b46.jpg)
+
 
 * ID 중복체크에서는 ajax 비동기요청으로 입력값에 따른 결과를 표시해주었습니다.
 * 이 때 중복체크를 하지 않았을 경우 가입이 되지않도록 확인용 변수를 만들어 사용가능한 ID를 입력했을 경우에만 변수를 확인완료된 값으로 변경해주었습니다.
-* 다른 값들에는 js를 이용해 유효성검사를 해주었습니다.
+* 다른 값들에는 js를 이용해 유효성검사를 해주었습니다.   
+* 일반 회원의 경우 바로 회원DB에, 판매자의 경우 가입신청DB에 insert됩니다.   
 
 ### 3. 관리자페이지
 * 관리자 페이지는 등급조정과 가입승인 두가지 기능이 있습니다.
-<img src="https://user-images.githubusercontent.com/90094696/163345291-00b3fc92-345b-4cfa-994c-7dae1d4ff3b7.jpg" width="1200"/> 
+![제목 없는 프레젠테이션 (3)](https://user-images.githubusercontent.com/90094696/164128143-db6f75cc-a5fb-4cb0-8c96-c1c0162358dc.jpg)
+
 
 * 등급 조정에서는 ID와 변경할 등급의 정보를 실어서 컨트롤러로 보냅니다. 
-* pk인 ID로 where절을 만들어 등급을 수정해줍니다.
+* pk인 ID로 where절을 만들어 등급을 수정해줍니다.   
+* 이름과 ID로 검색을 할 수 있도록 했습니다.
 
-<img src="https://user-images.githubusercontent.com/90094696/163346833-d94a4d61-3410-443e-a215-3bc1013a46b8.jpg" width="1200"/> 
+![제목 없는 프레젠테이션 (4)](https://user-images.githubusercontent.com/90094696/164128177-30dfad08-47ca-48f4-9513-724660fc4abe.jpg)
 
-* 가입 승인은 신청목록에 있는 판매자의 정보들을 일반회원의 빈에 담아 일반회원으로 등록하고 기존의 신청목록에서 기록을 삭제합니다.
+* 가입 승인 리스트에서 자세히보기를 클릭하면 해당 신청자의 상세페이지로 이동합니다.   
+* 가입 승인은 신청목록에 있는 판매자의 정보들을 일반회원의 빈에 담아 일반회원으로 등록하고 기존의 신청목록에서 기록을 삭제합니다. 이 때 승인을 허가하면 사진은 그대로 남아 회원DB에 등록되고, 거절하면 사진파일을 삭제해줍니다.   
 
 ### 4. 마이페이지
 
@@ -52,33 +68,36 @@
 
 * 마이페이지에 접근시 로그인되어있는 세션에서 회원정보를 불러와 표시해줍니다.
 
-* 수정의 경우 pk값인 ID외의 값들을 수정할 수 있습니다.
+* 수정의 경우 pk값인 ID외의 값들을 수정할 수 있습니다. 수정 페이지에서 기존값을 value로 설정해 수정전 볼 수 있게했습니다.   
 
-* 탈퇴버튼을 누를 시 ID와 PW를 입력해야하고 현재 세션값의 정보와 입력값이 다를 경우 넘어가지않도록 javascript로 유효성겁사를 넣었습니다. 
+* 탈퇴버튼을 누를 시 ID와 PW를 입력해야하고 현재 세션의 ID와 PW의 정보와 입력값이 다를 경우 넘어가지않도록 javascript로 유효성겁사를 넣었습니다. 
 
 </details>
 
 <details markdown="1">
 <summary>덧글기능 기능 설명 펼치기</summary>
 
-<img src="https://user-images.githubusercontent.com/90094696/163555952-eca08b80-8830-4898-86d6-11e53fd5efc2.jpg" width="1000"/> 
+![제목 없는 프레젠테이션 (5)](https://user-images.githubusercontent.com/90094696/164128275-c78d313f-1c3d-4b2e-99a9-634b9714a4f6.jpg)
 
-* 덧글의 별점은 jQuery를 이용해 구현했습니다. 별점에 따른 숫자를 rate에 저장한 후 덧글을 불러올 때 저장된 rate에 따라 별점이 표시됩니다.
+
+* 덧글의 별점은 jQuery를 이용해 구현했습니다. 별점에 따른 숫자를 rate에 저장한 후 덧글을 불러올 때 저장된 rate에 따라 별점이 표시됩니다.   
+* 덧글은 상품pk를 외래키로 참고하고 on delete cascade를 이용해 상품이 사라질 경우 그 상품에 등록된 덧글도 같이 삭제되게했습니다.
 
 </details>
 
 <details markdown="1">
 <summary>장바구니 기능 설명 펼치기</summary>
 
-<img src="https://user-images.githubusercontent.com/90094696/163555997-a04696fe-3bab-4c83-80bc-cd3a4003d669.jpg" width="1000"/> 
+![제목 없는 프레젠테이션 (6)](https://user-images.githubusercontent.com/90094696/164128317-3c2a5554-052a-47c7-9fe3-73caa6943cc1.jpg)
 
-* 장바구니는 js를 이용해 컨트롤러로 이동하게 되는데 이 때 ajax로 장바구니에 넣는 비동기 요청을 보내고, location.href로 장바구니로 이동합니다.
+* 장바구니는 js를 이용해 컨트롤러로 이동하게 되는데 이 때 ajax로 장바구니에 넣는 비동기 요청을 보내고, location.href로 장바구니로 이동합니다.   
+* Session의 사용자 ID를 이용해 cart DB에 상품pk, 가격등의 정보를 등록합니다. ID와 상품pk를 외래키로 참고하며 on delete cascade를 이용해 탈퇴하거나 상품이 삭제되면 장바구니에서도 삭제되게했습니다.
 </details>
 
-# 4. 트러블 슈팅
+# 5. 트러블 슈팅
 * 장바구니 기능을 만들 때 처음에는 js에서 장바구니에 넣는 것과 이동을 모두 location.href로 처리했었습니다. 그러나 충돌이 일어나 장바구니에 넣는 것은 기능하나 이동이 제대로 되지않았습니다. 그래서 ajax를 이용해 비동기요청으로 바꾸어 충돌을 피했습니다.
 * 4가지의 카테고리의 검색결과나 수정페이지를 만들 때 기존에는 각각의 카테고리마다 페이지를 만들었었습니다. 그렇게 만드니 페이지가 너무 많아지고 컨트롤러에서도 너무 복잡하다고 느꼈습니다. 그래서 DAO에서 카테고리 변수를 만들고 검색이나 수정페이지에서 DB의 컬럼수가 다른 fashion이외에는 변수에 따라 내용을 다르게 했습니다. 
 * 가입승인을 하거나 거절을 할 때 신청목록 DB에서 삭제를 할 때 같은 메서드를 사용했었습니다. 그런데 이 때 사진파일을 삭제하는 기능을 잊어 이를 추가하려할 때, 승인을 할 시에는 사진이 삭제돼 일반회원으로 바뀌었을 때 사진이 나오지않았습니다. 그래서 승인을 거절할 때와 승인 할 때를 나누어 각각 다른 메서드를 사용했습니다. 해결은 했으나 더 효율적인 방법이 있을것같아 조금 아쉬움이 남는 부분입니다.
 
-# 5. 느낀 점
+# 6. 느낀 점
 > 프로젝트 후 느끼점 : https://velog.io/@gksml24/팀-프로젝트-후-회고
