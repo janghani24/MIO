@@ -22,9 +22,9 @@ public interface AccountMapper {
 
 	Seller getSellerById(Seller s);
 
-	int IdCheck(String a_id);
+	int idCheck(String a_id);
 
-	int IdCheckS(String a_id);
+	int idCheckS(String a_id);
 
 	int deleteAccountS(Seller s);
 
