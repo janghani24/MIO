@@ -12,7 +12,7 @@
 # 2. 사용 기술
 * Java 14
 * Springframework 3.1.1
-* oracle 18c
+* Oracle 18c
 * Maven
 * JavaScript
 
