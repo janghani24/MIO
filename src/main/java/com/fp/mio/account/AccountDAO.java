@@ -51,7 +51,7 @@ public class AccountDAO {
 		if (dbAccount != null) {
 			if (a.getA_pw().equals(dbAccount.getA_pw())) {
 				req.getSession().setAttribute("loginAccount", dbAccount);
-				req.getSession().setMaxInactiveInterval(60 * 1000);	//개인적으로수정
+				req.getSession().setMaxInactiveInterval(60 * 1000);	
 				req.setAttribute("result", "0");
 			} else {
 				req.setAttribute("result", "1");//pw오류
@@ -80,7 +80,7 @@ public class AccountDAO {
 	
 	
 	
-	// 일반 회원 가입(판매자와 합칠 방법 생각해야함)
+	// 일반 회원 가입
 	public void joinGeneral(Account a, HttpServletRequest req) {
 
 		String path = req.getSession().getServletContext().getRealPath("resources/img_account");
@@ -89,7 +89,7 @@ public class AccountDAO {
 			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("result", "가입실패");
+			req.setAttribute("result", "가입실패"); // 확인용
 			return;
 		}
 
@@ -109,11 +109,6 @@ public class AccountDAO {
 			join_photo = URLEncoder.encode(join_photo, "utf-8");
 			join_photo = join_photo.replace("+", " ");
 			
-			System.out.println(join_id);
-			System.out.println(join_grade);
-			
-			
-			
 			a.setA_id(join_id);
 			a.setA_pw(join_pw);
 			a.setA_name(join_name);
@@ -126,7 +121,7 @@ public class AccountDAO {
 			a.setA_answer(join_answer);
 			
 			if (ss.getMapper(AccountMapper.class).joinGeneral(a) == 1) {
-				req.setAttribute("result", "가입성공");
+				req.setAttribute("result", "가입성공"); 
 			} else {
 				req.setAttribute("result", "가입실패");
 			}
@@ -147,7 +142,7 @@ public class AccountDAO {
 			mr = new MultipartRequest(req, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("result", "가입실패");
+			req.setAttribute("result", "가입실패"); // 확인용
 			return;
 		}
 		
@@ -218,21 +213,20 @@ public class AccountDAO {
 
 				logout(req);
 				loginCheck(req);
+				
+				req.setAttribute("result","탈퇴 성공"); // 확인용	
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
+			req.setAttribute("result","탈퇴 실패");
 		}
 	}
 	
 	// 회원 등급 조정
 	public void updateGrade(Account a,HttpServletRequest req) {
 		
-		System.out.println(req.getParameter("a_id"));
-		System.out.println(req.getParameter("a_grade"));
-		
-		
 		if (ss.getMapper(AccountMapper.class).updateGrade(a) == 1) {
-			req.setAttribute("result", "수정성공");
+			req.setAttribute("result", "수정성공");  // 확인용
 			
 		} else {
 			req.setAttribute("result", "수정실패");
@@ -258,7 +252,7 @@ public class AccountDAO {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			req.setAttribute("result", "수정실패");
+			req.setAttribute("result", "수정실패");  // 확인용
 			return;
 		}
 		try {
@@ -280,7 +274,7 @@ public class AccountDAO {
 			a.setA_phone(join_phone);
 
 			if (ss.getMapper(AccountMapper.class).updateAccount(a) == 1) {
-				req.setAttribute("result", "수정성공");
+				req.setAttribute("result", "수정성공"); // 확인용
 				a = ss.getMapper(AccountMapper.class).getAccountByID(a);
 				req.getSession().setAttribute("loginAccount", a);
 				if (!oldFile.equals(newFile)) {
@@ -337,11 +331,9 @@ public class AccountDAO {
 
 		req.setAttribute("accounts", accounts);
 		req.setAttribute("curPage", pageNo);
-		
-		
-		
-		
 	}
+	
+	// 회원 정보를 등급별로 가져오기
 	public void getAccount(HttpServletRequest req) {
 	try {
 		req.setAttribute("accounts", ss.getMapper(AccountMapper.class).getAccount());
@@ -361,7 +353,7 @@ public class AccountDAO {
 	}
 
 
-	// 판매자 id로 가져오기
+	// 신청 중인 판매자를 id로 가져오기
 	public void getSellerById(Seller s,HttpServletRequest req) {
 		try {
 			req.setAttribute("sellers", ss.getMapper(AccountMapper.class).getSellerById(s));
@@ -384,7 +376,7 @@ public class AccountDAO {
 		a.setA_answer(sss.getS_answer());
 		
 		if (ss.getMapper(AccountMapper.class).joinGeneral(a) == 1) {
-			req.setAttribute("result", "가입성공");
+			req.setAttribute("result", "가입성공"); // 확인용
 		} else {
 			req.setAttribute("result", "가입실패");
 		}
@@ -396,8 +388,8 @@ public class AccountDAO {
 		int result1;
 		int result2;
 		
-		result1 = ss.getMapper(AccountMapper.class).IdCheck(a_id);
-		result2 = ss.getMapper(AccountMapper.class).IdCheckS(a_id);
+		result1 = ss.getMapper(AccountMapper.class).IdCheck(a_id); // 일반 회원 목록 중에서
+		result2 = ss.getMapper(AccountMapper.class).IdCheckS(a_id); // 가입 신청 목록 중에서
 		
 		int result;
 		if (result1 == 1 || result2 == 1) {
@@ -417,32 +409,29 @@ public class AccountDAO {
 			Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
 			String join_photo = sss.getS_img();
 		if (ss.getMapper(AccountMapper.class).deleteAccountS(s) == 1) {
-			req.setAttribute("result", "탈퇴성공");
+			req.setAttribute("result", "승인 거절 완료"); // 확인용
 
 			String path = req.getSession().getServletContext().getRealPath("resources/img_account");
-			// 확인용
-			System.out.println(join_photo);
 			
 			join_photo = URLDecoder.decode(join_photo, "utf-8");
 			new File(path + "/" + join_photo).delete();
 
 	}
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 }
+	
 	// 승인신청에서 삭제
 	public void deleteSellerjoin(Seller s,HttpServletRequest req) {
 		try {
 			Seller sss =ss.getMapper(AccountMapper.class).getSellerById(s);
 			if (ss.getMapper(AccountMapper.class).deleteAccountS(s) == 1) {
-				req.setAttribute("result", "탈퇴성공");
+				req.setAttribute("result", "삭제 성공"); // 확인용
 				
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
