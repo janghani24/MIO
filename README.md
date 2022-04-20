@@ -14,7 +14,7 @@
 * Springframework 3.1.1
 * oracle 18c
 * Maven
-* javascript
+* JavaScript
 
 # 3. 참고자료
 * [프로젝트 전체구조](https://drive.google.com/file/d/1voVVVPvcnnfWAr6dQFk5IZL15XypMqGR/view)    
