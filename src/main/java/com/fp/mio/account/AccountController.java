@@ -22,20 +22,19 @@ public class AccountController {
 	private ProductDAO pDAO;
 	
 	
-	
+	// 로그인페이지로
 	@RequestMapping(value = "/account.login.go", method = RequestMethod.GET)
 	public String goLogin(Account a, HttpServletRequest req) {
 		
-		// 로그인페이지로
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/login.jsp");
 		return "index";
 	}
 	
+	// 로그인
 	@RequestMapping(value = "/account.login", method = RequestMethod.POST)
-	public String home(Account a, HttpServletRequest req) {
+	public String login(Account a, HttpServletRequest req) {
 		
-		// 로그인
 		aDAO.login(a, req);
 		aDAO.loginCheck(req);
 		String result = (String)req.getAttribute("result");
@@ -49,10 +48,10 @@ public class AccountController {
 		return "index";
 	}
 	
-	
+	// 로그아웃
 	@RequestMapping(value = "/account.logout", method = RequestMethod.GET)
 	public String logout(Account a, HttpServletRequest req) {
-		// 로그 아웃
+
 		aDAO.logout(req);
 		aDAO.loginCheck(req);
 		pDAO.getProductrandom(req);
@@ -61,114 +60,112 @@ public class AccountController {
 	}
 	
 	//페이지 이동(등급조정)
-		@RequestMapping(value = "/account.paging", method = RequestMethod.GET)
-		public String accountPageChange(HttpServletRequest request,AccountSelector as) {
-			int p = Integer.parseInt(request.getParameter("p"));
-			aDAO.loginCheck(request);
-			if (request.getParameter("search")!=null) {
-				aDAO.AccountSearch(as, request);
-			}
-			aDAO.getAllAccount(p, request);
-			request.setAttribute("contentPage", "account/updateGrade.jsp");
-			return "index";
-		}
-	//검색(등급조정)
-		@RequestMapping(value = "/account.search", method = RequestMethod.GET)
-		public String accountSearch(HttpServletRequest request, AccountSelector as) {
-
-			
-			aDAO.loginCheck(request);
+	@RequestMapping(value = "/account.paging", method = RequestMethod.GET)
+	public String accountPageChange(HttpServletRequest request,AccountSelector as) {
+		int p = Integer.parseInt(request.getParameter("p"));
+		aDAO.loginCheck(request);
+		if (request.getParameter("search")!=null) {
 			aDAO.AccountSearch(as, request);
-			aDAO.getAllAccount(1, request);
-
-			request.setAttribute("contentPage", "account/updateGrade.jsp");
-			return "index";
-
 		}
+		aDAO.getAllAccount(p, request);
+		request.setAttribute("contentPage", "account/updateGrade.jsp");
+		return "index";
+	}
+	
+	//검색(등급조정)
+	@RequestMapping(value = "/account.search", method = RequestMethod.GET)
+	public String accountSearch(HttpServletRequest request, AccountSelector as) {
+
+		aDAO.loginCheck(request);
+		aDAO.AccountSearch(as, request);
+		aDAO.getAllAccount(1, request);
+
+		request.setAttribute("contentPage", "account/updateGrade.jsp");
+		return "index";
+
+	}
 		
-		
+	// id 찾기 페이지로	
 	@RequestMapping(value = "/account.searchId.go", method = RequestMethod.GET)
 	public String goSearchId(HttpServletRequest req) {
 		
-		// id 찾기 페이지로
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/searchId.jsp");
 		return "index";
 	}
 	
+	// id찾기 결과
 	@RequestMapping(value = "/account.searchId", method = RequestMethod.GET)
 	public String searchId(Account a, HttpServletRequest req) {
 		
-		// id찾기 결과
 		aDAO.loginCheck(req);
 		aDAO.idSearch(a,req);
 		req.setAttribute("contentPage", "account/searchIdResult.jsp");
 		return "index";
 	}
 	
+	// pw 찾기 페이지로
 	@RequestMapping(value = "/account.searchPw.go", method = RequestMethod.GET)
 	public String goSearchPw(HttpServletRequest req) {
 		
-		// pw 찾기 페이지로
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/searchPw.jsp");
 		return "index";
 	}
 	
+	// pw찾기 결과
 	@RequestMapping(value = "/account.searchPw", method = RequestMethod.GET)
 	public String searchPw(Account a, HttpServletRequest req) {
-		
-		// pw찾기 결과
+	
 		aDAO.loginCheck(req);
 		aDAO.pwSearch(a,req);
 		req.setAttribute("contentPage", "account/searchPwResult.jsp");
 		return "index";
 	}
 	
+	//회원 가입 유형선택 화면으로
 	@RequestMapping(value = "/account.join.go", method = RequestMethod.GET)
-	public String JoinGo(HttpServletRequest req) {
-		//회원 가입 유형선택 화면으로
+	public String joinGo(HttpServletRequest req) {
+	
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/joinSelect.jsp");
 		return "index";
 	}
 	
-	
+	//일반 회원 가입 화면으로
 	@RequestMapping(value = "/account.join.go.general", method = RequestMethod.GET)
-	public String JoinGoGeneral(HttpServletRequest req) {
-		//일반 회원 가입 화면으로
+	public String joinGoGeneral(HttpServletRequest req) {
+		
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/join_general.jsp");
 		return "index";
 	}
 	
-	
+	//판매자 회원 가입 화면으로
 	@RequestMapping(value = "/account.join.go.seller", method = RequestMethod.GET)
-	public String JoinGoSeller(HttpServletRequest req) {
-		//판매자 회원 가입 화면으로
+	public String joinGoSeller(HttpServletRequest req) {
+		
 		aDAO.loginCheck(req);
 		req.setAttribute("contentPage", "account/join_seller.jsp");
 		return "index";
 	}
 
-
+	// 회원 가입(일반)
 	@RequestMapping(value = "/account.join.general", method = RequestMethod.POST)
 	public String memberJoinGeneral(Account a, HttpServletRequest req) {
-		// 회원 가입(일반)
 		
 		aDAO.loginCheck(req);
 		
-			aDAO.joinGeneral(a,req);
-			pDAO.getProductrandom(req);
-			req.setAttribute("contentPage", "home.jsp");
+		aDAO.joinGeneral(a,req);
+		pDAO.getProductrandom(req);
+		req.setAttribute("contentPage", "home.jsp");
 		
 		return "index";
 	}
 	
+	// 회원 가입(판매자)
 	@RequestMapping(value = "/account.join.seller", method = RequestMethod.POST)
 	public String memberJoinSeller(HttpServletRequest req, Seller s) {
-		// 회원 가입(판매자)
-		//가입,신청 완료 페이지 만들기
 		
 		aDAO.loginCheck(req);
 		
@@ -177,10 +174,11 @@ public class AccountController {
 		
 		return "index";
 	}
-
+	
+	// 마이페이지
 	@RequestMapping(value = "/account.mypage", method = RequestMethod.GET)
-	public String AccountMypage(HttpServletRequest req) {
-		// 마이페이지
+	public String accountMypage(HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			req.setAttribute("contentPage", "account/mypage.jsp");
 		} else {
@@ -189,9 +187,11 @@ public class AccountController {
 		}
 		return "index";
 	}
+	
+	// 내 정보페이지
 	@RequestMapping(value = "/account.info", method = RequestMethod.GET)
-	public String AccountInfo(HttpServletRequest req) {
-		// 내 정보페이지
+	public String accountInfo(HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.splitAddr(req);
 			req.setAttribute("contentPage", "account/info.jsp");
@@ -202,9 +202,10 @@ public class AccountController {
 		return "index";
 	}
 
+	// 내 정보 수정 페이지로
 	@RequestMapping(value = "/account.update.go", method = RequestMethod.GET)
-	public String AccountUpdateGo(Account a, HttpServletRequest req) {
-		// 내 정보 수정 페이지로
+	public String accountUpdateGo(Account a, HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.splitAddr(req);
 			req.setAttribute("contentPage", "account/update.jsp");
@@ -214,9 +215,11 @@ public class AccountController {
 		}
 		return "index";
 	}
+	
+	// 내 정보 수정
 	@RequestMapping(value = "/account.update", method = RequestMethod.POST)
-	public String AccountUpdate(Account a, HttpServletRequest req) {
-		// 내 정보 수정
+	public String accountUpdate(Account a, HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.updateAccount(a, req);
 			aDAO.splitAddr(req);
@@ -228,8 +231,9 @@ public class AccountController {
 		return "index";
 	}
 	
+	// 등급 조정
 	@RequestMapping(value = "/account.updategrade", method = RequestMethod.GET)
-	public String GradeUpdate(Account a, HttpServletRequest req) {
+	public String gradeUpdate(Account a, HttpServletRequest req) {
 		if (aDAO.loginCheck(req)) {
 			aDAO.updateGrade(a,req);
 			aDAO.getAllAccount(1, req);
@@ -240,9 +244,11 @@ public class AccountController {
 		}
 		return "index";
 	}
+	
+	// 등급 조정 페이지로
 	@RequestMapping(value = "/account.updategrade.go", method = RequestMethod.GET)
-	public String GradeUpdateGo(HttpServletRequest req) {
-		// 등급 조정 페이지로
+	public String gradeUpdateGo(HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.calcAllACount();
 			aDAO.getAllAccount(1, req);
@@ -253,9 +259,11 @@ public class AccountController {
 		}
 		return "index";
 	}
+	
+	// 가입 승인 페이지로
 	@RequestMapping(value = "/account.join.confirm.go", method = RequestMethod.GET)
-	public String JoinConfirmGo(HttpServletRequest req) {
-		// 가입 승인 페이지로
+	public String joinConfirmGo(HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.getSeller(req);
 			req.setAttribute("contentPage", "account/joinConfirm.jsp");
@@ -265,9 +273,11 @@ public class AccountController {
 		}
 		return "index";
 	}
+	
+	// 판매자 상세 페이지로
 	@RequestMapping(value = "/account.sellerDetail", method = RequestMethod.GET)
-	public String SellerDetail(Seller s, HttpServletRequest req) {
-		// 판매자 상세 페이지로
+	public String sellerDetail(Seller s, HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.getSellerById(s,req);
 			aDAO.splitAddr(req);
@@ -278,9 +288,11 @@ public class AccountController {
 		}
 		return "index";
 	}
+	
+	// 판매자 승인
 	@RequestMapping(value = "/account.sellerJoin.do", method = RequestMethod.GET)
-	public String SellerJoin(Account a,Seller s, HttpServletRequest req) {
-		// 판매자 승인
+	public String sellerJoin(Account a,Seller s, HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.sellerToAccount(a,s, req);
 			aDAO.deleteSellerjoin(s, req);
@@ -293,9 +305,10 @@ public class AccountController {
 		return "index";
 	}
 	
+	// 판매자 거절
 	@RequestMapping(value = "/account.sellerReject.do", method = RequestMethod.GET)
-	public String SellerReject(Account a,Seller s, HttpServletRequest req) {
-		// 판매자 거절
+	public String sellerReject(Account a,Seller s, HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.deleteSellerjoinPhoto(s, req);
 			aDAO.getSeller(req);
@@ -307,11 +320,10 @@ public class AccountController {
 		return "index";
 	}
 	
-	
-	
+	// 탈퇴
 	@RequestMapping(value = "/account.delete", method = RequestMethod.GET)
-	public String AccountDelete(HttpServletRequest req) {
-		// 탈퇴
+	public String accountDelete(HttpServletRequest req) {
+		
 		if (aDAO.loginCheck(req)) {
 			aDAO.deleteAccount(req);
 			pDAO.getProductrandom(req);
@@ -321,36 +333,34 @@ public class AccountController {
 		return "index";
 	}
 	
+	// id 중복체크
 	@RequestMapping(value = "/account.idCheck", method = RequestMethod.GET)
 	@ResponseBody
-	public int IdCheck(@RequestParam("a_id") String a_id, HttpServletRequest req) {
-		// id 중복체크
-		aDAO.loginCheck(req);
+	public int idCheck(@RequestParam("a_id") String a_id, HttpServletRequest req) {
 		
-		
+		aDAO.loginCheck(req);	
 		return aDAO.idCheck(a_id,req);
 	}
 	
+	// 탈퇴페이지로
 	@RequestMapping(value = "/account.delete.go", method = RequestMethod.GET)
-	public String AccountDeleteGo(HttpServletRequest req) {
-		// 탈퇴페이지로
+	public String accountDeleteGo(HttpServletRequest req) {
+		
 		aDAO.loginCheck(req);
 			
-		
 		req.setAttribute("contentPage", "account/deleteAccount.jsp");
 		return "index";
 	}
 	
 	//찜사이트로 이동
 	@RequestMapping(value = "account.Wishlist", method = RequestMethod.GET)
-	public String AccountWishlist(HttpServletRequest req) {
+	public String accountWishlist(HttpServletRequest req) {
 		
 		pDAO.getAccount(req);
 		if (aDAO.loginCheck(req)) {
 			
 			pDAO.showzzim(req);	//찜한거 보여주는기능
 			
-		
 		}
 		
 		req.setAttribute("contentPage", "account/myZzim.jsp");
@@ -358,50 +368,19 @@ public class AccountController {
 	}
 	
 	// 찜 삭제
-		@RequestMapping(value = "account.deletezzim", method = RequestMethod.GET)
-		public String Accountdeletezzim(HttpServletRequest req, Zzim zzim) {
+	@RequestMapping(value = "account.deletezzim", method = RequestMethod.GET)
+	public String accountdeletezzim(HttpServletRequest req, Zzim zzim) {
 			
-			aDAO.getAccount(req);
-			
-		
-			
-			if (aDAO.loginCheck(req)) {
-			pDAO.deletezzim(zzim, req);	//찜한거 삭제하는기능
-				pDAO.showzzim(req);		//찜한거 보여주는기능
-			}
-
-			req.setAttribute("contentPage", "account/myZzim.jsp");
-			return "index";
-
-		}
-	
-		//찜삭제 2 해결함
-		@RequestMapping(value = "account.deletezzim2", method = RequestMethod.GET)
-		public String Accountdeletezzim2(HttpServletRequest req,Zzim zzim,Product p) {
-			
-			aDAO.getAccount(req);
+		aDAO.getAccount(req);
 				
-			if (aDAO.loginCheck(req)) {
-				pDAO.deletezzim(zzim, req);	//찜한거 삭제하는기능
-				
-			}
-			System.out.println(p.getP_num());
-			req.setAttribute("detail", pDAO.getProductDetail(req, p));
-			req.setAttribute("contentPage", "product/productDetail.jsp");
-			return "index";
+		if (aDAO.loginCheck(req)) {
+		pDAO.deletezzim(zzim, req);	//찜한거 삭제하는기능
+		pDAO.showzzim(req);		//찜한거 보여주는기능
 		}
 
+		req.setAttribute("contentPage", "account/myZzim.jsp");
+		return "index";
 
-		
-		
-		
-		
-
-
-		
-				
-		
-		
-		
+	}
 		
 }
