@@ -388,8 +388,8 @@ public class AccountDAO {
 		int result1;
 		int result2;
 		
-		result1 = ss.getMapper(AccountMapper.class).IdCheck(a_id); // 일반 회원 목록 중에서
-		result2 = ss.getMapper(AccountMapper.class).IdCheckS(a_id); // 가입 신청 목록 중에서
+		result1 = ss.getMapper(AccountMapper.class).idCheck(a_id); // 일반 회원 목록 중에서
+		result2 = ss.getMapper(AccountMapper.class).idCheckS(a_id); // 가입 신청 목록 중에서
 		
 		int result;
 		if (result1 == 1 || result2 == 1) {
