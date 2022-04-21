@@ -79,7 +79,8 @@
 <details markdown="1">
 <summary>덧글기능 기능 설명 펼치기</summary>
 
-![제목 없는 프레젠테이션 (5)](https://user-images.githubusercontent.com/90094696/164128275-c78d313f-1c3d-4b2e-99a9-634b9714a4f6.jpg)
+![제목 없는 프레젠테이션](https://user-images.githubusercontent.com/90094696/164352845-878b6bd8-7c2a-465d-a31f-5928b3fa4519.jpg)
+
 
 
 * 덧글의 별점은 jQuery를 이용해 구현했습니다. 별점에 따른 숫자를 rate에 저장한 후 덧글을 불러올 때 저장된 rate에 따라 별점이 표시됩니다.   
@@ -90,7 +91,8 @@
 <details markdown="1">
 <summary>장바구니 기능 설명 펼치기</summary>
 
-![제목 없는 프레젠테이션 (6)](https://user-images.githubusercontent.com/90094696/164128317-3c2a5554-052a-47c7-9fe3-73caa6943cc1.jpg)
+![제목 없는 프레젠테이션 (1)](https://user-images.githubusercontent.com/90094696/164352885-41455502-27da-4536-b401-341444fd2c22.jpg)
+
 
 * 장바구니는 js를 이용해 컨트롤러로 이동하게 되는데 이 때 ajax로 장바구니에 넣는 비동기 요청을 보내고, location.href로 장바구니로 이동합니다.   
 * Session의 사용자 ID를 이용해 cart DB에 상품pk, 가격등의 정보를 등록합니다. ID와 상품pk를 외래키로 참고하며 on delete cascade를 이용해 탈퇴하거나 상품이 삭제되면 장바구니에서도 삭제되게했습니다.
