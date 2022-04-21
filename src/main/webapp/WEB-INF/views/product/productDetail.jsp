@@ -123,7 +123,7 @@ $(".btn_buy").on("click", function(){
 		<tr>
 			<td colspan="2" id="pdReply"><c:forEach var="pr" items="${replys}">
 					<span>${pr.r_owner}</span>
-				<span class="starR1" value='${pr.r_rate}'></span>
+				<span class="starRate" value='${pr.r_rate}'></span>
 						-&nbsp;${pr.r_txt }&nbsp;
 						<span>(<fmt:formatDate
 							value="${pr.r_date}" type="both" dateStyle="short"
