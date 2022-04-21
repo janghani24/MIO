@@ -337,16 +337,16 @@ public class AccountDAO {
 
 	// 판매자를 회원에 등록하기
 	public void sellerToAccount(Account account, Seller seller, HttpServletRequest request) {
-		Seller sss = ss.getMapper(AccountMapper.class).getSellerById(seller);
-		account.setA_id(sss.getA_s_id());
-		account.setA_pw(sss.getS_pw());
-		account.setA_name(sss.getS_name());
-		account.setA_addr(sss.getS_addr());
-		account.setA_phone(sss.getS_phone());
-		account.setA_img(sss.getS_img());
-		account.setA_grade(sss.getS_grade());
-		account.setA_question(sss.getS_question());
-		account.setA_answer(sss.getS_answer());
+		Seller sellerApproved = ss.getMapper(AccountMapper.class).getSellerById(seller);
+		account.setA_id(sellerApproved.getA_s_id());
+		account.setA_pw(sellerApproved.getS_pw());
+		account.setA_name(sellerApproved.getS_name());
+		account.setA_addr(sellerApproved.getS_addr());
+		account.setA_phone(sellerApproved.getS_phone());
+		account.setA_img(sellerApproved.getS_img());
+		account.setA_grade(sellerApproved.getS_grade());
+		account.setA_question(sellerApproved.getS_question());
+		account.setA_answer(sellerApproved.getS_answer());
 
 		if (ss.getMapper(AccountMapper.class).joinGeneral(account) == 1) {
 			request.setAttribute("result", "가입성공"); // 확인용
