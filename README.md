@@ -91,7 +91,8 @@
 <details markdown="1">
 <summary>장바구니 기능 설명 펼치기</summary>
 
-![제목 없는 프레젠테이션 (1)](https://user-images.githubusercontent.com/90094696/164352885-41455502-27da-4536-b401-341444fd2c22.jpg)
+
+![제목 없는 프레젠테이션 (2)](https://user-images.githubusercontent.com/90094696/164352961-b609a72c-56d6-484f-9237-4e28c7bed196.jpg)
 
 
 * 장바구니는 js를 이용해 컨트롤러로 이동하게 되는데 이 때 ajax로 장바구니에 넣는 비동기 요청을 보내고, location.href로 장바구니로 이동합니다.   
