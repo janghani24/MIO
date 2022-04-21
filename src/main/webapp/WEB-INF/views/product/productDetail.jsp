@@ -139,31 +139,35 @@ $(".btn_buy").on("click", function(){
 					<tr>
 					<td colspan="2" id="replytd">
 				<table id="replywriteTbl">
-				<tr>
-				<td colspan="2">
-				 <c:if test="${sessionScope.loginAccount != null }">
-					<form action="product.reply.write" name="productReply" onsubmit="return replyCheck();">
-						<span> ${sessionScope.loginAccount.a_id } </span>
-						<input type="hidden" name="r_p_no" value="${detail.p_num}">
-						<div id="star">
-						<a href="#;" value="1">★</a>						
-						<a href="#;" value="2">★</a>						
-						<a href="#;" value="3">★</a>						
-						<a href="#;" value="4">★</a>						
-						<a href="#;" value="5">★</a>						
-						</div>
-						</td></tr>
-						<tr><td>
-						<textarea name="r_txt" maxlength="300" autocomplete="off" placeholder="300자 이내로 작성해주세요." id="replytxt"
-						rows="5" cols="40"></textarea>
-						<input type="hidden" name="r_rate" value="1">
-						</td><td>
+					<tr>
+						<td colspan="2">
+				 			<c:if test="${sessionScope.loginAccount != null }">
+								<form action="product.reply.write" name="productReply" onsubmit="return replyCheck();">
+									<span> ${sessionScope.loginAccount.a_id } </span>
+									<input type="hidden" name="r_p_no" value="${detail.p_num}">
+									<div id="star">
+										<a href="#;" value="1">★</a>						
+										<a href="#;" value="2">★</a>						
+										<a href="#;" value="3">★</a>						
+										<a href="#;" value="4">★</a>						
+										<a href="#;" value="5">★</a>						
+									</div>
+						</td>
+					 </tr>
+						<tr>
+							<td>
+								<textarea name="r_txt" maxlength="300" autocomplete="off" placeholder="300자 이내로 작성해주세요." id="replytxt"
+								rows="5" cols="40"></textarea>
+								<input type="hidden" name="r_rate" value="1">
+							</td>
+								<td>
 						<button name="p_num" value="${detail.p_num}" id="replybutton">쓰기</button>
 					</form>
 				</c:if>
-						</td></tr>
-</table>
-				</td>
+								</td>
+						</tr>
+				</table>
+			</td>
 		</tr>
 
 
