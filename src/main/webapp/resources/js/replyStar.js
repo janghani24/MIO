@@ -10,32 +10,26 @@ $(function () {
 		  return false;
 		});
 	
-	let aa;
-	$('.starR1').each(function (i,s) {
-		aa = $(this).attr('value');
-		let aaa = $('<span class="starR22"></span>')
+	let rate;
+	$('.starRate').each(function (i,s) {
+		rate = $(this).attr('value');
+		let starResult = $('<span class="starRateResult"></span>')
 		
-		console.log(aa);
-		if(aa == 1){
-			 $(this).append(aaa)
-			 aaa.text('★☆☆☆☆')
-		}else if(aa == 2){
-			 $(this).append(aaa)
-			 aaa.text('★★☆☆☆')
-		}else if(aa == 3){
-			 $(this).append(aaa)
-			 aaa.text('★★★☆☆')
-		}else if(aa == 4){
-			 $(this).append(aaa)
-			 aaa.text('★★★★☆')
-		}else if(aa == 5){
-			 $(this).append(aaa)
-			 aaa.text('★★★★★')
-			
+		if(rate == 1){
+			 $(this).append(starResult)
+			 starResult.text('★☆☆☆☆')
+		}else if(rate == 2){
+			 $(this).append(starResult)
+			 starResult.text('★★☆☆☆')
+		}else if(rate == 3){
+			 $(this).append(starResult)
+			 starResult.text('★★★☆☆')
+		}else if(rate == 4){
+			 $(this).append(starResult)
+			 starResult.text('★★★★☆')
+		}else if(rate == 5){
+			 $(this).append(starResult)
+			 starResult.text('★★★★★')
 		}
-		
 	});
-	
-	
-	
 });
