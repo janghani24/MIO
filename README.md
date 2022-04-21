@@ -14,6 +14,7 @@
 * Springframework 3.1.1
 * Oracle 18c
 * Maven
+* Mybatis
 * JavaScript
 
 # 3. 참고자료
