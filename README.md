@@ -337,7 +337,8 @@ public void updateAccount(Account account, HttpServletRequest request) {
 <details markdown="1">
 <summary>덧글기능 기능 설명 펼치기</summary>
 
-![제목 없는 프레젠테이션 (6)](https://user-images.githubusercontent.com/90094696/164472458-fe49597b-365c-45bc-9dd1-279462ffcddf.jpg)
+![제목 없는 프레젠테이션 (7)](https://user-images.githubusercontent.com/90094696/164476459-51c2d869-d877-4558-b4d8-09de4b111f22.jpg)
+
 
 <details markdown="1">
 <summary>jQuery</summary>
@@ -355,27 +356,26 @@ $(function () {
 		  return false;
 		});
 	
-	let aa;
+	let rate;
 	$('.starRate').each(function (i,s) {
-		aa = $(this).attr('value');
-		let aaa = $('<span class="starR22"></span>')
+		rate = $(this).attr('value');
+		let starResult = $('<span class="starRateResult"></span>')
 		
-		console.log(aa);
-		if(aa == 1){
-			 $(this).append(aaa)
-			 aaa.text('★☆☆☆☆')
-		}else if(aa == 2){
-			 $(this).append(aaa)
-			 aaa.text('★★☆☆☆')
-		}else if(aa == 3){
-			 $(this).append(aaa)
-			 aaa.text('★★★☆☆')
-		}else if(aa == 4){
-			 $(this).append(aaa)
-			 aaa.text('★★★★☆')
-		}else if(aa == 5){
-			 $(this).append(aaa)
-			 aaa.text('★★★★★')
+		if(rate == 1){
+			 $(this).append(starResult)
+			 starResult.text('★☆☆☆☆')
+		}else if(rate == 2){
+			 $(this).append(starResult)
+			 starResult.text('★★☆☆☆')
+		}else if(rate == 3){
+			 $(this).append(starResult)
+			 starResult.text('★★★☆☆')
+		}else if(rate == 4){
+			 $(this).append(starResult)
+			 starResult.text('★★★★☆')
+		}else if(rate == 5){
+			 $(this).append(starResult)
+			 starResult.text('★★★★★')
 		}
 	});
 });
