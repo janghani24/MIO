@@ -35,15 +35,131 @@
 <summary>회원관련 기능 설명 펼치기</summary>
 
 ### 1. 로그인
-![제목 없는 프레젠테이션 (2)](https://user-images.githubusercontent.com/90094696/164128108-03982315-9c43-4c52-b42c-7e2ae6838e27.jpg)
+
+![제목 없는 프레젠테이션 (3)](https://user-images.githubusercontent.com/90094696/164469296-09c16b67-f428-437f-a571-5c10824bf98e.jpg)
+
+<details markdown="1">
+<summary>Controller</summary>
+
+```java
+	@RequestMapping(value = "/account.login", method = RequestMethod.POST)
+	public String login(Account account, HttpServletRequest request) {
+		aDAO.login(account, request);
+		aDAO.loginCheck(request);
+		String result = (String) request.getAttribute("result");
+		if (result.equals("1") || result.equals("2")) {
+			request.setAttribute("contentPage", "account/loginFail.jsp");
+		} else {
+			pDAO.getProductrandom(request);
+			request.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+```
+</details>
+
+<details markdown="1">
+<summary>DAO</summary>
+
+```java
+	public void login(Account account, HttpServletRequest request) {
+		Account dbAccount = ss.getMapper(AccountMapper.class).getAccountByID(account);
+		if (dbAccount != null) {
+			if (account.getA_pw().equals(dbAccount.getA_pw())) {
+				request.getSession().setAttribute("loginAccount", dbAccount);
+				request.getSession().setMaxInactiveInterval(60 * 1000);
+				request.setAttribute("result", "0");
+			} else {
+				request.setAttribute("result", "1");// pw오류
+			}
+		} else {
+			request.setAttribute("result", "2");// 없는 id
+		}
+	}
+```
+</details>
 
 * 로그인은 DB의 ID와 비밀번호가 일치한 경우에 세션을 얻어 회원 정보를 실었습니다.
 * 로그인이 실패할 경우를 구분하기위해 변수를 설정하고 return되는 변수의 값에 따라 이동하는 페이지를 다르게했습니다.
 
 ### 2. 회원가입 
 
-![제목 없는 프레젠테이션 (1)](https://user-images.githubusercontent.com/90094696/164128033-8dc2a64c-4caf-4bd2-bd95-c988b6762b46.jpg)
+![제목 없는 프레젠테이션 (2)](https://user-images.githubusercontent.com/90094696/164468334-b1cd0f7f-f385-4c81-a484-e8c20522ccbc.jpg)
 
+<details markdown="1">
+<summary>Ajax</summary>
+
+```java
+function idCheck(){
+	$("#join_idInput").blur(function(){
+		var id_check = document.getElementById("join_idInput");
+		$.ajax({
+			url : '/mio/account.idCheck?a_id='+id_check.value,
+			type:'get',
+			success : function(data){
+					console.log(data);
+					console.log(id_check.value);
+				if(data == 1){
+					// 1은 중복
+					$("#id_check").text("이미 사용중인 id입니다.");
+					$("#id_check").css("color","red");
+					document.getElementById("idCheckOk").value="idUncheck";
+				}else{
+					if(id_check.value == ""){
+					$("#id_check").text("id를 입력해주세요.");
+					$("#id_check").css("color","red");
+					}else if(containsHS(id_check)){
+						$("#id_check").text("영어/숫자만 입력해주세요.");
+						$("#id_check").css("color","red");
+					}else if(lessThan(id_check,6)){
+						$("#id_check").text("6자 이상 입력해주세요.");
+						$("#id_check").css("color","red");
+					}
+					else{
+						$("#id_check").text("사용 가능한 ID입니다.");
+						$("#id_check").css("color","green");
+						document.getElementById("idCheckOk").value="idCheckOk";
+					
+					}
+				}
+			}
+		});
+	});
+}
+```
+</details>
+
+<details markdown="1">
+<summary>Controller,DAO</summary>
+
+```java
+// Controller
+@RequestMapping(value = "/account.idCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public int idCheck(@RequestParam("a_id") String a_id, HttpServletRequest request) {
+		aDAO.loginCheck(request);
+		return aDAO.idCheck(a_id);
+	}
+  
+// DAO
+public int idCheck(String a_id) {
+		int result1;
+		int result2;
+		
+		result1 = ss.getMapper(AccountMapper.class).idCheck(a_id);
+		result2 = ss.getMapper(AccountMapper.class).idCheckS(a_id);
+		
+		int result;
+		
+		if (result1 == 1 || result2 == 1) {
+			result = 1;
+		} else {
+			result = 0;
+		}
+		return result;
+	}
+```
+</details>
 
 * ID 중복체크에서는 ajax 비동기요청으로 입력값에 따른 결과를 표시해주었습니다.
 * 이 때 중복체크를 하지 않았을 경우 가입이 되지않도록 확인용 변수를 만들어 사용가능한 ID를 입력했을 경우에만 변수를 확인완료된 값으로 변경해주었습니다.
@@ -52,19 +168,161 @@
 
 ### 3. 관리자페이지
 * 관리자 페이지는 등급조정과 가입승인 두가지 기능이 있습니다. jstl을 이용해서 관리자 등급일 때만 버튼이 활성화됩니다.   
-![제목 없는 프레젠테이션 (3)](https://user-images.githubusercontent.com/90094696/164128143-db6f75cc-a5fb-4cb0-8c96-c1c0162358dc.jpg)
 
+![제목 없는 프레젠테이션 (4)](https://user-images.githubusercontent.com/90094696/164470231-0f9c1bea-c735-4d84-a42e-e1a2d0fe0a3a.jpg)
 
+<details markdown="1">
+<summary>Controller,DAO</summary>
+
+```java
+// Controller
+@RequestMapping(value = "/account.updategrade", method = RequestMethod.GET)
+	public String gradeUpdate(Account account, HttpServletRequest request) {
+		if (aDAO.loginCheck(request)) {
+			aDAO.updateGrade(account, request);
+			aDAO.getAllAccount(1, request);
+			request.setAttribute("contentPage", "account/updateGrade.jsp");
+		} else {
+			pDAO.getProductrandom(request);
+			request.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+// DAO
+public void updateGrade(Account account, HttpServletRequest request) {
+		if (ss.getMapper(AccountMapper.class).updateGrade(account) == 1) {
+			request.setAttribute("result", "수정성공"); // 확인용
+		} else {
+			request.setAttribute("result", "수정실패");
+		}
+	}
+```
+</details>  
+  
 * 등급 조정에서는 ID와 변경할 등급의 정보를 실어서 컨트롤러로 보냅니다. 
 * pk인 ID로 where절을 만들어 등급을 수정해줍니다.   
 * 이름과 ID로 검색을 할 수 있도록 했습니다.
 
-![제목 없는 프레젠테이션 (4)](https://user-images.githubusercontent.com/90094696/164128177-30dfad08-47ca-48f4-9513-724660fc4abe.jpg)
+![제목 없는 프레젠테이션 (5)](https://user-images.githubusercontent.com/90094696/164471433-fe9aa9c5-70b8-4819-a15a-8cea503c9dc3.jpg)
+
+<details markdown="1">
+<summary>Controller,DAO</summary>
+
+```java
+// Controller
+@RequestMapping(value = "/account.sellerJoin.do", method = RequestMethod.GET)
+	public String sellerJoin(Account account, Seller seller, HttpServletRequest request) {
+		if (aDAO.loginCheck(request)) {
+			aDAO.sellerToAccount(account, seller, request);
+			aDAO.deleteSellerjoin(seller, request);
+			aDAO.getSeller(request);
+			request.setAttribute("contentPage", "account/joinConfirm.jsp");
+		} else {
+			pDAO.getProductrandom(request);
+			request.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+// DAO
+public void sellerToAccount(Account account, Seller seller, HttpServletRequest request) {
+		Seller sellerApproved = ss.getMapper(AccountMapper.class).getSellerById(seller);
+		account.setA_id(sellerApproved.getA_s_id());
+		account.setA_pw(sellerApproved.getS_pw());
+		account.setA_name(sellerApproved.getS_name());
+		account.setA_addr(sellerApproved.getS_addr());
+		account.setA_phone(sellerApproved.getS_phone());
+		account.setA_img(sellerApproved.getS_img());
+		account.setA_grade(sellerApproved.getS_grade());
+		account.setA_question(sellerApproved.getS_question());
+		account.setA_answer(sellerApproved.getS_answer());
+
+		if (ss.getMapper(AccountMapper.class).joinGeneral(account) == 1) {
+			request.setAttribute("result", "가입성공"); // 확인용
+		} else {
+			request.setAttribute("result", "가입실패");
+		}
+	}
+```
+</details>
 
 * 가입 승인 리스트에서 자세히보기를 클릭하면 해당 신청자의 상세페이지로 이동합니다.   
 * 가입 승인은 신청목록에 있는 판매자의 정보들을 일반회원의 빈에 담아 일반회원으로 등록하고 기존의 신청목록에서 기록을 삭제합니다. 이 때 승인을 허가하면 사진은 그대로 남아 회원DB에 등록되고, 거절하면 사진파일을 삭제해줍니다.   
 
 ### 4. 마이페이지
+
+
+<details markdown="1">
+<summary>정보 수정 DAO</summary>
+
+```java
+public void updateAccount(Account account, HttpServletRequest request) {
+		String path = request.getSession().getServletContext().getRealPath("resources/img_account");
+		MultipartRequest mr = null;
+		Account loginMember = (Account) request.getSession().getAttribute("loginAccount");
+		String oldFile = loginMember.getA_img();
+		String newFile = null;
+		try {
+			mr = new MultipartRequest(request, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+			newFile = mr.getFilesystemName("jm_photo");
+			if (newFile == null) {
+				newFile = oldFile;
+			} else {
+				newFile = URLEncoder.encode(newFile, "utf-8");
+				newFile = newFile.replace("+", " ");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("result", "수정실패"); // 확인용
+			return;
+		}
+		try {
+			String join_id = mr.getParameter("jm_id");
+			String join_pw = mr.getParameter("jm_pw");
+			String join_name = mr.getParameter("jm_name");
+			String join_addr1 = mr.getParameter("jm_addr1");
+			String join_addr2 = mr.getParameter("jm_addr2");
+			String join_addr3 = mr.getParameter("jm_addr3");
+			String join_addr = join_addr1 + "!" + join_addr2 + "!" + join_addr3;
+			String join_img = newFile;
+			String join_phone = mr.getParameter("jm_phone");
+
+			account.setA_id(join_id);
+			account.setA_pw(join_pw);
+			account.setA_name(join_name);
+			account.setA_addr(join_addr);
+			account.setA_img(join_img);
+			account.setA_phone(join_phone);
+
+			if (ss.getMapper(AccountMapper.class).updateAccount(account) == 1) {
+				request.setAttribute("result", "수정성공");
+				account = ss.getMapper(AccountMapper.class).getAccountByID(account);
+				request.getSession().setAttribute("loginAccount", account);
+				if (!oldFile.equals(newFile)) {
+					oldFile = URLDecoder.decode(oldFile, "utf-8");
+					new File(path + "/" + oldFile).delete();
+				}
+			} else {
+				request.setAttribute("result", "수정실패");
+				if (!oldFile.equals(newFile)) {
+					newFile = URLDecoder.decode(newFile, "utf-8");
+					new File(path + "/" + newFile).delete();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			request.setAttribute("result", "수정실패");
+			if (!oldFile.equals(newFile)) {
+				try {
+					newFile = URLDecoder.decode(newFile, "utf-8");
+				} catch (UnsupportedEncodingException e1) {
+				}
+				new File(path + "/" + newFile).delete();
+			}
+		}
+	}
+```
+</details>
+
 
 * 마이페이지에서는 가입시 입력한 정보 열람, 정보 수정, 탈퇴가 가능합니다. 
 
@@ -79,9 +337,50 @@
 <details markdown="1">
 <summary>덧글기능 기능 설명 펼치기</summary>
 
-![제목 없는 프레젠테이션](https://user-images.githubusercontent.com/90094696/164352845-878b6bd8-7c2a-465d-a31f-5928b3fa4519.jpg)
+![제목 없는 프레젠테이션 (6)](https://user-images.githubusercontent.com/90094696/164472458-fe49597b-365c-45bc-9dd1-279462ffcddf.jpg)
 
+<details markdown="1">
+<summary>jQuery</summary>
 
+```java
+$(function () {
+	
+	$('#star a').click(function(){ 
+		
+		 $(this).parent().children("a").removeClass("on");    
+		 $(this).addClass("on").prevAll("a").addClass("on");
+		 console.log($(this).attr("value"));
+		 let rate = $(this).attr("value");
+		  document.productReply.r_rate.value=rate;
+		  return false;
+		});
+	
+	let aa;
+	$('.starRate').each(function (i,s) {
+		aa = $(this).attr('value');
+		let aaa = $('<span class="starR22"></span>')
+		
+		console.log(aa);
+		if(aa == 1){
+			 $(this).append(aaa)
+			 aaa.text('★☆☆☆☆')
+		}else if(aa == 2){
+			 $(this).append(aaa)
+			 aaa.text('★★☆☆☆')
+		}else if(aa == 3){
+			 $(this).append(aaa)
+			 aaa.text('★★★☆☆')
+		}else if(aa == 4){
+			 $(this).append(aaa)
+			 aaa.text('★★★★☆')
+		}else if(aa == 5){
+			 $(this).append(aaa)
+			 aaa.text('★★★★★')
+		}
+	});
+});
+```
+</details>
 
 * 덧글의 별점은 jQuery를 이용해 구현했습니다. 별점에 따른 숫자를 rate에 저장한 후 덧글을 불러올 때 저장된 rate에 따라 별점이 표시됩니다.   
 * 덧글은 상품pk를 외래키로 참고하고 on delete cascade를 이용해 상품이 사라질 경우 그 상품에 등록된 덧글도 같이 삭제되게했습니다.
@@ -94,6 +393,30 @@
 
 ![제목 없는 프레젠테이션 (2)](https://user-images.githubusercontent.com/90094696/164352961-b609a72c-56d6-484f-9237-4e28c7bed196.jpg)
 
+<details markdown="1">
+<summary>JavaScript</summary>
+
+```java
+function goCart(i,p,price,c,photo) {
+	let amount = document.getElementById("amount").value;
+	let ok = confirm("장바구니에 담으시겠습니까?")
+	if (ok) {
+		$.ajax({
+			url :'/mio/product.insert.cart?c_p_no=' + p + "&c_a_id=" + i + "&c_quantity="
+				+amount+"&c_price=" + price + "&p_num="+ p +"&c_category="+ c + "&c_p_photo=" + photo,
+			type:'get',
+			success :alert("장바구니에 담겼습니다.")
+		});
+		
+		let ok2 = confirm("장바구니로 이동하시겠습니까?")
+		if (ok2) {
+			window.location.href = "product.go.cart"
+
+		}
+	}
+}
+```
+</details>
 
 * 장바구니는 js를 이용해 컨트롤러로 이동하게 되는데 이 때 ajax로 장바구니에 넣는 비동기 요청을 보내고, location.href로 장바구니로 이동합니다.   
 * Session의 사용자 ID를 이용해 cart DB에 상품pk, 가격등의 정보를 등록합니다. ID와 상품pk를 외래키로 참고하며 on delete cascade를 이용해 탈퇴하거나 상품이 삭제되면 장바구니에서도 삭제되게했습니다.
