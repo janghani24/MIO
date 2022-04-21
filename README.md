@@ -18,6 +18,7 @@
 * JavaScript
 
 # 3. 참고자료
+* 기획 단계에서 간략하게 구조와 DB들을 구상했습니다.   
 * [프로젝트 전체구조](https://drive.google.com/file/d/1voVVVPvcnnfWAr6dQFk5IZL15XypMqGR/view)    
 * [프로젝트 세부구조](https://drive.google.com/file/d/1sekZjojhVVqkqo02eQrnCGRvW7S-CBS7/view?usp=sharing)
 <details markdown="1">
