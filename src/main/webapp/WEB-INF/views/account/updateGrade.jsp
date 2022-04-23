@@ -13,7 +13,7 @@
 				<td colspan="5"><img src="resources/img/image/회원 등급 조정.jpg"></td>
 			</tr>
 			<c:forEach var="a" items="${accounts}">
-<form action="account.updategrade">
+<form action="account.updateGrade">
 				<tr>
 					<td>${a.a_id}</td>
 					<td>${a.a_name}</td>
