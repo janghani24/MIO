@@ -15,7 +15,7 @@ function goUpdate() {
 
 // 등급 조정페이지로
 function goGradeUpdate() {
-	location.href = "account.updategrade.go";
+	location.href = "account.updateGrade.go";
 }
 
 //일반 회원가입 창으로
