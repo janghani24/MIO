@@ -206,8 +206,8 @@ public class AccountController {
 	}
 
 	// 등급 조정
-	@RequestMapping(value = "/account.updategrade", method = RequestMethod.GET)
-	public String gradeUpdate(Account account, HttpServletRequest request) {
+	@RequestMapping(value = "/account.updateGrade", method = RequestMethod.GET)
+	public String updateGrade(Account account, HttpServletRequest request) {
 		if (aDAO.loginCheck(request)) {
 			aDAO.updateGrade(account, request);
 			aDAO.getAllAccount(1, request);
@@ -220,7 +220,7 @@ public class AccountController {
 	}
 
 	// 등급 조정 페이지로
-	@RequestMapping(value = "/account.updategrade.go", method = RequestMethod.GET)
+	@RequestMapping(value = "/account.updateGrade.go", method = RequestMethod.GET)
 	public String gradeUpdateGo(HttpServletRequest request) {
 		if (aDAO.loginCheck(request)) {
 			aDAO.calcAllACount();
