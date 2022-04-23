@@ -39,9 +39,10 @@
 ![제목 없는 프레젠테이션 (3)](https://user-images.githubusercontent.com/90094696/164469296-09c16b67-f428-437f-a571-5c10824bf98e.jpg)
 
 <details markdown="1">
-<summary>Controller</summary>
+<summary>Controller(수정 포함)</summary>
 
 ```java
+	// 기존
 	@RequestMapping(value = "/account.login", method = RequestMethod.POST)
 	public String login(Account account, HttpServletRequest request) {
 		aDAO.login(account, request);
@@ -55,13 +56,29 @@
 		}
 		return "index";
 	}
+	
+	// 수정 - 기존에는 Attribute를 가져와 String으로 변환 후 .equals()로 비교해주었지만 login메서드의 리턴값을 int로 받아 바로 변수에 대입 후 ==로 비교해주었다.
+	@RequestMapping(value = "/account.login", method = RequestMethod.POST)
+	public String login(Account account, HttpServletRequest request) {
+		int result = aDAO.login(account, request);
+		aDAO.loginCheck(request);
+		if (result == 1 || result ==2) {
+			request.setAttribute("contentPage", "account/loginFail.jsp");
+		} else {
+			pDAO.getProductrandom(request);
+			request.setAttribute("contentPage", "home.jsp");
+		}
+		return "index";
+	}
+	
 ```
 </details>
 
 <details markdown="1">
-<summary>DAO</summary>
+<summary>DAO(수정 포함)</summary>
 
 ```java
+	// 기존
 	public void login(Account account, HttpServletRequest request) {
 		Account dbAccount = ss.getMapper(AccountMapper.class).getAccountByID(account);
 		if (dbAccount != null) {
@@ -76,11 +93,27 @@
 			request.setAttribute("result", "2");// 없는 id
 		}
 	}
+	
+	// 수정 - Attribute를 생성하지않고 return값을 int로 받아 결과를 나타내준다. (프로젝트 완료 후 수정)
+	public int login(Account account, HttpServletRequest request) {
+		Account dbAccount = ss.getMapper(AccountMapper.class).getAccountByID(account);
+		if (dbAccount != null) {
+			if (account.getA_pw().equals(dbAccount.getA_pw())) {
+				request.getSession().setAttribute("loginAccount", dbAccount);
+				request.getSession().setMaxInactiveInterval(60 * 1000);
+				return 0;
+			} else {
+				return 1;// pw오류
+			}
+		} else {
+			return 2;// 없는 id
+		}
+	}
 ```
 </details>
 
-* 로그인은 사용자가 입력한 ID와 비밀번호를 패러미터 값으로 가져와 DB의 값과 일치한 경우에 세션을 얻어 Account 를 실었습니다.
-* 로그인이 실패할 경우를 구분하기위해 변수를 설정하고 return되는 변수의 값에 따라 이동하는 페이지를 다르게했습니다.
+* 로그인은 사용자가 입력한 ID와 비밀번호를 패러미터 값으로 가져와 DB의 값과 일치한 경우에 세션을 얻어 Account 를 실었습니다.   
+* 로그인이 실패할 경우를 구분하기위해 결과에 따라 다른 return값을 설정해주었습니다.( 프로젝트 완료 후 수정한 부분)
 
 ### 2. 회원가입 
 
@@ -97,8 +130,6 @@ function idCheck(){
 			url : '/mio/account.idCheck?a_id='+id_check.value,
 			type:'get',
 			success : function(data){
-					console.log(data);
-					console.log(id_check.value);
 				if(data == 1){
 					// 1은 중복
 					$("#id_check").text("이미 사용중인 id입니다.");
@@ -477,10 +508,12 @@ function goCart(i,p,price,c,photo) {
 * Session의 사용자 ID를 이용해 cart DB에 상품pk, 가격등의 정보를 등록합니다. ID와 상품pk를 외래키로 참고하며 on delete cascade를 이용해 탈퇴하거나 상품이 삭제되면 장바구니에서도 삭제되게했습니다.
 </details>
 
-# 5. 트러블 슈팅
+# 5. Issue
 * 장바구니 기능을 만들 때 처음에는 js에서 장바구니에 넣는 것과 이동을 모두 location.href로 처리했었습니다. 그러나 충돌이 일어나 장바구니에 넣는 것은 기능하나 이동이 제대로 되지않았습니다. 그래서 ajax를 이용해 비동기요청으로 바꾸어 충돌을 피했습니다.
 * 4가지의 카테고리의 검색결과나 수정페이지를 만들 때 기존에는 각각의 카테고리마다 페이지를 만들었었습니다. 그렇게 만드니 페이지가 너무 많아지고 컨트롤러에서도 너무 복잡하다고 느꼈습니다. 그래서 DAO에서 카테고리 변수를 만들고 검색이나 수정페이지에서 DB의 컬럼수가 다른 fashion이외에는 변수에 따라 내용을 다르게 했습니다. 
-* 가입승인을 하거나 거절을 할 때 신청목록 DB에서 삭제를 할 때 같은 메서드를 사용했었습니다. 그런데 이 때 사진파일을 삭제하는 기능을 잊어 이를 추가하려할 때, 승인을 할 시에는 사진이 삭제돼 일반회원으로 바뀌었을 때 사진이 나오지않았습니다. 처음에는 같은 삭제기능을 가진 메서드를 두가지만들고 하나의 메서드에 사진삭제기능을 추가했었습니다. 그러나 같은 삭제기능이 중목으로 들어가있어 상황에 맞춰 메서드를 고르는 것보다 필요할 때 사진 삭제기능만 있는 메서드를 추가로 사용하는게 낫다고 생각하여 사진삭제 기능을 따로 분리하여 해결했습니다.
+* 가입승인을 하거나 거절을 할 때 신청목록 DB에서 삭제를 할 때 같은 메서드를 사용했었습니다. 그런데 이 때 사진파일을 삭제하는 기능을 잊어 이를 추가하려할 때, 승인을 할 시에는 사진이 삭제돼 일반회원으로 바뀌었을 때 사진이 나오지않았습니다. 같은 삭제기능을 가진 메서드를 두가지만들고 하나의 메서드에 사진삭제기능을 추가했습니다.   
+같은 삭제기능이 중으로 들어가있어 상황에 맞춰 메서드를 고르는 것보다 필요할 때 사진 삭제기능만 있는 메서드를 추가로 사용하는게 낫다고 생각하여 사진삭제 기능을 따로 분리하여 해결했습니다.(프로젝트 완료 후 수정)   
+* login메서드에서 결과를 result라는 Attrubute를 만들어 값으로 실어서 Controller에서 Attribute로 받아 String으로 변환 후 .equals()로 비교해주었습니다. 하지만 Attribute를 만들고 Controller에서 String으로 바꾸어주는 과정이 불필요하다고 느껴져서 결과를 바로 login메서드의 return값으로 설정해 Controller에서 int로 받아 ==로 비교하게 바꾸었습니다.(프로젝트 완료 후 수정)
 
 # 6. 느낀 점
 > 프로젝트 후 느끼점 : https://velog.io/@gksml24/팀-프로젝트-후-회고
