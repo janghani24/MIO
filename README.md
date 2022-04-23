@@ -11,11 +11,11 @@
 
 # 2. 사용 기술
 * Java 14
-* Springframework 3.1.1
-* Oracle 18c
+* Spring MVC
+* Oracle DB
 * Maven
 * Mybatis
-* JavaScript
+* JavaScript ES6
 
 # 3. 참고자료
 * 기획 단계에서 간략하게 구조와 DB들을 구상했습니다.   
