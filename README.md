@@ -79,7 +79,7 @@
 ```
 </details>
 
-* 로그인은 DB의 ID와 비밀번호가 일치한 경우에 세션을 얻어 회원 정보를 실었습니다.
+* 로그인은 사용자가 입력한 ID와 비밀번호를 패러미터 값으로 가져와 DB의 값과 일치한 경우에 세션을 얻어 Account 를 실었습니다.
 * 로그인이 실패할 경우를 구분하기위해 변수를 설정하고 return되는 변수의 값에 따라 이동하는 페이지를 다르게했습니다.
 
 ### 2. 회원가입 
@@ -158,12 +158,66 @@ public int idCheck(String a_id) {
 		}
 		return result;
 	}
+	
+// 회원가입 DAO
+public void joinGeneral(Account account, HttpServletRequest request) {
+	String path = request.getSession().getServletContext().getRealPath("resources/img_account");
+	MultipartRequest mr = null;
+	try {
+		mr = new MultipartRequest(request, path, 10 * 1024 * 1024, "utf-8", new DefaultFileRenamePolicy());
+	} catch (Exception e) {
+		e.printStackTrace();
+		request.setAttribute("result", "가입실패"); // 확인용
+		return;
+	}
+
+	try {
+		String join_id = mr.getParameter("a_id");
+		String join_pw = mr.getParameter("a_pw");
+		String join_name = mr.getParameter("a_name");
+		String join_grade = mr.getParameter("a_grade");
+		String join_phone = mr.getParameter("a_phone");
+		String join_question = mr.getParameter("a_question");
+		String join_answer = mr.getParameter("a_answer");
+		String join_addr1 = mr.getParameter("a_addr1");
+		String join_addr2 = mr.getParameter("a_addr2");
+		String join_addr3 = mr.getParameter("a_addr3");
+		String join_addr = join_addr1 + "!" + join_addr2 + "!" + join_addr3;
+		String join_photo = mr.getFilesystemName("a_img");
+		join_photo = URLEncoder.encode(join_photo, "utf-8");
+		join_photo = join_photo.replace("+", " ");
+
+		account.setA_id(join_id);
+		account.setA_pw(join_pw);
+		account.setA_name(join_name);
+		account.setA_grade(join_grade);
+		account.setA_addr(join_addr);
+		account.setA_img(join_photo);
+		account.setA_grade(join_grade);
+		account.setA_phone(join_phone);
+		account.setA_question(join_question);
+		account.setA_answer(join_answer);
+
+		if (ss.getMapper(AccountMapper.class).joinGeneral(account) == 1) {
+			request.setAttribute("result", "가입성공");
+		} else {
+			request.setAttribute("result", "가입실패");
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+		String fileName = mr.getFilesystemName("a_img");
+		new File(path + "/" + fileName).delete();
+		request.setAttribute("result", "가입실패");
+	}
+}
 ```
 </details>
 
 * ID 중복체크에서는 ajax 비동기요청으로 입력값에 따른 결과를 표시해주었습니다.
 * 이 때 중복체크를 하지 않았을 경우 가입이 되지않도록 확인용 변수를 만들어 사용가능한 ID를 입력했을 경우에만 변수를 확인완료된 값으로 변경해주었습니다.
 * 다른 값들에는 js를 이용해 유효성검사를 해주었습니다.   
+* 유효성 검사를 통과한 경우 MultipartRequest를 이용해 POST방식으로 Controller에 요청을 보냅니다.   
+* DefaultFileRenamePolicy를 이용해 사진 파일명의 중복을 방지했습니다.   
 * 일반 회원의 경우 바로 회원DB에, 판매자의 경우 가입신청DB에 insert됩니다.   
 
 ### 3. 관리자페이지
@@ -176,8 +230,8 @@ public int idCheck(String a_id) {
 
 ```java
 // Controller
-@RequestMapping(value = "/account.updategrade", method = RequestMethod.GET)
-	public String gradeUpdate(Account account, HttpServletRequest request) {
+@RequestMapping(value = "/account.updateGrade", method = RequestMethod.GET)
+	public String updateGrade(Account account, HttpServletRequest request) {
 		if (aDAO.loginCheck(request)) {
 			aDAO.updateGrade(account, request);
 			aDAO.getAllAccount(1, request);
@@ -198,10 +252,10 @@ public void updateGrade(Account account, HttpServletRequest request) {
 	}
 ```
 </details>  
-  
-* 등급 조정에서는 ID와 변경할 등급의 정보를 실어서 컨트롤러로 보냅니다. 
+
+* 등급별로 회원목록을 나열하고 Select로 변경할 등급을 고를 수 있게 하였습니다.  
+* 등급 조정에서는 ID와 변경할 등급의 정보를 GET방식으로 Controller에 요청을 보냅니다. 
 * pk인 ID로 where절을 만들어 등급을 수정해줍니다.   
-* 이름과 ID로 검색을 할 수 있도록 했습니다.
 
 ![제목 없는 프레젠테이션 (5)](https://user-images.githubusercontent.com/90094696/164471433-fe9aa9c5-70b8-4819-a15a-8cea503c9dc3.jpg)
 
@@ -245,8 +299,8 @@ public void sellerToAccount(Account account, Seller seller, HttpServletRequest r
 ```
 </details>
 
-* 가입 승인 리스트에서 자세히보기를 클릭하면 해당 신청자의 상세페이지로 이동합니다.   
-* 가입 승인은 신청목록에 있는 판매자의 정보들을 일반회원의 빈에 담아 일반회원으로 등록하고 기존의 신청목록에서 기록을 삭제합니다. 이 때 승인을 허가하면 사진은 그대로 남아 회원DB에 등록되고, 거절하면 사진파일을 삭제해줍니다.   
+* 가입 승인 리스트에서 자세히보기를 클릭하면 가입 신청자의 pk값을 패러미터로 GET요청을해 해당 신청자의 상세페이지로 이동합니다.   
+* 가입 승인은 신청목록에 있는 판매자의 정보들을 일반회원의 VO에 담아 일반회원으로 등록하고 기존의 신청목록에서 기록을 삭제합니다. 이 때 승인을 허가하면 사진은 그대로 남아 회원DB에 등록되고, 거절하면 사진파일을 삭제해줍니다.   
 
 ### 4. 마이페이지
 
@@ -326,7 +380,7 @@ public void updateAccount(Account account, HttpServletRequest request) {
 
 * 마이페이지에서는 가입시 입력한 정보 열람, 정보 수정, 탈퇴가 가능합니다. 
 
-* 마이페이지에 접근시 로그인되어있는 세션에서 회원정보를 불러와 표시해줍니다.
+* 마이페이지에 접근시 로그인되어있는 세션에 있는 Account객체의  불러와 표시해줍니다.
 
 * 수정의 경우 pk값인 ID외의 값들을 수정할 수 있습니다. 수정 페이지에서 기존값을 value로 설정해 수정전에 볼 수 있게했습니다.   
 
@@ -382,6 +436,7 @@ $(function () {
 ```
 </details>
 
+* 덧글 작성은 로그인한 회원만 가능하도록 jstl의 if로 제한을 걸어줬습니다.
 * 덧글의 별점은 jQuery를 이용해 구현했습니다. 별점에 따른 숫자를 rate에 저장한 후 덧글을 불러올 때 저장된 rate에 따라 별점이 표시됩니다.   
 * 덧글은 상품pk를 외래키로 참고하고 on delete cascade를 이용해 상품이 사라질 경우 그 상품에 등록된 덧글도 같이 삭제되게했습니다.
 
@@ -418,14 +473,14 @@ function goCart(i,p,price,c,photo) {
 ```
 </details>
 
-* 장바구니는 js를 이용해 컨트롤러로 이동하게 되는데 이 때 ajax로 장바구니에 넣는 비동기 요청을 보내고, location.href로 장바구니로 이동합니다.   
+* 장바구니는 js를 이용하였는데, 이 때 ajax로 장바구니에 넣는 비동기 요청을 보내고, location.href로 장바구니로 이동합니다.   
 * Session의 사용자 ID를 이용해 cart DB에 상품pk, 가격등의 정보를 등록합니다. ID와 상품pk를 외래키로 참고하며 on delete cascade를 이용해 탈퇴하거나 상품이 삭제되면 장바구니에서도 삭제되게했습니다.
 </details>
 
 # 5. 트러블 슈팅
 * 장바구니 기능을 만들 때 처음에는 js에서 장바구니에 넣는 것과 이동을 모두 location.href로 처리했었습니다. 그러나 충돌이 일어나 장바구니에 넣는 것은 기능하나 이동이 제대로 되지않았습니다. 그래서 ajax를 이용해 비동기요청으로 바꾸어 충돌을 피했습니다.
 * 4가지의 카테고리의 검색결과나 수정페이지를 만들 때 기존에는 각각의 카테고리마다 페이지를 만들었었습니다. 그렇게 만드니 페이지가 너무 많아지고 컨트롤러에서도 너무 복잡하다고 느꼈습니다. 그래서 DAO에서 카테고리 변수를 만들고 검색이나 수정페이지에서 DB의 컬럼수가 다른 fashion이외에는 변수에 따라 내용을 다르게 했습니다. 
-* 가입승인을 하거나 거절을 할 때 신청목록 DB에서 삭제를 할 때 같은 메서드를 사용했었습니다. 그런데 이 때 사진파일을 삭제하는 기능을 잊어 이를 추가하려할 때, 승인을 할 시에는 사진이 삭제돼 일반회원으로 바뀌었을 때 사진이 나오지않았습니다. 그래서 승인을 거절할 때와 승인 할 때를 나누어 각각 다른 메서드를 사용했습니다. 해결은 했으나 더 효율적인 방법이 있을것같아 조금 아쉬움이 남는 부분입니다.
+* 가입승인을 하거나 거절을 할 때 신청목록 DB에서 삭제를 할 때 같은 메서드를 사용했었습니다. 그런데 이 때 사진파일을 삭제하는 기능을 잊어 이를 추가하려할 때, 승인을 할 시에는 사진이 삭제돼 일반회원으로 바뀌었을 때 사진이 나오지않았습니다. 처음에는 같은 삭제기능을 가진 메서드를 두가지만들고 하나의 메서드에 사진삭제기능을 추가했었습니다. 그러나 같은 삭제기능이 중목으로 들어가있어 상황에 맞춰 메서드를 고르는 것보다 필요할 때 사진 삭제기능만 있는 메서드를 추가로 사용하는게 낫다고 생각하여 사진삭제 기능을 따로 분리하여 해결했습니다.
 
 # 6. 느낀 점
 > 프로젝트 후 느끼점 : https://velog.io/@gksml24/팀-프로젝트-후-회고
