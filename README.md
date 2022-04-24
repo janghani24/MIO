@@ -130,7 +130,7 @@ function idCheck(){
 			url : '/mio/account.idCheck?a_id='+id_check.value,
 			type:'get',
 			success : function(data){
-				if(data == 1){
+				if(data >= 1){ // 수정 부분 -> id는 DB에 중복체크 후 insert되지만 혹시 모를 상황에 대비해 1개 이상 존재할 경우에 사용불가능하게 수정했습니다.
 					// 1은 중복
 					$("#id_check").text("이미 사용중인 id입니다.");
 					$("#id_check").css("color","red");
