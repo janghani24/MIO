@@ -161,7 +161,7 @@ function idCheck(){
 </details>
 
 <details markdown="1">
-<summary>Controller,DAO</summary>
+<summary>Controller,DAO(수정 포함)</summary>
 
 ```java
 // Controller
@@ -172,7 +172,7 @@ function idCheck(){
 		return aDAO.idCheck(a_id);
 	}
   
-// DAO
+// DAO - 수정전
 public int idCheck(String a_id) {
 		int result1;
 		int result2;
@@ -189,7 +189,24 @@ public int idCheck(String a_id) {
 		}
 		return result;
 	}
-	
+// DAO - 수정 후 -> 기존에 쿼리문을 2번 실행하지않고 한번에 실행하여 결과값을 리턴하게 수정했습니다.
+public int idCheck(String a_id) {
+		
+		
+		int result = ss.getMapper(AccountMapper.class).idCheck(a_id);
+		
+		System.out.println(result);
+		
+		return result;
+}
+// 수정 후 mapper -> 기존에 각각의 테이블에서 검색하지않고 두 테이블에서의 결과를 함쳐서 결과를 내도록 바꾸었습니다.
+<select id="idCheck" parameterType="String" resultType="int">
+		select count(*) from(
+		select a_id from account_mio
+		union all
+		select a_s_id from account_sellerjoin)
+		where a_id = #{a_id}
+	</select>
 // 회원가입 DAO
 public void joinGeneral(Account account, HttpServletRequest request) {
 	String path = request.getSession().getServletContext().getRealPath("resources/img_account");
@@ -245,6 +262,7 @@ public void joinGeneral(Account account, HttpServletRequest request) {
 </details>
 
 * ID 중복체크에서는 ajax 비동기요청으로 입력값에 따른 결과를 표시해주었습니다.
+* ID 중복체크는 회원 테이블과 가입신청 테이블의 검색결과를 union all하여 해당 id가 존재하는 갯수를 결과로 내놓게 수정했습니다.   
 * 이 때 중복체크를 하지 않았을 경우 가입이 되지않도록 확인용 변수를 만들어 사용가능한 ID를 입력했을 경우에만 변수를 확인완료된 값으로 변경해주었습니다.
 * 다른 값들에는 js를 이용해 유효성검사를 해주었습니다.   
 * 유효성 검사를 통과한 경우 MultipartRequest를 이용해 POST방식으로 Controller에 요청을 보냅니다.   
@@ -513,7 +531,8 @@ function goCart(i,p,price,c,photo) {
 * 4가지의 카테고리의 검색결과나 수정페이지를 만들 때 기존에는 각각의 카테고리마다 페이지를 만들었었습니다. 그렇게 만드니 페이지가 너무 많아지고 컨트롤러에서도 너무 복잡하다고 느꼈습니다. 그래서 DAO에서 카테고리 변수를 만들고 검색이나 수정페이지에서 DB의 컬럼수가 다른 fashion이외에는 변수에 따라 내용을 다르게 했습니다. 
 * 가입승인을 하거나 거절을 할 때 신청목록 DB에서 삭제를 할 때 같은 메서드를 사용했었습니다. 그런데 이 때 사진파일을 삭제하는 기능을 잊어 이를 추가하려할 때, 승인을 할 시에는 사진이 삭제돼 일반회원으로 바뀌었을 때 사진이 나오지않았습니다. 같은 삭제기능을 가진 메서드를 두가지만들고 하나의 메서드에 사진삭제기능을 추가했습니다.   
 같은 삭제기능이 중으로 들어가있어 상황에 맞춰 메서드를 고르는 것보다 필요할 때 사진 삭제기능만 있는 메서드를 추가로 사용하는게 낫다고 생각하여 사진삭제 기능을 따로 분리하여 해결했습니다.(프로젝트 완료 후 수정)   
-* login메서드에서 결과를 result라는 Attrubute를 만들어 값으로 실어서 Controller에서 Attribute로 받아 String으로 변환 후 .equals()로 비교해주었습니다. 하지만 Attribute를 만들고 Controller에서 String으로 바꾸어주는 과정이 불필요하다고 느껴져서 결과를 바로 login메서드의 return값으로 설정해 Controller에서 int로 받아 ==로 비교하게 바꾸었습니다.(프로젝트 완료 후 수정)
+* login메서드에서 결과를 result라는 Attrubute를 만들어 값으로 실어서 Controller에서 Attribute로 받아 String으로 변환 후 .equals()로 비교해주었습니다. 하지만 Attribute를 만들고 Controller에서 String으로 바꾸어주는 과정이 불필요하다고 느껴져서 결과를 바로 login메서드의 return값으로 설정해 Controller에서 int로 받아 ==로 비교하게 바꾸었습니다.(프로젝트 완료 후 수정)   
+* 기존에 id중복체크시 회원 테이블과 가입신청 테이블을 각각 한번씩 검색하여 그  if문으로 나누어주었지만 쿼리문을 두번 사용하고 if문을 사용하는것이 효율적이지 못하다 생각되어 두 테이블에서 id값을 union all하여(DB에 중복체크 후 insert되므로 굳이 중복체크를 하는 union이 아닌 union all을 사용하였습니다.) 해당 id가 존재하는 갯수를 result로 받게바꾸었습니다.(프로젝트 완료 후 수정)
 
 # 6. 느낀 점
 > 프로젝트 후 느끼점 : https://velog.io/@gksml24/팀-프로젝트-후-회고
