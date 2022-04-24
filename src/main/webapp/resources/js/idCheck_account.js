@@ -7,7 +7,7 @@ function idCheck(){
 			success : function(data){
 					console.log(data);
 					console.log(id_check.value);
-				if(data == 1){
+				if(data >= 1){
 					// 1은 중복
 					$("#id_check").text("이미 사용중인 id입니다.");
 					$("#id_check").css("color","red");
