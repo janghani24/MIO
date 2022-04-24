@@ -357,19 +357,11 @@ public class AccountDAO {
 
 	// id중복체크
 	public int idCheck(String a_id) {
-		int result1;
-		int result2;
+			
+		int result = ss.getMapper(AccountMapper.class).idCheck(a_id);
 		
-		result1 = ss.getMapper(AccountMapper.class).idCheck(a_id);
-		result2 = ss.getMapper(AccountMapper.class).idCheckS(a_id);
+		System.out.println(result);
 		
-		int result;
-		
-		if (result1 == 1 || result2 == 1) {
-			result = 1;
-		} else {
-			result = 0;
-		}
 		return result;
 	}
 
