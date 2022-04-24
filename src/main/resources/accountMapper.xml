@@ -100,6 +100,7 @@
 		where a_s_id = #{a_s_id}
 	</select>
 	
+	<!--수정 전
 	<select id="IdCheck" parameterType="String" resultType="int">
 	select count(*) from account_mio where a_id = #{a_id}
 	</select>
@@ -107,5 +108,13 @@
 	<select id="IdCheckS" parameterType="String" resultType="int">
 	select count(*) from account_sellerjoin where a_s_id = #{a_id}
 	</select>
-	
+	-->
+	<!-- 수정 후 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(*) from(
+		select a_id from account_mio
+		union all
+		select a_s_id from account_sellerjoin)
+		where a_id = #{a_id}
+	</select>
 </mapper>
