@@ -187,7 +187,7 @@ public class AccountDAO {
 	// 회원 탈퇴
 	public void deleteAccount(HttpServletRequest request) {
 		try {
-			Account a = (Account) request.getSession().getAttribute("loginAccount");
+			Account account = (Account) request.getSession().getAttribute("loginAccount");
 			String join_photo = a.getA_img();
 			if (ss.getMapper(AccountMapper.class).deleteAccount(a) == 1) {
 				String path = request.getSession().getServletContext().getRealPath("resources/img_account");
