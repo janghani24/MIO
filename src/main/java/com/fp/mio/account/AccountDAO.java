@@ -283,7 +283,7 @@ public class AccountDAO {
 		int start = (pageNo - 1) * count + 1;
 		int end = start + (count - 1);
 
-		AccountSelector search = (AccountSelector) request.getAttribute("search");
+		AccountSelector search = (AccountSelector) request.getSession().getAttribute("search");
 		
 		int aCount = 0;
 
@@ -423,6 +423,6 @@ public class AccountDAO {
 
 	// 페이징 기능에 사용되는 AccountSelector 설정
 	public void AccountSearch(AccountSelector accountSelector, HttpServletRequest request) {
-		request.setAttribute("search", accountSelector);
+		request.getSession().setAttribute("search", accountSelector);
 	}
 }
