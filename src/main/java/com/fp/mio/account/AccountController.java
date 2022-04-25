@@ -223,6 +223,7 @@ public class AccountController {
 	@RequestMapping(value = "/account.updateGrade.go", method = RequestMethod.GET)
 	public String gradeUpdateGo(HttpServletRequest request) {
 		if (aDAO.loginCheck(request)) {
+			SiteOption.clearSearch(request);
 			aDAO.calcAllACount();
 			aDAO.getAllAccount(1, request);
 			request.setAttribute("contentPage", "account/updateGrade.jsp");
