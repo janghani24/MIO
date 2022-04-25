@@ -262,9 +262,9 @@ public class AccountController {
 	}
 	// 판매자 승인
 	@RequestMapping(value = "/account.sellerJoin.do", method = RequestMethod.GET)
-	public String sellerJoin(Account account, Seller seller, HttpServletRequest request) {
+	public String sellerJoin(Seller seller, HttpServletRequest request) {
 		if (aDAO.loginCheck(request)) {
-			aDAO.sellerToAccount(account, seller, request);
+			aDAO.sellerToAccount(seller, request);
 			aDAO.deleteSellerjoin(seller, request);
 			aDAO.getSeller(request);
 			request.setAttribute("contentPage", "account/joinConfirm.jsp");
@@ -279,6 +279,7 @@ public class AccountController {
 	@RequestMapping(value = "/account.sellerReject.do", method = RequestMethod.GET)
 	public String sellerReject(Account account, Seller seller, HttpServletRequest request) {
 		if (aDAO.loginCheck(request)) {
+			aDAO.deletePhoto(seller, request);
 			aDAO.deleteSellerjoinPhoto(seller, request);
 			aDAO.getSeller(request);
 			request.setAttribute("contentPage", "account/joinConfirm.jsp");
