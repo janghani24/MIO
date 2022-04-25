@@ -381,6 +381,20 @@ public class AccountDAO {
 		}
 	}
 
+	// 가입 신청시 올린 사진파일 삭제
+	public void deletePhoto (Seller seller,HttpServletRequest request) {
+		try {
+		Seller deleteSeller = ss.getMapper(AccountMapper.class).getSellerById(seller);
+		String deletePhoto = deleteSeller.getS_img();
+		String path = request.getSession().getServletContext().getRealPath("resources/img_account");
+			deletePhoto = URLDecoder.decode(deletePhoto, "utf-8");
+			new File(path + "/" + deletePhoto).delete();
+			System.out.println(path);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	// 승인신청에서 삭제
 	public void deleteSellerjoin(Seller seller, HttpServletRequest req) {
 		try {
