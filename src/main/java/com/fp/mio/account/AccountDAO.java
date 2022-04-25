@@ -336,8 +336,9 @@ public class AccountDAO {
 	}
 
 	// 판매자를 회원에 등록하기
-	public void sellerToAccount(Account account, Seller seller, HttpServletRequest request) {
+	public void sellerToAccount(Seller seller, HttpServletRequest request) {
 		Seller sellerApproved = ss.getMapper(AccountMapper.class).getSellerById(seller);
+		Account account = new Account();
 		account.setA_id(sellerApproved.getA_s_id());
 		account.setA_pw(sellerApproved.getS_pw());
 		account.setA_name(sellerApproved.getS_name());
