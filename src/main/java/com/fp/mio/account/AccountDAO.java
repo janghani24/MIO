@@ -232,22 +232,22 @@ public class AccountDAO {
 			return;
 		}
 		try {
-			String join_id = mr.getParameter("jm_id");
-			String join_pw = mr.getParameter("jm_pw");
-			String join_name = mr.getParameter("jm_name");
-			String join_addr1 = mr.getParameter("jm_addr1");
-			String join_addr2 = mr.getParameter("jm_addr2");
-			String join_addr3 = mr.getParameter("jm_addr3");
-			String join_addr = join_addr1 + "!" + join_addr2 + "!" + join_addr3;
-			String join_img = newFile;
-			String join_phone = mr.getParameter("jm_phone");
+			String update_id = mr.getParameter("jm_id");
+			String update_pw = mr.getParameter("jm_pw");
+			String update_name = mr.getParameter("jm_name");
+			String update_addr1 = mr.getParameter("jm_addr1");
+			String update_addr2 = mr.getParameter("jm_addr2");
+			String update_addr3 = mr.getParameter("jm_addr3");
+			String update_addr = join_addr1 + "!" + join_addr2 + "!" + join_addr3;
+			String update_img = newFile;
+			String update_phone = mr.getParameter("jm_phone");
 
-			account.setA_id(join_id);
-			account.setA_pw(join_pw);
-			account.setA_name(join_name);
-			account.setA_addr(join_addr);
-			account.setA_img(join_img);
-			account.setA_phone(join_phone);
+			account.setA_id(update_id);
+			account.setA_pw(update_pw);
+			account.setA_name(update_name);
+			account.setA_addr(update_addr);
+			account.setA_img(update_img);
+			account.setA_phone(update_phone);
 
 			if (ss.getMapper(AccountMapper.class).updateAccount(account) == 1) {
 				request.setAttribute("result", "수정성공");
@@ -277,7 +277,7 @@ public class AccountDAO {
 		}
 	}
 
-	// 회원 정보 가져오기(전체)
+	// 회원 정보 가져오기(전체,)
 	public void getAllAccount(int pageNo, HttpServletRequest request) {
 		int count = so.getProductCountPerpage();
 		int start = (pageNo - 1) * count + 1;
@@ -360,8 +360,6 @@ public class AccountDAO {
 	public int idCheck(String a_id) {
 			
 		int result = ss.getMapper(AccountMapper.class).idCheck(a_id);
-		
-		System.out.println(result);
 		
 		return result;
 	}
