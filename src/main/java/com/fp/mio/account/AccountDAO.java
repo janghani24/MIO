@@ -364,21 +364,6 @@ public class AccountDAO {
 		return result;
 	}
 
-	// 승인 거절
-	public void deleteSellerjoinPhoto(Seller seller, HttpServletRequest request) {
-		try {
-			Seller sss = ss.getMapper(AccountMapper.class).getSellerById(seller);
-			String join_photo = sss.getS_img();
-			if (ss.getMapper(AccountMapper.class).deleteAccountS(seller) == 1) {
-				String path = request.getSession().getServletContext().getRealPath("resources/img_account");
-				join_photo = URLDecoder.decode(join_photo, "utf-8");
-				new File(path + "/" + join_photo).delete();
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-	}
-
 	// 가입 신청시 올린 사진파일 삭제
 	public void deletePhoto (Seller seller,HttpServletRequest request) {
 		try {
