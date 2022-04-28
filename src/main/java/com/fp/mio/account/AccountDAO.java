@@ -277,7 +277,7 @@ public class AccountDAO {
 		}
 	}
 
-	// 회원 정보 가져오기(전체,)
+	// 회원 정보 가져오기(전체,페이징)
 	public void getAllAccount(int pageNo, HttpServletRequest request) {
 		int count = so.getProductCountPerpage();
 		int start = (pageNo - 1) * count + 1;
@@ -307,7 +307,7 @@ public class AccountDAO {
 
 	}
 
-	// 등급으로 정렬된 회원 정보 가져오기(전체)
+	// 회원 정보 가져오기(전체)
 	public void getAccount(HttpServletRequest request) {
 		try {
 			request.setAttribute("accounts", ss.getMapper(AccountMapper.class).getAccount());
