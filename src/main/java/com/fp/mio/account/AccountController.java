@@ -271,7 +271,7 @@ public class AccountController {
 	public String sellerReject(Account account, Seller seller, HttpServletRequest request) {
 		if (aDAO.loginCheck(request)) {
 			aDAO.deletePhoto(seller, request);
-			aDAO.deleteSellerjoinPhoto(seller, request);
+			aDAO.deleteSellerjoin(seller, request);
 			aDAO.getSeller(request);
 			request.setAttribute("contentPage", "account/joinConfirm.jsp");
 		} else {
